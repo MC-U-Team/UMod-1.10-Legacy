@@ -1,0 +1,210 @@
+#Tab
+itemGroup.utab=UMod Energy Stuff
+itemGroup.magic=UMod Magic Stuff
+itemGroup.rail=UMod Rail Stuff
+itemGroup.infected=UMod Infected Stuff
+itemGroup.blocks=UMod Blocks
+itemGroup.things=UMod Random Things
+
+#Ingots
+item.ingotaluminium.name=Aluminium Ingot
+item.ingotcopper.name=Copper Ingot
+item.ingotlead.name=Lead Ingot
+item.ingotmangan.name=Mangan Ingot
+item.ingotmercury.name=Mercury Ingot
+item.ingotnickel.name=Nickel Ingot
+item.ingotplatinum.name=Platinum Ingot
+item.ingotsilicium.name=Silicium Ingot
+item.ingotsilver.name=Silver Ingot
+item.ingotsulphur.name=Sulphur Chunk
+item.ingottin.name=Tin Ingot
+item.ingoturan.name=Uran Ingot
+item.ingotzinc.name=Zinc Ingot
+
+#Dusts
+item.manganoxid.name=Manganoxid
+item.dustaluminium.name=Aluminium Dust
+item.dustcopper.name=Copper Dust
+item.dustlead.name=Lead Dust
+item.dustmangan.name=Mangan Dust
+item.dustmercury.name=Mercury Dust
+item.dustnickel.name=Nickel Dust
+item.dustplatinum.name=Platinum Dust
+item.dustsilicium.name=Silicium Dust
+item.dustsilver.name=Silver Dust
+item.dustsulphur.name=Sulphur Dust
+item.dusttin.name=Tin Dust
+item.dusturan.name=Uran Dust
+item.dustzinc.name=Zinc Dust
+item.cdust.name=Cobblestone Dust
+
+#magic
+item.magic_diamond.name=Magic Diamond
+item.magic_ingot.name=Magic Ingot
+item.charged_quartz.name=Charged Quartz
+item.magic_brew.name=Magic Brew
+tile.magic_glass.name=Magic Glass
+item.magic_bottle.name=Magic Bottle
+item.magic_axe.name=Magic Axe
+item.magic_pickaxe.name=Magic Pickaxe
+item.magic_shovel.name=Magic Shovel
+item.magic_sword.name=Magic Sword
+item.magic_hoe.name=Magic Hoe
+
+#Radiation Suit
+item.radiationsuithelmet.name=Radiation Suit Mask
+item.radiationsuitchestplate.name=Radiation Suit Chestplate
+item.radiationsuitleggings.name=Radiation Suit Leggings
+item.radiationsuitboots.name=Radiation Suit Boots
+
+#magic armor
+item.magic_helmet.name=Magic Helmet
+item.magic_chestplate.name=Magic Chestplate
+item.magic_leggings.name=Magic Leggings
+item.magic_boots.name=Magic Boots
+
+#Infected
+item.infectedcrop.name=Infected Crop
+item.infectedleather.name=Infected Leather
+item.infectedbeef.name=Infected Beef
+item.infectedmilk.name=Infected Milk
+item.acid.name=Acid
+item.plastic.name=Plastic
+tile.oilglass.name=Oilglass
+tile.oilsand.name=Oilsand
+tile.infectedsapling.name=Infacted Sapling
+
+#machinery
+item.battery.name=Battery
+item.copper_wire.name=Copper Wire
+item.copper_coil.name=Copper Coil
+item.transformerlow.name=Low Transformer
+item.transformermedium.name=Medium Transformer
+item.transformerhigh.name=High Transformer
+item.transformerextrem.name=Extrem Transformer
+item.transformerultra.name=Ultra Transformer
+item.petrol.name=Petrol
+tile.craftfurn.name=Craftfurnace
+tile.energymonitor.name=Energymonitor
+tile.painter.name=Painter
+tile.cleaner.name=Infected Cleaner
+tile.conduit.name=Conduit
+tile.barrelsmall.name=Small Barrel
+tile.barrelmedium.name=Medium Barrel
+tile.barrelbig.name=Big Barrel
+item.thicker_copper_coil.name=Thicker Copper Coil
+item.solar_cell.name=Solar Cell
+
+#Tools
+#Emerald
+item.emerald_axe.name=Emerald Axe
+item.emerald_pickaxe.name=Emerald Pickaxe
+item.emerald_sword.name=Emerald Sword
+item.emerald_shovel.name=Emerald Shovel
+item.emerald_hoe.name=Emerald Hoe
+
+#Ores
+tile.orealuminium.name=Aluminium Ore
+tile.orecopper.name=Copper Ore
+tile.orelead.name=Lead Ore
+tile.oremangan.name=Mangan Ore
+tile.oremercury.name=Mercury Ore
+tile.orenickel.name=Nickel Ore
+tile.oreplatinum.name=Platinum Ore
+tile.oresilicium.name=Silicium Ore
+tile.oresilver.name=Silver Ore
+tile.oresulphur.name=Sulphur Ore
+tile.oretin.name=Tin Ore
+tile.oreuran.name=Uran Ore
+tile.orezinc.name=Zinc Ore
+
+#Nether Ores
+tile.netherorealuminium.name=Nether Aluminium Ore
+tile.netherorecopper.name=Nether Copper Ore
+tile.netherorelead.name=Nether Lead Ore
+tile.netheroremangan.name=Nether Mangan Ore
+tile.netheroremercury.name=Nether Mercury Ore
+tile.netherorenickel.name=Nether Nickel Ore
+tile.netheroreplatinum.name=Nether Platinum Ore
+tile.netheroresilicium.name=Nether Silicium Ore
+tile.netheroresilver.name=Nether Silver Ore
+tile.netheroresulphur.name=Nether Sulphur Ore
+tile.netheroretin.name=Nether Tin Ore
+tile.netheroreuran.name=Nether Uran Ore
+tile.netherorezinc.name=Nether Zinc Ore
+
+#Blocks
+tile.blockaluminium.name=Aluminium Block
+tile.blockcopper.name=Copper Block
+tile.blocklead.name=Lead Block
+tile.blockmangan.name=Mangan Block
+tile.blockmercury.name=Mercury Block
+tile.blocknickel.name=Nickel Block
+tile.blockplatinum.name=Platinum Block
+tile.blocksilicium.name=Silicium Block
+tile.blocksilver.name=Silver Block
+tile.blocksulphur.name=Sulphur Block
+tile.blocktin.name=Tin Block
+tile.blockuran.name=Uran Block
+tile.blockzinc.name=Zinc Block
+tile.nuke.name=Nuke
+
+#Infected
+tile.infectedgrass.name=Infected Grass
+tile.infecteddirt.name=Infected Dirt
+tile.infectedlog.name=Infected Log
+tile.infectedleave.name=Infected Leave
+tile.infectedplank.name=Infected Plank
+tile.infectedfruit.name=Infected Fruit
+
+#Pulverizer
+tile.pulver.name=Pulverizer
+tile.charge.name=Battery
+
+#Solarpanel
+tile.solarpanellowvoltage.name=Lowvoltage Solarpanel
+tile.solarpanelmediumvoltage.name=Mediumvoltage Solarpanel
+tile.solarpanelhighvoltage.name=Highvoltage Solarpanel
+tile.solarpanelultravoltage.name=Ultravoltage Solarpanel
+tile.solarpanelextremevoltage.name=Extremevoltage Solarpanel
+
+#Tooltip
+
+
+#Potion
+potion.radiation.name=Radiation
+
+#DamageSource
+death.attack.radiation=%1$s died from Radiation
+death.attack.elec=%1$s died from a Electronic Shock
+death.attack.nuclearexplosion=%1$s was killed by Nuclear Explosion
+
+#Cables
+tile.medium_voltage_cable.name=Medium Voltage Cable
+tile.high_voltage_cable.name=High Voltage Cable
+tile.low_voltage_cable.name=Low Voltage Cable
+
+
+#Entity
+entity.InfectedCow.name=Infected Cow
+entity.InfectedCreeper.name=Infected Creeper
+entity.PrimedNuke.name=Nuke
+entity.InfectedZombie.name=Infected Zombie
+
+#Backpack
+item.backpacksmall.name=Small Backpack
+item.backpackmedium.name=Medium Backpack
+item.backpackbig.name=Big Backpack
+
+#Command
+commands.uschematic.usage=/uschematic <save> <name> <x1> <y1> <z1> <x2> <y2> <z2> OR /uschematic <load> <name>
+commands.uschematic.success.save=USchematic successfully saved under %d.uschematic from %d to %d
+commands.uschematic.success.load=USchematic successfully loaded from %d.uschematic from %d to %d
+commands.uschematic.failed.save=Failed to save the uschematic file
+commands.uschematic.failed.load=Failed to load the uschematic file
+
+#Achievement
+achievementpage.upage=UMOD
+
+achievement.firstjoin=First Join
+achievement.firstjoin.desc=Join a world at the first time.
