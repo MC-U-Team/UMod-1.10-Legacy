@@ -26,7 +26,7 @@ public class BlockOres extends BlockBase {
 	public BlockOres() {
 		super(Material.ROCK);
 		this.setResistance(5.0F);
-		this.setSoundType(SoundType.GROUND);
+		this.setSoundType(SoundType.STONE);
 	}
 	
 	@Override

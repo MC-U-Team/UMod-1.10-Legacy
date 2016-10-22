@@ -22,7 +22,7 @@ public class EventChestInventory {
 				NBTTagCompound comp = new NBTTagCompound();
 				et.writeToNBT(comp);
 				if(et instanceof IInventory)((IInventory) et).clear();
-				ItemStack st = new ItemStack(ev.getState().getBlock(), 1);
+				ItemStack st = new ItemStack(ev.getState().getBlock(), 1, ev.getState().getBlock().damageDropped(ev.getState()));
 				st.setTagInfo(KEY, comp);
 				Block.spawnAsEntity(ev.getWorld(), ev.getPos(), st);
 				ev.getWorld().setBlockToAir(ev.getPos());

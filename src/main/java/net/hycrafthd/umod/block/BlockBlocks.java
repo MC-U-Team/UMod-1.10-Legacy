@@ -15,11 +15,11 @@ public class BlockBlocks extends BlockBase {
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeBaseStuff.class);
 	
 	public BlockBlocks() {
-		super(Material.ROCK);
+		super(Material.IRON);
 		this.setResistance(5.0F);
 		this.setHardness(3.0F);
 		this.setHarvestLevel("pickaxe", 1);
-		this.setSoundType(SoundType.PLANT);
+		this.setSoundType(SoundType.METAL);
 	}
 	
 	@Override

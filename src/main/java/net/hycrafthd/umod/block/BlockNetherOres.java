@@ -26,7 +26,7 @@ public class BlockNetherOres extends BlockBase {
 	public BlockNetherOres() {
 		super(Material.ROCK);
 		this.setResistance(5.0F);
-		this.setSoundType(SoundType.GROUND);
+		this.setSoundType(SoundType.STONE);
 	}
 	
 	@Override

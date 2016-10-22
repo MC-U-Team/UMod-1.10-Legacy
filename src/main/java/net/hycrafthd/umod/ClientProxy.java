@@ -63,33 +63,29 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerModels() {
 		
-		// Ore and NetherOre
+		// Register Base Type Variants
+		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
+		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
+		ResourceLocation[] rs6 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		ResourceLocation[] rs7 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		ResourceLocation[] rs8 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
+			ModelRegistry.register(UItems.dusts, i, new ModelResourceLocation(UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			ModelRegistry.register(UItems.ingots, i, new ModelResourceLocation(UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			ModelRegistry.register(ItemUtil.from(UBlocks.blocks), i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			ModelRegistry.register(ItemUtil.from(UBlocks.ores), i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			ModelRegistry.register(ItemUtil.from(UBlocks.netherores), i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+		    rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
+			rs5[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
+			rs6[i] = new ResourceLocation(UReference.modid, "block" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs7[i] = new ResourceLocation(UReference.modid, "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs8[i] = new ResourceLocation(UReference.modid, "ore" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
+		reg(UItems.dusts, rs3);
+		reg(UItems.ingots, rs5);
+		reg(Item.getItemFromBlock(UBlocks.blocks), rs6);
 		reg(Item.getItemFromBlock(UBlocks.netherores), rs7);
 		reg(Item.getItemFromBlock(UBlocks.ores), rs8);
-
-		// Blocks
-		ResourceLocation[] rs6 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			ModelRegistry.register(ItemUtil.from(UBlocks.blocks), i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-		    rs6[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
-		}
-		reg(Item.getItemFromBlock(UBlocks.blocks), rs6);
-		
-		// Ingot (and Sulphur Chunk)
-		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			ModelRegistry.register(UItems.ingots, i, new ModelResourceLocation(UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-		    rs5[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
-		}
-		reg(UItems.ingots, rs5);
 		
 		// Transformer
 		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
@@ -98,13 +94,6 @@ public class ClientProxy extends CommonProxy {
 		    rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
 		}
 		reg(UItems.transformer, rs4);
-		// Dust
-		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			ModelRegistry.register(UItems.dusts, i, new ModelResourceLocation(UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-		    rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
-		}
-		reg(UItems.dusts, rs3);
 		
 		ModelRegistry.register(UItems.manganoxid);
 		

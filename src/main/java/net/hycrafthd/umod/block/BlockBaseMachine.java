@@ -3,6 +3,7 @@ package net.hycrafthd.umod.block;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.api.IConduitBlock;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,6 +30,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 		this.setHarvestLevel("pickaxe", 3);
 		this.setHardness(5);
 		this.setCreativeTab(UReference.maschines);
+		this.setSoundType(SoundType.METAL);
 	}
 	
 	@Override
@@ -57,7 +59,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
 	}
 	
 	@Override
@@ -73,7 +75,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	
 	@Override
 	public boolean isFullCube(IBlockState state) {
-		return false;
+		return true;
 	}
 	
 	@Override
