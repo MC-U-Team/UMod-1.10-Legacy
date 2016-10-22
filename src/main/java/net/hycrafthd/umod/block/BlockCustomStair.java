@@ -3,6 +3,7 @@ package net.hycrafthd.umod.block;
 import net.hycrafthd.umod.UReference;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockCustomStair extends BlockStairs {
 	
@@ -10,6 +11,11 @@ public class BlockCustomStair extends BlockStairs {
 		super(modelState);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(UReference.blocks);
+	}
+	
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 	
 }

@@ -24,5 +24,5 @@ public class BlockSlabCreator {
 	public Block[] createList() {
 		return new Block[] { slab, doubleslab };
 	}
-	
+
 }

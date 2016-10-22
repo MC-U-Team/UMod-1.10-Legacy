@@ -64,36 +64,47 @@ public class ClientProxy extends CommonProxy {
 	public void registerModels() {
 		
 		// Ore and NetherOre
+		ResourceLocation[] rs7 = new ResourceLocation[EnumTypeBaseStuff.values().length];
+		ResourceLocation[] rs8 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.ores),new ResourceLocation("umod", UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName()));
 			ModelRegistry.register(ItemUtil.from(UBlocks.ores), i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			reg(Item.getItemFromBlock(UBlocks.netherores), UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
 			ModelRegistry.register(ItemUtil.from(UBlocks.netherores), i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			rs7[i] = new ResourceLocation(UReference.modid, "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
+			rs8[i] = new ResourceLocation(UReference.modid, "ore" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
-		
+		reg(Item.getItemFromBlock(UBlocks.netherores), rs7);
+		reg(Item.getItemFromBlock(UBlocks.ores), rs8);
+
 		// Blocks
+		ResourceLocation[] rs6 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			reg(Item.getItemFromBlock(UBlocks.blocks), UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName());
 			ModelRegistry.register(ItemUtil.from(UBlocks.blocks), i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+		    rs6[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
+		reg(Item.getItemFromBlock(UBlocks.blocks), rs6);
 		
 		// Ingot (and Sulphur Chunk)
+		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			reg(UItems.ingots, UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
 			ModelRegistry.register(UItems.ingots, i, new ModelResourceLocation(UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+		    rs5[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
+		reg(UItems.ingots, rs5);
 		
 		// Transformer
+		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
 		for (int i = 0; i < EnumTypeTransformer.values().length; i++) {
-			reg(UItems.transformer, UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName());
 			ModelRegistry.register(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
+		    rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
 		}
-		
+		reg(UItems.transformer, rs4);
 		// Dust
+		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			reg(UItems.dusts, UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
 			ModelRegistry.register(UItems.dusts, i, new ModelResourceLocation(UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+		    rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
+		reg(UItems.dusts, rs3);
 		
 		ModelRegistry.register(UItems.manganoxid);
 		
@@ -124,10 +135,12 @@ public class ClientProxy extends CommonProxy {
 		ModelRegistry.register(UItems.magic_bottle);
 		
 		// SolarPanel
+		ResourceLocation[] rs1 = new ResourceLocation[EnumTypeSolarPanel.values().length];
 		for (int i = 0; i < EnumTypeSolarPanel.values().length; i++) {
-			reg(Item.getItemFromBlock(UBlocks.solarpanel), UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
 			ModelRegistry.register(ItemUtil.from(UBlocks.solarpanel), i, new ModelResourceLocation(UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName(), "inventory"));
+		    rs1[i] = new ResourceLocation(UReference.modid, "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
 		}
+		reg(ItemUtil.from(UBlocks.solarpanel), rs1);
 		
 		// Armor
 		ModelRegistry.register(UArmor.radiationSuitHelmet);
@@ -194,10 +207,13 @@ public class ClientProxy extends CommonProxy {
 		}
 		
 		// Backpack
+		ResourceLocation[] rs2 = new ResourceLocation[EnumTypeBackPack.values().length];
 		for (int i = 0; i < EnumTypeBackPack.values().length; i++) {
-			reg(UItems.backpack, UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName());
 			ModelRegistry.register(UItems.backpack, i, new ModelResourceLocation(UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName(), "inventory"));
+		    rs2[i] = new ResourceLocation(UReference.modid, "backpack" + EnumTypeBackPack.byMetadata(i).getName());
 		}
+		reg(ItemUtil.from(UItems.backpack), rs2);
+
 		
 		// Tools
 		ModelRegistry.register(UTools.emeraldAxe);
@@ -247,8 +263,8 @@ public class ClientProxy extends CommonProxy {
 		}
 	}
 	
-	public void reg(Object ocj,String str){
-		ModelRegistry.registerVariants(ocj,new ResourceLocation("umod", str));
+	public void reg(Object ocj,ResourceLocation[] str){
+		ModelRegistry.registerVariants(ocj,str);
 	}
 	
 }

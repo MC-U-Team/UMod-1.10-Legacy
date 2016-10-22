@@ -57,7 +57,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
+		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
 	}
 	
 	@Override
