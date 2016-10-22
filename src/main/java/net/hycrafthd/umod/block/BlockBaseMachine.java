@@ -32,34 +32,14 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 		this.setCreativeTab(UReference.maschines);
 		this.setSoundType(SoundType.METAL);
 	}
-	
-	@Override
-	public boolean hasTileEntity() {
-		return true;
-	}
 
 	@Override
 	public int getComparatorInputOverride(IBlockState blockState, World world, BlockPos pos) {
 		return Container.calcRedstone(world.getTileEntity(pos));
 	}
 	
-	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		TileEntity ent = world.getTileEntity(pos);
-		compound = new NBTTagCompound();
-		if (ent == null)
-			return;
-		ent.writeToNBT(compound);
-		world.removeTileEntity(pos);
-	}
-	
 	public boolean canProvidePower() {
 		return true;
-	}
-	
-	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.MODEL;
 	}
 	
 	@Override
@@ -74,8 +54,13 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	}
 	
 	@Override
-	public boolean isFullCube(IBlockState state) {
-		return true;
+	public boolean isFullBlock(IBlockState s) {
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState s) {
+		return false;
 	}
 	
 	@Override
@@ -93,18 +78,6 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 		ItemStack stack = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
 		stack.setTagInfo("NBTS", compound);
 		spawnAsEntity(worldIn, pos, stack);
-	}
-	
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		TileEntity ent = worldIn.getTileEntity(pos);
-		if (stack.getTagCompound() != null && stack.getTagCompound().hasKey("NBTS")) {
-			NBTTagCompound comp = stack.getTagCompound().getCompoundTag("NBTS");
-			ent.readFromNBT(comp);
-		}
-		ent.setPos(pos);
-		ent.setWorldObj(worldIn);
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 	}
 	
 }

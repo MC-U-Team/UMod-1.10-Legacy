@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
+import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -179,13 +180,13 @@ public abstract class ModeTabs extends Gui {
 	private void setupGuiTransform(int xPosition, int yPosition, boolean isGui3d) {
 		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);
 		GlStateManager.translate(8.0F, 8.0F, 0.0F);
-		GlStateManager.scale(1.2F, 1.2F, 1.2F);
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);
+		GlStateManager.scale(2F, 2F, -2F);
+		GlStateManager.scale(0.25F, 0.25F, 0.25F);
 		
 		if (isGui3d) {
 			GlStateManager.scale(40.0F, 40.0F, 40.0F);
-			GlStateManager.rotate(200, 1.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(45, 0.0F, 1.0F, 0.0F);
+			GlStateManager.rotate(180, 1.0F, 0.0F, 0.0F);
+			GlStateManager.rotate(0, 0.0F, 1.0F, 0.0F);
 			GlStateManager.enableLighting();
 		} else {
 			GlStateManager.rotate(180, 1.0F, 0.0F, 0.0F);
@@ -195,135 +196,9 @@ public abstract class ModeTabs extends Gui {
 	}
 	
 	private void renderItemIntoGUI(ItemStack stack, int x, int y) {
-		IBakedModel ibakedmodel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(stack);
 		GlStateManager.pushMatrix();
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).setBlurMipmap(false, false);
-		GlStateManager.enableRescaleNormal();
-		GlStateManager.enableAlpha();
-		GlStateManager.alphaFunc(516, 0.1F);
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(770, 771);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.setupGuiTransform(x, y, ibakedmodel.isGui3d());
-		ibakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(ibakedmodel, ItemCameraTransforms.TransformType.GUI,false);
-		this.renderItem(stack, ibakedmodel);
-		GlStateManager.disableAlpha();
-		GlStateManager.disableRescaleNormal();
-		GlStateManager.disableLighting();
-		GlStateManager.popMatrix();
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).restoreLastBlurMipmap();
-	}
-	
-	private void renderModel(IBakedModel model, int color) {
-//		this.renderModel(model, color, (ItemStack) null);
-	}
-	
-	private void renderItem(ItemStack stack, IBakedModel model) {
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);
-		
-		if (model.isBuiltInRenderer()) {
-			GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-			GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.enableRescaleNormal();
-			TileEntityItemStackRenderer.instance.renderByItem(stack);
-		} else {
-			GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-//			this.renderModel(model, -1, stack);
-			
-			if (stack.hasEffect()) {
-				this.renderEffect(model);
-			}
-		}
-		
+		this.setupGuiTransform(x, y, true);
+		UMod.getModelRenderHelper().renderItem(stack);
 		GlStateManager.popMatrix();
 	}
-	
-	private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
-	
-	private void renderEffect(IBakedModel model) {
-		GlStateManager.depthMask(false);
-		GlStateManager.depthFunc(514);
-		GlStateManager.disableLighting();
-		GlStateManager.blendFunc(768, 1);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(RES_ITEM_GLINT);
-		GlStateManager.matrixMode(5890);
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(8.0F, 8.0F, 8.0F);
-		float f = (float) (Minecraft.getSystemTime() % 3000L) / 3000.0F / 8.0F;
-		GlStateManager.translate(f, 0.0F, 0.0F);
-		GlStateManager.rotate(-50.0F, 0.0F, 0.0F, 1.0F);
-		this.renderModel(model, -8372020);
-		GlStateManager.popMatrix();
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(8.0F, 8.0F, 8.0F);
-		float f1 = (float) (Minecraft.getSystemTime() % 4873L) / 4873.0F / 8.0F;
-		GlStateManager.translate(-f1, 0.0F, 0.0F);
-		GlStateManager.rotate(10.0F, 0.0F, 0.0F, 1.0F);
-		this.renderModel(model, -8372020);
-		GlStateManager.popMatrix();
-		GlStateManager.matrixMode(5888);
-		GlStateManager.blendFunc(770, 771);
-		GlStateManager.enableLighting();
-		GlStateManager.depthFunc(515);
-		GlStateManager.depthMask(true);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-	}
-	
-	/*private void renderModel(IBakedModel model, int color, ItemStack stack) {
-		Tessellator tessellator = Tessellator.getInstance();
-		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-		worldrenderer.startDrawingQuads();
-		worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
-		EnumFacing[] aenumfacing = EnumFacing.values();
-		int j = aenumfacing.length;
-		
-		for (int k = 0; k < j; ++k) {
-			EnumFacing enumfacing = aenumfacing[k];
-			this.renderQuads(worldrenderer, model.getFaceQuads(enumfacing), color, stack);
-		}
-		
-		this.renderQuads(worldrenderer, model.getGeneralQuads(), color, stack);
-		tessellator.draw();
-	}
-	
-	@SuppressWarnings("rawtypes")
-	private void renderQuads(WorldRenderer renderer, List quads, int color, ItemStack stack) {
-		boolean flag = color == -1 && stack != null;
-		BakedQuad bakedquad;
-		int j;
-		
-		for (Iterator iterator = quads.iterator(); iterator.hasNext(); this.renderQuad(renderer, bakedquad, j)) {
-			bakedquad = (BakedQuad) iterator.next();
-			j = color;
-			
-			if (flag && bakedquad.hasTintIndex()) {
-				j = stack.getItem().getColorFromItemStack(stack, bakedquad.getTintIndex());
-				
-				if (EntityRenderer.anaglyphEnable) {
-					j = TextureUtil.anaglyphColor(j);
-				}
-				
-				j |= -16777216;
-			}
-		}
-	}
-	
-	private void renderQuad(WorldRenderer renderer, BakedQuad quad, int color) {
-		renderer.addVertexData(quad.getVertexData());
-		if (quad instanceof net.minecraftforge.client.model.IColoredBakedQuad)
-			net.minecraftforge.client.ForgeHooksClient.putQuadColor(renderer, quad, color);
-		else
-			renderer.putColor4(color);
-		this.putQuadNormal(renderer, quad);
-	}
-	
-	private void putQuadNormal(WorldRenderer renderer, BakedQuad quad) {
-		Vec3i vec3i = quad.getFace().getDirectionVec();
-		renderer.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
-	}*/
-	
 }

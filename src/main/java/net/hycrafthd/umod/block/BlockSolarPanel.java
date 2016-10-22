@@ -164,7 +164,7 @@ public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, I
 	
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
 	}
 	
 }

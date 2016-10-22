@@ -18,11 +18,15 @@ public class ArmorMagic extends ItemArmor{
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot s, String type) {
-		int slot = s.getSlotIndex();
-		if (slot == 0 || slot == 1 || slot == 3) {
+		switch(s){
+		case CHEST:
+		case FEET:
+		case LEGS:
 			return UReference.modid + ":textures/models/armor/magic_layer_1.png";
-		} else if (slot == 2) {
+		case HEAD:
 			return UReference.modid + ":textures/models/armor/magic_layer_2.png";
+		default:
+			break;
 		}
 		return null;
 	}
@@ -32,5 +36,7 @@ public class ArmorMagic extends ItemArmor{
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
 		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
 	}
+	
+	
 	
 }

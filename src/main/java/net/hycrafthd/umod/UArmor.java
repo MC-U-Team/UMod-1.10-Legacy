@@ -3,6 +3,7 @@ package net.hycrafthd.umod;
 import net.hycrafthd.umod.armor.*;
 import net.hycrafthd.umod.item.tools.energy.ItemEnergyGlasses;
 import net.hycrafthd.umod.utils.URegistryUtils;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
@@ -45,13 +46,13 @@ public class UArmor {
 	
 	private void init() {
 		// Radiation Suit
-		radiationSuitMaterial = EnumHelper.addArmorMaterial("RADIATIONARMOR", "", 10, new int[] { 1, 3, 1, 1 }, 1,new SoundEvent(null),0);
+		radiationSuitMaterial = EnumHelper.addArmorMaterial("RADIATIONARMOR", "", 10, new int[] { 1, 3, 1, 1 }, 1,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
 		// Energy
-		enrgy = EnumHelper.addArmorMaterial("Energy", "", 5, new int[] { 1, 3, 1, 1 }, 1,new SoundEvent(null),0);
+		enrgy = EnumHelper.addArmorMaterial("ENERGY", "", 5, new int[] { 1, 3, 1, 1 }, 1,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
 		// Emerald
-		emeraldMaterial = EnumHelper.addArmorMaterial("EMERALDARMOR", "", 28, new int[] { 3, 7, 5, 3 }, 20,new SoundEvent(null),0);
+		emeraldMaterial = EnumHelper.addArmorMaterial("EMERALDARMOR", "", 28, new int[] { 3, 7, 5, 3 }, 20,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
 		// Magic
-		magicMaterial = EnumHelper.addArmorMaterial("MAGICARMOR", "", 15, new int[]{ 3, 8, 6, 3 }, 30,new SoundEvent(null),0);
+		magicMaterial = EnumHelper.addArmorMaterial("MAGICARMOR", "", 15, new int[]{ 3, 8, 6, 3 }, 30,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
 		
 		// Radiation Suit
 		radiationSuitHelmet = new ArmorRadiation(radiationSuitMaterial, EntityEquipmentSlot.HEAD).setUnlocalizedName("radiationsuithelmet");

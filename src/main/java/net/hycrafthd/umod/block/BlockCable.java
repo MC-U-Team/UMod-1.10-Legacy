@@ -23,6 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -152,12 +153,12 @@ public class BlockCable extends Block implements ITileEntityProvider, IEnergyMes
 			boolean cup = pip.canConnect(w, pos.up());
 			boolean ceast = pip.canConnect(w, pos.east());
 			boolean cwest = pip.canConnect(w, pos.west());
-			float anfangunten = 0.4F;
-			float anfnagoben = 0.6F;
-			float anfangX = 0.4F;
-			float endeX = 0.6F;
-			float anfangZ = 0.4F;
-			float endeZ = 0.6F;
+			double anfangunten = 0.4F;
+			double anfnagoben = 0.6F;
+			double anfangX = 0.4F;
+			double endeX = 0.6F;
+			double anfangZ = 0.4F;
+			double endeZ = 0.6F;
 			
 			if (cup) {
 				anfnagoben = 1;
@@ -182,6 +183,11 @@ public class BlockCable extends Block implements ITileEntityProvider, IEnergyMes
 			
 		}
 		return FULL_BLOCK_AABB;
+	}
+	
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.INVISIBLE;
 	}
 	
 	@Override

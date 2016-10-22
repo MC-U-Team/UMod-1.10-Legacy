@@ -1,7 +1,9 @@
 package net.hycrafthd.umod;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
 
 import org.lwjgl.input.Keyboard;
 
@@ -44,17 +46,21 @@ import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayer.EnumChatVisibility;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -81,11 +87,11 @@ public class ClientProxy extends CommonProxy {
 			rs7[i] = new ResourceLocation(UReference.modid, "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs8[i] = new ResourceLocation(UReference.modid, "ore" + EnumTypeBaseStuff.byMetadata(i).getName());
 		}
-		reg(UItems.dusts, rs3);
-		reg(UItems.ingots, rs5);
-		reg(Item.getItemFromBlock(UBlocks.blocks), rs6);
-		reg(Item.getItemFromBlock(UBlocks.netherores), rs7);
-		reg(Item.getItemFromBlock(UBlocks.ores), rs8);
+		ModelRegistry.registerVariants(UItems.dusts, rs3);
+		ModelRegistry.registerVariants(UItems.ingots, rs5);
+		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.blocks), rs6);
+		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.netherores), rs7);
+		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.ores), rs8);
 		
 		// Transformer
 		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
@@ -93,13 +99,13 @@ public class ClientProxy extends CommonProxy {
 			ModelRegistry.register(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
 		    rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
 		}
-		reg(UItems.transformer, rs4);
+		ModelRegistry.registerVariants(UItems.transformer, rs4);
 		
 		ModelRegistry.register(UItems.manganoxid);
 		
 		// Pulverizer
 		ModelRegistry.register(UBlocks.charge);
-		ModelRegistry.register(UBlocks.pulver);
+		ModelRegistry.register(ItemUtil.from(UBlocks.pulver),0,new ModelResourceLocation(UReference.resource + "pulver","inventory"));
 		ModelRegistry.register(UBlocks.craftfurnance);
 		ModelRegistry.register(UBlocks.painter);
 		
@@ -129,7 +135,7 @@ public class ClientProxy extends CommonProxy {
 			ModelRegistry.register(ItemUtil.from(UBlocks.solarpanel), i, new ModelResourceLocation(UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName(), "inventory"));
 		    rs1[i] = new ResourceLocation(UReference.modid, "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
 		}
-		reg(ItemUtil.from(UBlocks.solarpanel), rs1);
+		ModelRegistry.registerVariants(ItemUtil.from(UBlocks.solarpanel), rs1);
 		
 		// Armor
 		ModelRegistry.register(UArmor.radiationSuitHelmet);
@@ -201,7 +207,7 @@ public class ClientProxy extends CommonProxy {
 			ModelRegistry.register(UItems.backpack, i, new ModelResourceLocation(UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName(), "inventory"));
 		    rs2[i] = new ResourceLocation(UReference.modid, "backpack" + EnumTypeBackPack.byMetadata(i).getName());
 		}
-		reg(ItemUtil.from(UItems.backpack), rs2);
+		ModelRegistry.registerVariants(ItemUtil.from(UItems.backpack), rs2);
 
 		
 		// Tools
@@ -229,14 +235,14 @@ public class ClientProxy extends CommonProxy {
 		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender());
 		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender());
 		
-		Map<Class<? extends Entity>, Render<? extends Entity>> mp = Maps.newHashMap();
+		Map<Class<? extends Entity>, Render<? super Entity>> mp = Maps.newHashMap();
 		mp.put(EntityInfectedCreeper.class, new RenderInfectedCreeper());
 		mp.put(EntityNukePrimed.class, new RenderNukePrimed());
 		mp.put(EntityInfectedZombie.class, new RenderInfectedZombie());
 		mp.put(EntityFX.class, new RenderFX());
 		mp.put(EntityRailFX.class, new RenderRailFX());
 		mp.put(EntityInfectedCow.class, new RenderInfectedCow());
-		RenderingRegistry.loadEntityRenderers(Minecraft.getMinecraft().getRenderManager(), mp);
+		registerEntitys(mp);
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
@@ -252,8 +258,19 @@ public class ClientProxy extends CommonProxy {
 		}
 	}
 	
-	public void reg(Object ocj,ResourceLocation[] str){
-		ModelRegistry.registerVariants(ocj,str);
+	private void registerEntitys(Map<Class<? extends Entity>, Render<? super Entity>> map){
+		map.forEach(new BiConsumer<Class<? extends Entity>, Render<? super Entity>>() {
+
+			@Override
+			public void accept(Class<? extends Entity> t, final Render<? super Entity> u) {
+				RenderRegistry.registerEntity(t, new IRenderFactory<Entity>() {
+
+					@Override
+					public Render<? super Entity> createRenderFor(RenderManager manager) {
+						return u;
+					}
+				});
+			}
+		});
 	}
-	
 }

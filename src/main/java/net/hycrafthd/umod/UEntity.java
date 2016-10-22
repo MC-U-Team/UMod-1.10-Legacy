@@ -2,7 +2,11 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.entity.*;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
+import net.hycrafthd.umod.utils.EntityUtils;
 import net.hycrafthd.umod.utils.URegistryUtils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class UEntity {
 	
@@ -10,14 +14,29 @@ public class UEntity {
 		register();
 	}
 	
+	private static int ids = 255 - EntityList.ID_TO_CLASS.size();
+	
 	private void register() {
-//		URegistryUtils.registerEntity(EntityInfectedCow.class, "InfectedCow", 16, 1, true, 0x30311f, 0x648e42, true);
-//		URegistryUtils.registerEntity(EntityInfectedCreeper.class, "InfectedCreeper", 24, 1, true, 0x45b134, 0x164b0c, true);
-//		URegistryUtils.registerEntity(EntityNukePrimed.class, "PrimedNuke", 16, 1, true, 0, 0, false);
-		// Utils.registerEntity(EntityTommahak.class, "Thommahak", 16, 1, true, 0, 0, false);
-//		URegistryUtils.registerEntity(EntityInfectedZombie.class, "InfectedZombie", 24, 1, true, 0x44b517, 0x22c970, true);
-//		URegistryUtils.registerEntity(EntityRailFX.class, "SWELL", 16, 1, true, 0, 0, false);
-//		URegistryUtils.registerEntity(EntityFX.class, "TileFX", 16, 1, true, 0, 0, false);
+		reg(EntityInfectedCow.class, "InfectedCow", 16, 1, true);
+		reg(EntityInfectedCreeper.class, "InfectedCreeper", 24, 1, true);
+		reg(EntityNukePrimed.class, "PrimedNuke", 16, 1, true);
+		reg(EntityInfectedZombie.class, "InfectedZombie", 24, 1,true);
+		reg(EntityRailFX.class, "SWELL", 16, 1,false);
+		reg(EntityFX.class, "TileFX", 16, 1,false);
 		UMod.log.debug("Register Entitys");
+	}
+	
+	public void reg(Class<? extends Entity> clZZ,String name,int r,int hz,boolean up,int sc,int spc,boolean hegg){
+        int id = ids;
+		EntityList.addMapping(clZZ, name, id);
+		EntityRegistry.registerModEntity(clZZ, name, id, UReference.instance, r, hz, up);
+		if (hegg) {
+			EntityRegistry.registerEgg(clZZ, sc, spc);
+		}
+		ids++;
+	}
+	
+	public void reg(Class<? extends Entity> clZZ,String name,int r,int hz,boolean up){
+		reg(clZZ, name, r, hz, up,0,0,false);
 	}
 }

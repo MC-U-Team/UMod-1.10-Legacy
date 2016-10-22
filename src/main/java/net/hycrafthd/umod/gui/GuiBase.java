@@ -18,6 +18,7 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.IMPL_LWJGLU;
 import net.hycrafthd.umod.UBlocks;
+import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.container.ContainerBase;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
@@ -551,9 +552,23 @@ public abstract class GuiBase extends GuiScreen {
 		GlStateManager.enableRescaleNormal();
 	}
 	
+	private void renderItemIntoGUI(ItemStack itemStack,final int x, final int y) {
+		GlStateManager.pushMatrix();
+        UMod.getModelRenderHelper().renderItem(itemStack,new Runnable() {
+			
+			@Override
+			public void run() {
+				setupGuiTransform(x, y, true);
+			}
+		});
+        GlStateManager.popMatrix();
+	}
+
 	public EnumFacing getIOFaceing() {
 		return hal;
 	}
+	
+	private float sclax,sclay;
 	
 	private void setupGuiTransform(int xPosition, int yPosition, boolean isGui3d) {
 		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);
@@ -563,8 +578,8 @@ public abstract class GuiBase extends GuiScreen {
 		
 		if (isGui3d) {
 			GlStateManager.scale(40.0F, 40.0F, 40.0F);
-			GlStateManager.rotate(0 + 180, 1.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(0, 0.0F, 1.0F, 0.0F);
+			GlStateManager.rotate(sclay + 180, 1.0F, 0.0F, 0.0F);
+			GlStateManager.rotate(sclax, 0.0F, 1.0F, 0.0F);
 			GlStateManager.enableLighting();
 		} else {
 			GlStateManager.scale(64.0F, 64.0F, 64.0F);
@@ -572,133 +587,6 @@ public abstract class GuiBase extends GuiScreen {
 		}
 	}
 	
-	public void renderItemIntoGUI(ItemStack stack, int x, int y) {
-		IBakedModel ibakedmodel = this.itemRender.getItemModelMesher().getItemModel(stack);
-		GlStateManager.pushMatrix();
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).setBlurMipmap(false, false);
-		GlStateManager.enableRescaleNormal();
-		GlStateManager.enableAlpha();
-		GlStateManager.alphaFunc(516, 0.1F);
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(770, 771);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.setupGuiTransform(x, y, ibakedmodel.isGui3d());
-		ibakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(ibakedmodel, ItemCameraTransforms.TransformType.GUI,false);
-		this.renderItem(stack, ibakedmodel);
-		GlStateManager.disableAlpha();
-		GlStateManager.disableRescaleNormal();
-		GlStateManager.disableLighting();
-		GlStateManager.popMatrix();
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		Minecraft.getMinecraft().getTextureManager().getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).restoreLastBlurMipmap();
-	}
-	
-	private void renderModel(IBakedModel model, int color) {
-		this.renderModel(model, color, (ItemStack) null);
-	}
-	
-	public void renderItem(ItemStack stack, IBakedModel model) {
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);
-		
-		if (model.isBuiltInRenderer()) {
-			GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-			GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.enableRescaleNormal();
-			TileEntityItemStackRenderer.instance.renderByItem(stack);
-		} else {
-			GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-			this.renderModel(model, -1, stack);
-			
-			if (stack.hasEffect()) {
-				this.renderEffect(model);
-			}
-		}
-		
-		GlStateManager.popMatrix();
-	}
-	
-	private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
-	
-	private void renderEffect(IBakedModel model) {
-		GlStateManager.depthMask(false);
-		GlStateManager.depthFunc(514);
-		GlStateManager.disableLighting();
-		GlStateManager.blendFunc(768, 1);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(RES_ITEM_GLINT);
-		GlStateManager.matrixMode(5890);
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(8.0F, 8.0F, 8.0F);
-		float f = (float) (Minecraft.getSystemTime() % 3000L) / 3000.0F / 8.0F;
-		GlStateManager.translate(f, 0.0F, 0.0F);
-		GlStateManager.rotate(-50.0F, 0.0F, 0.0F, 1.0F);
-		this.renderModel(model, -8372020);
-		GlStateManager.popMatrix();
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(8.0F, 8.0F, 8.0F);
-		float f1 = (float) (Minecraft.getSystemTime() % 4873L) / 4873.0F / 8.0F;
-		GlStateManager.translate(-f1, 0.0F, 0.0F);
-		GlStateManager.rotate(10.0F, 0.0F, 0.0F, 1.0F);
-		this.renderModel(model, -8372020);
-		GlStateManager.popMatrix();
-		GlStateManager.matrixMode(5888);
-		GlStateManager.blendFunc(770, 771);
-		GlStateManager.enableLighting();
-		GlStateManager.depthFunc(515);
-		GlStateManager.depthMask(true);
-		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-	}
-	
-	private void renderModel(IBakedModel model, int color, ItemStack stack) {
-		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer worldrenderer = tessellator.getBuffer();
-		worldrenderer.begin(0, DefaultVertexFormats.ITEM);
-		EnumFacing[] aenumfacing = EnumFacing.values();
-		int j = aenumfacing.length;
-		
-		for (int k = 0; k < j; ++k) {
-			EnumFacing enumfacing = aenumfacing[k];
-//			this.renderQuads(worldrenderer, model.getFaceQuads(enumfacing), color, stack);
-		}
-		
-//		this.renderQuads(worldrenderer, model.getQuads(state, side, rand), color, stack);
-		tessellator.draw();
-	}
-	
-	@SuppressWarnings("rawtypes")
-	private void renderQuads(VertexBuffer renderer, List quads, int color, ItemStack stack) {
-		boolean flag = color == -1 && stack != null;
-		BakedQuad bakedquad;
-		int j;
-		
-		for (Iterator iterator = quads.iterator(); iterator.hasNext(); this.renderQuad(renderer, bakedquad, j)) {
-			bakedquad = (BakedQuad) iterator.next();
-			j = color;
-			
-			if (flag && bakedquad.hasTintIndex()) {
-//				j = stack.getItem().(stack, bakedquad.getTintIndex());
-				
-				if (EntityRenderer.anaglyphEnable) {
-					j = TextureUtil.anaglyphColor(j);
-				}
-				
-				j |= -16777216;
-			}
-		}
-	}
-	
-	private void renderQuad(VertexBuffer renderer, BakedQuad quad, int color) {
-		renderer.addVertexData(quad.getVertexData());
-		this.putQuadNormal(renderer, quad);
-	}
-	
-	private void putQuadNormal(VertexBuffer renderer, BakedQuad quad) {
-		Vec3i vec3i = quad.getFace().getDirectionVec();
-		renderer.putNormal((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
-	}
-		
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 	}
 	
@@ -829,6 +717,89 @@ public abstract class GuiBase extends GuiScreen {
 	
 	public void handelMouseInput(int mouseX, int mouseY) {
 		
+	}
+	
+	@Override
+	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+		if (basecon.mode.equals(Mode.OUTPUT) && clickedMouseButton == 0 && mouseX > 7 + guiLeft && mouseX < 169 + guiLeft && mouseY > guiTop + 6 && mouseY < guiTop + 82) {
+			if (sclax + (mouseX - posX) <= 90 && sclax + (mouseX - posX) >= -180) {
+				sclax += mouseX - posX;
+			}
+			if (sclay + (mouseY - posY) <= 90 && sclay + (mouseY - posY) >= -90) {
+				sclay += mouseY - posY;
+			}
+			posX = mouseX;
+			posY = mouseY;
+			if (sclay >= 45 && sclay <= 135) {
+				hal = EnumFacing.UP;
+				imp_facingchange();
+			}
+			if (sclay <= -45 && sclay >= -215) {
+				hal = EnumFacing.DOWN;
+				imp_facingchange();
+			}
+			if (sclay >= -45 && sclay <= 45) {
+				if (sclax >= -45 && sclax <= 45) {
+					hal = EnumFacing.NORTH;
+					imp_facingchange();
+				}
+				if (sclax <= 135 && sclax >= 45) {
+					hal = EnumFacing.EAST;
+					imp_facingchange();
+				}
+				if (sclax <= -45 && sclax >= -135) {
+					hal = EnumFacing.WEST;
+					imp_facingchange();
+				}
+				if (sclax <= -135 && sclax >= -210) {
+					hal = EnumFacing.SOUTH;
+					imp_facingchange();
+				}
+			}
+			onIOModeSwitched();
+		}
+		 Slot slot = this.getSlotAtPosition(mouseX, mouseY);
+	        ItemStack itemstack = this.mc.thePlayer.inventory.getItemStack();
+
+	        if (this.clickedSlot != null && this.mc.gameSettings.touchscreen)
+	        {
+	            if (clickedMouseButton == 0 || clickedMouseButton == 1)
+	            {
+	                if (this.draggedStack == null)
+	                {
+	                    if (slot != this.clickedSlot && this.clickedSlot.getStack() != null)
+	                    {
+	                        this.draggedStack = this.clickedSlot.getStack().copy();
+	                    }
+	                }
+	                else if (this.draggedStack.stackSize > 1 && slot != null && Container.canAddItemToSlot(slot, this.draggedStack, false))
+	                {
+	                    long i = Minecraft.getSystemTime();
+
+	                    if (this.currentDragTargetSlot == slot)
+	                    {
+	                        if (i - this.dragItemDropDelay > 500L)
+	                        {
+	                            this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, 0, ClickType.PICKUP);
+	                            this.handleMouseClick(slot, slot.slotNumber, 1, ClickType.PICKUP);
+	                            this.handleMouseClick(this.clickedSlot, this.clickedSlot.slotNumber, 0, ClickType.PICKUP);
+	                            this.dragItemDropDelay = i + 750L;
+	                            --this.draggedStack.stackSize;
+	                        }
+	                    }
+	                    else
+	                    {
+	                        this.currentDragTargetSlot = slot;
+	                        this.dragItemDropDelay = i;
+	                    }
+	                }
+	            }
+	        }
+	        else if (this.dragSplitting && slot != null && itemstack != null && itemstack.stackSize > this.dragSplittingSlots.size() && Container.canAddItemToSlot(slot, itemstack, true) && slot.isItemValid(itemstack) && this.basecon.canDragIntoSlot(slot))
+	        {
+	            this.dragSplittingSlots.add(slot);
+	            this.updateDragSplitting();
+	        }
 	}
 	
 	/**
@@ -970,6 +941,7 @@ public abstract class GuiBase extends GuiScreen {
 	}
 
 	public void onMouseClickMoved(int mouseX, int mouseY) {
+		
 	}
 	
 	public abstract void onIOModeSwitched();

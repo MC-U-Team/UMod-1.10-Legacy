@@ -12,6 +12,7 @@ public class ItemBlockBase extends ItemBlock {
 	
 	public ItemBlockBase(Block block) {
 		super(block);
+		this.setFull3D();
 	}
 	
 	@SuppressWarnings("rawtypes")
