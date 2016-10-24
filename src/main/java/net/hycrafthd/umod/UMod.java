@@ -26,6 +26,7 @@ public class UMod {
 		ExtensionList.onStart(event);
 		new UConfig(event.getSuggestedConfigurationFile());
 		new PacketHandler();
+		UReference.proxy.registerRenderer();
 	}
 	
 	@EventHandler
@@ -59,7 +60,6 @@ public class UMod {
 		new UAchievement();
 		net.hycrafthd.corelib.registry.NetworkRegistry.registerGuiHandler(new UGuiHandler());
 		UReference.proxy.registerModels();
-		UReference.proxy.registerRenderer();
 		UMod.log.info("Registered Mod.");
 	}
 	

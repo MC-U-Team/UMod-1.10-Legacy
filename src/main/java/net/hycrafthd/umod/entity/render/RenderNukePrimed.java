@@ -6,21 +6,24 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderNukePrimed extends Render {
+public class RenderNukePrimed extends Render<EntityNukePrimed> implements IRenderFactory<EntityNukePrimed>{
 	
-	public RenderNukePrimed() {
-		super(Minecraft.getMinecraft().getRenderManager());
+	public RenderNukePrimed(RenderManager r) {
+		super(r);
 		this.shadowSize = 0.5F;
 	}
 	
+	@Override
 	public void doRender(EntityNukePrimed entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
 		BlockRendererDispatcher blockrendererdispatcher = Minecraft.getMinecraft().getBlockRendererDispatcher();
 		GlStateManager.pushMatrix();
@@ -67,11 +70,13 @@ public class RenderNukePrimed extends Render {
 		return TextureMap.LOCATION_BLOCKS_TEXTURE;
 	}
 	
-	public ResourceLocation getEntityTexture(Entity entity) {
+	public ResourceLocation getEntityTexture(EntityNukePrimed entity) {
 		return this.func_180563_a((EntityNukePrimed) entity);
 	}
-	
-	public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
-		this.doRender((EntityNukePrimed) entity, x, y, z, p_76986_8_, partialTicks);
+
+	@Override
+	public Render<? super EntityNukePrimed> createRenderFor(RenderManager manager) {
+		return new RenderNukePrimed(manager);
 	}
+	
 }

@@ -14,6 +14,7 @@ public class EntityFX extends EntityHanging {
 	public EntityFX(World w) {
 		super(w);
 		this.setSize(1F, 1F);
+        this.facingDirection = EnumFacing.NORTH;
 	}
 	
 	public EntityFX(World worldIn,BlockPos p) {
@@ -22,6 +23,7 @@ public class EntityFX extends EntityHanging {
         this.setPosition((double)p.getX() + 0.5D, (double)p.getY() + 0.5D, (double)p.getZ() + 0.5D);
         this.setEntityBoundingBox(new AxisAlignedBB(p, p.add(1, 1, 1)));
         this.setRotation(0, 180);
+        this.facingDirection = EnumFacing.NORTH;
 	}
     
 	@Override

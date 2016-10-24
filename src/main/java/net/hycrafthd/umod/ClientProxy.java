@@ -235,14 +235,12 @@ public class ClientProxy extends CommonProxy {
 		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender());
 		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender());
 		
-		Map<Class<? extends Entity>, Render<? super Entity>> mp = Maps.newHashMap();
-		mp.put(EntityInfectedCreeper.class, new RenderInfectedCreeper());
-		mp.put(EntityNukePrimed.class, new RenderNukePrimed());
-		mp.put(EntityInfectedZombie.class, new RenderInfectedZombie());
-		mp.put(EntityFX.class, new RenderFX());
-		mp.put(EntityRailFX.class, new RenderRailFX());
-		mp.put(EntityInfectedCow.class, new RenderInfectedCow());
-		registerEntitys(mp);
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory)new RenderInfectedCreeper(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory)new RenderNukePrimed(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, (IRenderFactory)new RenderInfectedZombie(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory)new RenderFX(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory)new RenderRailFX(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory)new RenderInfectedCow(null));
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
@@ -256,21 +254,5 @@ public class ClientProxy extends CommonProxy {
 		if (!tip.startsWith("tooltip.")) {
 			tooltip.add(ChatFormatting.BLUE + tip + ChatFormatting.RESET);
 		}
-	}
-	
-	private void registerEntitys(Map<Class<? extends Entity>, Render<? super Entity>> map){
-		map.forEach(new BiConsumer<Class<? extends Entity>, Render<? super Entity>>() {
-
-			@Override
-			public void accept(Class<? extends Entity> t, final Render<? super Entity> u) {
-				RenderRegistry.registerEntity(t, new IRenderFactory<Entity>() {
-
-					@Override
-					public Render<? super Entity> createRenderFor(RenderManager manager) {
-						return u;
-					}
-				});
-			}
-		});
 	}
 }

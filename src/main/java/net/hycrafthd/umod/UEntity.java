@@ -14,7 +14,7 @@ public class UEntity {
 		register();
 	}
 	
-	private static int ids = 255 - EntityList.ID_TO_CLASS.size();
+	private static int ids = 0;
 	
 	private void register() {
 		reg(EntityInfectedCow.class, "InfectedCow", 16, 1, true);
@@ -27,9 +27,7 @@ public class UEntity {
 	}
 	
 	public void reg(Class<? extends Entity> clZZ,String name,int r,int hz,boolean up,int sc,int spc,boolean hegg){
-        int id = ids;
-		EntityList.addMapping(clZZ, name, id);
-		EntityRegistry.registerModEntity(clZZ, name, id, UReference.instance, r, hz, up);
+		EntityRegistry.registerModEntity(clZZ, name, ids, UReference.modid, r, hz, up);
 		if (hegg) {
 			EntityRegistry.registerEgg(clZZ, sc, spc);
 		}

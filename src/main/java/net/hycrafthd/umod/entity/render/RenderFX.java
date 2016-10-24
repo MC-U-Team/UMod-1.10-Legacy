@@ -2,24 +2,29 @@ package net.hycrafthd.umod.entity.render;
 
 import java.util.HashMap;
 
+import net.hycrafthd.umod.entity.EntityFX;
 import net.hycrafthd.umod.render.TileRender;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderEntity;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public class RenderFX extends RenderEntity{
+public class RenderFX extends Render<EntityFX> implements IRenderFactory<EntityFX>{
 
 	private static HashMap<Class<? extends TileEntity>,TileRender> list = new HashMap<Class<? extends TileEntity>,TileRender>();
 		
-	public RenderFX() {
-		super(Minecraft.getMinecraft().getRenderManager());
+	public RenderFX(RenderManager renderManagerIn) {
+		super(renderManagerIn);
 	}
 	
 	@Override
-	public void doRender(Entity entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
+	public void doRender(EntityFX entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
 		if (entity == null || entity.getPosition() == null)
 			return;
 		BlockPos pos = entity.getPosition().add(0, -1, 0);
@@ -36,6 +41,16 @@ public class RenderFX extends RenderEntity{
 	
 	public static void register(Class<? extends TileEntity> ent, TileRender rend) {
 		list.put(ent, rend);
+	}
+
+	@Override
+	public Render<? super EntityFX> createRenderFor(RenderManager manager) {
+		return new RenderFX(manager);
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(EntityFX entity) {
+		return null;
 	}
 	
 	
