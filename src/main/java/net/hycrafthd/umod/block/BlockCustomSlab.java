@@ -205,7 +205,7 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
-		return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+		return EnumBlockRenderType.MODEL;
 	}
 	
 }
