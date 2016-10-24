@@ -1,11 +1,9 @@
 package net.hycrafthd.umod.gui;
 
-import net.hycrafthd.corelib.util.LWJGLUtils;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.IMPL_LWJGLU;
 import net.hycrafthd.umod.network.PacketHandler;
-import net.hycrafthd.umod.network.message.MessageSliderAdd;
-import net.hycrafthd.umod.network.message.MessageSliderRequest;
+import net.hycrafthd.umod.network.message.*;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;

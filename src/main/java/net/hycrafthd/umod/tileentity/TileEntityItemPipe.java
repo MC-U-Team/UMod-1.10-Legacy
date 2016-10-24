@@ -1,7 +1,6 @@
 package net.hycrafthd.umod.tileentity;
 
-import net.hycrafthd.umod.api.IConduitProvider;
-import net.hycrafthd.umod.api.IPlugabel;
+import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.entity.EntityFX;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;

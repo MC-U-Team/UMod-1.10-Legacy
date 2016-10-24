@@ -1,66 +1,30 @@
 package net.hycrafthd.umod;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
 
 import org.lwjgl.input.Keyboard;
 
-import com.google.common.collect.Maps;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import net.hycrafthd.corelib.registry.KeybindingRegistry;
-import net.hycrafthd.corelib.registry.ModelRegistry;
-import net.hycrafthd.corelib.registry.RenderRegistry;
+import net.hycrafthd.corelib.registry.*;
 import net.hycrafthd.corelib.util.ItemUtil;
-import net.hycrafthd.umod.block.BlockSlabCreator;
+import net.hycrafthd.umod.block.*;
 import net.hycrafthd.umod.block.BlockSolarPanel.EnumTypeSolarPanel;
-import net.hycrafthd.umod.block.BlockStairCreator;
-import net.hycrafthd.umod.entity.EntityFX;
-import net.hycrafthd.umod.entity.EntityInfectedCow;
-import net.hycrafthd.umod.entity.EntityInfectedCreeper;
-import net.hycrafthd.umod.entity.EntityInfectedZombie;
-import net.hycrafthd.umod.entity.EntityNukePrimed;
+import net.hycrafthd.umod.entity.*;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
-import net.hycrafthd.umod.entity.render.RenderFX;
-import net.hycrafthd.umod.entity.render.RenderInfectedCow;
-import net.hycrafthd.umod.entity.render.RenderInfectedCreeper;
-import net.hycrafthd.umod.entity.render.RenderInfectedZombie;
-import net.hycrafthd.umod.entity.render.RenderNukePrimed;
+import net.hycrafthd.umod.entity.render.*;
 import net.hycrafthd.umod.entity.render.rail.RenderRailFX;
-import net.hycrafthd.umod.enumtype.EnumTypeBackPack;
-import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
-import net.hycrafthd.umod.enumtype.EnumTypeTransformer;
+import net.hycrafthd.umod.enumtype.*;
 import net.hycrafthd.umod.ext.ExtensionList;
-import net.hycrafthd.umod.render.TileEntityCabelRender;
-import net.hycrafthd.umod.render.TileEntityEnergyPannelRender;
-import net.hycrafthd.umod.render.TileEntityItemPipeRender;
-import net.hycrafthd.umod.render.TileEntityPainterSpecialRender;
-import net.hycrafthd.umod.render.TileEntityPulverizerSpecialRender;
-import net.hycrafthd.umod.tileentity.TileEntityCable;
-import net.hycrafthd.umod.tileentity.TileEntityEnergyPannel;
-import net.hycrafthd.umod.tileentity.TileEntityItemPipe;
-import net.hycrafthd.umod.tileentity.TileEntityPainter;
-import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
-import net.minecraft.client.Minecraft;
+import net.hycrafthd.umod.render.*;
+import net.hycrafthd.umod.tileentity.*;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayer.EnumChatVisibility;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.item.*;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.client.registry.*;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -81,7 +45,7 @@ public class ClientProxy extends CommonProxy {
 			ModelRegistry.register(ItemUtil.from(UBlocks.blocks), i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			ModelRegistry.register(ItemUtil.from(UBlocks.ores), i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			ModelRegistry.register(ItemUtil.from(UBlocks.netherores), i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-		    rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
+			rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs5[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs6[i] = new ResourceLocation(UReference.modid, "block" + EnumTypeBaseStuff.byMetadata(i).getName());
 			rs7[i] = new ResourceLocation(UReference.modid, "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
@@ -98,15 +62,15 @@ public class ClientProxy extends CommonProxy {
 		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
 		for (int i = 0; i < EnumTypeTransformer.values().length; i++) {
 			ModelRegistry.register(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
-		    rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
+			rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
 		}
 		ModelRegistry.registerVariants(UItems.transformer, rs4);
 		
 		ModelRegistry.register(UItems.manganoxid);
 		
-		//Pulverizer
+		// Pulverizer
 		ModelRegistry.register(UBlocks.charge);
-		ModelRegistry.register(ItemUtil.from(UBlocks.pulver),0,new ModelResourceLocation(UReference.resource + "pulver","inventory"));
+		ModelRegistry.register(ItemUtil.from(UBlocks.pulver), 0, new ModelResourceLocation(UReference.resource + "pulver", "inventory"));
 		ModelRegistry.register(UBlocks.craftfurnance);
 		ModelRegistry.register(UBlocks.painter);
 		ModelRegistry.register(UBlocks.craftfurnance);
@@ -119,7 +83,7 @@ public class ClientProxy extends CommonProxy {
 		ModelRegistry.register(UItems.thicker_copper_wire);
 		ModelRegistry.register(UItems.petrol);
 		
-		//magic
+		// magic
 		ModelRegistry.register(UBlocks.magic_crafter);
 		ModelRegistry.register(UItems.magic_diamond);
 		ModelRegistry.register(UItems.magic_ingot);
@@ -132,7 +96,7 @@ public class ClientProxy extends CommonProxy {
 		ResourceLocation[] rs1 = new ResourceLocation[EnumTypeSolarPanel.values().length];
 		for (int i = 0; i < EnumTypeSolarPanel.values().length; i++) {
 			ModelRegistry.register(ItemUtil.from(UBlocks.solarpanel), i, new ModelResourceLocation(UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName(), "inventory"));
-		    rs1[i] = new ResourceLocation(UReference.modid, "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
+			rs1[i] = new ResourceLocation(UReference.modid, "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
 		}
 		ModelRegistry.registerVariants(ItemUtil.from(UBlocks.solarpanel), rs1);
 		
@@ -151,7 +115,7 @@ public class ClientProxy extends CommonProxy {
 		ModelRegistry.register(UArmor.magicChestplate);
 		ModelRegistry.register(UArmor.magicLeggings);
 		ModelRegistry.register(UArmor.magicBoots);
-
+		
 		// Infected
 		ModelRegistry.register(UBlocks.infectedGrass);
 		ModelRegistry.register(UBlocks.infectedDirt);
@@ -203,10 +167,9 @@ public class ClientProxy extends CommonProxy {
 		ResourceLocation[] rs2 = new ResourceLocation[EnumTypeBackPack.values().length];
 		for (int i = 0; i < EnumTypeBackPack.values().length; i++) {
 			ModelRegistry.register(UItems.backpack, i, new ModelResourceLocation(UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName(), "inventory"));
-		    rs2[i] = new ResourceLocation(UReference.modid, "backpack" + EnumTypeBackPack.byMetadata(i).getName());
+			rs2[i] = new ResourceLocation(UReference.modid, "backpack" + EnumTypeBackPack.byMetadata(i).getName());
 		}
 		ModelRegistry.registerVariants(ItemUtil.from(UItems.backpack), rs2);
-
 		
 		// Tools
 		ModelRegistry.register(UTools.emeraldAxe);
@@ -220,7 +183,7 @@ public class ClientProxy extends CommonProxy {
 		ModelRegistry.register(UTools.magicShovel);
 		ModelRegistry.register(UTools.magicSword);
 		ModelRegistry.register(UTools.magicHoe);
-
+		
 		// Keybinding
 		KeybindingRegistry.register(info);
 	}
@@ -233,12 +196,12 @@ public class ClientProxy extends CommonProxy {
 		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender());
 		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender());
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory)new RenderInfectedCreeper(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory)new RenderNukePrimed(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, (IRenderFactory)new RenderInfectedZombie(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory)new RenderFX(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory)new RenderRailFX(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory)new RenderInfectedCow(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, (IRenderFactory) new RenderInfectedZombie(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory) new RenderFX(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory) new RenderRailFX(null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory) new RenderInfectedCow(null));
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());

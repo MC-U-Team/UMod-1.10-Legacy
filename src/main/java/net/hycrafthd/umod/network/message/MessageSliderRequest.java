@@ -5,9 +5,7 @@ import net.hycrafthd.umod.api.ISliderEntry;
 import net.hycrafthd.umod.utils.NetworkUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderRequest implements IMessage,IMessageHandler<MessageSliderRequest, MessageSliderGet>{
 

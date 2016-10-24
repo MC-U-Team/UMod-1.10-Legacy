@@ -1,6 +1,5 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.corelib.util.LWJGLUtils;
 import net.hycrafthd.umod.IMPL_LWJGLU;
 import net.hycrafthd.umod.block.BlockCable;
 import net.hycrafthd.umod.tileentity.TileEntityCable;

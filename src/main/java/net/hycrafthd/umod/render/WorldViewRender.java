@@ -3,7 +3,7 @@ package net.hycrafthd.umod.render;
 import java.awt.Color;
 import java.util.*;
 
-import net.hycrafthd.corelib.util.*;
+import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.IMPL_LWJGLU;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;

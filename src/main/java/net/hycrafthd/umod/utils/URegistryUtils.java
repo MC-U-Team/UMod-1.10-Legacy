@@ -1,19 +1,10 @@
 package net.hycrafthd.umod.utils;
 
-import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.ItemRegistry;
-import net.hycrafthd.corelib.registry.OreDictionaryRegistry;
-import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.block.BlockDoubleCustomSlab;
-import net.hycrafthd.umod.block.BlockHalfCustomSlab;
-import net.hycrafthd.umod.block.BlockSlabCreator;
-import net.hycrafthd.umod.item.ItemBlockBase;
-import net.hycrafthd.umod.item.ItemBlockCustomSlab;
+import net.hycrafthd.corelib.registry.*;
+import net.hycrafthd.umod.block.*;
+import net.hycrafthd.umod.item.*;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityList;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class URegistryUtils {

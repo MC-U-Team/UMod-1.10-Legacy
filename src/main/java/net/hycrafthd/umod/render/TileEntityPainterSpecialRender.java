@@ -1,6 +1,5 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.tileentity.TileEntityPainter;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 

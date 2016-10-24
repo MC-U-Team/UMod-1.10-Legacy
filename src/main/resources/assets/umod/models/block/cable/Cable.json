@@ -1,6 +1,6 @@
 {
-"parent": "block/block",
-"elements": [
+	"parent": "block/block",
+	"elements": [
 		{
 			"name": "Cube",
 			"from": [

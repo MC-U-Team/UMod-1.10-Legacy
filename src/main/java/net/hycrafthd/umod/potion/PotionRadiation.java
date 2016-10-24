@@ -1,8 +1,6 @@
 package net.hycrafthd.umod.potion;
 
-import net.hycrafthd.umod.*;
 import net.minecraft.potion.Potion;
-import net.minecraft.util.*;
 
 public class PotionRadiation extends Potion{
 

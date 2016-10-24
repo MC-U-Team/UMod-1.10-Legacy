@@ -1,20 +1,15 @@
 package net.hycrafthd.umod.tileentity;
 
-import net.hycrafthd.corelib.util.ColorUtils;
-import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.corelib.util.*;
 import net.hycrafthd.umod.UMod;
-import net.hycrafthd.umod.api.ISliderEntry;
-import net.hycrafthd.umod.api.IWorldView;
+import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.item.ItemBackPack;
 import net.hycrafthd.umod.utils.DirectionUtils;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.*;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
+import net.minecraft.nbt.*;
+import net.minecraft.util.*;
 
 public class TileEntityPainter extends TileEntityBase implements ITickable ,ISliderEntry, IWorldView{
 	

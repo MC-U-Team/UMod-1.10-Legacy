@@ -16,7 +16,7 @@ import net.minecraft.item.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IEnergyMessage {
 	

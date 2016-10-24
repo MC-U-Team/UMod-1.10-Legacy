@@ -1,5 +1,5 @@
 {
-    "parent": "block/block",
+	"parent": "block/block",
 	"__comment": "Designed by Tutadventures with BDcraft Cubik PRO 0.95 Beta - http://bdcraft.net",
 	"textures": {
 		"particle": "umod:blocks/painter",

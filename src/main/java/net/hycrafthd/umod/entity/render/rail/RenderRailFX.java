@@ -1,17 +1,12 @@
 package net.hycrafthd.umod.entity.render.rail;
 
-import net.hycrafthd.corelib.util.LWJGLUtils;
 import net.hycrafthd.umod.IMPL_LWJGLU;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderEntity;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory<EntityRailFX>{
+public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory<EntityRailFX> {
 	
 	public RenderRailFX(RenderManager r) {
 		super(r);
@@ -27,7 +22,7 @@ public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory
 	public Render<? super EntityRailFX> createRenderFor(RenderManager manager) {
 		return new RenderRailFX(manager);
 	}
-
+	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityRailFX entity) {
 		return null;

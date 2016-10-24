@@ -4,15 +4,10 @@ import java.util.HashMap;
 
 import net.hycrafthd.umod.entity.EntityFX;
 import net.hycrafthd.umod.render.TileRender;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderEntity;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderFX extends Render<EntityFX> implements IRenderFactory<EntityFX>{

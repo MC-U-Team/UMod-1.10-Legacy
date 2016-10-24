@@ -2,10 +2,7 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.entity.*;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
-import net.hycrafthd.umod.utils.EntityUtils;
-import net.hycrafthd.umod.utils.URegistryUtils;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class UEntity {
