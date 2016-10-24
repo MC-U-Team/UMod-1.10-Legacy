@@ -367,6 +367,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public int hasSomefacing(EnumFacing i) {
+		if(i == null)return -1;
 		if (enumfI.equals(i)) {
 			return 0;
 		}

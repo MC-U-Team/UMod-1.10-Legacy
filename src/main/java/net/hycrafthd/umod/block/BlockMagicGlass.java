@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -41,26 +42,27 @@ public class BlockMagicGlass extends BlockBase {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.TRANSLUCENT;
+		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		if(blockAccess instanceof World){
-	    World worldIn = (World) blockAccess;
-		IBlockState iblockstate = worldIn.getBlockState(pos);
-		Block block = iblockstate.getBlock();
-		
-		if (worldIn.getBlockState(pos.offset(side.getOpposite())) != iblockstate) {
-			return true;
-		}
-		
-		if (block == this) {
-			return false;
-		}
-		}
-		return blockState.getBlock() == this ? false : super.shouldSideBeRendered(blockState,blockAccess, pos, side);
-	}
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
+    {
+        IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
+        Block block = iblockstate.getBlock();
+        
+            if (blockState != iblockstate)
+            {
+                return true;
+            }
+
+            if (block == this)
+            {
+                return false;
+            }
+
+        return block == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+    }
 	
 	@Override
 	public boolean canSilkHarvest() {

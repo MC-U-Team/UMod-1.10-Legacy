@@ -23,6 +23,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -35,7 +36,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockCable extends Block implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
+public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
 	
 	public int powertrans;
 	public int lo;
@@ -43,7 +44,7 @@ public class BlockCable extends Block implements ITileEntityProvider, IEnergyMes
 	public String asp;
 	
 	public BlockCable(String name, int transf, int loos, boolean iso, String sp) {
-		super(Material.IRON);
+		super();
 		this.powertrans = transf;
 		this.iso = iso;
 		this.setHardness(6F);
@@ -87,6 +88,11 @@ public class BlockCable extends Block implements ITileEntityProvider, IEnergyMes
 	
 	public boolean isOpaqueCube() {
 		return false;
+	}
+	
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -73,11 +73,5 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 		return 0;
 	}
 		
-	@Override
-	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune) {
-		ItemStack stack = new ItemStack(state.getBlock(), 1, state.getBlock().getMetaFromState(state));
-		stack.setTagInfo("NBTS", compound);
-		spawnAsEntity(worldIn, pos, stack);
-	}
 	
 }

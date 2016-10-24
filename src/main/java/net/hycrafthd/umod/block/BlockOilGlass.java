@@ -2,12 +2,17 @@ package net.hycrafthd.umod.block;
 
 import java.util.Random;
 
+import net.hycrafthd.umod.UReference;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBreakable;
+import net.minecraft.block.BlockGlass;
+import net.minecraft.block.BlockStainedGlass;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -19,52 +24,42 @@ public class BlockOilGlass extends BlockBase {
 	
 	public BlockOilGlass() {
 		super(Material.GLASS);
-		this.setHardness(0.6F);
         this.setSoundType(SoundType.GLASS);	
+        this.setCreativeTab(UReference.blocks);
 	}
 	
-	public int quantityDropped(Random random) {
-		return 0;
-	}
-	
-	@Override
-	public boolean isOpaqueCube(IBlockState s) {
-		return false;
-	}
-	
-	@Override
-	public boolean isFullCube(IBlockState s) {
-		return false;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+	 public int quantityDropped(Random random)
+	 {
+	        return 0;
+	 }
+
+	 protected boolean canSilkHarvest()
+	 {
+	           return true;
+	 }
+	 
+	 @Override
+		public boolean isOpaqueCube(IBlockState s) {
+			return false;
+		}
 		
-		if(blockAccess instanceof World){
-		World worldIn = (World) blockAccess;
-		IBlockState iblockstate = worldIn.getBlockState(pos);
-		Block block = iblockstate.getBlock();
-		
-		if (worldIn.getBlockState(pos.offset(side.getOpposite())) != iblockstate) {
+		@Override
+		public boolean isFullCube(IBlockState s) {
 			return true;
 		}
 		
-		if (block == this) {
-			return false;
+		@Override
+		public boolean isFullBlock(IBlockState s) {
+			return true;
 		}
+
+		@Override
+		public BlockRenderLayer getBlockLayer() {
+			return BlockRenderLayer.CUTOUT_MIPPED;
 		}
-		return blockAccess.getBlockState(pos).getBlock() == this ? false : super.shouldSideBeRendered(blockState,blockAccess, pos, side);
-	}
-	
-	@Override
-	public boolean canSilkHarvest() {
-		return true;
-	}
-	
+		
+		@Override
+		public int getMetaFromState(IBlockState state) {
+			return 0;
+		}
 }

@@ -92,6 +92,7 @@ public class ClientProxy extends CommonProxy {
 		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.blocks), rs6);
 		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.netherores), rs7);
 		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.ores), rs8);
+		ModelRegistry.register(UItems.cdust);
 		
 		// Transformer
 		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
@@ -103,16 +104,14 @@ public class ClientProxy extends CommonProxy {
 		
 		ModelRegistry.register(UItems.manganoxid);
 		
-		// Pulverizer
+		//Pulverizer
 		ModelRegistry.register(UBlocks.charge);
 		ModelRegistry.register(ItemUtil.from(UBlocks.pulver),0,new ModelResourceLocation(UReference.resource + "pulver","inventory"));
 		ModelRegistry.register(UBlocks.craftfurnance);
 		ModelRegistry.register(UBlocks.painter);
+		ModelRegistry.register(UBlocks.craftfurnance);
 		
-		// cbbl Dust
-		ModelRegistry.register(UItems.cdust);
-		
-		// battery
+		// Energy
 		ModelRegistry.register(UItems.battery);
 		ModelRegistry.register(UItems.copper_wire);
 		ModelRegistry.register(UItems.copper_coil);
@@ -180,7 +179,6 @@ public class ClientProxy extends CommonProxy {
 		
 		// Normal Blocks
 		ModelRegistry.register(UBlocks.nuke);
-		ModelRegistry.register(UBlocks.craftfurnance);
 		ModelRegistry.register(UBlocks.rail);
 		
 		// Stairs
