@@ -1,10 +1,15 @@
 package net.hycrafthd.umod;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import net.hycrafthd.umod.api.ProcessHandler;
 import net.hycrafthd.umod.event.*;
 import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
 import net.hycrafthd.umod.network.PacketHandler;
+import net.hycrafthd.umod.obj.ObjInterpretter;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -15,6 +20,7 @@ public class UMod {
 	
 	public static org.apache.logging.log4j.Logger log;
 	private static IMPL_MODELRENDERHELPER INS;
+	public static ObjInterpretter test;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
@@ -23,6 +29,11 @@ public class UMod {
 		new UConfig(event.getSuggestedConfigurationFile());
 		new PacketHandler();
 		UReference.proxy.registerRenderer();
+		try {
+			test = new ObjInterpretter(new File("D:\\Desktop\\untitled.obj"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@EventHandler

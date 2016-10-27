@@ -26,7 +26,7 @@ public class MessageIORequest implements IMessage, IMessageHandler<MessageIORequ
 	public MessageIOCallback onMessage(MessageIORequest message, MessageContext ctx) {
 		World w = ctx.getServerHandler().playerEntity.worldObj;
 		TileEntity ent = w.getTileEntity(message.pos);
-		if(ent != null && ent instanceof IIOMode){
+		if(message.prov != null && ent != null && ent instanceof IIOMode){
 		if (((IIOMode) ent).hasSomefacing(message.prov) > -1) {
 			return new MessageIOCallback(message.prov,((IIOMode) ent).hasSomefacing(message.prov));
 		}else{

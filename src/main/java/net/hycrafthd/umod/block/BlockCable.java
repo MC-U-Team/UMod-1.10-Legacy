@@ -55,13 +55,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	}
 	
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
-		collidingBoxes.add(this.getBoundingBox(state,world, pos));
-		super.addCollisionBoxToList(state, world, pos, entityBox, collidingBoxes, entityIn);
-	}
-	
-	@Override
 	public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
 		return false;
 	}
@@ -122,6 +115,19 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if(source instanceof World){
+		return getSelectedBoundingBox(state, (World) source, pos);
+		}
+		return FULL_BLOCK_AABB;
+	}
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+		return getSelectedBoundingBox(blockState, worldIn, pos);
+	}
+	
+	@Override
+	public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World source, BlockPos pos) {
 		TileEntityCable cab = (TileEntityCable) source.getTileEntity(pos);
 		if (cab == null)
 			return FULL_BLOCK_AABB;
@@ -133,7 +139,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 			}
 		} else if (cab.hasConduit()) {
 			return FULL_BLOCK_AABB;
-
 		}
 		TileEntityCable pip = (TileEntityCable) w.getTileEntity(pos);
 		if (pip != null) {
