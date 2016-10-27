@@ -11,10 +11,9 @@
 
 ##Releases
 
-Note: All available releases are only alpha releases! That means that there could be some bugs and also that not all new features work correctly. Please report bugs to https://github.com/HyCraftHD/UMOD/issues!
+Note: There is still no release for 1.10 :/ Sorry. 
 
-- Latest build: https://github.com/HyCraftHD/UMOD/releases/latest
-- Here's a list of all available releases: https://github.com/HyCraftHD/UMOD/releases
+Alpha 1.8 releases: https://github.com/HyCraftHD/UMOD/releases
 
 ##Compile from Source
 
@@ -23,7 +22,7 @@ Note: Git MUST be installed and in the system path to use our scripts.
   - Setup: Run [gradle]in the repository root: gradlew[.bat] [setupDevWorkspace|setupDecompWorkspace] [eclipse|idea]
   - Build: Run [gradle]in the repository root: `gradlew[.bat] build'
   - If obscure Gradle issues are found try running 'gradlew clean' and 'gradlew cleanCache'
-  - You must include the newest CoreLib (https://www.hycrafthd.net/mods/corelib) for 1.8.0 in your class paths
+  - You must include the newest CoreLib (https://www.hycrafthd.net/mods/corelib) for 1.10.2 in your class paths
   
 ##Issue reporting
 
