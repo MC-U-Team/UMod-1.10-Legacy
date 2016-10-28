@@ -1,4 +1,4 @@
-package net.hycrafthd.umod;
+package net.hycrafthd.umod.entity.render;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -13,16 +13,21 @@ import net.hycrafthd.corelib.via.Vertex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.*;
 
-public class IMPL_LWJGLU {
+public class GLHelper {
 	
-	/**
-	 * Conduit Render now in ItemRenderer (Minecraft)
-	 */
+	private TextureManager tex;
+	private VertexBuffer render;
+	
+    public GLHelper(TextureManager tex,VertexBuffer world) {
+    	this.tex = tex;
+    	this.render = world;
+	}
 	
 	/**
 	 * @deprecated
@@ -37,7 +42,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 */
 	@Deprecated
-	public static void drawHLine(double x, double x2, double y, RGBA r) {
+	public void drawHLine(double x, double x2, double y, RGBA r) {
 		drawGradientRect(x, y, x2, y + 1, r, r);
 	}
 	
@@ -54,7 +59,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 */
 	@Deprecated
-	public static void drawVLine(double x, double y, double down, RGBA r) {
+	public void drawVLine(double x, double y, double down, RGBA r) {
 		drawGradientRect(x, y, x + 1, down, r, r);
 	}
 	
@@ -71,7 +76,7 @@ public class IMPL_LWJGLU {
 	 * @param
 	 */
 	@Deprecated
-	public static void drawHLine(double x, double x2, double y, RGBA r, double z) {
+	public void drawHLine(double x, double x2, double y, RGBA r, double z) {
 		drawGradientRect(x, y, x2, y + 1, r, r, z);
 	}
 	
@@ -88,7 +93,7 @@ public class IMPL_LWJGLU {
 	 * @param
 	 */
 	@Deprecated
-	public static void drawVLine(double x, double y, double down, RGBA r, double z) {
+	public void drawVLine(double x, double y, double down, RGBA r, double z) {
 		drawGradientRect(x, y, x + 1, down, r, r, z);
 	}
 	
@@ -100,7 +105,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawGradientRect(double left, double top, double right, double bottom, RGBA rgb, double z) {
+	public void drawGradientRect(double left, double top, double right, double bottom, RGBA rgb, double z) {
 		drawGradientRect(left, top, right, bottom, rgb, rgb, z);
 	}
 	
@@ -112,7 +117,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawGradientRect(double left, double top, double right, double bottom, RGBA rgb) {
+	public void drawGradientRect(double left, double top, double right, double bottom, RGBA rgb) {
 		drawGradientRect(left, top, right, bottom, rgb, rgb);
 	}
 	
@@ -127,7 +132,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawGradientRect(double left, double top, double right, double bottom, RGBA start, RGBA end) {
+	public void drawGradientRect(double left, double top, double right, double bottom, RGBA start, RGBA end) {
 		drawGradientRect(left, top, right, bottom, start, end, 0);
 	}
 	
@@ -142,7 +147,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawGradientRect(double left, double top, double right, double bottom, RGBA start, RGBA end, double z) {
+	public void drawGradientRect(double left, double top, double right, double bottom, RGBA start, RGBA end, double z) {
 		 GlStateManager.disableTexture2D();
 		 GlStateManager.enableBlend();
 		 GlStateManager.disableAlpha();
@@ -173,7 +178,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawGradientRectWithMultiplier(int left, int top, int right, int bottom, RGBA start, RGBA end, double z, double multiplier) {
+	public void drawGradientRectWithMultiplier(int left, int top, int right, int bottom, RGBA start, RGBA end, double z, double multiplier) {
 		 double oldZ = z;
 		 for (int i = 0; i < right; i++) {
 		 z = z + (multiplier + (i * 0.005));
@@ -231,7 +236,7 @@ public class IMPL_LWJGLU {
 	 * @param
 	 */
 	@Deprecated
-	public static void drawFrame(double x, double y, double width, double height, RGBA rgb) {
+	public void drawFrame(double x, double y, double width, double height, RGBA rgb) {
 		drawFrame(x, y, width, height, rgb, 0);
 	}
 	
@@ -244,7 +249,7 @@ public class IMPL_LWJGLU {
 	 * @param
 	 */
 	@Deprecated
-	public static void drawFrame(double x, double y, double width, double height, RGBA rgb, double z) {
+	public void drawFrame(double x, double y, double width, double height, RGBA rgb, double z) {
 		drawHLine(x - 1, x + width + 1, y - 1, rgb, z);
 		drawHLine(x - 1, x + width + 1, y + height, rgb, z);
 		drawVLine(x - 1, y, y + height, rgb, z);
@@ -262,7 +267,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawStringInWorld(BlockPos pos, double posX, double posY, double posZ, int p_180535_9_, String text, RGBA start, RGBA end, RGBA frame, int color) {
+	public void drawStringInWorld(BlockPos pos, double posX, double posY, double posZ, int p_180535_9_, String text, RGBA start, RGBA end, RGBA frame, int color) {
 		EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 		BlockPos po = pl.getPosition();
 		if (pos.getX() + 10 > po.getX() && pos.getX() - 10 < po.getX() && pos.getY() + 10 > po.getY() && pos.getY() - 10 < po.getY() && pos.getZ() + 10 > po.getZ() && pos.getZ() - 10 < po.getZ()) {
@@ -305,7 +310,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawOnlyStringInWorld(BlockPos pos, double posX, double posY, double posZ, String text, int color) {
+	public void drawOnlyStringInWorld(BlockPos pos, double posX, double posY, double posZ, String text, int color) {
 		EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 		BlockPos po = pl.getPosition();
 		if (pos.getX() + 10 > po.getX() && pos.getX() - 10 < po.getX() && pos.getY() + 10 > po.getY() && pos.getY() - 10 < po.getY() && pos.getZ() + 10 > po.getZ() && pos.getZ() - 10 < po.getZ()) {
@@ -345,7 +350,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawSmThInWorld(BlockPos pos, double posX, double posY, double posZ, Runnable run) {
+	public void drawSmThInWorld(BlockPos pos, double posX, double posY, double posZ, Runnable run) {
 		EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 		BlockPos po = pl.getPosition();
 		if (pos.getX() + 10 > po.getX() && pos.getX() - 10 < po.getX() && pos.getY() + 10 > po.getY() && pos.getY() - 10 < po.getY() && pos.getZ() + 10 > po.getZ() && pos.getZ() - 10 < po.getZ()) {
@@ -382,7 +387,7 @@ public class IMPL_LWJGLU {
 	 * @param
 	 */
 	@Deprecated
-	public static void drawFrameInWorld(BlockPos pos, double posX, double posY, double posZ, final double width, final double height, final RGBA frame) {
+	public void drawFrameInWorld(BlockPos pos, double posX, double posY, double posZ, final double width, final double height, final RGBA frame) {
 		drawSmThInWorld(pos, posX, posY, posZ, new Runnable() {
 			
 			@Override
@@ -405,7 +410,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawTexture(ResourceLocation location, double textureWidth, double textureHeight, double x, double y, double z, double width, double height, double u, double v) {
+	public void drawTexture(ResourceLocation location, double textureWidth, double textureHeight, double x, double y, double z, double width, double height, double u, double v) {
 		 Minecraft.getMinecraft().getTextureManager().bindTexture(location);
 		 double f4 = 1.0F / textureWidth;
 		 double f5 = 1.0F / textureHeight;
@@ -424,7 +429,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawTexturedCube(ResourceLocation location, double x, double y, double z, double width, double height, double depth) {
+	public void drawTexturedCube(ResourceLocation location, double x, double y, double z, double width, double height, double depth) {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + width / 2, y + height / 2, z + depth / 2);
 		GlStateManager.shadeModel(7425);
@@ -454,7 +459,7 @@ public class IMPL_LWJGLU {
 	 * 
 	 * @param
 	 */
-	public static void drawBlock(ResourceLocation loc, double posX, double posY, double posZ, double d, double e, double f) {
+	public void drawBlock(ResourceLocation loc, double posX, double posY, double posZ, double d, double e, double f) {
 		drawTexturedCube(loc, posX + (0.5 - d / 2), posY + (0.5 - e / 2), posZ + (0.5 - f / 2), d, e, f);
 	}
 	
@@ -470,55 +475,8 @@ public class IMPL_LWJGLU {
 		 tessellator.draw();
 	}
 	
-	public static void drawSwell(String text, double x, double y, double z) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5, y, z);
-		GlStateManager.enableNormalize();
-		RenderHelper.disableStandardItemLighting();
-		
-		double u = 2, v = 2;
-		
-		GlStateManager.rotate(-90, 1.0F, 0, 0);
-		
-		drawTexture(new ResourceLocation(text), 2, 0.4, -1, -0.2, 0, 2, 0.4, 0, 0);
-		
-		GlStateManager.rotate(180, 1.0F, 0, 0);
-		
-		drawTexture(new ResourceLocation(text), u, v, -0.8, -0.1, -0.2, 1.6, 0.2, 0, 0);
-		
-		GlStateManager.rotate(-90, 1.0F, 0, 0);
-		
-		Vec3d corn13 = new Vec3d(0.8, 0.2, 0.1);
-		Vec3d corn23 = new Vec3d(0.8, 0.2, -0.1);
-		Vec3d corn33 = new Vec3d(1, 0, 0.2);
-		Vec3d corn43 = new Vec3d(1, 0, -0.2);
-		drawTexturePoints(text, corn23, corn13, corn33, corn43, u, v);
-		
-		Vec3d corn1 = new Vec3d(-0.8, 0.2, 0.1);
-		Vec3d corn2 = new Vec3d(0.8, 0.2, 0.1);
-		Vec3d corn3 = new Vec3d(-1, 0, 0.2);
-		Vec3d corn4 = new Vec3d(1, 0, 0.2);
-		drawTexturePoints(text, corn2, corn1, corn3, corn4, u, v);
-		
-		GlStateManager.rotate(180F, 0F, 1.0F, 0F);
-		
-		Vec3d corn15 = new Vec3d(0.8, 0.2, 0.1);
-		Vec3d corn25 = new Vec3d(0.8, 0.2, -0.1);
-		Vec3d corn35 = new Vec3d(1, 0, 0.2);
-		Vec3d corn45 = new Vec3d(1, 0, -0.2);
-		drawTexturePoints(text, corn25, corn15, corn35, corn45, u, v);
-		
-		Vec3d corn12 = new Vec3d(-0.8, 0.2, 0.1);
-		Vec3d corn22 = new Vec3d(0.8, 0.2, 0.1);
-		Vec3d corn32 = new Vec3d(-1, 0, 0.2);
-		Vec3d corn42 = new Vec3d(1, 0, 0.2);
-		drawTexturePoints(text, corn22, corn12, corn32, corn42, u, v);
-		
-		GlStateManager.popMatrix();
-	}
-	
 	@Deprecated
-	public static void drawRailPart(String text, double x, double y, double z) {
+	public void drawRailPart(String text, double x, double y, double z) {
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x + 0.5, y, z);
 		GlStateManager.enableNormalize();
@@ -527,7 +485,7 @@ public class IMPL_LWJGLU {
 		GlStateManager.popMatrix();
 	}
 	
-	public static void drawVertex(String str, Vertex ve, double x, double y, double z,RGBA rgb) {
+	public void drawVertex(String str, Vertex ve, double x, double y, double z,RGBA rgb) {
 		 		 Tessellator tessellator = Tessellator.getInstance();
 		 		 VertexBuffer worldrenderer = tessellator.getBuffer();
 		 	     worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
@@ -543,7 +501,7 @@ public class IMPL_LWJGLU {
 	 * @return {@link ByteBuffer}
 	 * @throws IOException
 	 */
-	public static ByteBuffer readImageToBuffer(InputStream imageStream) throws IOException {
+	public ByteBuffer readImageToBuffer(InputStream imageStream) throws IOException {
 		BufferedImage bufferedimage = ImageIO.read(imageStream);
 		int[] aint = bufferedimage.getRGB(0, 0, bufferedimage.getWidth(), bufferedimage.getHeight(), (int[]) null, 0, bufferedimage.getWidth());
 		ByteBuffer bytebuffer = ByteBuffer.allocate(4 * aint.length);

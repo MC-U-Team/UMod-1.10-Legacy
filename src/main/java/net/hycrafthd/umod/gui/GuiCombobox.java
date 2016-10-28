@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.IMPL_LWJGLU;
+import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,27 +17,26 @@ public class GuiCombobox extends Gui {
 	private ArrayList<String> strs = new ArrayList<String>();
 	private String slected = "Choose";
 	private boolean extend = false;
-	private int x;
-	private int y;
-	private int width;
-	private int height;
+	private int x, y, width, height;
 	private Runnable runn = null;
+	private GLHelper help;
 	
 	public GuiCombobox(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.help = UMod.getGLHelper();
 	}
 	
 	public void draw(Minecraft mc) {
 		RGBA rgb = new RGBA(Color.WHITE);
-		IMPL_LWJGLU.drawGradientRect(x, y, x + width, y + height, rgb, rgb, this.zLevel);
+		this.help.drawGradientRect(x, y, x + width, y + height, rgb, rgb, this.zLevel);
 		RGBA rgb2 = new RGBA(Color.DARK_GRAY);
-		IMPL_LWJGLU.drawHLine(x, x + width, y, rgb2, this.zLevel);
-		IMPL_LWJGLU.drawHLine(x, x + width, y + height, rgb2, this.zLevel);
-		IMPL_LWJGLU.drawVLine(x, y, y + height, rgb2, this.zLevel);
-		IMPL_LWJGLU.drawVLine(x + width, y, y + height, rgb2, this.zLevel);
+		this.help.drawHLine(x, x + width, y, rgb2, this.zLevel);
+		this.help.drawHLine(x, x + width, y + height, rgb2, this.zLevel);
+		this.help.drawVLine(x, y, y + height, rgb2, this.zLevel);
+		this.help.drawVLine(x + width, y, y + height, rgb2, this.zLevel);
 		
 		FontRenderer fontrenderer = mc.fontRendererObj;
 		if (!extend) {
@@ -54,7 +54,7 @@ public class GuiCombobox extends Gui {
 			GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 			GlStateManager.blendFunc(770, 771);
 			drawModalRectWithCustomSizedTexture(x + width - 15, y + height / 2 - 4, 0, 0, 15, 9, 15, 9);
-			IMPL_LWJGLU.drawGradientRect(x + 1, y + height, x + width - 2, y + strs.size() * 18, rgb, rgb, this.zLevel);
+			this.help.drawGradientRect(x + 1, y + height, x + width - 2, y + strs.size() * 18, rgb, rgb, this.zLevel);
 			for (int i = 0; i < strs.size(); i++) {
 				fontrenderer.drawString(strs.get(i), x + 3, y + height + 4 + 9 * i, 0x000000);
 			}

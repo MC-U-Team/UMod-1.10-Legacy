@@ -4,9 +4,10 @@ import java.awt.Color;
 import java.util.*;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.IMPL_LWJGLU;
+import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,8 +17,11 @@ import net.minecraft.tileentity.TileEntity;
 public class WorldViewRender{
 
 	public static final WorldViewRender INSTANCE = new WorldViewRender();
+	private GLHelper help;
 	
-	private WorldViewRender() {}
+	private WorldViewRender() {
+		this.help = UMod.getGLHelper();
+	}
 	
 	public void render(TileEntity tileEntity, double posX, double posY, double posZ) {
 		if(!(tileEntity instanceof IWorldView))return;
@@ -49,21 +53,21 @@ public class WorldViewRender{
 		final int j =  stringSi / 2;
 		final int j2 = stringSi + 4;
 		final int stringmu = st.size() - 1;
-		IMPL_LWJGLU.drawSmThInWorld(oven.getPos(), posX, posY + ((double)stringmu/10), posZ, new Runnable() {
+		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double)stringmu/10), posZ, new Runnable() {
 			
 			@Override
 			public void run() {
 				RGBA rgb2 = new RGBA(Color.GREEN);
 				rgb2.setAlpha(50);
-				IMPL_LWJGLU.drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb2);
+				help.drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb2);
 				
 				RGBA rgb = new RGBA(Color.RED);
 				rgb.setAlpha(75);
-				IMPL_LWJGLU.drawFrame((double) (-j - 1.5), (double) (-1 - 0.5), (double) (j2 + 1), (double) (10) * stringmu, rgb);
+				help.drawFrame((double) (-j - 1.5), (double) (-1 - 0.5), (double) (j2 + 1), (double) (10) * stringmu, rgb);
 				
 				RGBA rgb3 = new RGBA(Color.WHITE);
 				rgb3.setAlpha(255);
-				IMPL_LWJGLU.drawFrame((double) (-j - 2), (double) (-1 - 1), (double) (j2 + 1), (double) (10) * stringmu, rgb3);
+				help.drawFrame((double) (-j - 2), (double) (-1 - 1), (double) (j2 + 1), (double) (10) * stringmu, rgb3);
 				
 				Iterator<String> itar = st.iterator();
 				int y = -11;

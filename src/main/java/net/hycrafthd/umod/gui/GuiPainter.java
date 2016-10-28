@@ -9,6 +9,7 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.ISliderPro;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -72,7 +73,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 			green.draw(mc);
 			blue.draw(mc);
 			sat.draw(mc);
-			IMPL_LWJGLU.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
+			this.help.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
 			if (Keyboard.isKeyDown(ClientProxy.info.getKeyCode())) {
 				red.drawOverlay(mc, mouseX, mouseY);
 				green.drawOverlay(mc, mouseX, mouseY);
@@ -84,7 +85,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 					String redd = "Red: " + red.getValue();
 					String greend = "Green: " + green.getValue();
 					int with = Math.max(Math.max(rend.getStringWidth(redd), rend.getStringWidth(greend)), rend.getStringWidth(blued));
-					IMPL_LWJGLU.drawGradientRect(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
+					this.help.drawGradientRect(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
 					rend.drawString(redd, mouseX + 6, mouseY + 6, 0xFF0000);
 					rend.drawString(greend, mouseX + 6, mouseY + 22, 0x00FF00);
 					rend.drawString(blued, mouseX + 6, mouseY + 38, 0x0000FF);

@@ -192,9 +192,9 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
 		
-		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender());
-		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender());
-		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender());
+		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(UMod.getGLHelper()));
+		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender(UMod.getGLHelper()));
+		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender(UMod.getGLHelper()));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));

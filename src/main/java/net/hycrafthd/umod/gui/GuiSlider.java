@@ -1,7 +1,8 @@
 package net.hycrafthd.umod.gui;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.IMPL_LWJGLU;
+import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.*;
 import net.hycrafthd.umod.utils.StringMethod;
@@ -18,6 +19,7 @@ public class GuiSlider extends Gui {
 	private StringMethod ret = null;
 	private BlockPos ps;
 	private int id;
+	private GLHelper help;
 	
 	public GuiSlider(int x, int y, RGBA color1, RGBA color2, RGBA color3, int id,BlockPos pos) {
 		this.x = x;
@@ -27,6 +29,7 @@ public class GuiSlider extends Gui {
 		slid2 = color3;
 		this.id = id;
 		this.ps = pos;
+		this.help = UMod.getGLHelper();
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, pos));
 	}
 	
@@ -47,7 +50,7 @@ public class GuiSlider extends Gui {
 		if (ret == null)
 			return;
 		if (mousex > x && mousex < x + 100 && mousey > y && mousey < y + 8) {
-			IMPL_LWJGLU.drawGradientRect(mousex, mousey, mousex + this.getWidth(), mousey + this.getHeight(), back, back, this.zLevel);
+			this.help.drawGradientRect(mousex, mousey, mousex + this.getWidth(), mousey + this.getHeight(), back, back, this.zLevel);
 			if (this.hasMoreLines()) {
 				String[] str = this.getString().split("\n");
 				for (int i = 0; i < str.length; i++)

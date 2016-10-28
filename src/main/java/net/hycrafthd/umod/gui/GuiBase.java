@@ -14,6 +14,7 @@ import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.container.ContainerBase;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.inventory.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIORequest;
@@ -38,10 +39,7 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public abstract class GuiBase extends GuiScreen {
 	
-	public ResourceLocation loc;
-	public ResourceLocation loc1;
-	public ResourceLocation loc2;
-	public ResourceLocation loc3;
+	public ResourceLocation loc, loc1, loc2, loc3;
 	public static final ResourceLocation CLEAR_GUI = new GuiRescources("clear.png");
 	public EntityPlayer play;
 	public TileEntity ent;
@@ -51,6 +49,7 @@ public abstract class GuiBase extends GuiScreen {
 	public World worldObj;
 	public GuiCheckbox check;
 	public boolean is = true;
+	protected GLHelper help;
 	
 	public GuiBase(ResourceLocation loc, ResourceLocation loc2, ResourceLocation loc3, EntityPlayer pl, IInventory tile, Container con) {
 		super();
@@ -65,6 +64,7 @@ public abstract class GuiBase extends GuiScreen {
 		this.pos = ent.getPos();
 		this.basecon = (ContainerBase) con;
 		this.worldObj = Minecraft.getMinecraft().getIntegratedServer().worldServers[0];
+		this.help = UMod.getGLHelper();
 		if(pro != null)
 		   this.eng = new GuiEnergy(worldObj, pro,false);
 	}
@@ -305,7 +305,7 @@ public abstract class GuiBase extends GuiScreen {
 			if (this.buttonList.get(ks) instanceof ExtendedGuiButton && ((ExtendedGuiButton) this.buttonList.get(ks)).isMouseOver() && ((ExtendedGuiButton) this.buttonList.get(ks)).hasString()) {
 				ExtendedGuiButton gui = ((ExtendedGuiButton) this.buttonList.get(ks));
 				RGBA rgb = new RGBA(0, 0, 255, 150);
-				IMPL_LWJGLU.drawGradientRect(mousePX, mousePY, mousePX + gui.getWidth(), mousePY + gui.getHeight(), rgb, rgb, this.zLevel);
+				this.help.drawGradientRect(mousePX, mousePY, mousePX + gui.getWidth(), mousePY + gui.getHeight(), rgb, rgb, this.zLevel);
 				if (gui.hasMoreLines()) {
 					String[] str = gui.getString().split("\n");
 					for (int i = 0; i < str.length; i++)
@@ -343,7 +343,7 @@ public abstract class GuiBase extends GuiScreen {
 					GlStateManager.colorMask(true, true, true, false);
 					RGBA st = ((BaseSlot) slot).getHoverColor(0);
 					RGBA en = ((BaseSlot) slot).getHoverColor(1);
-					IMPL_LWJGLU.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
+					this.help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
 					GlStateManager.colorMask(true, true, true, true);
 					GlStateManager.enableLighting();
 					GlStateManager.enableDepth();
@@ -440,12 +440,12 @@ public abstract class GuiBase extends GuiScreen {
 						if (slot instanceof BaseSlot && ((BaseSlot) slot).hasColor()) {
 							RGBA st = ((BaseSlot) slot).getHoverColor(2);
 							RGBA en = ((BaseSlot) slot).getHoverColor(3);
-							IMPL_LWJGLU.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
+							this.help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
 						} else {
 							this.drawGradientRect(j1, k1, j1 + 16, k1 + 16, -2130706433, -2130706433);
 						}
 						if (slot instanceof BaseSlot) {
-							IMPL_LWJGLU.drawFrame(j1, k1, 16, 16, new RGBA(Color.BLACK));
+							this.help.drawFrame(j1, k1, 16, 16, new RGBA(Color.BLACK));
 						}
 					}
 				}

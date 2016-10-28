@@ -5,12 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import net.hycrafthd.umod.api.ProcessHandler;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.event.*;
 import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.obj.ObjInterpretter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.*;
@@ -52,6 +54,10 @@ public class UMod {
 		Minecraft mc = Minecraft.getMinecraft();
 		INS = new IMPL_MODELRENDERHELPER(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		UMod.log.info("Init Mod.");
+	}
+	
+	public static GLHelper getGLHelper(){
+		return new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	
 	public static IMPL_MODELRENDERHELPER getModelRenderHelper(){

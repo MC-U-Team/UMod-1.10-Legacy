@@ -3,22 +3,20 @@ package net.hycrafthd.umod.gui;
 import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.IMPL_LWJGLU;
+import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 
 public class GuiCheckbox extends Gui {
 	
-	private double x;
-	private double width;
-	private double y;
-	private double height;
-	private RGBA rgb;
-	private RGBA hover;
+	private double x, width, y, height;
+	private RGBA rgb, hover;
 	private boolean isSelected;
 	private StringMethod ret;
 	private Runnable run;
+	private GLHelper help;
 	
 	public GuiCheckbox(double x, double y, double width, double height, RGBA rgb, RGBA hover) {
 		this.x = x;
@@ -27,6 +25,7 @@ public class GuiCheckbox extends Gui {
 		this.height = height;
 		this.rgb = rgb;
 		this.hover = hover;
+		this.help = UMod.getGLHelper();
 	}
 	
 	public boolean isMouseOver(int x, int y) {
@@ -36,15 +35,15 @@ public class GuiCheckbox extends Gui {
 	public void draw(int x, int y, Minecraft mc) {
 		RGBA use = null;
 		FontRenderer fontobj = mc.fontRendererObj;
-		IMPL_LWJGLU.drawFrame(this.x, this.y, this.width, this.height, new RGBA(Color.black), this.zLevel);
+		this.help.drawFrame(this.x, this.y, this.width, this.height, new RGBA(Color.black), this.zLevel);
 		if (isMouseOver(x, y)) {
 			use = hover;
-			IMPL_LWJGLU.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
+			this.help.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
 			if (isSelected) {
 				fontobj.drawString("X", (int) Math.round((float) this.x + this.width / 2) - 2, (int) Math.round((float) this.y + this.height / 2) - 4, Color.RED.getRGB());
 			}
 			if (hasTooltip()) {
-				IMPL_LWJGLU.drawGradientRect(x, y, x + getWidth(), y + getHeight(), new RGBA(Color.white), this.zLevel);
+				this.help.drawGradientRect(x, y, x + getWidth(), y + getHeight(), new RGBA(Color.white), this.zLevel);
 				if (this.hasMoreLines()) {
 					String[] str = ret.getString().split("\n");
 					for (int i = 0; i < str.length; i++)
@@ -55,7 +54,7 @@ public class GuiCheckbox extends Gui {
 			}
 		} else {
 			use = rgb;
-			IMPL_LWJGLU.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
+			this.help.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
 			if (isSelected) {
 				fontobj.drawString("X", (int) Math.round((float) this.x + this.width / 2) - 2, (int) Math.round((float) this.y + this.height / 2) - 4, Color.RED.getRGB());
 			}
