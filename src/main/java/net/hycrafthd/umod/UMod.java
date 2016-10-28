@@ -22,7 +22,6 @@ public class UMod {
 	
 	public static org.apache.logging.log4j.Logger log;
 	private static IMPL_MODELRENDERHELPER INS;
-	public static ObjInterpretter test;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
@@ -31,11 +30,6 @@ public class UMod {
 		new UConfig(event.getSuggestedConfigurationFile());
 		new PacketHandler();
 		UReference.proxy.registerRenderer();
-		try {
-			test = new ObjInterpretter(new File("D:\\Desktop\\untitled.obj"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@EventHandler

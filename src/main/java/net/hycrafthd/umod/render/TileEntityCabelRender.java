@@ -3,6 +3,7 @@ package net.hycrafthd.umod.render;
 import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.block.BlockCable;
 import net.hycrafthd.umod.entity.render.GLHelper;
@@ -36,7 +37,7 @@ public class TileEntityCabelRender extends TileRender {
 		GlStateManager.disableCull();
 	    GlStateManager.pushMatrix();
 	    GlStateManager.translate(posX, posY, 100);
-	    UMod.test.draw(Tessellator.getInstance().getBuffer(), new RGBA(Color.RED));
+	    ClientProxy.regs.TEST.getInterpretter().draw(Tessellator.getInstance().getBuffer(), new RGBA(Color.RED));
 	    Tessellator.getInstance().draw();
 	    GlStateManager.popMatrix();
 		BlockPos pos = pip.getPos(); 

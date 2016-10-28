@@ -29,6 +29,7 @@ import net.minecraftforge.fml.client.registry.*;
 public class ClientProxy extends CommonProxy {
 	
 	public static KeyBinding info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
+	public static ObjRenderregister regs;
 	
 	@Override
 	public void registerModels() {
@@ -205,7 +206,7 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
-		VIARegister.registerVIA();
+		regs = new ObjRenderregister();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
