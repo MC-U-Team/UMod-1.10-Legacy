@@ -1,13 +1,9 @@
 package net.hycrafthd.umod.obj;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 import org.lwjgl.util.Color;
 
@@ -39,10 +35,12 @@ public class MtlInterpretter extends FileInputStream {
 					double d = Double.valueOf(st.replace("d ", ""));
 					mtl.setColor(mtl.getColor().setAlpha((int) Math.round((double) 255 * d)));
 				}
+				if(st.startsWith("map_Kd ")){
+					mtl.setMap(st.replace("map_Kd ", ""));
+				}
 			}
 			if (mtl != null) {
 				mtls.put(mtl.ID, mtl);
-				System.out.println(mtl.toString());
 			}
 			sc.close();
 			this.close();

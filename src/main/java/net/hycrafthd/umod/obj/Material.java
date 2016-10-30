@@ -1,12 +1,16 @@
 package net.hycrafthd.umod.obj;
 
 import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.umod.UReference;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 
 public class Material {
 	
 	
 	public final String ID;
 	private RGBA color;
+	private ResourceLocation loc;
 	
 	public Material(String name) {
 		this.ID = name;
@@ -18,6 +22,22 @@ public class Material {
 	
 	public void setColor(RGBA c) {
 		this.color = c;
+	}
+	
+	public void setMap(String st){
+		this.loc = new ResourceLocation(UReference.modid,"textures/maps/" + st);
+	}
+	
+	public boolean hasTexture(){
+		return loc != null;
+	}
+	
+	public boolean hasColor(){
+		return color != null;
+	}
+	
+	public void bindTex(){
+		Minecraft.getMinecraft().getTextureManager().bindTexture(loc);
 	}
 	
 	@Override

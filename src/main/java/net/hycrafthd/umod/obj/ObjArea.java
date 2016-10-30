@@ -25,10 +25,18 @@ public class ObjArea {
 	}
 	
 	public void addVertices(VertexBuffer bf, ArrayList<Vec3d> ver) {
-		RGBA c = mtl.getColor();
-		for (int i : POINTS) {
-			Vec3d dro = ver.get(i - 1);
-			bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
+		if(!mtl.hasTexture()){
+			RGBA c = mtl.getColor();
+		    for (int i : POINTS) {
+			     Vec3d dro = ver.get(i - 1);
+			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
+		    }
+		}else{
+			mtl.bindTex();
+		    for (int i : POINTS) {
+			     Vec3d dro = ver.get(i - 1);
+			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(0, 0).endVertex();
+		    }
 		}
 	}
 	
