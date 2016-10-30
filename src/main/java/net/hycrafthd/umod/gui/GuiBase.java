@@ -733,6 +733,9 @@ public abstract class GuiBase extends GuiScreen {
 			}
 			onIOModeSwitched();
 		}
+		if(basecon.mode.equals(Mode.NORMAL) && clickedMouseButton == 0){
+			this.handelMouseInput(mouseX, mouseY);
+		}
 		Slot slot = this.getSlotAtPosition(mouseX, mouseY);
 		ItemStack itemstack = this.mc.thePlayer.inventory.getItemStack();
 		
@@ -781,12 +784,13 @@ public abstract class GuiBase extends GuiScreen {
 			Minecraft.getMinecraft().getIntegratedServer().worldServers[0].createExplosion(play, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.5F, false);
 			Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new TextComponentString(ChatFormatting.YELLOW + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET + " " + ChatFormatting.RED + "You be trolled " + ChatFormatting.GREEN + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET));
 		}
-		if (mouseButton == 0)
-			this.handelMouseInput(mouseX, mouseY);
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		if (mouseButton == 0) {
 			if (basecon.mode.equals(Mode.COLOR)) {
 				check.handelMouseClick(mouseX, mouseY);
+			}
+			if(basecon.mode.equals(Mode.NORMAL)){
+				this.handelMouseInput(mouseX, mouseY);
 			}
 			if (basecon.mode.equals(Mode.OUTPUT)) {
 				box.handelClick(mouseX, mouseY);

@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import net.hycrafthd.corelib.util.RGBA;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.Vec3d;
 
 public class ObjArea {
@@ -32,11 +35,32 @@ public class ObjArea {
 			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
 		    }
 		}else{
+			GlStateManager.enableTexture2D();
+			Tessellator.getInstance().draw();
+			bf.begin(7, DefaultVertexFormats.POSITION_TEX);
 			mtl.bindTex();
+			int x = 0;
 		    for (int i : POINTS) {
 			     Vec3d dro = ver.get(i - 1);
-			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(0, 0).endVertex();
+			     double u = 0,v = 0;
+			     switch (x) {
+				 case 1:
+					u = 1;
+					break;
+				 case 2:
+					v = 1;
+					break;
+				 case 3:
+					v = 1;
+					u = 1;
+					break;
+				 }
+			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(u, v).endVertex();
+			     x++;
 		    }
+		    GlStateManager.disableTexture2D();
+		    Tessellator.getInstance().draw();
+			bf.begin(7, DefaultVertexFormats.POSITION_COLOR);
 		}
 	}
 	
