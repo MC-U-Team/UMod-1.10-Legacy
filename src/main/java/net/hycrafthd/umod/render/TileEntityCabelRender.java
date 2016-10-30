@@ -24,8 +24,22 @@ public class TileEntityCabelRender extends TileRender {
 	public void renderTileEntityAt(TileEntity p_180535_1_, double posX, double posY, double posZ) {
 //		EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 //		if (pl.inventory.armorInventory[3] != null && pl.inventory.armorInventory[3].getItem() instanceof ItemEnergyGlasses && p_180535_1_ instanceof IPowerProvieder) {
-			// TODO Create Overlay only IO Pipes
+//			 TODO Create Overlay only IO Pipes
 //		}
+		GlStateManager.pushMatrix();
+		GlStateManager.disableTexture2D();
+		GlStateManager.enableBlend();
+//		GlStateManager.disableAlpha();
+		GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+		GlStateManager.shadeModel(7425);
+		GlStateManager.enableLighting();
+		GlStateManager.translate(posX, posY, posZ);
+		ClientProxy.regs.TEST.draw();
+		GlStateManager.shadeModel(7424);
+	    GlStateManager.disableBlend();
+		GlStateManager.enableAlpha();
+		GlStateManager.enableTexture2D();
+		GlStateManager.popMatrix();
 		Block blo = p_180535_1_.getWorld().getBlockState(p_180535_1_.getPos()).getBlock();
 		if(blo != null && p_180535_1_ instanceof TileEntityCable && blo instanceof BlockCable){
         BlockCable cab = (BlockCable) blo;

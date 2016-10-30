@@ -20,6 +20,8 @@ public class ObjLoader {
 			UMod.log.error("Model " + str + " was not found", e);
 		} catch (URISyntaxException e) {
 			UMod.log.error("Model " + str + " has an incorrect URI", e);
+		} catch (NullPointerException e){
+			UMod.log.error("Model " + str + " was not found", e);
 		}
 	}
 	
@@ -27,9 +29,7 @@ public class ObjLoader {
 		return pr;
 	}
 	
-	public void draw(RGBA c){
-		Tessellator ts = Tessellator.getInstance();
-		pr.draw(ts.getBuffer(), c);
-		ts.draw();
+	public void draw(){
+		pr.draw();
 	}
 }
