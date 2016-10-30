@@ -11,6 +11,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class UArmor {
 	
+	
 	// Radiation Suit
 	public static ArmorMaterial radiationSuitMaterial;
 	// Energy
@@ -45,13 +46,13 @@ public class UArmor {
 	
 	private void init() {
 		// Radiation Suit
-		radiationSuitMaterial = EnumHelper.addArmorMaterial("RADIATIONARMOR", "", 10, new int[] { 1, 3, 1, 1 }, 1,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
+		radiationSuitMaterial = EnumHelper.addArmorMaterial("RADIATIONARMOR", "", 10, new int[] { 1, 3, 1, 1 }, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 		// Energy
-		enrgy = EnumHelper.addArmorMaterial("ENERGY", "", 5, new int[] { 1, 3, 1, 1 }, 1,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
+		enrgy = EnumHelper.addArmorMaterial("ENERGY", "", 5, new int[] { 1, 3, 1, 1 }, 1, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 		// Emerald
-		emeraldMaterial = EnumHelper.addArmorMaterial("EMERALDARMOR", "", 28, new int[] { 3, 7, 5, 3 }, 20,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
+		emeraldMaterial = EnumHelper.addArmorMaterial("EMERALDARMOR", "", 28, new int[] { 3, 7, 5, 3 }, 20, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 		// Magic
-		magicMaterial = EnumHelper.addArmorMaterial("MAGICARMOR", "", 15, new int[]{ 3, 8, 6, 3 }, 30,SoundEvents.ITEM_ARMOR_EQUIP_IRON,0);
+		magicMaterial = EnumHelper.addArmorMaterial("MAGICARMOR", "", 15, new int[] { 3, 8, 6, 3 }, 30, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0);
 		
 		// Radiation Suit
 		radiationSuitHelmet = new ArmorRadiation(radiationSuitMaterial, EntityEquipmentSlot.HEAD).setUnlocalizedName("radiationsuithelmet");
@@ -63,7 +64,7 @@ public class UArmor {
 		energyglasses = new ItemEnergyGlasses(enrgy).setUnlocalizedName("energyglasses");
 		
 		// Emerald
-		emeraldHelmet = new ArmorEmerald(emeraldMaterial,EntityEquipmentSlot.HEAD).setUnlocalizedName("emeraldhelmet");
+		emeraldHelmet = new ArmorEmerald(emeraldMaterial, EntityEquipmentSlot.HEAD).setUnlocalizedName("emeraldhelmet");
 		emeraldChestplate = new ArmorEmerald(emeraldMaterial, EntityEquipmentSlot.CHEST).setUnlocalizedName("emeraldchestplate");
 		emeraldLeggings = new ArmorEmerald(emeraldMaterial, EntityEquipmentSlot.LEGS).setUnlocalizedName("emeraldleggings");
 		emeraldBoots = new ArmorEmerald(emeraldMaterial, EntityEquipmentSlot.FEET).setUnlocalizedName("emeraldboots");
@@ -73,7 +74,7 @@ public class UArmor {
 		magicChestplate = new ArmorMagic(magicMaterial, EntityEquipmentSlot.CHEST).setUnlocalizedName("magic_chestplate");
 		magicLeggings = new ArmorMagic(magicMaterial, EntityEquipmentSlot.LEGS).setUnlocalizedName("magic_leggings");
 		magicBoots = new ArmorMagic(magicMaterial, EntityEquipmentSlot.FEET).setUnlocalizedName("magic_boots");
-
+		
 		UMod.log.debug("Init Armor");
 	}
 	
@@ -93,12 +94,12 @@ public class UArmor {
 		URegistryUtils.registerItem(emeraldLeggings);
 		URegistryUtils.registerItem(emeraldBoots);
 		
-		//Magic
+		// Magic
 		URegistryUtils.registerItem(magicHelmet);
 		URegistryUtils.registerItem(magicChestplate);
 		URegistryUtils.registerItem(magicLeggings);
 		URegistryUtils.registerItem(magicBoots);
-
+		
 		UMod.log.debug("Register Armor");
 	}
 	

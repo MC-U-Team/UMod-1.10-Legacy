@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 
 public class ItemInfectedMilk extends ItemBase {
 	
+	
 	public ItemInfectedMilk() {
 		this.setMaxStackSize(1);
 		this.setCreativeTab(UReference.infected);
@@ -37,9 +38,8 @@ public class ItemInfectedMilk extends ItemBase {
 	}
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn,
-			EnumHand hand) {
-		//TODO set in use
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
+		// TODO set in use
 		return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
 	}
 }

@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 
 public class BlockInfectedDirt extends BlockBase implements IInfectedBlock {
 	
+	
 	public BlockInfectedDirt() {
 		super(Material.GROUND);
 		this.setHarvestLevel("spade", 2);

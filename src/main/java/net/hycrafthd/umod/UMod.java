@@ -17,8 +17,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.*;
 
-@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies="required-after:corelib")
+@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {
+	
 	
 	public static org.apache.logging.log4j.Logger log;
 	private static IMPL_MODELRENDERHELPER INS;
@@ -50,11 +51,11 @@ public class UMod {
 		UMod.log.info("Init Mod.");
 	}
 	
-	public static GLHelper getGLHelper(){
+	public static GLHelper getGLHelper() {
 		return new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	
-	public static IMPL_MODELRENDERHELPER getModelRenderHelper(){
+	public static IMPL_MODELRENDERHELPER getModelRenderHelper() {
 		return INS;
 	}
 	

@@ -9,7 +9,7 @@ import net.hycrafthd.umod.UMod;
 import net.minecraft.client.renderer.Tessellator;
 
 public class ObjLoader {
-
+	
 	
 	private ObjInterpretter pr;
 	
@@ -20,16 +20,16 @@ public class ObjLoader {
 			UMod.log.error("Model " + str + " was not found", e);
 		} catch (URISyntaxException e) {
 			UMod.log.error("Model " + str + " has an incorrect URI", e);
-		} catch (NullPointerException e){
+		} catch (NullPointerException e) {
 			UMod.log.error("Model " + str + " was not found", e);
 		}
 	}
 	
-	public ObjInterpretter getInterpretter(){
+	public ObjInterpretter getInterpretter() {
 		return pr;
 	}
 	
-	public void draw(){
+	public void draw() {
 		pr.draw();
 	}
 }

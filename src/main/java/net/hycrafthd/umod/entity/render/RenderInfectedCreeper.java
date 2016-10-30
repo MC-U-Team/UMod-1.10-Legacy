@@ -9,7 +9,8 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class RenderInfectedCreeper extends RenderLiving<EntityInfectedCreeper> implements IRenderFactory<EntityInfectedCreeper>{
+public class RenderInfectedCreeper extends RenderLiving<EntityInfectedCreeper> implements IRenderFactory<EntityInfectedCreeper> {
+	
 	
 	public RenderInfectedCreeper(RenderManager r) {
 		super(r, new ModelInfectedCreeper(), 0);
@@ -19,7 +20,7 @@ public class RenderInfectedCreeper extends RenderLiving<EntityInfectedCreeper> i
 	protected ResourceLocation getEntityTexture(EntityInfectedCreeper entity) {
 		return new ResourceLocation(UReference.resource + "textures/entity/InfectedCreeper.png");
 	}
-
+	
 	@Override
 	public Render<? super EntityInfectedCreeper> createRenderFor(RenderManager manager) {
 		return new RenderInfectedCreeper(manager);

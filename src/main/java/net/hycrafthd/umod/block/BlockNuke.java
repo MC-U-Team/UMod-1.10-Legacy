@@ -16,6 +16,7 @@ import net.minecraft.world.*;
 
 public class BlockNuke extends BlockBase {
 	
+	
 	public static final PropertyBool EXPLODE = PropertyBool.create("explode");
 	
 	public BlockNuke() {
@@ -36,12 +37,12 @@ public class BlockNuke extends BlockBase {
 	
 	@Override
 	public void onNeighborChange(IBlockAccess w, BlockPos pos, BlockPos neighbor) {
-		if(w instanceof World){
+		if (w instanceof World) {
 			World world = (World) w;
-		if (world.isBlockPowered(pos)) {
-			this.onBlockDestroyedByPlayer(world, pos, world.getBlockState(pos).withProperty(EXPLODE, Boolean.valueOf(true)));
-			world.setBlockToAir(pos);
-		}
+			if (world.isBlockPowered(pos)) {
+				this.onBlockDestroyedByPlayer(world, pos, world.getBlockState(pos).withProperty(EXPLODE, Boolean.valueOf(true)));
+				world.setBlockToAir(pos);
+			}
 		}
 	}
 	
@@ -66,14 +67,13 @@ public class BlockNuke extends BlockBase {
 				// ProcessHandler.addProcess(new NuclearExplosion(worldIn, pos.getX(), pos.getY(), pos.getZ(), power));
 				EntityNukePrimed entitytntprimed = new EntityNukePrimed(worldIn, pos.getX() + 0.5F, pos.getY() + 0.5F, pos.getZ() + 0.5F, igniter);
 				worldIn.spawnEntityInWorld(entitytntprimed);
-//				worldIn.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
+				// worldIn.playSoundAtEntity(entitytntprimed, "game.tnt.primed", 1.0F, 1.0F);
 			}
 		}
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (heldItem != null) {
 			Item item = heldItem.getItem();
 			
@@ -91,7 +91,7 @@ public class BlockNuke extends BlockBase {
 			}
 		}
 		
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand,heldItem,side, hitX, hitY, hitZ);
+		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 	}
 	
 	@Override

@@ -9,6 +9,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemEmeraldSpade extends ItemSpade {
 	
+	
 	public ItemEmeraldSpade(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.things);

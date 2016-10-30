@@ -8,6 +8,7 @@ import net.minecraft.item.*;
 
 public class ItemIngots extends ItemBase {
 	
+	
 	public ItemIngots() {
 		super();
 		this.hasSubtypes = true;

@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockOres extends ItemBlockSubBase {
 	
+	
 	public ItemBlockOres(Block block) {
 		super(block);
 	}

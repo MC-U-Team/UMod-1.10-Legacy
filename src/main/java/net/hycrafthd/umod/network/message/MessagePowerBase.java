@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessagePowerBase implements IMessage, IMessageHandler<MessagePowerBase, IMessage> {
 	
+	
 	public int x, y, z;
 	public boolean mode;
 	

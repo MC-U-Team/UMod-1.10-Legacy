@@ -9,7 +9,8 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class RenderInfectedCow extends RenderLiving<EntityInfectedCow> implements IRenderFactory<EntityInfectedCow>{
+public class RenderInfectedCow extends RenderLiving<EntityInfectedCow> implements IRenderFactory<EntityInfectedCow> {
+	
 	
 	public RenderInfectedCow(RenderManager r) {
 		super(r, new ModelInfectedCow(), 0);
@@ -19,7 +20,7 @@ public class RenderInfectedCow extends RenderLiving<EntityInfectedCow> implement
 	protected ResourceLocation getEntityTexture(EntityInfectedCow entity) {
 		return new ResourceLocation(UReference.resource + "textures/entity/InfectedCow.png");
 	}
-
+	
 	@Override
 	public Render<? super EntityInfectedCow> createRenderFor(RenderManager manager) {
 		return new RenderInfectedCow(manager);

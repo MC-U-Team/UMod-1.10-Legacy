@@ -3,7 +3,8 @@ package net.hycrafthd.umod.obj;
 import net.hycrafthd.corelib.util.RGBA;
 
 public class Material {
-
+	
+	
 	public final String ID;
 	private RGBA color;
 	
@@ -11,11 +12,11 @@ public class Material {
 		this.ID = name;
 	}
 	
-	public RGBA getColor(){
+	public RGBA getColor() {
 		return color;
 	}
 	
-	public void setColor(RGBA c){
+	public void setColor(RGBA c) {
 		this.color = c;
 	}
 	

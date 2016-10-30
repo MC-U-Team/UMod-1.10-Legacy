@@ -5,6 +5,7 @@ import net.minecraft.world.WorldSavedData;
 
 public class WorldSavedDataInfectedStructure extends WorldSavedData {
 	
+	
 	public WorldSavedDataInfectedStructure(String name) {
 		super(name);
 	}
@@ -16,7 +17,7 @@ public class WorldSavedDataInfectedStructure extends WorldSavedData {
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-	
+		
 		return nbt;
 	}
 	

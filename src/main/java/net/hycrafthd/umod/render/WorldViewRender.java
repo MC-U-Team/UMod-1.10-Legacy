@@ -13,8 +13,9 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.tileentity.TileEntity;
 
-public class WorldViewRender{
-
+public class WorldViewRender {
+	
+	
 	public static final WorldViewRender INSTANCE = new WorldViewRender();
 	private GLHelper help;
 	
@@ -23,24 +24,26 @@ public class WorldViewRender{
 	}
 	
 	public void render(TileEntity tileEntity, double posX, double posY, double posZ) {
-		if(!(tileEntity instanceof IWorldView))return;
+		if (!(tileEntity instanceof IWorldView))
+			return;
 		final FontRenderer rend = Minecraft.getMinecraft().fontRendererObj;
 		final IWorldView oven = (IWorldView) tileEntity;
 		if (oven instanceof IWorldSpecialView) {
 			IWorldSpecialView spview = (IWorldSpecialView) oven;
 			spview.specialRender();
-			if(!spview.renderMain())return;
+			if (!spview.renderMain())
+				return;
 		}
 		final ArrayList<String> st = new ArrayList<String>();
 		st.add(I18n.format(oven.getWorld().getBlockState(oven.getPos()).getBlock().getUnlocalizedName() + ".name"));
-		if(oven instanceof IPowerProvieder && oven.showPower()){
-		st.add("Energy " + ((IPowerProvieder) oven).getStoredPower() + "/" + ((IPowerProvieder) oven).getMaximalPower());
-	    }
-		String[] strs = oven.textToAdd();
-		if(strs != null){
-		for(int i = 0;i < strs.length;i++){
-			st.add(strs[i]);
+		if (oven instanceof IPowerProvieder && oven.showPower()) {
+			st.add("Energy " + ((IPowerProvieder) oven).getStoredPower() + "/" + ((IPowerProvieder) oven).getMaximalPower());
 		}
+		String[] strs = oven.textToAdd();
+		if (strs != null) {
+			for (int i = 0; i < strs.length; i++) {
+				st.add(strs[i]);
+			}
 		}
 		GlStateManager.pushMatrix();
 		GlStateManager.shadeModel(7425);
@@ -48,11 +51,12 @@ public class WorldViewRender{
 		GlStateManager.enableDepth();
 		GlStateManager.enableNormalize();
 		GlStateManager.color(1, 1, 1);
-		final int stringSi = checkBiggestString(rend,st.toArray(new String[st.size()]));
-		final int j =  stringSi / 2;
+		final int stringSi = checkBiggestString(rend, st.toArray(new String[st.size()]));
+		final int j = stringSi / 2;
 		final int j2 = stringSi + 4;
 		final int stringmu = st.size() - 1;
-		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double)stringmu/10), posZ, new Runnable() {
+		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double) stringmu / 10), posZ, new Runnable() {
+			
 			
 			@Override
 			public void run() {
@@ -70,7 +74,7 @@ public class WorldViewRender{
 				
 				Iterator<String> itar = st.iterator();
 				int y = -11;
-				while(itar.hasNext()){
+				while (itar.hasNext()) {
 					String s = itar.next();
 					rend.drawStringWithShadow(s, -rend.getStringWidth(s) / 2, y, 0xFFFFFF);
 					y += 10;
@@ -82,7 +86,7 @@ public class WorldViewRender{
 		});
 		GlStateManager.popMatrix();
 	}
-
+	
 	private int checkBiggestString(FontRenderer re, String... args) {
 		int i = 0;
 		for (String str : args) {

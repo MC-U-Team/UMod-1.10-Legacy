@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder {
 	
+	
 	public double storedpower = 0;
 	public double MAXIMUM_POWER = 0;
 	public double producing = 0;
@@ -46,7 +47,7 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder 
 		storedpower -= powerneed;
 		return powerneed;
 	}
-
+	
 	public boolean canAddPower(BlockPos p, double power) {
 		if (power + storedpower <= MAXIMUM_POWER) {
 			return true;
@@ -151,12 +152,12 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder 
 	public boolean productsPower() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isInput() {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isOutput() {
 		return false;

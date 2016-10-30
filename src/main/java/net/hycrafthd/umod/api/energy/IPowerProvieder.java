@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 
 public interface IPowerProvieder extends ITickable {
 	
+	
 	public double getStoredPower();
 	
 	public void addPower(double power);
@@ -34,7 +35,7 @@ public interface IPowerProvieder extends ITickable {
 	
 	public boolean productsPower();
 	
-    public boolean isInput();
+	public boolean isInput();
 	
 	public boolean isOutput();
 }

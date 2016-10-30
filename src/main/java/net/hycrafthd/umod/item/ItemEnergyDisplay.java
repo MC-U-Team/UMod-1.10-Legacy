@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 
 public class ItemEnergyDisplay extends ItemBase {
 	
+	
 	public ItemEnergyDisplay() {
 		this.setMaxStackSize(1);
 		setCreativeTab(UReference.maschines);
@@ -21,8 +22,7 @@ public class ItemEnergyDisplay extends ItemBase {
 	public static final String NBT_TAG = "coorde";
 	
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
-			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
 			Block b = worldIn.getBlockState(pos).getBlock();
 			if (b instanceof BlockBaseMachine) {

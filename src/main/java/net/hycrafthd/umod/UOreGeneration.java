@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class UOreGeneration implements IWorldGenerator {
 	
+	
 	private void nether(Random random, int x, int y, World world) {
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.ALUMINIUM.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 15);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.COPPER.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 30, 0, 128, 2, 15);

@@ -17,7 +17,8 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 
-public class GuiPainter extends GuiBase implements ISliderPro{
+public class GuiPainter extends GuiBase implements ISliderPro {
+	
 	
 	public GuiPainter(EntityPlayer pl, IInventory tile, Container con) {
 		super(new GuiRescources("painter.png"), new GuiRescources("battery.png"), new GuiRescources("IOMode.png"), pl, tile, con);
@@ -29,32 +30,36 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 		super.initGui();
 		int x = this.guiLeft + 36;
 		int y = this.guiTop;
-		red = new GuiSlider(x, y + 11, new RGBA(Color.red).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 0,pos);
+		red = new GuiSlider(x, y + 11, new RGBA(Color.red).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 0, pos);
 		red.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Red Color: " + red.getValue();
 			}
 		});
-		green = new GuiSlider(x, y + 32, new RGBA(Color.green).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 1,pos);
+		green = new GuiSlider(x, y + 32, new RGBA(Color.green).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 1, pos);
 		green.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Green Color: " + green.getValue();
 			}
 		});
-		blue = new GuiSlider(x, y + 53, new RGBA(Color.blue).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 2,pos);
+		blue = new GuiSlider(x, y + 53, new RGBA(Color.blue).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 2, pos);
 		blue.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Blue Color: " + blue.getValue();
 			}
 		});
-		sat = new GuiSlider(x, y + 67, new RGBA(Color.WHITE).setAlpha(155), new RGBA(Color.black).setAlpha(155), new RGBA(Color.WHITE).setAlpha(155), 3,pos);
+		sat = new GuiSlider(x, y + 67, new RGBA(Color.WHITE).setAlpha(155), new RGBA(Color.black).setAlpha(155), new RGBA(Color.WHITE).setAlpha(155), 3, pos);
 		sat.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
@@ -131,7 +136,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 	public void onMouseClickMoved(int mouseX, int mouseY) {
 		handelMouseInput(mouseX, mouseY);
 	}
-
+	
 	@Override
 	public void set(int id, int val) {
 		switch (id) {

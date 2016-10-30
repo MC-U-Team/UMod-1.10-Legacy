@@ -7,6 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 
 public class UConfig {
 	
+	
 	public Configuration config;
 	private File configFile;
 	

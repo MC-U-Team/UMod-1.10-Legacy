@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer<TileEntity> {
 	
+	
 	private GLHelper help;
 	
 	public TileEntityPulverizerSpecialRender() {
@@ -51,13 +52,13 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 				GL11.glPushMatrix();
 				{
 					GlStateManager.rotate(-(time), 0F, 1F, 0F);
-//					Minecraft.getMinecraft().getRenderManager().renderEntityStatic(ent, 0, false);
+					// Minecraft.getMinecraft().getRenderManager().renderEntityStatic(ent, 0, false);
 					
 				}
 				GL11.glPopMatrix();
 			}
 			GlStateManager.popMatrix();
 		}
-
+		
 	}
 }

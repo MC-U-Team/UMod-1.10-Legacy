@@ -19,17 +19,17 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockExtendedRail extends Block implements ITileEntityProvider {
 	
+	
 	public BlockExtendedRail() {
 		super(Material.IRON);
 		this.isBlockContainer = true;
-//		this.setBlockBounds(0F, 0F, 0.3F, 1F, 0.2F, 0.7F);
+		// this.setBlockBounds(0F, 0F, 0.3F, 1F, 0.2F, 0.7F);
 	}
 	
 	private NBTTagCompound compound;
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
-			EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return false;
 	}
 	
@@ -58,13 +58,9 @@ public class BlockExtendedRail extends Block implements ITileEntityProvider {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
-/*	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		if(!side.equals(EnumFacing.UP))return false;
-//		if(playerIn != null && playerIn.getCurrentEquippedItem() != null && playerIn.getCurrentEquippedItem().getItem() instanceof )
-		return false;
-	}*/
+	/*
+	 * @Override public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) { if(!side.equals(EnumFacing.UP))return false; // if(playerIn != null && playerIn.getCurrentEquippedItem() != null && playerIn.getCurrentEquippedItem().getItem() instanceof ) return false; }
+	 */
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {

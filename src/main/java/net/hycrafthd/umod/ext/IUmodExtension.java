@@ -3,7 +3,8 @@ package net.hycrafthd.umod.ext;
 import net.minecraftforge.fml.common.event.*;
 
 public interface IUmodExtension {
-
+	
+	
 	public void preinit(FMLPreInitializationEvent evt);
 	
 	public void init(FMLInitializationEvent evt);

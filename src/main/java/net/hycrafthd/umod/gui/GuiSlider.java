@@ -13,6 +13,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class GuiSlider extends Gui {
 	
+	
 	private int x, y;
 	private RGBA back, slid, slid2;
 	private int val = 0;
@@ -21,7 +22,7 @@ public class GuiSlider extends Gui {
 	private int id;
 	private GLHelper help;
 	
-	public GuiSlider(int x, int y, RGBA color1, RGBA color2, RGBA color3, int id,BlockPos pos) {
+	public GuiSlider(int x, int y, RGBA color1, RGBA color2, RGBA color3, int id, BlockPos pos) {
 		this.x = x;
 		this.y = y;
 		back = color1;
@@ -101,7 +102,7 @@ public class GuiSlider extends Gui {
 		return val;
 	}
 	
-	public void setValue(int i){
+	public void setValue(int i) {
 		val = i;
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
 	}

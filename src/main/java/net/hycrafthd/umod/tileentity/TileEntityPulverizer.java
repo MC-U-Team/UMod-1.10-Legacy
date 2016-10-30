@@ -15,8 +15,8 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
-public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, IIOMode,
-                                                                        ISidedInventory, IWorldView{
+public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, IIOMode, ISidedInventory, IWorldView {
+	
 	
 	private ItemStack[] stack = new ItemStack[5];
 	private EnumFacing enumfI;
@@ -87,10 +87,10 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-//		if (pl == null || pl.equals(player.getName())) {
-//			return true;
-//		}
-//		player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS IS LOCKED BY " + pl));
+		// if (pl == null || pl.equals(player.getName())) {
+		// return true;
+		// }
+		// player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS IS LOCKED BY " + pl));
 		return false;
 	}
 	
@@ -122,10 +122,10 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public void openInventory(EntityPlayer player) {
-//		if (pl != null && !player.getName().equals(pl)) {
-//			player.closeScreen();
-//			player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS PULVERIZER IS LOCKED BY " + pl));
-//		}
+		// if (pl != null && !player.getName().equals(pl)) {
+		// player.closeScreen();
+		// player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS PULVERIZER IS LOCKED BY " + pl));
+		// }
 	}
 	
 	@Override
@@ -168,43 +168,43 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	@Override
 	public void update() {
 		ItemStack[] args = ModRegistryUtils.isRecepie(stack[3]);
-		if(args != null && this.strpo > 10){
+		if (args != null && this.strpo > 10) {
 			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.75, this.pos.getZ() + 0.5, 0, 0, 0, 1);
 			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.25, this.pos.getZ() + 0.5, 0, 0, 0, 1);
-				if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
-					work = true;
-					isBurning = true;
-					if(time >= 100){
-						time = 0;
-						this.decrStackSize(3, 1);
-						if(stack[0] == null){
-							stack[0] = new ItemStack(args[0].getItem());
-						}else{
-							stack[0].stackSize++;
-						}
-						if(stack[1] == null){
-							stack[1] = new ItemStack(args[1].getItem());
-						}else{
-							stack[1].stackSize++;
-						}
-						if(args[2] != null){
-							if(stack[2] == null){
-								stack[2] = new ItemStack(args[2].getItem());
-							}else{
-								stack[2].stackSize++;
-							}
-						}
-						this.markDirty();
-						this.getPower(1000);
-					}
-					time++;	
-				}else{
+			if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
+				work = true;
+				isBurning = true;
+				if (time >= 100) {
 					time = 0;
+					this.decrStackSize(3, 1);
+					if (stack[0] == null) {
+						stack[0] = new ItemStack(args[0].getItem());
+					} else {
+						stack[0].stackSize++;
+					}
+					if (stack[1] == null) {
+						stack[1] = new ItemStack(args[1].getItem());
+					} else {
+						stack[1].stackSize++;
+					}
+					if (args[2] != null) {
+						if (stack[2] == null) {
+							stack[2] = new ItemStack(args[2].getItem());
+						} else {
+							stack[2].stackSize++;
+						}
+					}
 					this.markDirty();
-					work = false;
-					isBurning = false;
+					this.getPower(1000);
 				}
-		}else{
+				time++;
+			} else {
+				time = 0;
+				this.markDirty();
+				work = false;
+				isBurning = false;
+			}
+		} else {
 			time = 0;
 			this.markDirty();
 			work = false;
@@ -216,11 +216,11 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		return time;
 	}
 	
-	public boolean isAddebal(int i,ItemStack st){
+	public boolean isAddebal(int i, ItemStack st) {
 		return (stack[i] == null || (stack[i].stackSize < 64 && stack[i].getItem().equals(st.getItem())));
 	}
 	
-	public void addTo(int i,ItemStack st){
+	public void addTo(int i, ItemStack st) {
 		
 	}
 	
@@ -359,7 +359,8 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public int hasSomefacing(EnumFacing i) {
-		if(i == null)return -1;
+		if (i == null)
+			return -1;
 		if (enumfI.equals(i)) {
 			return 0;
 		}
@@ -388,65 +389,64 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	public boolean productsPower() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isInput() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isOutput() {
 		return true;
 	}
-
+	
 	@Override
 	public double getStoredPower() {
 		return strpo;
 	}
-
+	
 	@Override
 	public void addPower(double power) {
 		strpo += power;
 	}
-
+	
 	@Override
 	public double getPower(double powerneed) {
 		strpo -= powerneed;
 		return powerneed;
 	}
-
+	
 	@Override
 	public double getMaximalPower() {
 		return 4000;
 	}
-
+	
 	@Override
 	public boolean isWorking() {
 		return work;
 	}
-
+	
 	@Override
 	public String getErrorMessage() {
 		return "";
 	}
-
+	
 	@Override
 	public boolean hasPower() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean showPower() {
 		return true;
 	}
-
+	
 	@Override
 	public String[] textToAdd() {
-		if(this.getStackInSlot(3) != null){
-		return new String[] {this.getStackInSlot(3).getDisplayName(),"Progress " + this.getField(0) + "/100"};
+		if (this.getStackInSlot(3) != null) {
+			return new String[] { this.getStackInSlot(3).getDisplayName(), "Progress " + this.getField(0) + "/100" };
 		}
 		return null;
 	}
-
-
+	
 }

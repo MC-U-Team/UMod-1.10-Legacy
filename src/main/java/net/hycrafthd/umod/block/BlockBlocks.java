@@ -12,6 +12,7 @@ import net.minecraft.item.*;
 
 public class BlockBlocks extends BlockBase {
 	
+	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeBaseStuff.class);
 	
 	public BlockBlocks() {

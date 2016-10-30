@@ -9,9 +9,11 @@ import net.minecraft.item.ItemStack;
 
 public class BaseCraftSlot extends BaseSlot {
 	
+	
 	public BaseCraftSlot(IInventory inventoryIn, int index, int xPosition, int yPosition) {
 		super(inventoryIn, index, xPosition, yPosition);
 		this.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {

@@ -6,7 +6,8 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
-public class EntityRailFX extends EntityHanging{
+public class EntityRailFX extends EntityHanging {
+	
 	
 	public EntityRailFX(World w) {
 		super(w);
@@ -87,8 +88,9 @@ public class EntityRailFX extends EntityHanging{
 			enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Dir"));
 		}
 	}
-
+	
 	@Override
-	public void playPlaceSound() {}
+	public void playPlaceSound() {
+	}
 	
 }

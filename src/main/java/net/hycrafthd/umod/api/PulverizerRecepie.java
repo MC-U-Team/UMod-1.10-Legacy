@@ -6,6 +6,7 @@ import scala.util.Random;
 
 public class PulverizerRecepie {
 	
+	
 	private ItemStack input;
 	private ItemStack output;
 	private ItemStack randomoutut;

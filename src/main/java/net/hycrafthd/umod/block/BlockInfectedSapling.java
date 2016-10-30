@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 public class BlockInfectedSapling extends BlockBush implements IGrowable, IInfectedBlock {
 	
+	
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
 	
 	public BlockInfectedSapling() {
@@ -21,7 +22,7 @@ public class BlockInfectedSapling extends BlockBush implements IGrowable, IInfec
 		this.setCreativeTab(UReference.infected);
 		this.setLightOpacity(1);
 		this.setSoundType(SoundType.PLANT);
-//		this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.8F, 0.9F);
+		// this.setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 0.8F, 0.9F);
 		this.setDefaultState(this.getDefaultState().withProperty(STAGE, Integer.valueOf(0)));
 	}
 	

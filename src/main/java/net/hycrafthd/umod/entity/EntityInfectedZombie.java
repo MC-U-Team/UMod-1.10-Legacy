@@ -12,12 +12,13 @@ import net.minecraft.world.World;
 
 public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 	
+	
 	public EntityInfectedZombie(World worldIn) {
 		super(worldIn);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-//		this.tasks.addTask(2, this.field_175455_a);
+		// this.tasks.addTask(2, this.field_175455_a);
 		
-//		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
+		// this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
@@ -41,30 +42,23 @@ public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 			
 			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canSeeSky(blockpos)) {
 				boolean flag = true;
-				/*ItemStack itemstack = );
-				
-				if (itemstack != null) {
-					if (itemstack.isItemStackDamageable()) {
-						itemstack.setItemDamage(itemstack.getItemDamage() + this.rand.nextInt(2));
-						
-						if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) {
-							this.renderBrokenItemStack(itemstack);
-							this.setCurrentItemOrArmor(4, (ItemStack) null);
-						}
-					}
-					
-					flag = false;
-				}
-				
-				if (flag) {
-					this.setFire(8);
-				}*/
+				/*
+				 * ItemStack itemstack = );
+				 * 
+				 * if (itemstack != null) { if (itemstack.isItemStackDamageable()) { itemstack.setItemDamage(itemstack.getItemDamage() + this.rand.nextInt(2));
+				 * 
+				 * if (itemstack.getItemDamage() >= itemstack.getMaxDamage()) { this.renderBrokenItemStack(itemstack); this.setCurrentItemOrArmor(4, (ItemStack) null); } }
+				 * 
+				 * flag = false; }
+				 * 
+				 * if (flag) { this.setFire(8); }
+				 */
 			}
 		}
 		
-//		if (this.isRiding() && this.getAttackTarget() != null && this.ridingEntity instanceof EntityChicken) {
-//			((EntityLiving) this.ridingEntity).getNavigator().setPath(this.getNavigator().getPath(), 1.5D);
-//		}
+		// if (this.isRiding() && this.getAttackTarget() != null && this.ridingEntity instanceof EntityChicken) {
+		// ((EntityLiving) this.ridingEntity).getNavigator().setPath(this.getNavigator().getPath(), 1.5D);
+		// }
 		
 		super.onLivingUpdate();
 	}
@@ -81,14 +75,14 @@ public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 		if (flag) {
 			int i = this.worldObj.getDifficulty().getDifficultyId();
 			
-//			if (this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < i * 0.3F) {
-//				p_70652_1_.setFire(2 * i);
-//			}
+			// if (this.getHeldItem() == null && this.isBurning() && this.rand.nextFloat() < i * 0.3F) {
+			// p_70652_1_.setFire(2 * i);
+			// }
 		}
 		
 		return flag;
 	}
-
+	
 	@Override
 	protected SoundEvent getHurtSound() {
 		// TODO Auto-generated method stub
@@ -103,7 +97,7 @@ public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 	
 	@Override
 	public void playStepSound(BlockPos p_180429_1_, Block p_180429_2_) {
-//		this.playSound("mob.zombie.step", 0.15F, 1.0F);
+		// this.playSound("mob.zombie.step", 0.15F, 1.0F);
 	}
 	
 }

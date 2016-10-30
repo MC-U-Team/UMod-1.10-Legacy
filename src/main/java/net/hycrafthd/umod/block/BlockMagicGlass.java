@@ -13,6 +13,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockMagicGlass extends BlockBase {
 	
+	
 	public BlockMagicGlass() {
 		super(Material.GLASS);
 		this.setHardness(0.6F);
@@ -33,7 +34,7 @@ public class BlockMagicGlass extends BlockBase {
 	public boolean isFullCube(IBlockState s) {
 		return false;
 	}
-		
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public BlockRenderLayer getBlockLayer() {
@@ -41,23 +42,20 @@ public class BlockMagicGlass extends BlockBase {
 	}
 	
 	@SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
-    {
-        IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
-        Block block = iblockstate.getBlock();
-        
-            if (blockState != iblockstate)
-            {
-                return true;
-            }
-
-            if (block == this)
-            {
-                return false;
-            }
-
-        return block == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
-    }
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+		IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
+		Block block = iblockstate.getBlock();
+		
+		if (blockState != iblockstate) {
+			return true;
+		}
+		
+		if (block == this) {
+			return false;
+		}
+		
+		return block == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+	}
 	
 	@Override
 	public boolean canSilkHarvest() {

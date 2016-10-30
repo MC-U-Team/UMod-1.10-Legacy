@@ -12,6 +12,7 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class GenInfectedTree extends WorldGenAbstractTree {
 	
+	
 	private final int minTreeHeight;
 	private final boolean vinesGrow;
 	private final int metaWood;
@@ -68,12 +69,12 @@ public class GenInfectedTree extends WorldGenAbstractTree {
 				
 				BlockPos down = pos.down();
 				Block block1 = world.getBlockState(down).getBlock();
-				boolean isSoil = block1.canSustainPlant(world.getBlockState(pos),world, down, net.minecraft.util.EnumFacing.UP, (BlockInfectedSapling) UBlocks.infectedSapling);
+				boolean isSoil = block1.canSustainPlant(world.getBlockState(pos), world, down, net.minecraft.util.EnumFacing.UP, (BlockInfectedSapling) UBlocks.infectedSapling);
 				
 				world.setBlockToAir(pos);
 				
 				if (isSoil && pos.getY() < 256 - i - 1) {
-					block1.onPlantGrow(world.getBlockState(pos),world, down, pos);
+					block1.onPlantGrow(world.getBlockState(pos), world, down, pos);
 					b0 = 3;
 					byte b1 = 0;
 					int i1;
@@ -96,8 +97,8 @@ public class GenInfectedTree extends WorldGenAbstractTree {
 									blockpos1 = new BlockPos(k1, l, i2);
 									Block block = world.getBlockState(blockpos1).getBlock();
 									
-									if (block.isAir(world.getBlockState(pos),world, blockpos1) || block.isLeaves(world.getBlockState(pos),world, blockpos1) || block.getMaterial((world.getBlockState(pos))) == Material.VINE || block == UBlocks.infectedFruit) {
-//										this.func_175923_a(world, blockpos1, this.metaLeaves);
+									if (block.isAir(world.getBlockState(pos), world, blockpos1) || block.isLeaves(world.getBlockState(pos), world, blockpos1) || block.getMaterial((world.getBlockState(pos))) == Material.VINE || block == UBlocks.infectedFruit) {
+										// this.func_175923_a(world, blockpos1, this.metaLeaves);
 									}
 								}
 							}
@@ -108,17 +109,17 @@ public class GenInfectedTree extends WorldGenAbstractTree {
 						BlockPos upN = pos.up(l);
 						Block block2 = world.getBlockState(upN).getBlock();
 						
-						if (block2.isAir(world.getBlockState(pos),world, upN) || block2.isLeaves(world.getBlockState(pos),world, upN) || block2.getMaterial(world.getBlockState(pos)) == Material.VINE) {
-//							this.func_175923_a(world, pos.up(), this.metaWood);
+						if (block2.isAir(world.getBlockState(pos), world, upN) || block2.isLeaves(world.getBlockState(pos), world, upN) || block2.getMaterial(world.getBlockState(pos)) == Material.VINE) {
+							// this.func_175923_a(world, pos.up(), this.metaWood);
 							
 							for (int a = -2; a <= 2; a++) {
 								for (int b = -2; b <= 2; b++) {
-									if (block2.isAir(world.getBlockState(pos),world, upN.add(a, 0, b)) && world.getBlockState(upN.add(a, 0, b).up()).getBlock().equals(UBlocks.infectedLeave)) {
+									if (block2.isAir(world.getBlockState(pos), world, upN.add(a, 0, b)) && world.getBlockState(upN.add(a, 0, b).up()).getBlock().equals(UBlocks.infectedLeave)) {
 										if (a == 0 && b == 0) {
 											continue;
 										} else {
 											if (new Random().nextInt(9) == 0) {
-//												this.func_175923_a(world, upN.add(a, 0, b), 0);
+												// this.func_175923_a(world, upN.add(a, 0, b), 0);
 											}
 										}
 									}
@@ -127,71 +128,41 @@ public class GenInfectedTree extends WorldGenAbstractTree {
 							
 							if (this.vinesGrow && l > 0) {
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(-1, l, 0))) {
-//									this.func_175923_a(world, pos.add(-1, l, 0), world.getBlockState(pos.add(-1, l, 0)));
+									// this.func_175923_a(world, pos.add(-1, l, 0), world.getBlockState(pos.add(-1, l, 0)));
 								}
 								
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(1, l, 0))) {
-//									this.func_175923_a(world, pos.add(1, l, 0), BlockVine.WEST);
+									// this.func_175923_a(world, pos.add(1, l, 0), BlockVine.WEST);
 								}
 								
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(0, l, -1))) {
-//									this.func_175923_a(world, pos.add(0, l, -1), BlockVine.SOUTH);
+									// this.func_175923_a(world, pos.add(0, l, -1), BlockVine.SOUTH);
 								}
 								
 								if (rand.nextInt(3) > 0 && world.isAirBlock(pos.add(0, l, 1))) {
-//									this.func_175923_a(world, pos.add(0, l, 1), BlockVine.NORTH);
+									// this.func_175923_a(world, pos.add(0, l, 1), BlockVine.NORTH);
 								}
 							}
 						}
 					}
 					
-/*					if (this.vinesGrow) {
-						for (l = pos.getY() - 3 + i; l <= pos.getY() + i; ++l) {
-							i1 = l - (pos.getY() + i);
-							j1 = 2 - i1 / 2;
-							
-							for (k1 = pos.getX() - j1; k1 <= pos.getX() + j1; ++k1) {
-								for (l1 = pos.getZ() - j1; l1 <= pos.getZ() + j1; ++l1) {
-									BlockPos blockpos3 = new BlockPos(k1, l, l1);
-									
-									if (world.getBlockState(blockpos3).getBlock().isLeaves(world, blockpos3)) {
-										BlockPos blockpos4 = blockpos3.west();
-										blockpos1 = blockpos3.east();
-										BlockPos blockpos5 = blockpos3.north();
-										BlockPos blockpos2 = blockpos3.south();
-										
-										if (rand.nextInt(4) == 0 && world.getBlockState(blockpos4).getBlock().isAir(world, blockpos4)) {
-//											this.func_175923_a(world, blockpos4, BlockVine.EAST_FLAG);
-										}
-										
-										if (rand.nextInt(4) == 0 && world.getBlockState(blockpos1).getBlock().isAir(world, blockpos1)) {
-//											this.func_175923_a(world, blockpos1, BlockVine.WEST_FLAG);
-										}
-										
-										if (rand.nextInt(4) == 0 && world.getBlockState(blockpos5).getBlock().isAir(world, blockpos5)) {
-											this.func_175923_a(world, blockpos5, BlockVine.SOUTH_FLAG);
-										}
-										
-										if (rand.nextInt(4) == 0 && world.getBlockState(blockpos2).getBlock().isAir(world, blockpos2)) {
-											this.func_175923_a(world, blockpos2, BlockVine.NORTH_FLAG);
-										}
-									}
-								}
-							}
-						}
-						
-						if (rand.nextInt(5) == 0 && i > 5) {
-							for (l = 0; l < 2; ++l) {
-								for (i1 = 0; i1 < 4; ++i1) {
-									if (rand.nextInt(4 - l) == 0) {
-										j1 = rand.nextInt(3);
-										EnumFacing enumfacing = EnumFacing.getHorizontal(i1).getOpposite();
-										this.func_175905_a(world, pos.add(enumfacing.getFrontOffsetX(), i - 5 + l, enumfacing.getFrontOffsetZ()), Blocks.cocoa, j1 << 2 | EnumFacing.getHorizontal(i1).getHorizontalIndex());
-									}
-								}
-							}
-						}
-					}*/
+					/*
+					 * if (this.vinesGrow) { for (l = pos.getY() - 3 + i; l <= pos.getY() + i; ++l) { i1 = l - (pos.getY() + i); j1 = 2 - i1 / 2;
+					 * 
+					 * for (k1 = pos.getX() - j1; k1 <= pos.getX() + j1; ++k1) { for (l1 = pos.getZ() - j1; l1 <= pos.getZ() + j1; ++l1) { BlockPos blockpos3 = new BlockPos(k1, l, l1);
+					 * 
+					 * if (world.getBlockState(blockpos3).getBlock().isLeaves(world, blockpos3)) { BlockPos blockpos4 = blockpos3.west(); blockpos1 = blockpos3.east(); BlockPos blockpos5 = blockpos3.north(); BlockPos blockpos2 = blockpos3.south();
+					 * 
+					 * if (rand.nextInt(4) == 0 && world.getBlockState(blockpos4).getBlock().isAir(world, blockpos4)) { // this.func_175923_a(world, blockpos4, BlockVine.EAST_FLAG); }
+					 * 
+					 * if (rand.nextInt(4) == 0 && world.getBlockState(blockpos1).getBlock().isAir(world, blockpos1)) { // this.func_175923_a(world, blockpos1, BlockVine.WEST_FLAG); }
+					 * 
+					 * if (rand.nextInt(4) == 0 && world.getBlockState(blockpos5).getBlock().isAir(world, blockpos5)) { this.func_175923_a(world, blockpos5, BlockVine.SOUTH_FLAG); }
+					 * 
+					 * if (rand.nextInt(4) == 0 && world.getBlockState(blockpos2).getBlock().isAir(world, blockpos2)) { this.func_175923_a(world, blockpos2, BlockVine.NORTH_FLAG); } } } } }
+					 * 
+					 * if (rand.nextInt(5) == 0 && i > 5) { for (l = 0; l < 2; ++l) { for (i1 = 0; i1 < 4; ++i1) { if (rand.nextInt(4 - l) == 0) { j1 = rand.nextInt(3); EnumFacing enumfacing = EnumFacing.getHorizontal(i1).getOpposite(); this.func_175905_a(world, pos.add(enumfacing.getFrontOffsetX(), i - 5 + l, enumfacing.getFrontOffsetZ()), Blocks.cocoa, j1 << 2 | EnumFacing.getHorizontal(i1).getHorizontalIndex()); } } } } }
+					 */
 					
 					return true;
 				} else {
@@ -203,32 +174,16 @@ public class GenInfectedTree extends WorldGenAbstractTree {
 		}
 	}
 	
-/*	protected boolean func_150523_a(Block block) {
-		return block.getMaterial(block.getDefaultState()) == Material.AIR || block == UBlocks.infectedLeave || block == UBlocks.infectedSapling || block == Blocks.LEAVES || block == Blocks.LEAVES2;
-	}
-	
-	protected void func_175921_a(World world, BlockPos p_175921_2_) {
-		if (world.getBlockState(p_175921_2_).getBlock() != UBlocks.infectedDirt) {
-			this.func_175903_a(world, p_175921_2_, UBlocks.infectedDirt.getDefaultState());
-		}
-	}
-	
-	private void func_175923_a(World world, BlockPos p_175923_2_, int p_175923_3_) {
-		this.func_175905_a(world, p_175923_2_, Blocks.vine, p_175923_3_);
-		int j = 4;
-		
-		for (p_175923_2_ = p_175923_2_.down(); world.getBlockState(p_175923_2_).getBlock().isAir(world, p_175923_2_) && j > 0; --j) {
-			this.func_175905_a(world, p_175923_2_, Blocks.vine, p_175923_3_);
-			p_175923_2_ = p_175923_2_.down();
-		}
-	}
-	
-	@Override
-	public boolean isReplaceable(World world, BlockPos pos) {
-		net.minecraft.block.state.IBlockState state = world.getBlockState(pos);
-		if (state.getBlock().isAir(world, pos) || func_150523_a(state.getBlock()))
-			return true;
-		return false;
-	}*/
+	/*
+	 * protected boolean func_150523_a(Block block) { return block.getMaterial(block.getDefaultState()) == Material.AIR || block == UBlocks.infectedLeave || block == UBlocks.infectedSapling || block == Blocks.LEAVES || block == Blocks.LEAVES2; }
+	 * 
+	 * protected void func_175921_a(World world, BlockPos p_175921_2_) { if (world.getBlockState(p_175921_2_).getBlock() != UBlocks.infectedDirt) { this.func_175903_a(world, p_175921_2_, UBlocks.infectedDirt.getDefaultState()); } }
+	 * 
+	 * private void func_175923_a(World world, BlockPos p_175923_2_, int p_175923_3_) { this.func_175905_a(world, p_175923_2_, Blocks.vine, p_175923_3_); int j = 4;
+	 * 
+	 * for (p_175923_2_ = p_175923_2_.down(); world.getBlockState(p_175923_2_).getBlock().isAir(world, p_175923_2_) && j > 0; --j) { this.func_175905_a(world, p_175923_2_, Blocks.vine, p_175923_3_); p_175923_2_ = p_175923_2_.down(); } }
+	 * 
+	 * @Override public boolean isReplaceable(World world, BlockPos pos) { net.minecraft.block.state.IBlockState state = world.getBlockState(pos); if (state.getBlock().isAir(world, pos) || func_150523_a(state.getBlock())) return true; return false; }
+	 */
 	
 }

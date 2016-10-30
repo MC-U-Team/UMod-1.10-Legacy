@@ -2,6 +2,7 @@ package net.hycrafthd.umod.api.energy;
 
 public interface IPipeRange {
 	
+	
 	public int getPastPipeCount();
 	
 	public int addBlock(int count);

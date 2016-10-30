@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 
 public class NuclearExplosion implements IProcess {
 	
+	
 	private World worldObj;
 	private int xCoord;
 	private int yCoord;

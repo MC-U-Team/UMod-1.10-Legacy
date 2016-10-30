@@ -18,6 +18,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public abstract class BlockCustomSlab extends BlockSlab {
 	
+	
 	private final Block modelBlock;
 	private final IBlockState modelState;
 	private final Block itemslab;
@@ -47,14 +48,11 @@ public abstract class BlockCustomSlab extends BlockSlab {
 		return ItemUtil.from(itemslab);
 	}
 	
-	/*@SideOnly(Side.CLIENT)
-	@Override
-	public Item getItem(World worldIn, BlockPos pos) {
-		if (itemslab == null && !this.isDouble()) {
-			return ItemUtil.from(this);
-		}
-		return ItemUtil.from(itemslab);
-	}*/
+	/*
+	 * @SideOnly(Side.CLIENT)
+	 * 
+	 * @Override public Item getItem(World worldIn, BlockPos pos) { if (itemslab == null && !this.isDouble()) { return ItemUtil.from(this); } return ItemUtil.from(itemslab); }
+	 */
 	
 	@Override
 	public String getUnlocalizedName(int meta) {
@@ -74,7 +72,7 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	public IProperty getVariantProperty() {
 		return null;
 	}
-		
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState blockState = this.getDefaultState();
@@ -124,7 +122,7 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
 		this.modelBlock.onBlockDestroyedByPlayer(worldIn, pos, state);
 	}
-		
+	
 	public float getExplosionResistance(Entity exploder) {
 		return this.modelBlock.getExplosionResistance(exploder);
 	}
@@ -143,8 +141,8 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public AxisAlignedBB getSelectedBoundingBox(IBlockState st,World worldIn, BlockPos pos) {
-		return this.modelBlock.getSelectedBoundingBox(st,worldIn, pos);
+	public AxisAlignedBB getSelectedBoundingBox(IBlockState st, World worldIn, BlockPos pos) {
+		return this.modelBlock.getSelectedBoundingBox(st, worldIn, pos);
 	}
 	
 	public boolean isCollidable() {
@@ -168,8 +166,8 @@ public abstract class BlockCustomSlab extends BlockSlab {
 		this.modelBlock.breakBlock(worldIn, pos, this.modelState);
 	}
 	
-	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState s,Entity entityIn) {
-		this.modelBlock.onEntityCollidedWithBlock(worldIn, pos,s, entityIn);
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState s, Entity entityIn) {
+		this.modelBlock.onEntityCollidedWithBlock(worldIn, pos, s, entityIn);
 	}
 	
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
@@ -177,8 +175,7 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		return this.modelBlock.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 	}
 	

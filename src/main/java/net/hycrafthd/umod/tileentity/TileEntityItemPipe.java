@@ -8,7 +8,8 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class TileEntityItemPipe extends TileEntity implements IPlugabel,IConduitProvider,ITickable{
+public class TileEntityItemPipe extends TileEntity implements IPlugabel, IConduitProvider, ITickable {
+	
 	
 	public boolean isin = false;
 	public ItemStack cond = null;
@@ -19,26 +20,27 @@ public class TileEntityItemPipe extends TileEntity implements IPlugabel,IConduit
 	
 	@Override
 	public boolean canConnect(IBlockAccess w, BlockPos p) {
-		return ((IPlugabel)w.getBlockState(getPos()).getBlock()).canConnect(w, p);
+		return ((IPlugabel) w.getBlockState(getPos()).getBlock()).canConnect(w, p);
 	}
-
+	
 	@Override
 	public ItemStack getConduit() {
 		return cond;
 	}
-
+	
 	@Override
 	public boolean hasConduit() {
 		return cond != null;
 	}
-
+	
 	@Override
 	public void update() {
-		if(isin)return;
+		if (isin)
+			return;
 		this.worldObj.spawnEntityInWorld(new EntityFX(worldObj, pos));
 		isin = true;
 	}
-
+	
 	@Override
 	public void setConduit(ItemStack b) {
 		this.cond = b;

@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.*;
 @TransformerExclusions("net.hycrafthd.umod.asm")
 public class ULoadingPlugin implements IFMLLoadingPlugin {
 	
+	
 	@Override
 	public String[] getASMTransformerClass() {
 		return null;

@@ -4,6 +4,7 @@ import net.minecraft.util.DamageSource;
 
 public class DamageSourceNuclearExplosion extends DamageSource {
 	
+	
 	public DamageSourceNuclearExplosion() {
 		super("nuclearexplosion");
 	}

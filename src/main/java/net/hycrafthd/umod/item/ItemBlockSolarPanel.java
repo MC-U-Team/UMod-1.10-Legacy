@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockSolarPanel extends ItemBlockSubBase {
 	
+	
 	public ItemBlockSolarPanel(Block block) {
 		super(block);
 	}

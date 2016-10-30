@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ConduitRender {
 	
+	
 	public static boolean render(TileEntity pip, EntityPlayer pl, double posX, double posY, double posZ) {
 		if (!(pip instanceof IConduitProvider))
 			return false;
@@ -17,7 +18,7 @@ public class ConduitRender {
 		} else if (pip != null) {
 			if (pl.getHeldItemMainhand() == null || !(Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof BlockCable)) {
 				GlStateManager.enableLighting();
-//				IMPL_LWJGLU.renderBlockConduit(((IConduitProvider) pip).getConduit(), posX, posY, posZ);
+				// IMPL_LWJGLU.renderBlockConduit(((IConduitProvider) pip).getConduit(), posX, posY, posZ);
 				GlStateManager.disableLighting();
 				return true;
 			}

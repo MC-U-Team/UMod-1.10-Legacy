@@ -11,6 +11,7 @@ import net.minecraft.client.gui.*;
 
 public class GuiCheckbox extends Gui {
 	
+	
 	private double x, width, y, height;
 	private RGBA rgb, hover;
 	private boolean isSelected;

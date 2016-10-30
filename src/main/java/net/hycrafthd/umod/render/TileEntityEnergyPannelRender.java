@@ -9,10 +9,11 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityEnergyPannelRender extends TileRender {
 	
+	
 	public TileEntityEnergyPannelRender(GLHelper help) {
 		super(help);
 	}
-
+	
 	@Override
 	public void renderTileEntityAt(TileEntity ent, double posX, double posY, double posZ) {
 		TileEntityEnergyPannel tile = (TileEntityEnergyPannel) ent;

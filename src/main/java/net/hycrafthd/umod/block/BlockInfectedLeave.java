@@ -19,6 +19,7 @@ import scala.actors.threadpool.Arrays;
 
 public class BlockInfectedLeave extends BlockLeaves implements IInfectedBlock {
 	
+	
 	public BlockInfectedLeave() {
 		super();
 		this.setCreativeTab(UReference.infected);
@@ -48,32 +49,26 @@ public class BlockInfectedLeave extends BlockLeaves implements IInfectedBlock {
 		return meta;
 	}
 	
-	/*@Override
-	@SideOnly(Side.CLIENT)
-	public int getBlockColor() {
-		return 0xFFFFFF;
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int getRenderColor(IBlockState state) {
-		return ColorizerFoliage.getFoliageColorBasic();
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int tintIndex) {
-		return BiomeColorHelper.getFoliageColorAtPos(worldIn, pos);
-	}
-	*/
+	/*
+	 * @Override
+	 * 
+	 * @SideOnly(Side.CLIENT) public int getBlockColor() { return 0xFFFFFF; }
+	 * 
+	 * @Override
+	 * 
+	 * @SideOnly(Side.CLIENT) public int getRenderColor(IBlockState state) { return ColorizerFoliage.getFoliageColorBasic(); }
+	 * 
+	 * @Override
+	 * 
+	 * @SideOnly(Side.CLIENT) public int colorMultiplier(IBlockAccess worldIn, BlockPos pos, int tintIndex) { return BiomeColorHelper.getFoliageColorAtPos(worldIn, pos); }
+	 */
 	@Override
 	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		return this.getStateFromMeta(meta).withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(false));
 	}
 	
 	@Override
-	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
-			EntityPlayer player) {
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return new ItemStack(this, 1, 0);
 	}
 	

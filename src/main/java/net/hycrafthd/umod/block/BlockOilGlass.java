@@ -13,6 +13,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockOilGlass extends BlockBase {
 	
+	
 	public BlockOilGlass() {
 		super(Material.GLASS);
 		this.setSoundType(SoundType.GLASS);

@@ -10,21 +10,23 @@ import net.minecraft.world.World;
 
 public class TileEntityItemPipeRender extends TileRender {
 	
+	
 	public TileEntityItemPipeRender(GLHelper help) {
 		super(help);
 	}
-
+	
 	@Override
 	public void renderTileEntityAt(TileEntity p_180535_1_, double posX, double posY, double posZ) {
 		Block blo = p_180535_1_.getWorld().getBlockState(p_180535_1_.getPos()).getBlock();
-		if(blo != null && p_180535_1_ instanceof TileEntityItemPipe && blo instanceof BlockItemPipe){
-		BlockItemPipe cab = (BlockItemPipe) blo;
-		String name = cab.getSpirte();
-		TileEntityItemPipe pip = (TileEntityItemPipe) p_180535_1_;
-		World w = p_180535_1_.getWorld();
-		if(!w.isRemote)return;
-		GlStateManager.disableCull();
-		BlockPos pos = pip.getPos(); 
+		if (blo != null && p_180535_1_ instanceof TileEntityItemPipe && blo instanceof BlockItemPipe) {
+			BlockItemPipe cab = (BlockItemPipe) blo;
+			String name = cab.getSpirte();
+			TileEntityItemPipe pip = (TileEntityItemPipe) p_180535_1_;
+			World w = p_180535_1_.getWorld();
+			if (!w.isRemote)
+				return;
+			GlStateManager.disableCull();
+			BlockPos pos = pip.getPos();
 			boolean csouth = pip.canConnect(w, pos.south());
 			boolean cnorth = pip.canConnect(w, pos.north());
 			boolean cdown = pip.canConnect(w, pos.down());
@@ -58,9 +60,9 @@ public class TileEntityItemPipeRender extends TileRender {
 				lr = true;
 			}
 			
-			if((!cdown && !ceast && !cnorth && !csouth && !cup && !cwest) || (lr && fb) || (lr && ud) || (ud && fb) || (ud && fb && lr)){
+			if ((!cdown && !ceast && !cnorth && !csouth && !cup && !cwest) || (lr && fb) || (lr && ud) || (ud && fb) || (ud && fb && lr)) {
 				this.help.drawBlock(loc, posX, posY, posZ, 0.405, 0.405, 0.405);
-			}	
+			}
 			GlStateManager.enableCull();
 		}
 		

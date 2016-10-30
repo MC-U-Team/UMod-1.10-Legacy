@@ -19,7 +19,8 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 import net.minecraftforge.fml.relauncher.*;
 
-public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, IConduitBlock, IPlugabel,IBlockInformation {
+public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, IConduitBlock, IPlugabel, IBlockInformation {
+	
 	
 	private String spi;
 	
@@ -36,15 +37,14 @@ public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, 
 	public String getSpirte() {
 		return spi;
 	}
-
+	
 	@Override
 	public boolean canConnect(IBlockAccess w, BlockPos p) {
 		return w.getTileEntity(p) instanceof ISidedInventory || w.getTileEntity(p) instanceof TileEntityItemPipe;
 	}
 	
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
+	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
 		collidingBoxes.add(this.getSelectedBoundingBox(state, worldIn, pos));
 		super.addCollisionBoxToList(state, worldIn, pos, entityBox, collidingBoxes, entityIn);
 	}
@@ -109,18 +109,18 @@ public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, 
 			}
 			
 			return new AxisAlignedBB(anfangX, anfangunten, anfangZ, endeX, anfnagoben, endeZ);
-			}
+		}
 		return FULL_BLOCK_AABB;
 	}
-
+	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
-		   if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)){
-			   tip.add("DONT USE IN DEV");
-		   }else{
-			   tip.add(ChatFormatting.RED + "LSHIFT" + ChatFormatting.GRAY + " for more Information");
-		   }
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+			tip.add("DONT USE IN DEV");
+		} else {
+			tip.add(ChatFormatting.RED + "LSHIFT" + ChatFormatting.GRAY + " for more Information");
+		}
 	}
 	
 }

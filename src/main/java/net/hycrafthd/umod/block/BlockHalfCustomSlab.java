@@ -6,6 +6,7 @@ import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockHalfCustomSlab extends BlockCustomSlab {
 	
+	
 	BlockHalfCustomSlab(IBlockState modelState, String name) {
 		super(modelState, null);
 		this.setUnlocalizedName(name);
@@ -15,7 +16,7 @@ public class BlockHalfCustomSlab extends BlockCustomSlab {
 	public boolean isDouble() {
 		return false;
 	}
-
+	
 	@Override
 	public Comparable<?> getTypeForItem(ItemStack stack) {
 		return null;

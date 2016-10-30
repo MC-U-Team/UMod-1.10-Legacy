@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockEnergy extends ItemBlockBase {
 	
+	
 	public ItemBlockEnergy(Block block) {
 		super(block);
 	}

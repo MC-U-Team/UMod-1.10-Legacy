@@ -7,6 +7,7 @@ import net.minecraft.world.World;
 
 public class UETunnel extends ArrayList<BlockPos> {
 	
+	
 	/**
 	 * 
 	 */
@@ -19,7 +20,8 @@ public class UETunnel extends ArrayList<BlockPos> {
 	}
 	
 	public boolean add(ICabel e) {
-		if(TunnelHolder.contains(e.getPos()))return false;
+		if (TunnelHolder.contains(e.getPos()))
+			return false;
 		e.setTunnelID(this.id);
 		return this.add(e.getPos());
 	}
@@ -29,13 +31,13 @@ public class UETunnel extends ArrayList<BlockPos> {
 		ArrayList<BlockPos> remos = new ArrayList<BlockPos>();
 		for (BlockPos pos : this) {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
-			if(cab == null){
+			if (cab == null) {
 				remos.add(pos);
-			}else if (cab.isOutput()){
+			} else if (cab.isOutput()) {
 				cabs.add(cab);
 			}
 		}
-		for(BlockPos pos : remos){
+		for (BlockPos pos : remos) {
 			this.remove(pos);
 		}
 		ICabel[] outputs = new ICabel[cabs.size()];
@@ -51,7 +53,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 		ArrayList<ICabel> cabs = new ArrayList<ICabel>();
 		for (BlockPos pos : this) {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
-			if (cab.isInput()){
+			if (cab.isInput()) {
 				cabs.add(cab);
 			}
 		}
@@ -82,39 +84,41 @@ public class UETunnel extends ArrayList<BlockPos> {
 		return w;
 	}
 	
-	public void onTick(){
-		if(TunnelHolder.remove(id))return;
+	public void onTick() {
+		if (TunnelHolder.remove(id))
+			return;
 		ICabel[] outs = this.getOutput();
 		ICabel[] inpts = this.getInput();
 		double max = 0;
-		for(ICabel cab : inpts){
-			for(BlockPos p : cab.getInputs()){
+		for (ICabel cab : inpts) {
+			for (BlockPos p : cab.getInputs()) {
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-				if(0 <= pro.getStoredPower() - cab.getRate()){
+				if (0 <= pro.getStoredPower() - cab.getRate()) {
 					pro.getPower(cab.getRate());
 					max += cab.getRate();
-				}else{
+				} else {
 					double d = pro.getStoredPower();
 					pro.getPower(d);
 					max += d;
 				}
 			}
 		}
-		for(ICabel cab : outs){
-			for(BlockPos p : cab.getOutputs()){
+		for (ICabel cab : outs) {
+			for (BlockPos p : cab.getOutputs()) {
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-				if(max <= 0)return;
-				if(pro.getMaximalPower() > pro.getStoredPower() + cab.getRate()){
-					if(max < cab.getRate()){
+				if (max <= 0)
+					return;
+				if (pro.getMaximalPower() > pro.getStoredPower() + cab.getRate()) {
+					if (max < cab.getRate()) {
 						pro.addPower(max);
 						max = 0;
 						return;
 					}
 					pro.addPower(cab.getRate());
 					max -= cab.getRate();
-				}else{
+				} else {
 					double d = pro.getMaximalPower() - pro.getStoredPower();
-					if(max < d){
+					if (max < d) {
 						pro.addPower(max);
 						max = 0;
 						return;
@@ -124,16 +128,17 @@ public class UETunnel extends ArrayList<BlockPos> {
 				}
 			}
 		}
-		if(max > 0){
-			for(ICabel cab : inpts){
-				for(BlockPos p : cab.getInputs()){
+		if (max > 0) {
+			for (ICabel cab : inpts) {
+				for (BlockPos p : cab.getInputs()) {
 					IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-					if(max <= 0)return;
-					if(pro.getMaximalPower() > pro.getStoredPower() + max){
+					if (max <= 0)
+						return;
+					if (pro.getMaximalPower() > pro.getStoredPower() + max) {
 						pro.addPower(max);
 						max = 0;
 						return;
-					}else{
+					} else {
 						double d = pro.getMaximalPower() - pro.getStoredPower();
 						pro.addPower(d);
 						max -= d;

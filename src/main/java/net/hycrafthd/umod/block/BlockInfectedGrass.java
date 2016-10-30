@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 
 public class BlockInfectedGrass extends BlockBase implements IInfectedBlock {
 	
+	
 	public BlockInfectedGrass() {
 		super(Material.GRASS);
 		this.setCreativeTab(UReference.infected);
@@ -35,7 +36,7 @@ public class BlockInfectedGrass extends BlockBase implements IInfectedBlock {
 						BlockPos blockPos1 = pos.add(rand.nextInt(3) - 1, rand.nextInt(5) - 3, rand.nextInt(3) - 1);
 						Block block = worldIn.getBlockState(blockPos1.up()).getBlock();
 						IBlockState iBlockState1 = worldIn.getBlockState(blockPos1);
-						if (iBlockState1.getBlock() == UBlocks.infectedDirt && worldIn.getLightFromNeighbors(blockPos1.up()) >= 4 && block.getLightOpacity(state,worldIn, blockPos1.up()) <= 2) {
+						if (iBlockState1.getBlock() == UBlocks.infectedDirt && worldIn.getLightFromNeighbors(blockPos1.up()) >= 4 && block.getLightOpacity(state, worldIn, blockPos1.up()) <= 2) {
 							BlockPos pBlockPos2 = blockPos1.add(0, 1, 0);
 							if (worldIn.getBlockState(pBlockPos2).getBlock() == Blocks.AIR) {
 								worldIn.setBlockState(blockPos1, UBlocks.infectedGrass.getDefaultState());

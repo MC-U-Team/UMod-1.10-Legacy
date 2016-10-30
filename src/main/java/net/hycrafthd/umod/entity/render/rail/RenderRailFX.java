@@ -10,6 +10,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory<EntityRailFX> {
 	
+	
 	public RenderRailFX(RenderManager r) {
 		super(r);
 	}
