@@ -3,7 +3,6 @@ package net.hycrafthd.umod.render;
 import org.lwjgl.opengl.GL11;
 
 import net.hycrafthd.umod.UMod;
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.gui.GuiRescources;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;

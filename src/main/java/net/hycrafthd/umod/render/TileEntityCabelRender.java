@@ -6,7 +6,6 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.block.BlockCable;
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;
@@ -36,7 +35,7 @@ public class TileEntityCabelRender extends TileRender {
 		if(!w.isRemote)return;
 		GlStateManager.disableCull();
 	    GlStateManager.pushMatrix();
-	    GlStateManager.translate(posX, posY, 100);
+	    GlStateManager.translate(posX, posY, posZ);
 	    ClientProxy.regs.TEST.getInterpretter().draw(Tessellator.getInstance().getBuffer(), new RGBA(Color.RED));
 	    Tessellator.getInstance().draw();
 	    GlStateManager.popMatrix();

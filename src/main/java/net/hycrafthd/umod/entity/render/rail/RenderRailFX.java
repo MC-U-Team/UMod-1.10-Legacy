@@ -2,8 +2,8 @@ package net.hycrafthd.umod.entity.render.rail;
 
 import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.entity.render.RailRenderHelper;
+import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;

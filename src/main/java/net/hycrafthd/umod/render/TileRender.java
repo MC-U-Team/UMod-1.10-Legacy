@@ -1,6 +1,5 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.tileentity.TileEntity;
 

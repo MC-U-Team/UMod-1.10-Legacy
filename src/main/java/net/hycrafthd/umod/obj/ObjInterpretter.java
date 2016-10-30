@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import net.hycrafthd.corelib.util.RGBA;
@@ -37,7 +38,7 @@ public class ObjInterpretter extends FileInputStream{
 		for(String n : args){
 			if(!n.equals(args[0])){
 				String[] vls = n.split(" ");
-				tex.add(new Vec3d(Double.valueOf(vls[0]), Double.valueOf(vls[0]), Double.valueOf(vls[0])));
+				tex.add(new Vec3d(Double.valueOf(vls[0]), Double.valueOf(vls[1]), Double.valueOf(vls[2])));
 			}
 		}
 		}catch(NumberFormatException ex){
@@ -48,13 +49,23 @@ public class ObjInterpretter extends FileInputStream{
 	}
 	
 	public void draw(VertexBuffer v,RGBA rgb) {
-		v.begin(3, DefaultVertexFormats.POSITION_COLOR);
+		v.begin(13, DefaultVertexFormats.POSITION_COLOR);
+		int i = 0;
 		for(Vec3d vs : tex){
+//			if(i % 2 == 0){
 			v.pos(vs.xCoord, vs.yCoord, vs.zCoord).color(rgb.getRed(),rgb.getGreen(),rgb.getBlue(),rgb.getAlpha()).endVertex();
+//			}
+//			System.out.println(i);
+			i++;
 		}
-		Vec3d vs2 = tex.get(1);
-		v.pos(vs2.xCoord, vs2.yCoord, vs2.zCoord).color(rgb.getRed(),rgb.getGreen(),rgb.getBlue(),rgb.getAlpha()).endVertex();
-
+//		i = 0;
+		/*for(Vec3d vs : tex){
+//			if(i % 2 != 0){
+				v.pos(vs.xCoord, vs.yCoord, vs.zCoord).color(rgb.getRed(),rgb.getGreen(),rgb.getBlue(),rgb.getAlpha()).endVertex();
+//			}
+			System.out.println(i);
+//			i++;
+		}*/
 	}
 	
 }

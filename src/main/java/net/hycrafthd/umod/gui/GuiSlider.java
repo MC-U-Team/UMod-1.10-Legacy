@@ -2,9 +2,9 @@ package net.hycrafthd.umod.gui;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.*;
+import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;

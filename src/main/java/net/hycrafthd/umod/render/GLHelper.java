@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.entity.render;
+package net.hycrafthd.umod.render;
 
 import java.awt.image.BufferedImage;
 import java.io.*;

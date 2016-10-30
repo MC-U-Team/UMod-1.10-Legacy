@@ -5,12 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import net.hycrafthd.umod.api.ProcessHandler;
-import net.hycrafthd.umod.entity.render.GLHelper;
 import net.hycrafthd.umod.event.*;
 import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.obj.ObjInterpretter;
+import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.fml.common.Mod;
