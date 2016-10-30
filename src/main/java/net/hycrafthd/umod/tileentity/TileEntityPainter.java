@@ -11,7 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraft.util.*;
 
-public class TileEntityPainter extends TileEntityBase implements ITickable ,ISliderEntry, IWorldView{
+public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView {
+	
 	
 	private ItemStack[] stack = new ItemStack[6];
 	
@@ -213,11 +214,11 @@ public class TileEntityPainter extends TileEntityBase implements ITickable ,ISli
 	
 	@Override
 	public void update() {
-		if(this.getStackInSlot(3) != null){
-			if(this.getStackInSlot(3).getItem() instanceof ItemBackPack){
-			ColorUtils.setColor(this.getStackInSlot(3), new RGBA(this.getValueFromId(0),this.getValueFromId(1),this.getValueFromId(2),this.getValueFromId(3)).toAWTColor().getRGB());
+		if (this.getStackInSlot(3) != null) {
+			if (this.getStackInSlot(3).getItem() instanceof ItemBackPack) {
+				ColorUtils.setColor(this.getStackInSlot(3), new RGBA(this.getValueFromId(0), this.getValueFromId(1), this.getValueFromId(2), this.getValueFromId(3)).toAWTColor().getRGB());
 			}
-//			if(Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) != null && Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) instanceof BlockConduit){}
+			// if(Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) != null && Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) instanceof BlockConduit){}
 		}
 	}
 	
@@ -240,34 +241,34 @@ public class TileEntityPainter extends TileEntityBase implements ITickable ,ISli
 	public boolean productsPower() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isInput() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isOutput() {
 		return true;
 	}
 	
-	public int[] ids = {0,0,0,100};
-
+	public int[] ids = { 0, 0, 0, 100 };
+	
 	@Override
 	public void storeValueForId(int id, int vl) {
-		   ids[id] = vl;
+		ids[id] = vl;
 	}
-
+	
 	@Override
 	public int getValueFromId(int id) {
 		return ids[id];
 	}
-
+	
 	@Override
 	public boolean showPower() {
 		return true;
 	}
-
+	
 	@Override
 	public String[] textToAdd() {
 		return null;

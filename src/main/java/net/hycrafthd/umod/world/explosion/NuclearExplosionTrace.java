@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 
 public class NuclearExplosionTrace implements IProcess {
 	
+	
 	private World worldObj;
 	private int xCoord;
 	private int yCoord;

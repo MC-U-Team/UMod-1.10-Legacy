@@ -6,6 +6,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class ModelInfectedCreeper extends ModelBase {
 	
+	
 	// fields
 	ModelRenderer headleft;
 	ModelRenderer headright;

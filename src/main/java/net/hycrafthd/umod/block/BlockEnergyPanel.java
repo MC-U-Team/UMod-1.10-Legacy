@@ -14,10 +14,10 @@ import net.minecraft.world.*;
 
 public class BlockEnergyPanel extends BlockBaseMachine {
 	
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-    		EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-    	if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() instanceof ItemEnergyDisplay && playerIn.getHeldItemMainhand().getTagCompound() != null && playerIn.getHeldItemMainhand().getTagCompound().hasKey(ItemEnergyDisplay.NBT_TAG)) {
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (playerIn.getHeldItemMainhand() != null && playerIn.getHeldItemMainhand().getItem() instanceof ItemEnergyDisplay && playerIn.getHeldItemMainhand().getTagCompound() != null && playerIn.getHeldItemMainhand().getTagCompound().hasKey(ItemEnergyDisplay.NBT_TAG)) {
 			TileEntityEnergyPannel pan = (TileEntityEnergyPannel) worldIn.getTileEntity(pos);
 			pan.setStack(playerIn, playerIn.getHeldItemMainhand());
 			return true;
@@ -40,8 +40,7 @@ public class BlockEnergyPanel extends BlockBaseMachine {
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
-			EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return false;
 	}
 }

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class ExtendedGuiButton extends GuiButton {
 	
+	
 	private StringMethod ret = null;
 	private int color = 0xFFFFFF;
 	

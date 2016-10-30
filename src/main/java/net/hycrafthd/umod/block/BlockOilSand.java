@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 
 public class BlockOilSand extends BlockFalling implements IInfectedBlock {
 	
+	
 	public BlockOilSand() {
 		super(Material.SAND);
 		this.setCreativeTab(UReference.blocks);
@@ -20,6 +21,5 @@ public class BlockOilSand extends BlockFalling implements IInfectedBlock {
 	public Block getNormalBlock() {
 		return Blocks.SAND;
 	}
-	
 	
 }

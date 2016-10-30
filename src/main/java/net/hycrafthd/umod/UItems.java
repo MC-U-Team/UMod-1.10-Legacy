@@ -6,13 +6,14 @@ import net.minecraft.item.Item;
 
 public class UItems {
 	
+	
 	// Ingot
 	public static Item ingots;
 	
 	// Dust
 	public static Item dusts;
 	public static Item manganoxid;
-	//magic
+	// magic
 	public static Item magic_diamond;
 	public static Item magic_ingot;
 	public static Item charged_quartz;
@@ -61,7 +62,7 @@ public class UItems {
 		dusts = new ItemDusts().setUnlocalizedName("dusts");
 		manganoxid = new ItemManganOxid().setUnlocalizedName("manganoxid");
 		
-		//magic
+		// magic
 		magic_diamond = new ItemMagicDiamond().setUnlocalizedName("magic_diamond");
 		magic_ingot = new ItemMagicIngot().setUnlocalizedName("magic_ingot");
 		charged_quartz = new ItemChargedQuartz().setUnlocalizedName("charged_quartz");
@@ -108,7 +109,7 @@ public class UItems {
 		URegistryUtils.registerItem(dusts);
 		URegistryUtils.registerItem(manganoxid);
 		
-		//magic
+		// magic
 		URegistryUtils.registerItem(magic_diamond);
 		URegistryUtils.registerItem(magic_ingot);
 		URegistryUtils.registerItem(charged_quartz);

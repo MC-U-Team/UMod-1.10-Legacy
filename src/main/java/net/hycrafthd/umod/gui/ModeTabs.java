@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 @SuppressWarnings("deprecation")
 public abstract class ModeTabs extends Gui {
 	
+	
 	private ItemStack stack;
 	private String name;
 	private Mode mode;

@@ -9,6 +9,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class UTools {
 	
+	
 	public static ToolMaterial emeraldToolMaterial;
 	public static ToolMaterial magicToolMaterial;
 	
@@ -44,7 +45,7 @@ public class UTools {
 		magicSword = new ItemMagicSword(magicToolMaterial).setUnlocalizedName("magic_sword");
 		magicHoe = new ItemMagicHoe(magicToolMaterial).setUnlocalizedName("magic_hoe");
 		magicShovel = new ItemMagicShovel(magicToolMaterial).setUnlocalizedName("magic_shovel");
-
+		
 		UMod.log.debug("Init Tools");
 	}
 	
@@ -59,7 +60,7 @@ public class UTools {
 		URegistryUtils.registerItem(magicSword);
 		URegistryUtils.registerItem(magicShovel);
 		URegistryUtils.registerItem(magicHoe);
-
+		
 		UMod.log.debug("Register Tools");
 	}
 	

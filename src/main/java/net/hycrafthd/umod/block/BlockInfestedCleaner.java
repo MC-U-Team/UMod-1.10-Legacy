@@ -15,6 +15,7 @@ import net.minecraft.world.chunk.Chunk;
 
 public class BlockInfestedCleaner extends BlockBase {
 	
+	
 	public BlockInfestedCleaner() {
 		super(Material.IRON);
 		this.setHarvestLevel("pickaxe", 2);
@@ -73,6 +74,7 @@ public class BlockInfestedCleaner extends BlockBase {
 			// world.setBlockState(new BlockPos(x2, blockPos.getY(), z2), Blocks.diamond_block.getDefaultState());
 			
 			new Thread() {
+				
 				
 				@Override
 				public void run() {

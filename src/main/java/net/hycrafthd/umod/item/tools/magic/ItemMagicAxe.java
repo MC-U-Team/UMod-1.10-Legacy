@@ -7,13 +7,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.relauncher.*;
 
-public class ItemMagicAxe extends ItemAxe{
-
+public class ItemMagicAxe extends ItemAxe {
+	
+	
 	public ItemMagicAxe(ToolMaterial material) {
-		super(material,material.getDamageVsEntity(),0);
+		super(material, material.getDamageVsEntity(), 0);
 		setCreativeTab(UReference.magic);
 	}
-
+	
 	@SuppressWarnings("rawtypes")
 	@SideOnly(Side.CLIENT)
 	@Override

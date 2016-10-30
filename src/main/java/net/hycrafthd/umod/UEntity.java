@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class UEntity {
 	
+	
 	public UEntity() {
 		register();
 	}
@@ -17,13 +18,13 @@ public class UEntity {
 		reg(EntityInfectedCow.class, "InfectedCow", 16, 1, true);
 		reg(EntityInfectedCreeper.class, "InfectedCreeper", 24, 1, true);
 		reg(EntityNukePrimed.class, "PrimedNuke", 16, 1, true);
-		reg(EntityInfectedZombie.class, "InfectedZombie", 24, 1,true);
-		reg(EntityRailFX.class, "SWELL", 16, 1,false);
-		reg(EntityFX.class, "TileFX", 16, 1,false);
+		reg(EntityInfectedZombie.class, "InfectedZombie", 24, 1, true);
+		reg(EntityRailFX.class, "SWELL", 16, 1, false);
+		reg(EntityFX.class, "TileFX", 16, 1, false);
 		UMod.log.debug("Register Entitys");
 	}
 	
-	public void reg(Class<? extends Entity> clZZ,String name,int r,int hz,boolean up,int sc,int spc,boolean hegg){
+	public void reg(Class<? extends Entity> clZZ, String name, int r, int hz, boolean up, int sc, int spc, boolean hegg) {
 		EntityRegistry.registerModEntity(clZZ, name, ids, UReference.modid, r, hz, up);
 		if (hegg) {
 			EntityRegistry.registerEgg(clZZ, sc, spc);
@@ -31,7 +32,7 @@ public class UEntity {
 		ids++;
 	}
 	
-	public void reg(Class<? extends Entity> clZZ,String name,int r,int hz,boolean up){
-		reg(clZZ, name, r, hz, up,0,0,false);
+	public void reg(Class<? extends Entity> clZZ, String name, int r, int hz, boolean up) {
+		reg(clZZ, name, r, hz, up, 0, 0, false);
 	}
 }

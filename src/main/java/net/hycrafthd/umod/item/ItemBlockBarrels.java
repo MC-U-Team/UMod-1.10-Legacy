@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockBarrels extends ItemBlockSubBase {
 	
+	
 	public ItemBlockBarrels(Block block) {
 		super(block);
 	}

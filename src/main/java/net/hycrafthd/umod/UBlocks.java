@@ -10,6 +10,7 @@ import net.minecraft.item.EnumDyeColor;
 
 public class UBlocks {
 	
+	
 	// Ores
 	public static Block ores, netherores;
 	// Blocks
@@ -40,7 +41,7 @@ public class UBlocks {
 	public static Block low_voltage_cable;
 	
 	public static Block itempipe_normal;
-	//magic crafter
+	// magic crafter
 	public static Block magic_crafter;
 	public static Block magic_glass;
 	// Normal Blocks
@@ -68,7 +69,7 @@ public class UBlocks {
 	}
 	
 	private void init() {
-		//magic crafter
+		// magic crafter
 		magic_crafter = new BlockMagicCrafter().setUnlocalizedName("magic_crafter");
 		magic_glass = new BlockMagicGlass().setUnlocalizedName("magic_glass");
 		// Ore
@@ -146,7 +147,7 @@ public class UBlocks {
 		URegistryUtils.registerBlock(netherores, ItemBlockOres.class);
 		// Blocks
 		URegistryUtils.registerBlock(blocks, ItemBlockBlocks.class);
-		//Magic
+		// Magic
 		URegistryUtils.registerBlock(magic_crafter);
 		URegistryUtils.registerBlock(magic_glass);
 		// Machinery

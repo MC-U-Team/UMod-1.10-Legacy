@@ -14,6 +14,7 @@ import net.minecraft.util.math.*;
 
 public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBoundsProvider {
 	
+	
 	private ItemStack stack = null;
 	private BlockPos po = null;
 	private double viewpointY = 0;
@@ -21,7 +22,7 @@ public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBo
 	public void setStack(EntityPlayer pl, ItemStack stack) {
 		if (this.stack != null) {
 			pl.inventory.addItemStackToInventory(this.stack);
-//			pl.worldObj.playSoundAtEntity(pl, "random.pop", 0.2F, ((pl.getRNG().nextFloat() - pl.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+			// pl.worldObj.playSoundAtEntity(pl, "random.pop", 0.2F, ((pl.getRNG().nextFloat() - pl.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
 		}
 		this.stack = stack;
 	}

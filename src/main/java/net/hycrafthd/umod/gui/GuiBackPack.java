@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiBackPack extends GuiContainer {
 	
+	
 	private ResourceLocation texture_small = new GuiRescources("backpack/small.png");
 	private ResourceLocation texture_medium = new GuiRescources("backpack/medium.png");
 	private ResourceLocation texture_big = new GuiRescources("backpack/big.png");

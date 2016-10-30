@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class URegistryUtils {
 	
+	
 	public static double getDistanceAtoB(double x1, double z1, double x2, double z2) {
 		double dx = x1 - x2;
 		double dz = z1 - z2;
@@ -40,8 +41,8 @@ public class URegistryUtils {
 		GameRegistry.registerBlock(doubleSlab, null, doubleSlab.getUnlocalizedName().substring(5), slab, doubleSlab);
 		OreDictionaryRegistry.register(slab);
 	}
-
-	public static void registerEntity(){
+	
+	public static void registerEntity() {
 		
 	}
 }

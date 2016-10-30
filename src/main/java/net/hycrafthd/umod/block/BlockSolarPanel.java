@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IEnergyMessage {
 	
+	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeSolarPanel.class);
 	
 	public BlockSolarPanel() {
@@ -76,8 +77,7 @@ public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, I
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (worldIn.isRemote) {
 			playerIn.openGui(UReference.modid, EnumTypeGui.SOLARPANEL.getID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
@@ -93,7 +93,7 @@ public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, I
 	public boolean isFullBlock(IBlockState s) {
 		return true;
 	}
-
+	
 	@Override
 	public boolean isFullCube(IBlockState s) {
 		return true;

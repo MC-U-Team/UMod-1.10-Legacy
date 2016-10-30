@@ -11,6 +11,7 @@ import net.minecraft.util.EnumFacing;
 
 public class TileEntityChargeStation extends TileEntityBase implements IPowerProvieder {
 	
+	
 	private ItemStack stack = null;
 	
 	@Override
@@ -135,13 +136,13 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public void update() {
-//		if (stack != null && stack.getItemDamage() > 0 && this.canAddPower(pos, 2) && mode) {
-//			stack.setItemDamage(stack.getItemDamage() + 2);
-//			stored += 2;
-//		} else if (!mode && stack != null && stack.getItemDamage() < stack.getMaxDamage() && stored - 2 >= 0) {
-//			stored -= 2;
-//			stack.setItemDamage(stack.getItemDamage() - 2);
-//		}
+		// if (stack != null && stack.getItemDamage() > 0 && this.canAddPower(pos, 2) && mode) {
+		// stack.setItemDamage(stack.getItemDamage() + 2);
+		// stored += 2;
+		// } else if (!mode && stack != null && stack.getItemDamage() < stack.getMaxDamage() && stored - 2 >= 0) {
+		// stored -= 2;
+		// stack.setItemDamage(stack.getItemDamage() - 2);
+		// }
 	}
 	
 	public void setMode(boolean m) {
@@ -250,19 +251,19 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	public boolean productsPower() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isInput() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public boolean isOutput() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
 		ItemStack s = stack;

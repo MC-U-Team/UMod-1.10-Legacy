@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 
 public class UGuiHandler implements ICustomGuiHandler {
 	
+	
 	@SuppressWarnings("incomplete-switch")
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -75,7 +76,7 @@ public class UGuiHandler implements ICustomGuiHandler {
 		case PAINTER:
 			return new GuiPainter(player, (IInventory) ent, new ContainerPainter((IInventory) ent, player, world));
 		case MAGIC_CRAFTER:
-			return new GuiMagicCrafter(player,(IInventory)ent,new ContainerMagicCrafter((IInventory) ent, player, p, world));
+			return new GuiMagicCrafter(player, (IInventory) ent, new ContainerMagicCrafter((IInventory) ent, player, p, world));
 		}
 		return null;
 		

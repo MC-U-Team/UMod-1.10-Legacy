@@ -7,13 +7,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.relauncher.*;
 
-public class ItemMagicShovel extends ItemSpade{
-
+public class ItemMagicShovel extends ItemSpade {
+	
+	
 	public ItemMagicShovel(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.magic);
 	}
-
+	
 	@SuppressWarnings("rawtypes")
 	@SideOnly(Side.CLIENT)
 	@Override

@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 
 public class ItemBlockBase extends ItemBlock {
 	
+	
 	public ItemBlockBase(Block block) {
 		super(block);
 		this.setFull3D();
@@ -18,8 +19,8 @@ public class ItemBlockBase extends ItemBlock {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-		if(this.block instanceof IBlockInformation){
-			((IBlockInformation)this.block).addInformation(stack, player, tooltip, advanced);
+		if (this.block instanceof IBlockInformation) {
+			((IBlockInformation) this.block).addInformation(stack, player, tooltip, advanced);
 			return;
 		}
 		UReference.proxy.addTooltip(stack, player, tooltip, advanced);

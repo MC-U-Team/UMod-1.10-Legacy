@@ -14,10 +14,11 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiPulverizer extends GuiBase {
 	
+	
 	public BlockPos pos;
 	
 	public GuiPulverizer(EntityPlayer pl, IInventory tile, World w, BlockPos pos) {
-		super(new GuiRescources("pulver.png"),pl, tile, new ContainerPulverizer(tile, pl, w));
+		super(new GuiRescources("pulver.png"), pl, tile, new ContainerPulverizer(tile, pl, w));
 		this.pos = pos;
 	}
 	
@@ -25,6 +26,7 @@ public class GuiPulverizer extends GuiBase {
 	public void initGui() {
 		super.initGui();
 		box.setOnListClicked(new Runnable() {
+			
 			
 			@Override
 			public void run() {
@@ -54,10 +56,10 @@ public class GuiPulverizer extends GuiBase {
 		box2.getItems().add("Outputs");
 		box2.setSelected(0);
 	}
-
+	
 	@Override
 	public void onIOModeSwitched() {
-  		
+		
 	}
 	
 }

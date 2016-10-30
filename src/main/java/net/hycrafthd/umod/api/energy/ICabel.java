@@ -4,7 +4,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public interface ICabel {
-			
+	
+	
 	public BlockPos getPos();
 	
 	public World getWorld();
@@ -12,7 +13,7 @@ public interface ICabel {
 	public boolean isInput();
 	
 	public boolean isOutput();
-		
+	
 	public String getEnergyClass();
 	
 	public void addToTunnel(ICabel cab);
@@ -22,7 +23,7 @@ public interface ICabel {
 	public ICabel[] getInputsFromTunnel();
 	
 	public int getTunnelIDofCabel();
-		
+	
 	public UETunnel getTunnel();
 	
 	public void setTunnelID(int i);

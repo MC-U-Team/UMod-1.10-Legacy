@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 
 public class BlockPulverizer extends BlockBaseMachine implements IEnergyMessage {
 	
+	
 	public BlockPulverizer() {
 		super();
 	}
@@ -26,8 +27,7 @@ public class BlockPulverizer extends BlockBaseMachine implements IEnergyMessage 
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!worldIn.isRemote) {
 			playerIn.openGui(UReference.modid, EnumTypeGui.PULVERISER.getID(), worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}

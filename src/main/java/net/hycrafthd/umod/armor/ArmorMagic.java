@@ -8,17 +8,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 
-public class ArmorMagic extends ItemArmor{
-
+public class ArmorMagic extends ItemArmor {
+	
+	
 	public ArmorMagic(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.magic);
-
+		
 	}
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot s, String type) {
-		switch(s){
+		switch (s) {
 		case CHEST:
 		case FEET:
 		case LEGS:
@@ -36,7 +37,5 @@ public class ArmorMagic extends ItemArmor{
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
 		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
 	}
-	
-	
 	
 }

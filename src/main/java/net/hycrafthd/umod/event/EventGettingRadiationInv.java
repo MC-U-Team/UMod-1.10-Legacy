@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventGettingRadiationInv {
 	
+	
 	public static final String TAG_MAIN = UReference.name;
 	public static final String TAG_INFECTED = "isInfected";
 	

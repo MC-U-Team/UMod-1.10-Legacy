@@ -9,7 +9,8 @@ import net.minecraft.world.World;
 
 public class ContainerMagicCrafter extends ContainerBase {
 	
-	public ContainerMagicCrafter(IInventory inv, EntityPlayer pl,BlockPos p, World wo) {
+	
+	public ContainerMagicCrafter(IInventory inv, EntityPlayer pl, BlockPos p, World wo) {
 		super(inv, pl, p, wo);
 		int i = -18;
 		int j;

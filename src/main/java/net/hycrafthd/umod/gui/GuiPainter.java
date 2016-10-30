@@ -9,6 +9,7 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.ISliderPro;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
+import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -16,7 +17,8 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 
-public class GuiPainter extends GuiBase implements ISliderPro{
+public class GuiPainter extends GuiBase implements ISliderPro {
+	
 	
 	public GuiPainter(EntityPlayer pl, IInventory tile, Container con) {
 		super(new GuiRescources("painter.png"), new GuiRescources("battery.png"), new GuiRescources("IOMode.png"), pl, tile, con);
@@ -28,32 +30,36 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 		super.initGui();
 		int x = this.guiLeft + 36;
 		int y = this.guiTop;
-		red = new GuiSlider(x, y + 11, new RGBA(Color.red).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 0,pos);
+		red = new GuiSlider(x, y + 11, new RGBA(Color.red).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 0, pos);
 		red.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Red Color: " + red.getValue();
 			}
 		});
-		green = new GuiSlider(x, y + 32, new RGBA(Color.green).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 1,pos);
+		green = new GuiSlider(x, y + 32, new RGBA(Color.green).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 1, pos);
 		green.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Green Color: " + green.getValue();
 			}
 		});
-		blue = new GuiSlider(x, y + 53, new RGBA(Color.blue).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 2,pos);
+		blue = new GuiSlider(x, y + 53, new RGBA(Color.blue).setAlpha(155), new RGBA(Color.black), new RGBA(Color.WHITE), 2, pos);
 		blue.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
 				return "Blue Color: " + blue.getValue();
 			}
 		});
-		sat = new GuiSlider(x, y + 67, new RGBA(Color.WHITE).setAlpha(155), new RGBA(Color.black).setAlpha(155), new RGBA(Color.WHITE).setAlpha(155), 3,pos);
+		sat = new GuiSlider(x, y + 67, new RGBA(Color.WHITE).setAlpha(155), new RGBA(Color.black).setAlpha(155), new RGBA(Color.WHITE).setAlpha(155), 3, pos);
 		sat.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {
@@ -72,7 +78,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 			green.draw(mc);
 			blue.draw(mc);
 			sat.draw(mc);
-			IMPL_LWJGLU.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
+			this.help.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
 			if (Keyboard.isKeyDown(ClientProxy.info.getKeyCode())) {
 				red.drawOverlay(mc, mouseX, mouseY);
 				green.drawOverlay(mc, mouseX, mouseY);
@@ -84,7 +90,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 					String redd = "Red: " + red.getValue();
 					String greend = "Green: " + green.getValue();
 					int with = Math.max(Math.max(rend.getStringWidth(redd), rend.getStringWidth(greend)), rend.getStringWidth(blued));
-					IMPL_LWJGLU.drawGradientRect(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
+					this.help.drawGradientRect(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
 					rend.drawString(redd, mouseX + 6, mouseY + 6, 0xFF0000);
 					rend.drawString(greend, mouseX + 6, mouseY + 22, 0x00FF00);
 					rend.drawString(blued, mouseX + 6, mouseY + 38, 0x0000FF);
@@ -130,7 +136,7 @@ public class GuiPainter extends GuiBase implements ISliderPro{
 	public void onMouseClickMoved(int mouseX, int mouseY) {
 		handelMouseInput(mouseX, mouseY);
 	}
-
+	
 	@Override
 	public void set(int id, int val) {
 		switch (id) {

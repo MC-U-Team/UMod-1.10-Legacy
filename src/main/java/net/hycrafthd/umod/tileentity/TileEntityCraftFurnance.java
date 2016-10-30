@@ -12,6 +12,7 @@ import net.minecraft.util.EnumFacing;
 
 public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ISignable {
 	
+	
 	public ItemStack[] stack = new ItemStack[11];
 	
 	@Override
@@ -61,8 +62,6 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 			return null;
 		}
 	}
-	
-	
 	
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
@@ -206,19 +205,19 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	public boolean productsPower() {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isInput() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public boolean isOutput() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
 		if (this.stack[index] != null) {

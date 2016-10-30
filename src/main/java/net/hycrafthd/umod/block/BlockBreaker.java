@@ -13,8 +13,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockBreaker extends BlockBase{
-
+public class BlockBreaker extends BlockBase {
+	
+	
 	public static final PropertyEnum FACING = PropertyEnum.create("type", EnumFacing.class);
 	
 	public BlockBreaker() {
@@ -23,19 +24,17 @@ public class BlockBreaker extends BlockBase{
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
-			ItemStack stack) {
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
 		placer.getHorizontalFacing().getOpposite();
 	}
 	
 	@Override
-	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-	{
-	    worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
+		worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
 	}
-	 
-	 @Override
+	
+	@Override
 	public int tickRate(World worldIn) {
 		return 10;
 	}
@@ -43,22 +42,22 @@ public class BlockBreaker extends BlockBase{
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
 		System.out.println("s");
-		if(worldIn.isBlockPowered(pos)){
+		if (worldIn.isBlockPowered(pos)) {
 			EnumFacing type = (EnumFacing) state.getValue(FACING);
-//			BlockPos po = DirectionUtils.getPosfromFacing(type, pos);
-//			IBlockState st = worldIn.getBlockState(po);
-//			if(worldIn.getBlockState(po) != null && !(st.getBlock() instanceof BlockAir)){
-//			worldIn.setBlockToAir(po);
-//			worldIn.playSound(po.getX(), po.getY(), po.getZ(), s.soundName, s.volume, s.frequency, true);
-//			spawnAsEntity(worldIn, po, new ItemStack(st.getBlock(),1,st.getBlock().getMetaFromState(st)));
-//			System.out.println("Hollo");
-//			}
+			// BlockPos po = DirectionUtils.getPosfromFacing(type, pos);
+			// IBlockState st = worldIn.getBlockState(po);
+			// if(worldIn.getBlockState(po) != null && !(st.getBlock() instanceof BlockAir)){
+			// worldIn.setBlockToAir(po);
+			// worldIn.playSound(po.getX(), po.getY(), po.getZ(), s.soundName, s.volume, s.frequency, true);
+			// spawnAsEntity(worldIn, po, new ItemStack(st.getBlock(),1,st.getBlock().getMetaFromState(st)));
+			// System.out.println("Hollo");
+			// }
 		}
 	}
-
+	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing type = DirectionUtils.getFacingFromShort((short)meta);
+		EnumFacing type = DirectionUtils.getFacingFromShort((short) meta);
 		return this.getDefaultState().withProperty(FACING, type);
 	}
 	

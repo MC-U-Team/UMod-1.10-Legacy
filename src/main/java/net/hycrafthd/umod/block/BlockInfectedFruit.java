@@ -15,20 +15,21 @@ import scala.actors.threadpool.Arrays;
 
 public class BlockInfectedFruit extends BlockBase implements IInfectedBlock {
 	
+	
 	public BlockInfectedFruit() {
 		super(Material.PLANTS);
-		//this.setBlockBounds(5.5F / 16F, 7.5F / 16F, 5.5F / 16F, 10.5F / 16F, 16F / 16F, 10.5F / 16F);
+		// this.setBlockBounds(5.5F / 16F, 7.5F / 16F, 5.5F / 16F, 10.5F / 16F, 16F / 16F, 10.5F / 16F);
 		this.setCreativeTab(UReference.infected);
 	}
 	
 	@Override
 	public void onNeighborChange(IBlockAccess w, BlockPos pos, BlockPos neighbor) {
-		if(w instanceof World){
+		if (w instanceof World) {
 			World world = (World) w;
-		    if (world.isAirBlock(pos.up())) {
-			    this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
-			    world.setBlockToAir(pos);
-		    }
+			if (world.isAirBlock(pos.up())) {
+				this.dropBlockAsItem(world, pos, world.getBlockState(pos), 0);
+				world.setBlockToAir(pos);
+			}
 		}
 		super.onNeighborChange(w, pos, neighbor);
 	}

@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class ExtendedFontRender extends FontRenderer {
 	
+	
 	public ExtendedFontRender() {
 		super(Minecraft.getMinecraft().gameSettings, new ResourceLocation("textures/font/ascii.png"), Minecraft.getMinecraft().getTextureManager(), false);
 	}

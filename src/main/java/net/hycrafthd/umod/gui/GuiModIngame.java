@@ -23,6 +23,7 @@ import net.minecraft.world.World;
 @SuppressWarnings("deprecation")
 public class GuiModIngame {
 	
+	
 	private static int ticks = 0;
 	public static ScaledResolution res;
 	
@@ -36,7 +37,7 @@ public class GuiModIngame {
 			EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 			if (pl != null && pl.getHeldItemMainhand() != null && (pl.getHeldItemMainhand().getItem() instanceof ItemEnergyDisplay) && pl.getHeldItemMainhand().hasTagCompound() && pl.getHeldItemMainhand().getTagCompound().hasKey(ItemEnergyDisplay.NBT_TAG) && (pl.openContainer == null || pl.openContainer instanceof ContainerPlayer)) {
 				drawScreen(pl);
-			}else{
+			} else {
 				tT = 0;
 			}
 		} catch (Exception e) {
@@ -77,34 +78,34 @@ public class GuiModIngame {
 			GlStateManager.pushMatrix();
 			{
 				GlStateManager.translate(screenwidth / 2, height, 0);
-				GlStateManager.scale(tT/4000, 1, 1);
+				GlStateManager.scale(tT / 4000, 1, 1);
 				rend.drawStringWithShadow(name, -rend.getStringWidth(name) / 2, -14, 0xFFFFFF);
 				rend.drawStringWithShadow(str, -rend.getStringWidth(str) / 2, -1, 0xFFFFFF);
 				rend.drawStringWithShadow(energy, -rend.getStringWidth(energy) / 2, 9, 0xFFFFFF);
 				rend.drawStringWithShadow(stat, -rend.getStringWidth(stat) / 2, 19, 0xFFFFFF);
-				if(tT < 4000){
+				if (tT < 4000) {
 					rend.drawStringWithShadow(pos, -rend.getStringWidth(pos) / 2, 150, 0xFFFFFF);
 					tT++;
 				}
 			}
 			GlStateManager.popMatrix();
 			
-			if(tT >= 4000){
-			GlStateManager.pushMatrix();
-			{
-				RenderHelper.enableGUIStandardItemLighting();
-				GlStateManager.color(1, 1, 1);
-				GlStateManager.translate(width, height, 0);
-				renderItemIntoGUI(new ItemStack(w.getBlockState(p).getBlock()), -10, -40);
-			}
-			GlStateManager.popMatrix();
+			if (tT >= 4000) {
+				GlStateManager.pushMatrix();
+				{
+					RenderHelper.enableGUIStandardItemLighting();
+					GlStateManager.color(1, 1, 1);
+					GlStateManager.translate(width, height, 0);
+					renderItemIntoGUI(new ItemStack(w.getBlockState(p).getBlock()), -10, -40);
+				}
+				GlStateManager.popMatrix();
 			}
 			
 		} else {
 			GlStateManager.pushMatrix();
 			GlStateManager.enableDepth();
 			GlStateManager.translate(width, height, 0);
-			//GlStateManager.scale(tT/400, 1, 1);
+			// GlStateManager.scale(tT/400, 1, 1);
 			rend.drawStringWithShadow("Out of range", -rend.getStringWidth("Out of range") / 2, -14, 0xFFFFFF);
 			GlStateManager.popMatrix();
 		}
@@ -148,7 +149,7 @@ public class GuiModIngame {
 		GlStateManager.blendFunc(770, 771);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		setupGuiTransform(x, y, ibakedmodel.isGui3d());
-		ibakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(ibakedmodel, ItemCameraTransforms.TransformType.GUI,false);
+		ibakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(ibakedmodel, ItemCameraTransforms.TransformType.GUI, false);
 		renderItem(stack, ibakedmodel);
 		GlStateManager.disableAlpha();
 		GlStateManager.disableRescaleNormal();
@@ -212,23 +213,23 @@ public class GuiModIngame {
 		GlStateManager.enableLighting();
 		GlStateManager.depthFunc(515);
 		GlStateManager.depthMask(true);
-//		Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+		// Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
 	}
 	
 	private static void renderModel(IBakedModel model, int color, ItemStack stack) {
 		Tessellator tessellator = Tessellator.getInstance();
-//		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-//		worldrenderer.startDrawingQuads();
-//		worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
+		// WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		// worldrenderer.startDrawingQuads();
+		// worldrenderer.setVertexFormat(DefaultVertexFormats.ITEM);
 		EnumFacing[] aenumfacing = EnumFacing.values();
 		int j = aenumfacing.length;
 		
 		for (int k = 0; k < j; ++k) {
 			EnumFacing enumfacing = aenumfacing[k];
-//			renderQuads(worldrenderer, model.getFaceQuads(enumfacing), color, stack);
+			// renderQuads(worldrenderer, model.getFaceQuads(enumfacing), color, stack);
 		}
 		
-//		renderQuads(worldrenderer, model.getGeneralQuads(), color, stack);
+		// renderQuads(worldrenderer, model.getGeneralQuads(), color, stack);
 		tessellator.draw();
 	}
 	
@@ -243,7 +244,7 @@ public class GuiModIngame {
 			j = color;
 			
 			if (flag && bakedquad.hasTintIndex()) {
-//				j = stack.getItem().getColorFromItemStack(stack, bakedquad.getTintIndex());
+				// j = stack.getItem().getColorFromItemStack(stack, bakedquad.getTintIndex());
 				
 				if (EntityRenderer.anaglyphEnable) {
 					j = TextureUtil.anaglyphColor(j);
@@ -256,11 +257,11 @@ public class GuiModIngame {
 	
 	private static void renderQuad(VertexBuffer renderer, BakedQuad quad, int color) {
 		renderer.addVertexData(quad.getVertexData());
-//		if (quad instanceof net.minecraftforge.client.model.IColoredBakedQuad)
-			net.minecraftforge.client.ForgeHooksClient.putQuadColor(renderer, quad, color);
-//		else
-			renderer.putColor4(color);
-//		putQuadNormal(renderer, quad);
+		// if (quad instanceof net.minecraftforge.client.model.IColoredBakedQuad)
+		net.minecraftforge.client.ForgeHooksClient.putQuadColor(renderer, quad, color);
+		// else
+		renderer.putColor4(color);
+		// putQuadNormal(renderer, quad);
 	}
 	
 	private static void putQuadNormal(VertexBuffer renderer, BakedQuad quad) {

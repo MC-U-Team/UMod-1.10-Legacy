@@ -7,22 +7,23 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
 public class EntityFX extends EntityHanging {
-		
+	
+	
 	public EntityFX(World w) {
 		super(w);
 		this.setSize(1F, 1F);
-        this.facingDirection = EnumFacing.NORTH;
+		this.facingDirection = EnumFacing.NORTH;
 	}
 	
-	public EntityFX(World worldIn,BlockPos p) {
-		super(worldIn,p);
+	public EntityFX(World worldIn, BlockPos p) {
+		super(worldIn, p);
 		this.setSize(1F, 1F);
-        this.setPosition((double)p.getX() + 0.5D, (double)p.getY() + 0.5D, (double)p.getZ() + 0.5D);
-        this.setEntityBoundingBox(new AxisAlignedBB(p, p.add(1, 1, 1)));
-        this.setRotation(0, 180);
-        this.facingDirection = EnumFacing.NORTH;
+		this.setPosition((double) p.getX() + 0.5D, (double) p.getY() + 0.5D, (double) p.getZ() + 0.5D);
+		this.setEntityBoundingBox(new AxisAlignedBB(p, p.add(1, 1, 1)));
+		this.setRotation(0, 180);
+		this.facingDirection = EnumFacing.NORTH;
 	}
-    
+	
 	@Override
 	public boolean isEntityInvulnerable(DamageSource p_180431_1_) {
 		return true;
@@ -49,10 +50,11 @@ public class EntityFX extends EntityHanging {
 	
 	@Override
 	public void onUpdate() {
-		 if(this.isDead)return;
-		 this.prevPosX = this.posX;
-	     this.prevPosY = this.posY;
-	     this.prevPosZ = this.posZ;
+		if (this.isDead)
+			return;
+		this.prevPosX = this.posX;
+		this.prevPosY = this.posY;
+		this.prevPosZ = this.posZ;
 	}
 	
 	@Override
@@ -79,25 +81,21 @@ public class EntityFX extends EntityHanging {
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tagCompund) {
-		 this.hangingPosition = new BlockPos(tagCompund.getInteger("TileX"), tagCompund.getInteger("TileY"), tagCompund.getInteger("TileZ"));
-	        EnumFacing enumfacing;
-
-	        if (tagCompund.hasKey("Direction", 99))
-	        {
-	            enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Direction"));
-	            this.hangingPosition = this.hangingPosition.offset(enumfacing);
-	        }
-	        else if (tagCompund.hasKey("Facing", 99))
-	        {
-	            enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Facing"));
-	        }
-	        else
-	        {
-	            enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Dir"));
-	        }
+		this.hangingPosition = new BlockPos(tagCompund.getInteger("TileX"), tagCompund.getInteger("TileY"), tagCompund.getInteger("TileZ"));
+		EnumFacing enumfacing;
+		
+		if (tagCompund.hasKey("Direction", 99)) {
+			enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Direction"));
+			this.hangingPosition = this.hangingPosition.offset(enumfacing);
+		} else if (tagCompund.hasKey("Facing", 99)) {
+			enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Facing"));
+		} else {
+			enumfacing = EnumFacing.getHorizontal(tagCompund.getByte("Dir"));
+		}
 	}
-
+	
 	@Override
-	public void playPlaceSound() {}
+	public void playPlaceSound() {
+	}
 	
 }

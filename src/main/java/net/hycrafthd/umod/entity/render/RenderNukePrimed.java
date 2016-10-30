@@ -12,7 +12,8 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class RenderNukePrimed extends Render<EntityNukePrimed> implements IRenderFactory<EntityNukePrimed>{
+public class RenderNukePrimed extends Render<EntityNukePrimed> implements IRenderFactory<EntityNukePrimed> {
+	
 	
 	public RenderNukePrimed(RenderManager r) {
 		super(r);
@@ -69,7 +70,7 @@ public class RenderNukePrimed extends Render<EntityNukePrimed> implements IRende
 	public ResourceLocation getEntityTexture(EntityNukePrimed entity) {
 		return this.func_180563_a((EntityNukePrimed) entity);
 	}
-
+	
 	@Override
 	public Render<? super EntityNukePrimed> createRenderFor(RenderManager manager) {
 		return new RenderNukePrimed(manager);

@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventToolTip {
 	
+	
 	@SubscribeEvent
 	public void tooltipEvent(ItemTooltipEvent event) {
 		if (event.getItemStack() != null && !event.isShowAdvancedItemTooltips()) {

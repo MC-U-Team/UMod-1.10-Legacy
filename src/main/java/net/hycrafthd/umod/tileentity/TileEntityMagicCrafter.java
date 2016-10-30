@@ -1,6 +1,5 @@
 package net.hycrafthd.umod.tileentity;
 
-
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.container.ContainerMagicCrafter;
 import net.minecraft.entity.player.*;
@@ -10,8 +9,9 @@ import net.minecraft.nbt.*;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
-public class TileEntityMagicCrafter extends TileEntityLockable implements ITickable , ISidedInventory{
-
+public class TileEntityMagicCrafter extends TileEntityLockable implements ITickable, ISidedInventory {
+	
+	
 	private ItemStack[] inv = new ItemStack[4];
 	
 	boolean isCreating = false;
@@ -21,18 +21,18 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 	MagicCrafterRecipe recipe;
 	
 	private int count;
-		
-	public void update(){
+	
+	public void update() {
 		
 		/** 0 crystal slot, 1&2 input slot, 3 output slot */
-		if(isCreating){
-						
-			if(!Crystal.isStackCrystal(this.getStackInSlot(0))){
+		if (isCreating) {
+			
+			if (!Crystal.isStackCrystal(this.getStackInSlot(0))) {
 				isCreating = false;
 				count = 0;
 			}
 			
-			if(isCreating && count >= 400){
+			if (isCreating && count >= 400) {
 				isCrafting = false;
 				this.setInventorySlotContents(0, removeItemFromStack(this.getStackInSlot(0)));
 				this.setInventorySlotContents(1, removeItemFromStack(this.getStackInSlot(1)));
@@ -42,27 +42,26 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 			}
 			count++;
 			
-		}else if(Crystal.isStackCrystal(this.getStackInSlot(0)) && this.getStackInSlot(1) != null && this.getStackInSlot(2) != null && this.getStackInSlot(3) == null){
+		} else if (Crystal.isStackCrystal(this.getStackInSlot(0)) && this.getStackInSlot(1) != null && this.getStackInSlot(2) != null && this.getStackInSlot(3) == null) {
 			
 			MagicCrafterRecipe mcr = MagicCrafterRecipe.getRecipe(this.getStackInSlot(1), this.getStackInSlot(2));
 			
-			if(mcr != null){
+			if (mcr != null) {
 				recipe = mcr;
-				isCreating = true;				
+				isCreating = true;
 			}
 			
 		}
 		
 	}
 	
-	private ItemStack removeItemFromStack(ItemStack is){
-		if(!(is.stackSize <= 1)){
-			return new ItemStack(is.getItem(), is.stackSize -1, is.getMetadata());
-		}else{
+	private ItemStack removeItemFromStack(ItemStack is) {
+		if (!(is.stackSize <= 1)) {
+			return new ItemStack(is.getItem(), is.stackSize - 1, is.getMetadata());
+		} else {
 			return null;
 		}
 	}
-	
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
@@ -71,8 +70,8 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 		/** saves the items in the magic crafter block inventory */
 		NBTTagList list = new NBTTagList();
 		
-		for(int i = 0; i < this.getSizeInventory(); i++){
-			if(this.getStackInSlot(i) != null){
+		for (int i = 0; i < this.getSizeInventory(); i++) {
+			if (this.getStackInSlot(i) != null) {
 				NBTTagCompound tag = new NBTTagCompound();
 				tag.setByte("Slot", (byte) i);
 				this.getStackInSlot(i).writeToNBT(tag);
@@ -90,33 +89,32 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 		
 		/** loads the items for the magic crafter block inventory */
 		NBTTagList list = compound.getTagList("ItemStacks", 10);
-				
-		for(int i = 0; i<list.tagCount(); i++){
+		
+		for (int i = 0; i < list.tagCount(); i++) {
 			
 			NBTTagCompound tag = list.getCompoundTagAt(i);
 			byte b = tag.getByte("Slot");
-			if(b >= 0 && b < this.getSizeInventory()){
+			if (b >= 0 && b < this.getSizeInventory()) {
 				this.setInventorySlotContents(b, ItemStack.loadItemStackFromNBT(tag));
 			}
 			
 		}
 	}
 	
-	
-	public int getCount(){
+	public int getCount() {
 		return count;
 	}
-
+	
 	@Override
 	public int getSizeInventory() {
 		return inv.length;
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlot(int index) {
 		return inv[index];
 	}
-
+	
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
 		if (this.inv[index] != null) {
@@ -141,7 +139,7 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 			return null;
 		}
 	}
-
+	
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
 		if (this.inv[index] != null) {
@@ -155,78 +153,81 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 	
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		this.inv[index] = stack;		
+		this.inv[index] = stack;
 	}
-
+	
 	@Override
 	public int getInventoryStackLimit() {
 		return 64;
 	}
-
+	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		return true;
 	}
-
+	
 	@Override
-	public void openInventory(EntityPlayer player) {}
-
+	public void openInventory(EntityPlayer player) {
+	}
+	
 	@Override
-	public void closeInventory(EntityPlayer player) {}
-
+	public void closeInventory(EntityPlayer player) {
+	}
+	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		return true;
 	}
-
+	
 	@Override
 	public int getField(int id) {
 		return 0;
 	}
-
+	
 	@Override
-	public void setField(int id, int value) {		}
-
+	public void setField(int id, int value) {
+	}
+	
 	@Override
 	public int getFieldCount() {
 		return 0;
 	}
-
+	
 	@Override
 	public void clear() {
 		inv = new ItemStack[inv.length];
 	}
-
+	
 	@Override
 	public String getName() {
 		return "tile.magiccraft";
 	}
-
+	
 	@Override
 	public boolean hasCustomName() {
 		return false;
 	}
-
+	
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerMagicCrafter(this,playerInventory.player,this.pos,this.worldObj);
+		return new ContainerMagicCrafter(this, playerInventory.player, this.pos, this.worldObj);
 	}
-
+	
 	@Override
 	public String getGuiID() {
 		return "magic";
 	}
-
+	
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		return null;
 	}
-
+	
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction) {
 		return false;

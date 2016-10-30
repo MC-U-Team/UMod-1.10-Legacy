@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 
 public class ArmorEmerald extends ItemArmor {
 	
+	
 	public ArmorEmerald(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.things);
@@ -17,7 +18,7 @@ public class ArmorEmerald extends ItemArmor {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot s, String type) {
-		switch(s){
+		switch (s) {
 		case CHEST:
 		case FEET:
 		case LEGS:

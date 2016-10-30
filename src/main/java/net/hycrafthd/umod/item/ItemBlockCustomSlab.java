@@ -12,6 +12,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemBlockCustomSlab extends ItemBlockBase {
 	
+	
 	protected final BlockSlab singleSlab;
 	protected final BlockSlab doubleSlab;
 	
@@ -34,8 +35,7 @@ public class ItemBlockCustomSlab extends ItemBlockBase {
 	}
 	
 	@Override
-	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos,
-			EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (stack.stackSize == 0) {
 			return EnumActionResult.FAIL;
 		} else if (!playerIn.canPlayerEdit(pos.offset(side), side, stack)) {
@@ -49,8 +49,8 @@ public class ItemBlockCustomSlab extends ItemBlockBase {
 				if ((side == EnumFacing.UP && enumblockhalf == BlockSlab.EnumBlockHalf.BOTTOM || side == EnumFacing.DOWN && enumblockhalf == BlockSlab.EnumBlockHalf.TOP)) {
 					IBlockState iblockstate1 = this.doubleSlab.getDefaultState();
 					
-					if (worldIn.checkNoEntityCollision(this.doubleSlab.getSelectedBoundingBox(iblockstate1,worldIn, pos)) && worldIn.setBlockState(pos, iblockstate1, 3)) {
-//						worldIn.playSoundEffect((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F), (double) ((float) pos.getZ() + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getFrequency() * 0.8F);
+					if (worldIn.checkNoEntityCollision(this.doubleSlab.getSelectedBoundingBox(iblockstate1, worldIn, pos)) && worldIn.setBlockState(pos, iblockstate1, 3)) {
+						// worldIn.playSoundEffect((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F), (double) ((float) pos.getZ() + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getFrequency() * 0.8F);
 						--stack.stackSize;
 					}
 					
@@ -58,7 +58,7 @@ public class ItemBlockCustomSlab extends ItemBlockBase {
 				}
 			}
 			
-			return tryPlace(stack, worldIn, pos.offset(side)) ? EnumActionResult.FAIL : super.onItemUse(stack, playerIn, worldIn, pos, hand,side, hitX, hitY, hitZ);
+			return tryPlace(stack, worldIn, pos.offset(side)) ? EnumActionResult.FAIL : super.onItemUse(stack, playerIn, worldIn, pos, hand, side, hitX, hitY, hitZ);
 		}
 	}
 	
@@ -86,8 +86,8 @@ public class ItemBlockCustomSlab extends ItemBlockBase {
 		
 		if (iblockstate.getBlock() == this.singleSlab) {
 			IBlockState iblockstate1 = this.doubleSlab.getDefaultState();
-			if (world.checkNoEntityCollision(this.doubleSlab.getSelectedBoundingBox(iblockstate1,world, pos)) && world.setBlockState(pos, iblockstate1, 3)) {
-//				world.playSoundEffect((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F), (double) ((float) pos.getZ() + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getFrequency() * 0.8F);
+			if (world.checkNoEntityCollision(this.doubleSlab.getSelectedBoundingBox(iblockstate1, world, pos)) && world.setBlockState(pos, iblockstate1, 3)) {
+				// world.playSoundEffect((double) ((float) pos.getX() + 0.5F), (double) ((float) pos.getY() + 0.5F), (double) ((float) pos.getZ() + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getFrequency() * 0.8F);
 				--stack.stackSize;
 			}
 			

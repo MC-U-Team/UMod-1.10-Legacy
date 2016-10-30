@@ -28,7 +28,9 @@ import net.minecraftforge.fml.client.registry.*;
 
 public class ClientProxy extends CommonProxy {
 	
+	
 	public static KeyBinding info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
+	public static ObjRenderregister regs;
 	
 	@Override
 	public void registerModels() {
@@ -192,9 +194,9 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
 		
-		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender());
-		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender());
-		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender());
+		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(UMod.getGLHelper()));
+		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender(UMod.getGLHelper()));
+		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender(UMod.getGLHelper()));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));
@@ -205,7 +207,7 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
-		VIARegister.registerVIA();
+		regs = new ObjRenderregister();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

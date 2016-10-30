@@ -22,6 +22,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
 	
+	
 	public int powertrans;
 	public int lo;
 	public boolean iso;
@@ -55,13 +56,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	}
 	
 	@Override
-	public void addCollisionBoxToList(IBlockState state, World world, BlockPos pos, AxisAlignedBB entityBox,
-			List<AxisAlignedBB> collidingBoxes, Entity entityIn) {
-		collidingBoxes.add(this.getBoundingBox(state,world, pos));
-		super.addCollisionBoxToList(state, world, pos, entityBox, collidingBoxes, entityIn);
-	}
-	
-	@Override
 	public boolean isPassable(IBlockAccess worldIn, BlockPos pos) {
 		return false;
 	}
@@ -85,15 +79,14 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
-			EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntityCable cab = (TileEntityCable) worldIn.getTileEntity(pos);
 		if (playerIn.getHeldItemMainhand() != null) {
 			Block rand = Block.getBlockFromItem(playerIn.getHeldItemMainhand().getItem());
 			if (!cab.hasConduit() && rand != null && rand instanceof BlockConduit) {
 				cab.setConduit(NBTUtils.getStackFromConduit(playerIn.getHeldItemMainhand()));
 				playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, null);
-//				playerIn.worldObj.playSoundAtEntity(playerIn, "step.stone", 0.2F, ((playerIn.getRNG().nextFloat() - playerIn.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+				// playerIn.worldObj.playSoundAtEntity(playerIn, "step.stone", 0.2F, ((playerIn.getRNG().nextFloat() - playerIn.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
 				return true;
 			} else if (cab.hasConduit() && Block.getBlockFromItem(playerIn.getHeldItemMainhand().getItem()) != null && !(Block.getBlockFromItem(playerIn.getHeldItemMainhand().getItem()) instanceof BlockCable)) {
 				dropForPlayer(playerIn, cab);
@@ -114,7 +107,7 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 		boolean flag = playerIn.inventory.addItemStackToInventory(stack);
 		
 		if (flag) {
-//			playerIn.worldObj.playSoundAtEntity(playerIn, "random.pop", 0.2F, ((playerIn.getRNG().nextFloat() - playerIn.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+			// playerIn.worldObj.playSoundAtEntity(playerIn, "random.pop", 0.2F, ((playerIn.getRNG().nextFloat() - playerIn.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
 			playerIn.inventoryContainer.detectAndSendChanges();
 		}
 		
@@ -122,6 +115,19 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		if (source instanceof World) {
+			return getSelectedBoundingBox(state, (World) source, pos);
+		}
+		return FULL_BLOCK_AABB;
+	}
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos) {
+		return getSelectedBoundingBox(blockState, worldIn, pos);
+	}
+	
+	@Override
+	public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World source, BlockPos pos) {
 		TileEntityCable cab = (TileEntityCable) source.getTileEntity(pos);
 		if (cab == null)
 			return FULL_BLOCK_AABB;
@@ -133,7 +139,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 			}
 		} else if (cab.hasConduit()) {
 			return FULL_BLOCK_AABB;
-
 		}
 		TileEntityCable pip = (TileEntityCable) w.getTileEntity(pos);
 		if (pip != null) {
@@ -187,7 +192,7 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 			entityIn.attackEntityFrom(UDamageSource.electroshock, 5);
 		}
 	}
-		
+	
 	public boolean isIsolated() {
 		return iso;
 	}

@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class UGeneration {
 	
+	
 	private ArrayList<UGenerator> generators;
 	
 	public UGeneration() {
@@ -49,6 +50,7 @@ public class UGeneration {
 	}
 	
 	public class UGenerator {
+		
 		
 		private Object generator;
 		private int modGenerationWeight;

@@ -10,6 +10,7 @@ import net.minecraft.item.*;
 
 public class ArmorRadiation extends ItemArmor {
 	
+	
 	public ArmorRadiation(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.infected);
@@ -17,7 +18,7 @@ public class ArmorRadiation extends ItemArmor {
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot s, String type) {
-		switch(s){
+		switch (s) {
 		case CHEST:
 		case FEET:
 		case LEGS:

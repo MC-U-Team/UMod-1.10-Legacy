@@ -13,6 +13,7 @@ import net.minecraft.world.*;
 
 public abstract class BlockBaseMachine extends BlockBase implements ITileEntityProvider, IConduitBlock {
 	
+	
 	private NBTTagCompound compound;
 	
 	public BlockBaseMachine() {
@@ -23,7 +24,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 		this.setCreativeTab(UReference.maschines);
 		this.setSoundType(SoundType.METAL);
 	}
-
+	
 	@Override
 	public int getComparatorInputOverride(IBlockState blockState, World world, BlockPos pos) {
 		return Container.calcRedstone(world.getTileEntity(pos));
@@ -34,8 +35,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
-			EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return true;
 	}
 	
@@ -48,7 +48,7 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	public boolean isFullBlock(IBlockState s) {
 		return false;
 	}
-
+	
 	@Override
 	public boolean isFullCube(IBlockState s) {
 		return false;
@@ -63,6 +63,5 @@ public abstract class BlockBaseMachine extends BlockBase implements ITileEntityP
 	public int getMetaFromState(IBlockState state) {
 		return 0;
 	}
-		
 	
 }

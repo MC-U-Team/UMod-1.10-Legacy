@@ -10,6 +10,7 @@ import net.minecraft.util.text.TextComponentString;
 
 public class CommandConduit extends CommandBase {
 	
+	
 	@Override
 	public String getCommandUsage(ICommandSender sender) {
 		return "commands.conduit.usage";
@@ -21,8 +22,8 @@ public class CommandConduit extends CommandBase {
 	}
 	
 	@Override
-	public void execute(MinecraftServer sr,ICommandSender sender, String[] args) throws CommandException {
-		EntityPlayerMP pl = (EntityPlayerMP)sender;
+	public void execute(MinecraftServer sr, ICommandSender sender, String[] args) throws CommandException {
+		EntityPlayerMP pl = (EntityPlayerMP) sender;
 		int meta = 0;
 		if (args.length > 2) {
 			try {
@@ -46,15 +47,14 @@ public class CommandConduit extends CommandBase {
 			sender.addChatMessage(new TextComponentString("Sorry this command is Only able for Players"));
 		}
 	}
-
+	
 	@Override
 	public String getCommandName() {
 		return "conduit";
 	}
 	
-	/*@SuppressWarnings("rawtypes")
-	public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-		//return args.length == 1 ? getListOfStringsMatchingLastWord(args, this.getPlayers()) : (args.length == 2 ? func_175762_a(args, Block.REGISTRY.getKeys()) : null);
-	}*/
+	/*
+	 * @SuppressWarnings("rawtypes") public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) { //return args.length == 1 ? getListOfStringsMatchingLastWord(args, this.getPlayers()) : (args.length == 2 ? func_175762_a(args, Block.REGISTRY.getKeys()) : null); }
+	 */
 	
 }

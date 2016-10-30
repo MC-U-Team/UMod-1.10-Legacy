@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerBackPack extends Container {
 	
+	
 	public boolean updateNotification;
 	private InventoryBackPack inv;
 	private EnumTypeBackPack type;
@@ -107,7 +108,7 @@ public class ContainerBackPack extends Container {
 		} else {
 			tmpSlot = null;
 		}
-		//TODO ADD LOGIC
+		// TODO ADD LOGIC
 		this.updateNotification = true;
 		return super.slotClick(slotId, dragType, clickTypeIn, player);
 	}

@@ -8,6 +8,7 @@ import net.minecraft.inventory.IInventory;
 
 public class ColorSlot extends BaseSlot {
 	
+	
 	public Color color;
 	
 	public ColorSlot(Color c, IInventory inventoryIn, int index, int xPosition, int yPosition) {
@@ -15,6 +16,7 @@ public class ColorSlot extends BaseSlot {
 		color = c;
 		this.setHoverColor(new RGBA(color).setAlpha(25), new RGBA(color).setAlpha(25), new RGBA(color).setAlpha(255), new RGBA(color).setAlpha(255));
 		this.setStringRet(new StringMethod() {
+			
 			
 			@Override
 			public String getString() {

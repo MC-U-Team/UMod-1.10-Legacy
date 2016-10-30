@@ -12,14 +12,14 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class Block2rail extends Block {
 	
+	
 	public Block2rail() {
 		super(Material.IRON);
-//		this.setBlockBounds(0F, 0F, 0.3F, 1F, 0.2F, 0.7F);
+		// this.setBlockBounds(0F, 0F, 0.3F, 1F, 0.2F, 0.7F);
 	}
 	
 	@Override
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
-			EnumFacing side) {
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
 		return false;
 	}
 	

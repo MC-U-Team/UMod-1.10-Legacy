@@ -17,6 +17,7 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEntity {
 	
+	
 	private int lastActiveTime;
 	private int timeSinceIgnited;
 	private int fuseTime = 20;
@@ -27,19 +28,14 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 		super(worldIn);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(2, new EntityAICreeperSwell(this));
-		/*this.tasks.addTask(2, this.field_175455_a);
-		this.tasks.addTask(3, new EntityAIAvoidEntity(this, new Predicate() {
-			
-			public boolean func_179958_a(Entity p_179958_1_) {
-				return p_179958_1_ instanceof EntityOcelot;
-			}
-			
-			@Override
-			public boolean apply(Object p_apply_1_) {
-				return this.func_179958_a((Entity) p_apply_1_);
-			}
-		}, 6.0F, 1.0D, 1.2D));*/
-//		this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
+		/*
+		 * this.tasks.addTask(2, this.field_175455_a); this.tasks.addTask(3, new EntityAIAvoidEntity(this, new Predicate() {
+		 * 
+		 * public boolean func_179958_a(Entity p_179958_1_) { return p_179958_1_ instanceof EntityOcelot; }
+		 * 
+		 * @Override public boolean apply(Object p_apply_1_) { return this.func_179958_a((Entity) p_apply_1_); } }, 6.0F, 1.0D, 1.2D));
+		 */
+		// this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, false));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
@@ -81,13 +77,13 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 	public void writeEntityToNBT(NBTTagCompound tagCompound) {
 		super.writeEntityToNBT(tagCompound);
 		
-//		if (this.datagetWatchableObjectByte(17) == 1) {
-//			tagCompound.setBoolean("powered", true);
-//		}
+		// if (this.datagetWatchableObjectByte(17) == 1) {
+		// tagCompound.setBoolean("powered", true);
+		// }
 		
 		tagCompound.setShort("Fuse", (short) this.fuseTime);
 		tagCompound.setByte("ExplosionRadius", (byte) this.explosionRadius);
-//		tagCompound.setBoolean("ignited", this.func_146078_ca());
+		// tagCompound.setBoolean("ignited", this.func_146078_ca());
 	}
 	
 	/**
@@ -96,7 +92,7 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 	@Override
 	public void readEntityFromNBT(NBTTagCompound tagCompund) {
 		super.readEntityFromNBT(tagCompund);
-//		this.dataWatcher.updateObject(17, Byte.valueOf((byte) (tagCompund.getBoolean("powered") ? 1 : 0)));
+		// this.dataWatcher.updateObject(17, Byte.valueOf((byte) (tagCompund.getBoolean("powered") ? 1 : 0)));
 		
 		if (tagCompund.hasKey("Fuse", 99)) {
 			this.fuseTime = tagCompund.getShort("Fuse");
@@ -107,7 +103,7 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 		}
 		
 		if (tagCompund.getBoolean("ignited")) {
-//			this.func_146079_cb();
+			// this.func_146079_cb();
 		}
 	}
 	
@@ -116,14 +112,14 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 		if (this.isEntityAlive()) {
 			this.lastActiveTime = this.timeSinceIgnited;
 			
-//			if (this.func_146078_ca()) {
-//				this.setCreeperState(1);
-//			}
+			// if (this.func_146078_ca()) {
+			// this.setCreeperState(1);
+			// }
 			
 			int i = this.getCreeperState();
 			
 			if (i > 0 && this.timeSinceIgnited == 0) {
-//				this.playSound("creeper.primed", 1.0F, 0.5F);
+				// this.playSound("creeper.primed", 1.0F, 0.5F);
 			}
 			
 			this.timeSinceIgnited += i;
@@ -143,7 +139,7 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 	
 	private void explode() {
 		if (!this.worldObj.isRemote) {
-//			boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+			// boolean flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
 			float f = this.getPowered() ? 1.5F : 0.5F;
 			this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, this.explosionRadius * f, true);
 			this.setDead();
@@ -152,13 +148,13 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 	
 	@Override
 	public EnumActionResult applyPlayerInteraction(EntityPlayer player, Vec3d vec, ItemStack stack, EnumHand hand) {
-       ItemStack itemstack = player.inventory.getCurrentItem();
+		ItemStack itemstack = player.inventory.getCurrentItem();
 		
 		if (itemstack != null && itemstack.getItem() == Items.FLINT_AND_STEEL) {
-//			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.ignite", 1.0F, this.rand.nextFloat() * 0.4F + 0.8F);
+			// this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.ignite", 1.0F, this.rand.nextFloat() * 0.4F + 0.8F);
 			
 			if (!this.worldObj.isRemote) {
-//				this.func_146079_cb();
+				// this.func_146079_cb();
 				itemstack.damageItem(1, player);
 				return EnumActionResult.SUCCESS;
 			}
@@ -184,29 +180,16 @@ public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEnt
 		return super.getDeathSound();
 	}
 	
-	/*@Override
-	public int getCreeperState() {
-		return this.dataWatcher.getWatchableObjectByte(16);
-	}
-	
-	@Override
-	public void setCreeperState(int p_70829_1_) {
-		this.dataWatcher.updateObject(16, Byte.valueOf((byte) p_70829_1_));
-	}
-	
-	@Override
-	public boolean getPowered() {
-		return this.dataWatcher.getWatchableObjectByte(17) == 1;
-	}
-	
-	@Override
-	public boolean func_146078_ca() {
-		return this.dataWatcher.getWatchableObjectByte(18) != 0;
-	}
-	
-	@Override
-	public void func_146079_cb() {
-		this.dataWatcher.updateObject(18, Byte.valueOf((byte) 1));
-	}*/
+	/*
+	 * @Override public int getCreeperState() { return this.dataWatcher.getWatchableObjectByte(16); }
+	 * 
+	 * @Override public void setCreeperState(int p_70829_1_) { this.dataWatcher.updateObject(16, Byte.valueOf((byte) p_70829_1_)); }
+	 * 
+	 * @Override public boolean getPowered() { return this.dataWatcher.getWatchableObjectByte(17) == 1; }
+	 * 
+	 * @Override public boolean func_146078_ca() { return this.dataWatcher.getWatchableObjectByte(18) != 0; }
+	 * 
+	 * @Override public void func_146079_cb() { this.dataWatcher.updateObject(18, Byte.valueOf((byte) 1)); }
+	 */
 	
 }

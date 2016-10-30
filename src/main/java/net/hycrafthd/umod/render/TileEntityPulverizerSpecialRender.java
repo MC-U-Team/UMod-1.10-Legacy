@@ -2,7 +2,7 @@ package net.hycrafthd.umod.render;
 
 import org.lwjgl.opengl.GL11;
 
-import net.hycrafthd.umod.IMPL_LWJGLU;
+import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.gui.GuiRescources;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;
@@ -13,6 +13,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer<TileEntity> {
+	
+	
+	private GLHelper help;
+	
+	public TileEntityPulverizerSpecialRender() {
+		this.help = UMod.getGLHelper();
+	}
 	
 	public int time = 0;
 	private EntityItem ent = new EntityItem(Minecraft.getMinecraft().theWorld, 0D, 0D, 0D);
@@ -31,7 +38,7 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 				}
 				GlStateManager.translate(posX + 0.5, posY + 0.1, posZ + 0.5);
 				GlStateManager.rotate(time * 2, 0F, 1.0F, 0F);
-				IMPL_LWJGLU.drawTexturedCube(new GuiRescources("laser.png"), -0.025, 0, -0.025, 0.05, 0.8, 0.05);
+				this.help.drawTexturedCube(new GuiRescources("laser.png"), -0.025, 0, -0.025, 0.05, 0.8, 0.05);
 				time++;
 			}
 			GlStateManager.popMatrix();
@@ -45,13 +52,13 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 				GL11.glPushMatrix();
 				{
 					GlStateManager.rotate(-(time), 0F, 1F, 0F);
-//					Minecraft.getMinecraft().getRenderManager().renderEntityStatic(ent, 0, false);
+					// Minecraft.getMinecraft().getRenderManager().renderEntityStatic(ent, 0, false);
 					
 				}
 				GL11.glPopMatrix();
 			}
 			GlStateManager.popMatrix();
 		}
-
+		
 	}
 }
