@@ -7,19 +7,19 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class TAReader {
+public class TAGReader {
 	
 	
-	public Image giff;
+	private Image giff;
 	
-	public TAReader(String fileName) {
+	public TAGReader(String fileName) {
 		try {
 			File f = new File(fileName);
 			byte[] buf = new byte[(int) f.length()];
 			BufferedInputStream bis = new BufferedInputStream(new FileInputStream(f));
 			bis.read(buf);
 			bis.close();
-			giff = decode(buf);
+			this.giff = decode(buf);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -76,5 +76,9 @@ public class TAReader {
 		BufferedImage bimg = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		bimg.setRGB(0, 0, width, height, pixels, 0, width);
 		return bimg;
+	}
+	
+	public Image getImg(){
+		return giff;
 	}
 }
