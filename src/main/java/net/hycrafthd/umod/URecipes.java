@@ -16,46 +16,41 @@ public class URecipes {
 		registerPulverizerRecipes();
 	}
 	
-	private void registerMagicCrafterRecipes(){
+	private void registerMagicCrafterRecipes() {
 		
-		//magic brew
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.POTIONITEM, 1, 8227), 
-				new ItemStack(UItems.acid), new ItemStack(UItems.magic_brew)));
-		//magic ingot
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.IRON_INGOT), 
-				new ItemStack(UItems.magic_brew), new ItemStack(UItems.magic_ingot)));
-		//magic quartz
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.QUARTZ), 
-				new ItemStack(UItems.magic_brew), new ItemStack(UItems.charged_quartz)));
-		//magic glass
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(UBlocks.oilglass), 
-				new ItemStack(UItems.charged_quartz), new ItemStack(UBlocks.magic_glass)));
-		//magic bottle
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.GLASS_BOTTLE), 
-				new ItemStack(UBlocks.magic_glass), new ItemStack(UItems.magic_bottle)));
+		// magic brew
+		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.POTIONITEM, 1, 8227), new ItemStack(UItems.acid), new ItemStack(UItems.magic_brew)));
+		// magic ingot
+		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.IRON_INGOT), new ItemStack(UItems.magic_brew), new ItemStack(UItems.magic_ingot)));
+		// magic quartz
+		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.QUARTZ), new ItemStack(UItems.magic_brew), new ItemStack(UItems.charged_quartz)));
+		// magic glass
+		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(UBlocks.oilglass), new ItemStack(UItems.charged_quartz), new ItemStack(UBlocks.magic_glass)));
+		// magic bottle
+		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.GLASS_BOTTLE), new ItemStack(UBlocks.magic_glass), new ItemStack(UItems.magic_bottle)));
 		
 	}
 	
 	private void registerCraftingRecipes() {
 		
-		//magic armor and tools
-		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicBoots), new Object[] {"AAA", "MAM", "MAM", 'M', new ItemStack(UItems.magic_ingot)});
-		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicChestplate), new Object[] {"MAM", "MMM", "MMM", 'M', new ItemStack(UItems.magic_ingot)});
-		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicHelmet), new Object[] {"MMM", "MAM", "AAA", 'M', new ItemStack(UItems.magic_ingot)});
-		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicLeggings), new Object[] {"MMM", "MAM", "MAM", 'M', new ItemStack(UItems.magic_ingot)});
+		// magic armor and tools
+		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicBoots), new Object[] { "AAA", "MAM", "MAM", 'M', new ItemStack(UItems.magic_ingot) });
+		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicChestplate), new Object[] { "MAM", "MMM", "MMM", 'M', new ItemStack(UItems.magic_ingot) });
+		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicHelmet), new Object[] { "MMM", "MAM", "AAA", 'M', new ItemStack(UItems.magic_ingot) });
+		RecipeRegistry.registerShaped(new ItemStack(UArmor.magicLeggings), new Object[] { "MMM", "MAM", "MAM", 'M', new ItemStack(UItems.magic_ingot) });
 		
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicAxe), new Object[]{"MMA", "MWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicAxe), new Object[]{"AMM", "MWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicPickaxe), new Object[]{"MMM", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[]{"AMA", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[]{"MAA", "WAA", "WAA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[]{"AAM", "AAW", "AAW", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[]{"AMA", "AMA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[]{"AAM", "AAM", "AAW", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[]{"MAA", "MAA", "WAA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicHoe), new Object[]{"MMA", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-		RecipeRegistry.registerShaped(new ItemStack(UTools.magicHoe), new Object[]{"AMM", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK)});
-
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicAxe), new Object[] { "MMA", "MWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicAxe), new Object[] { "AMM", "MWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicPickaxe), new Object[] { "MMM", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[] { "AMA", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[] { "MAA", "WAA", "WAA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicShovel), new Object[] { "AAM", "AAW", "AAW", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[] { "AMA", "AMA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[] { "AAM", "AAM", "AAW", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicSword), new Object[] { "MAA", "MAA", "WAA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicHoe), new Object[] { "MMA", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		RecipeRegistry.registerShaped(new ItemStack(UTools.magicHoe), new Object[] { "AMM", "AWA", "AWA", 'M', new ItemStack(UItems.magic_ingot), 'W', new ItemStack(Items.STICK) });
+		
 		// Ingots (Sulphur Chunk) -> Blocks
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
 			RecipeRegistry.registerShaped(new ItemStack(UBlocks.blocks, 1, i), new Object[] { "XXX", "XXX", "XXX", 'X', new ItemStack(UItems.ingots, 1, i) });
@@ -84,12 +79,12 @@ public class URecipes {
 		UMod.log.debug("registerCraftingRecipes");
 		RecipeRegistry.registerShaped(new ItemStack(UItems.petrol), new Object[] { "SSS", "SSS", "SBS", 'S', new ItemStack(UBlocks.oilsand), 'B', new ItemStack(UItems.magic_bottle) });
 		
-		//stairs
-//		for (int i = 0; i < BlockStone.EnumType.values().length; i++) {
-//			//UBlocks.stonestairs[i] = new BlockStoneStairs(BlockStone.EnumType.byMetadata(i));
-//			RecipeRegistry.registerShaped(new ItemStack(UBlocks.stonestairs[i]), new Object[]{"BAA", "BBA", "BBB", 'B', 
-//				new ItemStack(BlockStone.EnumType.byMetadata(i))}); //dERROR
-//		}		
+		// stairs
+		// for (int i = 0; i < BlockStone.EnumType.values().length; i++) {
+		// //UBlocks.stonestairs[i] = new BlockStoneStairs(BlockStone.EnumType.byMetadata(i));
+		// RecipeRegistry.registerShaped(new ItemStack(UBlocks.stonestairs[i]), new Object[]{"BAA", "BBA", "BBB", 'B',
+		// new ItemStack(BlockStone.EnumType.byMetadata(i))}); //dERROR
+		// }
 	}
 	
 	private void registerFurnaceRecipes() {
@@ -114,12 +109,12 @@ public class URecipes {
 			if (i + 1 >= EnumTypeBaseStuff.values().length) {
 				b = 0;
 			}
-			ModRegistryUtils.addPulverRiecepie(new PulverizerRecepie(new ItemStack(UBlocks.ores, 1, i), new ItemStack(UItems.dusts, 1, i), new ItemStack(UItems.dusts, 1, b), 5, true));
+			ModRegistryUtils.addPulverRecipe(new PulverizerRecepie(new ItemStack(UBlocks.ores, 1, i), new ItemStack(UItems.dusts, 1, i), new ItemStack(UItems.dusts, 1, b), 5, true));
 		}
 		
-		ModRegistryUtils.addPulverRiecepie(new PulverizerRecepie(new ItemStack(UBlocks.oilsand), new ItemStack(Blocks.SAND), new ItemStack(UItems.petrol), 0, false));
+		ModRegistryUtils.addPulverRecipe(new PulverizerRecepie(new ItemStack(UBlocks.oilsand), new ItemStack(Blocks.SAND), new ItemStack(UItems.petrol), 0, false));
 		
-		ModRegistryUtils.addCraftSmeltRecepieShapless(new CraftSmeltRecepieShapless(new ItemStack[] { new ItemStack(Items.IRON_PICKAXE) }, new ItemStack(Items.IRON_INGOT, 3)));
+		ModRegistryUtils.addCraftSmeltRecipeShapless(new CraftSmeltRecepieShapless(new ItemStack[] { new ItemStack(Items.IRON_PICKAXE) }, new ItemStack(Items.IRON_INGOT, 3)));
 		UMod.log.debug("registerPulverizerRecipes");
 		
 	}

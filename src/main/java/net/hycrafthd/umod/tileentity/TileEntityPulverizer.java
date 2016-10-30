@@ -167,7 +167,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public void update() {
-		ItemStack[] args = ModRegistryUtils.isRecepie(stack[3]);
+		ItemStack[] args = ModRegistryUtils.isRecipe(stack[3]);
 		if(args != null && this.strpo > 10){
 			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.75, this.pos.getZ() + 0.5, 0, 0, 0, 1);
 			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.25, this.pos.getZ() + 0.5, 0, 0, 0, 1);

@@ -9,8 +9,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.oredict.OreDictionary;
 
-@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies="required-after:corelib")
+@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {
 	
 	public static org.apache.logging.log4j.Logger log;
@@ -43,7 +44,7 @@ public class UMod {
 		UMod.log.info("Init Mod.");
 	}
 	
-	public static IMPL_MODELRENDERHELPER getModelRenderHelper(){
+	public static IMPL_MODELRENDERHELPER getModelRenderHelper() {
 		return INS;
 	}
 	

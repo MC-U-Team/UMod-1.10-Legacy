@@ -15,11 +15,11 @@ public class ModRegistryUtils {
 		MagicCrafterRecipe.register(mcr);
 	}
 	
-	public static void addPulverRiecepie(PulverizerRecepie re) {
+	public static void addPulverRecipe(PulverizerRecepie re) {
 		list.add(re);
 	}
 	
-	public static ItemStack[] isRecepie(ItemStack rec) {
+	public static ItemStack[] isRecipe(ItemStack rec) {
 		if (rec == null) {
 			return null;
 		}
@@ -32,11 +32,11 @@ public class ModRegistryUtils {
 		return null;
 	}
 	
-	public static void addCraftSmeltRecepie(CraftSmeltRecepie re) {
+	public static void addCraftSmeltRecipe(CraftSmeltRecepie re) {
 		craftlist.add(re);
 	}
 	
-	public static void addCraftSmeltRecepieShapless(CraftSmeltRecepieShapless re) {
+	public static void addCraftSmeltRecipeShapless(CraftSmeltRecepieShapless re) {
 		craftlist2.add(re);
 	}
 	
