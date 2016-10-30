@@ -34,11 +34,6 @@ public class TileEntityCabelRender extends TileRender {
 		World w = p_180535_1_.getWorld();
 		if(!w.isRemote)return;
 		GlStateManager.disableCull();
-	    GlStateManager.pushMatrix();
-	    GlStateManager.translate(posX, posY, posZ);
-	    ClientProxy.regs.TEST.getInterpretter().draw(Tessellator.getInstance().getBuffer(), new RGBA(Color.RED));
-	    Tessellator.getInstance().draw();
-	    GlStateManager.popMatrix();
 		BlockPos pos = pip.getPos(); 
 			boolean csouth = pip.canConnect(w, pos.south());
 			boolean cnorth = pip.canConnect(w, pos.north());

@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 
+import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.umod.UMod;
+import net.minecraft.client.renderer.Tessellator;
+
 public class ObjLoader {
 
 	
@@ -13,13 +17,19 @@ public class ObjLoader {
 		try {
 			this.pr = new ObjInterpretter(new File(ObjLoader.class.getResource(str + ".obj").toURI()));
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			UMod.log.error("Model " + str + " was not found", e);
 		} catch (URISyntaxException e) {
-			e.printStackTrace();
+			UMod.log.error("Model " + str + " has an incorrect URI", e);
 		}
 	}
 	
 	public ObjInterpretter getInterpretter(){
 		return pr;
+	}
+	
+	public void draw(RGBA c){
+		Tessellator ts = Tessellator.getInstance();
+		pr.draw(ts.getBuffer(), c);
+		ts.draw();
 	}
 }
