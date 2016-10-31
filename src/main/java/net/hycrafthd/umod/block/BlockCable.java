@@ -132,12 +132,7 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 		if (cab == null)
 			return FULL_BLOCK_AABB;
 		IBlockAccess w = source;
-		if (w instanceof WorldServer && ((WorldServer) w).isRemote) {
-			EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
-			if (cab.hasConduit() && (pl.getHeldItemMainhand() == null || Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) == null || !(Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof BlockCable))) {
-				return FULL_BLOCK_AABB;
-			}
-		} else if (cab.hasConduit()) {
+        if (cab.hasConduit()) {
 			return FULL_BLOCK_AABB;
 		}
 		TileEntityCable pip = (TileEntityCable) w.getTileEntity(pos);

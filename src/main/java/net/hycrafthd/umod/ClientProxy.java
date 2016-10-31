@@ -16,8 +16,10 @@ import net.hycrafthd.umod.entity.render.*;
 import net.hycrafthd.umod.entity.render.rail.RenderRailFX;
 import net.hycrafthd.umod.enumtype.*;
 import net.hycrafthd.umod.ext.ExtensionList;
+import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
 import net.hycrafthd.umod.render.*;
 import net.hycrafthd.umod.tileentity.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
@@ -31,10 +33,12 @@ public class ClientProxy extends CommonProxy {
 	
 	public static KeyBinding info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
 	public static ObjRenderregister regs;
+	private static IMPL_MODELRENDERHELPER INS;
 	
 	@Override
 	public void registerModels() {
-		
+		Minecraft mc = Minecraft.getMinecraft();
+		INS = new IMPL_MODELRENDERHELPER(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		// Register Base Type Variants
 		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
@@ -188,6 +192,10 @@ public class ClientProxy extends CommonProxy {
 		
 		// Keybinding
 		KeybindingRegistry.register(info);
+	}
+	
+	public static IMPL_MODELRENDERHELPER getModelRenderHelper() {
+		return INS;
 	}
 	
 	@Override

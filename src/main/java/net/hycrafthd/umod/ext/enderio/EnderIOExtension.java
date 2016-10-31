@@ -1,14 +1,17 @@
 package net.hycrafthd.umod.ext.enderio;
 
+import org.apache.logging.log4j.Logger;
+
 import net.hycrafthd.umod.ext.IUmodExtension;
 import net.minecraftforge.fml.common.event.*;
 
 public class EnderIOExtension implements IUmodExtension{
 
+	Logger lg;
+	
 	@Override
 	public void preinit(FMLPreInitializationEvent evt) {
-		// TODO Auto-generated method stub
-		
+		lg = evt.getModLog();
 	}
 
 	@Override

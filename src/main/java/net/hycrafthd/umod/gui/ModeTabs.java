@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.google.common.collect.Lists;
 
+import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.container.ContainerBase.Mode;
 import net.minecraft.client.Minecraft;
@@ -185,7 +186,7 @@ public abstract class ModeTabs extends Gui {
 	private void renderItemIntoGUI(ItemStack stack, int x, int y) {
 		GlStateManager.pushMatrix();
 		this.setupGuiTransform(x, y, true);
-		UMod.getModelRenderHelper().renderItem(stack);
+		ClientProxy.getModelRenderHelper().renderItem(stack);
 		GlStateManager.popMatrix();
 	}
 }

@@ -15,16 +15,14 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
-public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, IIOMode, ISidedInventory, IWorldView {
+public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, ITickable,IIOMode, ISidedInventory, IWorldView {
 	
 	
 	private ItemStack[] stack = new ItemStack[5];
 	private EnumFacing enumfI;
 	private EnumFacing enumfO;
 	private double strpo;
-	
-	public boolean isBurning = false;
-	
+		
 	@Override
 	public int getSizeInventory() {
 		return stack.length;
@@ -91,7 +89,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		// return true;
 		// }
 		// player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS IS LOCKED BY " + pl));
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -113,11 +111,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 			return false;
 		}
 		return false;
-	}
-	
-	@Override
-	public int getField(int id) {
-		return 0;
 	}
 	
 	@Override
@@ -166,14 +159,17 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	}
 	
 	@Override
+	public NBTTagCompound getUpdateTag() 
+	{
+		return writeToNBT(new NBTTagCompound());
+	}
+	
+	@Override
 	public void update() {
 		ItemStack[] args = ModRegistryUtils.isRecepie(stack[3]);
 		if (args != null && this.strpo > 10) {
-			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.75, this.pos.getZ() + 0.5, 0, 0, 0, 1);
-			worldObj.spawnParticle(EnumParticleTypes.BLOCK_CRACK, this.pos.getX() + 0.5, this.pos.getY() + 0.25, this.pos.getZ() + 0.5, 0, 0, 0, 1);
 			if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
 				work = true;
-				isBurning = true;
 				if (time >= 100) {
 					time = 0;
 					this.decrStackSize(3, 1);
@@ -194,21 +190,16 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 							stack[2].stackSize++;
 						}
 					}
-					this.markDirty();
 					this.getPower(1000);
 				}
 				time++;
 			} else {
 				time = 0;
-				this.markDirty();
 				work = false;
-				isBurning = false;
 			}
 		} else {
 			time = 0;
-			this.markDirty();
 			work = false;
-			isBurning = false;
 		}
 	}
 	
@@ -218,10 +209,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	public boolean isAddebal(int i, ItemStack st) {
 		return (stack[i] == null || (stack[i].stackSize < 64 && stack[i].getItem().equals(st.getItem())));
-	}
-	
-	public void addTo(int i, ItemStack st) {
-		
 	}
 	
 	public static final String
@@ -274,7 +261,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerPulverizer((IInventory) playerIn.worldObj.getTileEntity(pos), playerIn, playerIn.worldObj);
+		return new ContainerPulverizer(this, playerIn, playerIn.worldObj);
 	}
 	
 	@Override
@@ -284,6 +271,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public void closeInventory(EntityPlayer player) {
+		this.markDirty();
 	}
 	
 	@Override
@@ -299,7 +287,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
-		tag.setByte(SHORT_TIME, (byte) time);
+		tag.setInteger(SHORT_TIME, time);
 		tag.setByte(ENUMFACING_OUTPUT, (byte) DirectionUtils.getShortFromFacing(enumfO));
 		tag.setByte(ENUMFACING_INPUT, (byte) DirectionUtils.getShortFromFacing(enumfI));
 		NBTTagList nbttaglist = new NBTTagList();
@@ -320,7 +308,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		super.readFromNBT(tag);
 		enumfI = DirectionUtils.getFacingFromShort(tag.getByte(ENUMFACING_INPUT));
 		enumfO = DirectionUtils.getFacingFromShort(tag.getByte(ENUMFACING_OUTPUT));
-		time = tag.getByte(SHORT_TIME);
+		time = tag.getInteger(SHORT_TIME);
 		NBTTagList nbttaglist = tag.getTagList(LIST_ITEMS, 10);
 		stack = new ItemStack[this.getSizeInventory()];
 		
@@ -361,10 +349,10 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	public int hasSomefacing(EnumFacing i) {
 		if (i == null)
 			return -1;
-		if (enumfI.equals(i)) {
+		if (i.equals(enumfI)) {
 			return 0;
 		}
-		if (enumfO.equals(i)) {
+		if (i.equals(enumfO)) {
 			return 1;
 		}
 		return -1;
@@ -444,9 +432,14 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	@Override
 	public String[] textToAdd() {
 		if (this.getStackInSlot(3) != null) {
-			return new String[] { this.getStackInSlot(3).getDisplayName(), "Progress " + this.getField(0) + "/100" };
+			return new String[] { this.getStackInSlot(3).getDisplayName(), "Progress " + this.time + "%" };
 		}
 		return null;
+	}
+
+	@Override
+	public int getField(int id) {
+		return 0;
 	}
 	
 }

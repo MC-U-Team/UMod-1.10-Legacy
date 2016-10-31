@@ -528,7 +528,7 @@ public abstract class GuiBase extends GuiScreen {
 	
 	private void renderItemIntoGUI(ItemStack itemStack, final int x, final int y) {
 		GlStateManager.pushMatrix();
-		UMod.getModelRenderHelper().renderItem(itemStack, new Runnable() {
+		ClientProxy.getModelRenderHelper().renderItem(itemStack, new Runnable() {
 			
 			
 			@Override

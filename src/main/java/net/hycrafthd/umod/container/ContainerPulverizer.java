@@ -35,6 +35,12 @@ public class ContainerPulverizer extends ContainerBase {
 	}
 	
 	@Override
+	public boolean canInteractWith(EntityPlayer player)
+	{
+		return true;
+	}
+	
+	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		/*
 		 * ItemStack itemstack = null; Slot slot = (Slot) this.inventorySlots.get(index);
@@ -54,6 +60,13 @@ public class ContainerPulverizer extends ContainerBase {
 		 * return itemstack;
 		 */
 		return null;
+	}
+	
+	@Override
+	public void onContainerClosed(EntityPlayer player)
+	{
+		super.onContainerClosed(player);
+		((IInventory)this.ent).closeInventory(player);
 	}
 	
 	@Override

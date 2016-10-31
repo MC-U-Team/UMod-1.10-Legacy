@@ -22,7 +22,6 @@ public class UMod {
 	
 	
 	public static org.apache.logging.log4j.Logger log;
-	private static IMPL_MODELRENDERHELPER INS;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
@@ -46,17 +45,11 @@ public class UMod {
 		new UTools();
 		this.registerGenerators();
 		this.registerEvents();
-		Minecraft mc = Minecraft.getMinecraft();
-		INS = new IMPL_MODELRENDERHELPER(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		UMod.log.info("Init Mod.");
 	}
 	
 	public static GLHelper getGLHelper() {
 		return new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
-	}
-	
-	public static IMPL_MODELRENDERHELPER getModelRenderHelper() {
-		return INS;
 	}
 	
 	@EventHandler

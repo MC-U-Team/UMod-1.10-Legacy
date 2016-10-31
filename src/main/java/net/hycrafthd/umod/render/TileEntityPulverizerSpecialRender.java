@@ -32,7 +32,7 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 		
 		if (ore != null) {
 			GlStateManager.pushMatrix();
-			if (pul.isBurning) {
+			if (pul.work) {
 				if (time >= 360) {
 					time = 0;
 				}
