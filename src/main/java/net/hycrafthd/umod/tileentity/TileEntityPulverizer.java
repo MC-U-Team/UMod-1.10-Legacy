@@ -17,7 +17,6 @@ import net.minecraft.util.*;
 
 public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, ITickable,IIOMode, ISidedInventory, IWorldView {
 	
-	
 	private ItemStack[] stack = new ItemStack[5];
 	private EnumFacing enumfI;
 	private EnumFacing enumfO;
@@ -166,7 +165,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public void update() {
-		ItemStack[] args = ModRegistryUtils.isRecepie(stack[3]);
+		ItemStack[] args = ModRegistryUtils.isRecipe(stack[3]);
 		if (args != null && this.strpo > 10) {
 			if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
 				work = true;

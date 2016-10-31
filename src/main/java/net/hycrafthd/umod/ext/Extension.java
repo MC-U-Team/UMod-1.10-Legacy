@@ -4,7 +4,6 @@ import net.hycrafthd.umod.UMod;
 
 public class Extension {
 	
-	
 	private String name, id;
 	private Class<? extends IUmodExtension> cls;
 	private IUmodExtension ext;

@@ -18,7 +18,7 @@ public class URegistryUtils {
 	
 	public static void registerItem(Item item) {
 		ItemRegistry.register(item, item.getUnlocalizedName().substring(5));
-		OreDictionaryRegistry.register(item);
+		//OreDictionaryRegistry.register(item);
 	}
 	
 	public static void registerBlock(Block block) {
@@ -27,7 +27,7 @@ public class URegistryUtils {
 	
 	public static void registerBlock(Block block, Class<? extends ItemBlock> bl) {
 		BlockRegistry.register(block, bl, block.getUnlocalizedName().substring(5));
-		OreDictionaryRegistry.register(block);
+		//OreDictionaryRegistry.register(block);
 	}
 	
 	public static void registerHalfSlabs(BlockSlabCreator creator) {
