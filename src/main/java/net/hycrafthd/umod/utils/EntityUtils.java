@@ -3,7 +3,7 @@ package net.hycrafthd.umod.utils;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import net.hycrafthd.umod.interfaces.IInfectedEntity;
+import net.hycrafthd.umod.api.IInfectedEntity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;

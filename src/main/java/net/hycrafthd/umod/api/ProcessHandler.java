@@ -2,7 +2,6 @@ package net.hycrafthd.umod.api;
 
 import java.util.*;
 
-import net.hycrafthd.umod.interfaces.IProcess;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

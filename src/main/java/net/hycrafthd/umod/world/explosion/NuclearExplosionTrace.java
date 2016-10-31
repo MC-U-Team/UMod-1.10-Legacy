@@ -3,7 +3,7 @@ package net.hycrafthd.umod.world.explosion;
 import java.util.*;
 
 import net.hycrafthd.umod.UDamageSource;
-import net.hycrafthd.umod.interfaces.IProcess;
+import net.hycrafthd.umod.api.IProcess;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;

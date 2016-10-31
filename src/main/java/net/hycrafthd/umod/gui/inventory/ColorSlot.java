@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.inventory;
+package net.hycrafthd.umod.gui.inventory;
 
 import java.awt.Color;
 

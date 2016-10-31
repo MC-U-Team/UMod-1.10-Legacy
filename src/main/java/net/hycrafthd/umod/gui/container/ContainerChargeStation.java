@@ -1,6 +1,6 @@
-package net.hycrafthd.umod.container;
+package net.hycrafthd.umod.gui.container;
 
-import net.hycrafthd.umod.inventory.BaseBatteryInputSlot;
+import net.hycrafthd.umod.gui.inventory.BaseBatteryInputSlot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;

@@ -1,8 +1,8 @@
 package net.hycrafthd.umod.entity;
 
 import net.hycrafthd.umod.UItems;
+import net.hycrafthd.umod.api.IInfectedEntity;
 import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
-import net.hycrafthd.umod.interfaces.IInfectedEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityCreeper;

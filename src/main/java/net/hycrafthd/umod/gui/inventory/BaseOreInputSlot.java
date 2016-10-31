@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.inventory;
+package net.hycrafthd.umod.gui.inventory;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.block.BlockOres;

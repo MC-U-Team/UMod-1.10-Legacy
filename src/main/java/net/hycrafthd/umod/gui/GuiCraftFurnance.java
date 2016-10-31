@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.gui;
 
-import net.hycrafthd.umod.container.ContainerCraftFurnace;
+import net.hycrafthd.umod.gui.container.ContainerCraftFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.math.BlockPos;

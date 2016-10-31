@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.inventory;
+package net.hycrafthd.umod.gui.inventory;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

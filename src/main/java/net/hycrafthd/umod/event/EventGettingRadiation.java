@@ -3,9 +3,9 @@ package net.hycrafthd.umod.event;
 import java.util.Random;
 
 import net.hycrafthd.umod.*;
+import net.hycrafthd.umod.api.IInfectedBlock;
 import net.hycrafthd.umod.armor.ArmorRadiation;
 import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
-import net.hycrafthd.umod.interfaces.IInfectedBlock;
 import net.hycrafthd.umod.utils.GenerationUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;

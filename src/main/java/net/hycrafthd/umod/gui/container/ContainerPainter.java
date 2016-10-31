@@ -1,8 +1,8 @@
-package net.hycrafthd.umod.container;
+package net.hycrafthd.umod.gui.container;
 
 import java.awt.Color;
 
-import net.hycrafthd.umod.inventory.*;
+import net.hycrafthd.umod.gui.inventory.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.tileentity.TileEntity;

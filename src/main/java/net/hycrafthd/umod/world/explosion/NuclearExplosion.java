@@ -2,8 +2,8 @@ package net.hycrafthd.umod.world.explosion;
 
 import java.util.Random;
 
+import net.hycrafthd.umod.api.IProcess;
 import net.hycrafthd.umod.api.ProcessHandler;
-import net.hycrafthd.umod.interfaces.IProcess;
 import net.hycrafthd.umod.utils.URegistryUtils;
 import net.minecraft.world.World;
 

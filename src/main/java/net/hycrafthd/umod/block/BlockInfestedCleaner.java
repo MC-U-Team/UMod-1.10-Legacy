@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.block;
 
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.interfaces.IInfectedBlock;
+import net.hycrafthd.umod.api.IInfectedBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

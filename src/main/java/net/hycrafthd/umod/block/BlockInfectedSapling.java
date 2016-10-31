@@ -3,7 +3,7 @@ package net.hycrafthd.umod.block;
 import java.util.Random;
 
 import net.hycrafthd.umod.*;
-import net.hycrafthd.umod.interfaces.IInfectedBlock;
+import net.hycrafthd.umod.api.IInfectedBlock;
 import net.hycrafthd.umod.world.GenInfectedTree;
 import net.minecraft.block.*;
 import net.minecraft.block.properties.*;

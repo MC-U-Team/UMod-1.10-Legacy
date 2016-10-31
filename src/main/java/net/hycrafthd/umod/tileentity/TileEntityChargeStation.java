@@ -2,7 +2,7 @@ package net.hycrafthd.umod.tileentity;
 
 import net.hycrafthd.umod.UItems;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
-import net.hycrafthd.umod.container.ContainerChargeStation;
+import net.hycrafthd.umod.gui.container.ContainerChargeStation;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;

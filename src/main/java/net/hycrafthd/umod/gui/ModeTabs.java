@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 
 import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.UMod;
-import net.hycrafthd.umod.container.ContainerBase.Mode;
+import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;

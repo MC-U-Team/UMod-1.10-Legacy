@@ -1,8 +1,8 @@
 package net.hycrafthd.umod.gui;
 
-import net.hycrafthd.umod.container.ContainerBackPack;
 import net.hycrafthd.umod.enumtype.EnumTypeBackPack;
-import net.hycrafthd.umod.inventory.InventoryBackPack;
+import net.hycrafthd.umod.gui.container.ContainerBackPack;
+import net.hycrafthd.umod.gui.inventory.InventoryBackPack;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;

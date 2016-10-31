@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.tileentity;
 
 import net.hycrafthd.umod.api.*;
-import net.hycrafthd.umod.container.ContainerMagicCrafter;
+import net.hycrafthd.umod.gui.container.ContainerMagicCrafter;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;

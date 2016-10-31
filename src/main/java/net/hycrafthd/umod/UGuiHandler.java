@@ -2,10 +2,10 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.corelib.util.ICustomGuiHandler;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
-import net.hycrafthd.umod.container.*;
 import net.hycrafthd.umod.enumtype.*;
 import net.hycrafthd.umod.gui.*;
-import net.hycrafthd.umod.inventory.InventoryBackPack;
+import net.hycrafthd.umod.gui.container.*;
+import net.hycrafthd.umod.gui.inventory.InventoryBackPack;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

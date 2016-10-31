@@ -3,7 +3,7 @@ package net.hycrafthd.umod.tileentity;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.block.BlockOres;
-import net.hycrafthd.umod.container.ContainerPulverizer;
+import net.hycrafthd.umod.gui.container.ContainerPulverizer;
 import net.hycrafthd.umod.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.*;

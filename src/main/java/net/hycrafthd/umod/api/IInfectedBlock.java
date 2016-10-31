@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.interfaces;
+package net.hycrafthd.umod.api;
 
 import net.minecraft.block.Block;
 

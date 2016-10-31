@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.entity;
 
-import net.hycrafthd.umod.interfaces.IInfectedEntity;
+import net.hycrafthd.umod.api.IInfectedEntity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;

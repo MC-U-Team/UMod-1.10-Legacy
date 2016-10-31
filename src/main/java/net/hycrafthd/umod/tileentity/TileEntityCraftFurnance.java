@@ -2,7 +2,7 @@ package net.hycrafthd.umod.tileentity;
 
 import net.hycrafthd.umod.api.ISignable;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
-import net.hycrafthd.umod.container.ContainerCraftFurnace;
+import net.hycrafthd.umod.gui.container.ContainerCraftFurnace;
 import net.hycrafthd.umod.utils.ModRegistryUtils;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.Container;

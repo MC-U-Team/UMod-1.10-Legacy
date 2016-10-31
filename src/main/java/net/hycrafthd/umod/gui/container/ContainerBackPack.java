@@ -1,7 +1,7 @@
-package net.hycrafthd.umod.container;
+package net.hycrafthd.umod.gui.container;
 
 import net.hycrafthd.umod.enumtype.EnumTypeBackPack;
-import net.hycrafthd.umod.inventory.InventoryBackPack;
+import net.hycrafthd.umod.gui.inventory.InventoryBackPack;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;

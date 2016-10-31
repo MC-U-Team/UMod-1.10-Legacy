@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.ISliderPro;
-import net.hycrafthd.umod.container.ContainerBase.Mode;
+import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;

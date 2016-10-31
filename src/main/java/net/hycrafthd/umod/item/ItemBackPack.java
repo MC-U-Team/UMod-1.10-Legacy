@@ -3,8 +3,8 @@ package net.hycrafthd.umod.item;
 import java.util.List;
 
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.container.ContainerBackPack;
 import net.hycrafthd.umod.enumtype.*;
+import net.hycrafthd.umod.gui.container.ContainerBackPack;
 import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
