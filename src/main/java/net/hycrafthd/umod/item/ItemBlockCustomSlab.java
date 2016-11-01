@@ -12,7 +12,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemBlockCustomSlab extends ItemBlockBase {
 	
-	
 	protected final BlockSlab singleSlab;
 	protected final BlockSlab doubleSlab;
 	

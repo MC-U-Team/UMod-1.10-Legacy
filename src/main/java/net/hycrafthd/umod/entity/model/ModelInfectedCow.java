@@ -6,7 +6,6 @@ import net.minecraft.util.math.MathHelper;
 
 public class ModelInfectedCow extends ModelBase {
 	
-	
 	// fields
 	ModelRenderer head;
 	ModelRenderer body;

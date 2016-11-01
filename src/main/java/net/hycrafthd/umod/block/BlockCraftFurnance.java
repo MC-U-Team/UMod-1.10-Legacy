@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 public class BlockCraftFurnance extends BlockBaseMachine implements IEnergyMessage {
 	
-	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityCraftFurnance();

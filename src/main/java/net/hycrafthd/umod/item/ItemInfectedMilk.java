@@ -10,7 +10,6 @@ import net.minecraft.world.World;
 
 public class ItemInfectedMilk extends ItemBase {
 	
-	
 	public ItemInfectedMilk() {
 		this.setMaxStackSize(1);
 		this.setCreativeTab(UReference.infected);

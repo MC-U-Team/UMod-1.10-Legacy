@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventChestInventory {
 	
-	
 	public static final String KEY = "key.chest";
 	
 	@SubscribeEvent

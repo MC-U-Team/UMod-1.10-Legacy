@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class RenderInfectedCreeper extends RenderLiving<EntityInfectedCreeper> implements IRenderFactory<EntityInfectedCreeper> {
 	
-	
 	public RenderInfectedCreeper(RenderManager r) {
 		super(r, new ModelInfectedCreeper(), 0);
 	}

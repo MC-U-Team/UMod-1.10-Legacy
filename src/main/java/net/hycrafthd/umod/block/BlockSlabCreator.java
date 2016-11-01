@@ -5,7 +5,6 @@ import net.minecraft.block.state.IBlockState;
 
 public class BlockSlabCreator {
 	
-	
 	private BlockHalfCustomSlab slab;
 	private BlockDoubleCustomSlab doubleslab;
 	

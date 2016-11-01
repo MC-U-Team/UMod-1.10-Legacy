@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class RenderInfectedZombie extends RenderLiving<EntityInfectedZombie> implements IRenderFactory<EntityInfectedZombie> {
 	
-	
 	public RenderInfectedZombie(RenderManager r) {
 		super(r, new ModelInfectedZombie(), 0);
 	}

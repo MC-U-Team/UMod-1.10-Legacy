@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class EventDrawHUD {
 	
-	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onItemChanged(RenderGameOverlayEvent ev) {

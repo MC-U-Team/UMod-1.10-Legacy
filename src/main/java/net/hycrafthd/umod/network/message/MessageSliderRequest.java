@@ -9,7 +9,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderRequest implements IMessage, IMessageHandler<MessageSliderRequest, MessageSliderGet> {
 	
-	
 	public int id;
 	public BlockPos pos;
 	

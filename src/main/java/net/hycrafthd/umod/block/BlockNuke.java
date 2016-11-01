@@ -16,7 +16,6 @@ import net.minecraft.world.*;
 
 public class BlockNuke extends BlockBase {
 	
-	
 	public static final PropertyBool EXPLODE = PropertyBool.create("explode");
 	
 	public BlockNuke() {

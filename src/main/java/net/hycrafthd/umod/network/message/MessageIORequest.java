@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageIORequest implements IMessage, IMessageHandler<MessageIORequest, MessageIOCallback> {
 	
-	
 	public BlockPos pos;
 	public EnumFacing prov;
 	

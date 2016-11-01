@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 
 public class IMPL_MODELRENDERHELPER {
 	
-	
 	private final ItemModelMesher itemModelMesher;
 	private final TextureManager textureManager;
 	private final ItemColors itemColors;

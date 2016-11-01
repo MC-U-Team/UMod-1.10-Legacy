@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class BlockMagicCrafter extends BlockContainer {
 	
-	
 	public BlockMagicCrafter() {
 		super(Material.PISTON);
 		this.setCreativeTab(UReference.magic);

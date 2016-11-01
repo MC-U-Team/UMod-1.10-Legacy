@@ -10,7 +10,6 @@ import net.minecraft.world.World;
 
 public class TileEntityItemPipeRender extends TileRender {
 	
-	
 	public TileEntityItemPipeRender(GLHelper help) {
 		super(help);
 	}

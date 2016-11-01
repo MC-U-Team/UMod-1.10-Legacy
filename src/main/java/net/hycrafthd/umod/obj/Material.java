@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class Material {
 	
-	
 	public final String ID;
 	private RGBA color;
 	private ResourceLocation loc;
@@ -24,19 +23,19 @@ public class Material {
 		this.color = c;
 	}
 	
-	public void setMap(String st){
-		this.loc = new ResourceLocation(UReference.modid,"textures/maps/" + st);
+	public void setMap(String st) {
+		this.loc = new ResourceLocation(UReference.modid, "textures/maps/" + st);
 	}
 	
-	public boolean hasTexture(){
+	public boolean hasTexture() {
 		return loc != null;
 	}
 	
-	public boolean hasColor(){
+	public boolean hasColor() {
 		return color != null;
 	}
 	
-	public void bindTex(){
+	public void bindTex() {
 		Minecraft.getMinecraft().getTextureManager().bindTexture(loc);
 	}
 	

@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class UGuiHandler implements ICustomGuiHandler {
 	
-	
 	@SuppressWarnings("incomplete-switch")
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

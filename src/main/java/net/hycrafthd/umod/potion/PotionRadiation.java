@@ -4,7 +4,6 @@ import net.minecraft.potion.Potion;
 
 public class PotionRadiation extends Potion {
 	
-	
 	public PotionRadiation() {
 		super(false, 0);
 		// TODO Auto-generated constructor stub

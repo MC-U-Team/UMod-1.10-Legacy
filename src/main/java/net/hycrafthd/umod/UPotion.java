@@ -9,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class UPotion {
 	
-	
 	public static Potion radiationPotion;
 	
 	public UPotion() {

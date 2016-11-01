@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IEnergyMessage {
 	
-	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeSolarPanel.class);
 	
 	public BlockSolarPanel() {

@@ -9,7 +9,6 @@ import net.minecraft.util.ITickable;
 
 public class TileEntityRail extends TileEntity implements ITickable {
 	
-	
 	public boolean isn = false;
 	public byte b = 0;
 	

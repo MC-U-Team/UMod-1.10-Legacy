@@ -8,7 +8,6 @@ import net.minecraft.util.text.TextComponentString;
 
 public abstract class InventoryBackPackBase implements IInventory {
 	
-	
 	protected ItemStack[] inv;
 	protected int size;
 	

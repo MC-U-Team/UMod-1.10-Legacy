@@ -22,7 +22,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
 	
-	
 	public int powertrans;
 	public int lo;
 	public boolean iso;
@@ -132,7 +131,7 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 		if (cab == null)
 			return FULL_BLOCK_AABB;
 		IBlockAccess w = source;
-        if (cab.hasConduit()) {
+		if (cab.hasConduit()) {
 			return FULL_BLOCK_AABB;
 		}
 		TileEntityCable pip = (TileEntityCable) w.getTileEntity(pos);

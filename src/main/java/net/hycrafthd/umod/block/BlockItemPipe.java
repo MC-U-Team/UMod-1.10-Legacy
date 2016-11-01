@@ -21,7 +21,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, IConduitBlock, IPlugabel, IBlockInformation {
 	
-	
 	private String spi;
 	
 	public BlockItemPipe(String sp) {

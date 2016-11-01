@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 
 public class TileEntityCabelRender extends TileRender {
 	
-	
 	public TileEntityCabelRender(GLHelper help) {
 		super(help);
 	}

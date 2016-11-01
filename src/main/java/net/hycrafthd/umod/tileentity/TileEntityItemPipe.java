@@ -10,7 +10,6 @@ import net.minecraft.world.IBlockAccess;
 
 public class TileEntityItemPipe extends TileEntity implements IPlugabel, IConduitProvider, ITickable {
 	
-	
 	public boolean isin = false;
 	public ItemStack cond = null;
 	

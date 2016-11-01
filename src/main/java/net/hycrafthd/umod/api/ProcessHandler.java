@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ProcessHandler {
 	
-	
 	private static List<IProcess> processes = new ArrayList<IProcess>();
 	private static List<IProcess> newProcesses = new ArrayList<IProcess>();
 	

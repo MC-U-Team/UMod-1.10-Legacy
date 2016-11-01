@@ -10,7 +10,6 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class BiomeInfected extends Biome {
 	
-	
 	private final String name = "Infected Biome";
 	private GenInfectedTree tree;
 	

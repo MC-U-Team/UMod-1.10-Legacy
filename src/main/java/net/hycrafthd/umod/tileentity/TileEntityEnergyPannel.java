@@ -14,7 +14,6 @@ import net.minecraft.util.math.*;
 
 public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBoundsProvider {
 	
-	
 	private ItemStack stack = null;
 	private BlockPos po = null;
 	private double viewpointY = 0;

@@ -6,7 +6,6 @@ import net.minecraft.util.math.MathHelper;
 
 public class ModelInfectedZombie extends ModelBase {
 	
-	
 	// fields
 	ModelRenderer headright;
 	ModelRenderer headleft;

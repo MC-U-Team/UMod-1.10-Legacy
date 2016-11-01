@@ -15,7 +15,6 @@ import net.minecraft.world.*;
 
 public class BlockNetherOres extends BlockBase {
 	
-	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeBaseStuff.class);
 	
 	public BlockNetherOres() {

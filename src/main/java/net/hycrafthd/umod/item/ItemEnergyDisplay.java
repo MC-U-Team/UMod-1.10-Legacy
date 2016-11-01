@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 
 public class ItemEnergyDisplay extends ItemBase {
 	
-	
 	public ItemEnergyDisplay() {
 		this.setMaxStackSize(1);
 		setCreativeTab(UReference.maschines);

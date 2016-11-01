@@ -20,7 +20,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiBattery extends GuiScreen {
 	
-	
 	protected int xSize = 176;
 	protected int ySize = 166;
 	public IPowerProvieder pro;

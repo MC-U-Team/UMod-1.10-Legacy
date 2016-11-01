@@ -23,7 +23,6 @@ import scala.tools.nsc.interactive.tests.core.TestSettings;
 
 public class ObjInterpretter extends FileInputStream {
 	
-	
 	private ArrayList<Vec3d> vert = new ArrayList<Vec3d>();
 	private ArrayList<ObjArea> area = new ArrayList<ObjArea>();
 	private ArrayList<MtlInterpretter> mtls = new ArrayList<MtlInterpretter>();

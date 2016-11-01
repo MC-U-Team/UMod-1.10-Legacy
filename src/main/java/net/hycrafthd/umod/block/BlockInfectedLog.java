@@ -9,7 +9,6 @@ import net.minecraft.init.Blocks;
 
 public class BlockInfectedLog extends BlockLog implements IInfectedBlock {
 	
-	
 	public BlockInfectedLog() {
 		this.setCreativeTab(UReference.infected);
 		this.setHarvestLevel("axe", 1);
@@ -53,7 +52,6 @@ public class BlockInfectedLog extends BlockLog implements IInfectedBlock {
 	}
 	
 	static final class SwitchEnumAxis {
-		
 		
 		static final int[] AXIS_LOOKUP = new int[BlockLog.EnumAxis.values().length];
 		

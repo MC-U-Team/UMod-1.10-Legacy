@@ -11,7 +11,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class RenderInfectedCow extends RenderLiving<EntityInfectedCow> implements IRenderFactory<EntityInfectedCow> {
 	
-	
 	public RenderInfectedCow(RenderManager r) {
 		super(r, new ModelInfectedCow(), 0);
 	}

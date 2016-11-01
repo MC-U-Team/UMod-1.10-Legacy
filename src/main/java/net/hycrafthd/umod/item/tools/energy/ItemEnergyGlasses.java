@@ -6,7 +6,6 @@ import net.minecraft.item.ItemArmor;
 
 public class ItemEnergyGlasses extends ItemArmor {
 	
-	
 	public ItemEnergyGlasses(ArmorMaterial material) {
 		super(material, 0, EntityEquipmentSlot.HEAD);
 		setCreativeTab(UReference.maschines);

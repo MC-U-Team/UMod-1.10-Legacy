@@ -5,7 +5,6 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 public class UCommands {
 	
-	
 	public UCommands(FMLServerStartingEvent e) {
 		register(e);
 	}

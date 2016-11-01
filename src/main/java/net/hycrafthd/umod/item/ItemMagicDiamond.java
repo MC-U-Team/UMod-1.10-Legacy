@@ -4,7 +4,6 @@ import net.hycrafthd.umod.api.Crystal;
 
 public class ItemMagicDiamond extends Crystal {
 	
-	
 	public ItemMagicDiamond() {
 		this.setMaxStackSize(1);
 	}

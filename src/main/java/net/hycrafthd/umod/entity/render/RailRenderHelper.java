@@ -8,7 +8,6 @@ import net.minecraft.util.math.Vec3d;
 
 public class RailRenderHelper {
 	
-	
 	private GLHelper helper;
 	
 	public RailRenderHelper(GLHelper helper) {

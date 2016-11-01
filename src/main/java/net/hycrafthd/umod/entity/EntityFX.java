@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 
 public class EntityFX extends EntityHanging {
 	
-	
 	public EntityFX(World w) {
 		super(w);
 		this.setSize(1F, 1F);

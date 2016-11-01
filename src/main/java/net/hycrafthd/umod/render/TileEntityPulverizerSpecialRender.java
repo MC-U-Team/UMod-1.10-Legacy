@@ -14,7 +14,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer<TileEntity> {
 	
-	
 	private GLHelper help;
 	
 	public TileEntityPulverizerSpecialRender() {

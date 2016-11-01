@@ -15,7 +15,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public class WorldViewRender {
 	
-	
 	public static final WorldViewRender INSTANCE = new WorldViewRender();
 	private GLHelper help;
 	
@@ -56,7 +55,6 @@ public class WorldViewRender {
 		final int j2 = stringSi + 4;
 		final int stringmu = st.size() - 1;
 		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double) stringmu / 10), posZ, new Runnable() {
-			
 			
 			@Override
 			public void run() {

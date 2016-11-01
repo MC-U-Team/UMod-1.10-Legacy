@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicPickaxe extends ItemPickaxe {
 	
-	
 	public ItemMagicPickaxe(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.magic);

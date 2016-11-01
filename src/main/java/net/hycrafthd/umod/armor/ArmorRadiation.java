@@ -10,7 +10,6 @@ import net.minecraft.item.*;
 
 public class ArmorRadiation extends ItemArmor {
 	
-	
 	public ArmorRadiation(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.infected);

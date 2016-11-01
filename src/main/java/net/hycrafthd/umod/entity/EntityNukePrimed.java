@@ -13,7 +13,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class EntityNukePrimed extends Entity {
 	
-	
 	public static int fuseSec;
 	public static int nukePower;
 	

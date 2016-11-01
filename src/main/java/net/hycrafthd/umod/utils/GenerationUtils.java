@@ -12,7 +12,6 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class GenerationUtils {
 	
-	
 	public static void generateOre(IBlockState state, Random random, int x, int z, World world, int chance, int minY, int maxY, int minVienSize, int maxVienSize) {
 		GenerationUtils.generateOre(state, Blocks.STONE, random, x, z, world, chance, minY, maxY, minVienSize, maxVienSize);
 	}

@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageIOCallback implements IMessage, IMessageHandler<MessageIOCallback, IMessage> {
 	
-	
 	public EnumFacing face;
 	public int item;
 	

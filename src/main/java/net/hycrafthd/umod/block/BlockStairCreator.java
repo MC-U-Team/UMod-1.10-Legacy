@@ -4,7 +4,6 @@ import net.minecraft.block.state.IBlockState;
 
 public class BlockStairCreator {
 	
-	
 	private BlockCustomStair stair;
 	
 	public BlockStairCreator(IBlockState modelState, String name) {

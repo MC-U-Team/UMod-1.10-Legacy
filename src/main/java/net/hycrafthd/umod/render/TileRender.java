@@ -5,7 +5,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public abstract class TileRender {
 	
-	
 	protected GLHelper help;
 	
 	public TileRender(GLHelper help) {

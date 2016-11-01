@@ -4,7 +4,6 @@ import net.minecraft.util.EnumFacing;
 
 public interface IIOMode {
 	
-	
 	public EnumFacing getFacing(int i);
 	
 	public void setFacing(int i, EnumFacing face);

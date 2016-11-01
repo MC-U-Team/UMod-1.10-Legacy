@@ -16,7 +16,6 @@ import net.minecraft.world.IBlockAccess;
 
 public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, ITickable, IConduitProvider {
 	
-	
 	public boolean firstrun = false;
 	public ItemStack conduit = null;
 	public int tun = -1;

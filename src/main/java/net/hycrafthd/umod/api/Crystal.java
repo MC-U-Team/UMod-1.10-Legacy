@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 
 public abstract class Crystal extends ItemBase {
 	
-	
 	public abstract int energyUnits();
 	
 	public Crystal() {

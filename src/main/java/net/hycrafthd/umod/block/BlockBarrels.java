@@ -12,7 +12,6 @@ import net.minecraft.item.*;
 
 public class BlockBarrels extends BlockBase {
 	
-	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeBarrels.class);
 	
 	public BlockBarrels() {

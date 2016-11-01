@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 
 public class UItems {
 	
-	
 	// Ingot
 	public static Item ingots;
 	

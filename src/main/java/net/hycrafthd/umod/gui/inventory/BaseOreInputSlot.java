@@ -10,14 +10,12 @@ import net.minecraft.item.ItemStack;
 
 public class BaseOreInputSlot extends BaseSlot {
 	
-	
 	public BaseOreInputSlot(IInventory to, int index, int xPosition, int yPosition) {
 		super(to, index, xPosition, yPosition);
 		RGBA n = new RGBA(0, 255, 0, 25);
 		RGBA e = new RGBA(0, 255, 0, 255);
 		this.setHoverColor(n, n, e, e);
 		this.setStringRet(new StringMethod() {
-			
 			
 			@Override
 			public String getString() {

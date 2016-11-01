@@ -6,7 +6,6 @@ import net.minecraft.world.World;
 
 public interface IPowerProvieder {
 	
-	
 	public double getStoredPower();
 	
 	public void addPower(double power);
@@ -28,7 +27,7 @@ public interface IPowerProvieder {
 	public World getWorld();
 	
 	public void setEnergy(double coun);
-		
+	
 	public boolean needsPower();
 	
 	public boolean productsPower();

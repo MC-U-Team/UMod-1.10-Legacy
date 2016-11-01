@@ -8,7 +8,6 @@ import net.minecraft.item.*;
 
 public class ItemDusts extends ItemBase {
 	
-	
 	public ItemDusts() {
 		super();
 		this.hasSubtypes = true;

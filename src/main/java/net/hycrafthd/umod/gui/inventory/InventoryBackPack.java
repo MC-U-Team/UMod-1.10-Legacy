@@ -6,7 +6,6 @@ import net.minecraft.nbt.*;
 
 public class InventoryBackPack extends InventoryBackPackBase {
 	
-	
 	public InventoryBackPack(ItemStack itemStack, EntityPlayer player, int backpacksize) {
 		size = backpacksize;
 		inv = new ItemStack[size];

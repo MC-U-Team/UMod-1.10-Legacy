@@ -5,7 +5,6 @@ import net.minecraft.world.World;
 
 public interface ICabel {
 	
-	
 	public BlockPos getPos();
 	
 	public World getWorld();

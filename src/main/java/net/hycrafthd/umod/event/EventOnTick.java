@@ -6,7 +6,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventOnTick {
 	
-	
 	@SubscribeEvent
 	public void ticking(TickEvent ev) {
 		if (!ev.type.equals(TickEvent.Type.SERVER))

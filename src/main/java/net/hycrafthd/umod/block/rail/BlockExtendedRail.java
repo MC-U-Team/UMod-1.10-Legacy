@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockExtendedRail extends Block implements ITileEntityProvider {
 	
-	
 	public BlockExtendedRail() {
 		super(Material.IRON);
 		this.isBlockContainer = true;

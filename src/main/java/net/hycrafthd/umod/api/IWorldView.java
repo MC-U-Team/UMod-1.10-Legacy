@@ -5,7 +5,6 @@ import net.minecraft.world.World;
 
 public interface IWorldView {
 	
-	
 	public boolean showPower();
 	
 	public String[] textToAdd();

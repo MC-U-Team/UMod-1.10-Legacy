@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiEnergy extends GuiScreen {
 	
-	
 	private int xSize;
 	private int ySize;
 	private IPowerProvieder pro;

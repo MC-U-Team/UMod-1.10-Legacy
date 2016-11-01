@@ -8,7 +8,6 @@ import net.minecraftforge.common.BiomeManager.*;
 
 public class UBiome {
 	
-	
 	public static Biome infectedBiomBase;
 	public static BiomeProperties infectedBiomId;
 	

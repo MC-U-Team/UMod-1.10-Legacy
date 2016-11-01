@@ -10,7 +10,6 @@ import net.minecraft.item.*;
 
 public class ArmorMagic extends ItemArmor {
 	
-	
 	public ArmorMagic(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.magic);

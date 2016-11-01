@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 
 public class ContainerCraftFurnace extends ContainerBase {
 	
-	
 	public ContainerCraftFurnace(IInventory inv, EntityPlayer pl, BlockPos pos, World wo) {
 		super(inv, pl, pos, wo);
 		

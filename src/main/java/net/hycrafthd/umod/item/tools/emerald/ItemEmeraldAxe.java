@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemEmeraldAxe extends ItemAxe {
 	
-	
 	public ItemEmeraldAxe(ToolMaterial material) {
 		super(material, material.getDamageVsEntity(), 0);
 		setCreativeTab(UReference.things);

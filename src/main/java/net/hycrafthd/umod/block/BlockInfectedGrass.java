@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 public class BlockInfectedGrass extends BlockBase implements IInfectedBlock {
 	
-	
 	public BlockInfectedGrass() {
 		super(Material.GRASS);
 		this.setCreativeTab(UReference.infected);

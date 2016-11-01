@@ -2,7 +2,6 @@ package net.hycrafthd.umod;
 
 public class UChestLoot {
 	
-	
 	public UChestLoot() {
 		addinfestedruin();
 	}

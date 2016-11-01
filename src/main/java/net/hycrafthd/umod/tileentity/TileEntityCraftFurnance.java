@@ -11,8 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 
-public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ISignable,ITickable {
-	
+public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ISignable, ITickable {
 	
 	public ItemStack[] stack = new ItemStack[11];
 	

@@ -6,7 +6,6 @@ import net.minecraft.block.material.Material;
 
 public class BlockConduit extends BlockBase implements IConduitBlock {
 	
-	
 	public BlockConduit() {
 		super(Material.IRON);
 		this.setCreativeTab(UReference.maschines);

@@ -39,7 +39,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public abstract class GuiBase extends GuiScreen {
 	
-	
 	public ResourceLocation loc, loc1, loc2, loc3;
 	public static final ResourceLocation CLEAR_GUI = new GuiRescources("clear.png");
 	public EntityPlayer play;
@@ -128,7 +127,6 @@ public abstract class GuiBase extends GuiScreen {
 			tabs = new ModeTabs[Mode.values().length];
 			tabs[0] = new ModeTabs(new ItemStack(UBlocks.ores, 0, 5), "Normal Mode", Mode.NORMAL, 0, 0, true) {
 				
-				
 				@Override
 				public void onClick(Mode m) {
 					for (ModeTabs ms : tabs) {
@@ -149,7 +147,6 @@ public abstract class GuiBase extends GuiScreen {
 			};
 			tabs[1] = new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode", Mode.BATTERY, 28, 0, false) {
 				
-				
 				@Override
 				public void onClick(Mode m) {
 					for (ModeTabs ms : tabs) {
@@ -169,7 +166,6 @@ public abstract class GuiBase extends GuiScreen {
 			};
 			tabs[2] = new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode", Mode.OUTPUT, 28 * 2, 0, false) {
 				
-				
 				@Override
 				public void onClick(Mode m) {
 					for (ModeTabs ms : tabs) {
@@ -187,7 +183,6 @@ public abstract class GuiBase extends GuiScreen {
 			};
 			tabs[3] = new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", Mode.COLOR, 28 * 3, 0, false) {
 				
-				
 				@Override
 				public void onClick(Mode m) {
 					for (ModeTabs ms : tabs) {
@@ -204,7 +199,6 @@ public abstract class GuiBase extends GuiScreen {
 				}
 			};
 			tabs[4] = new ModeTabs(new ItemStack(UBlocks.solarpanel), "Energy Mode", Mode.ENERGY, 28 * 4, 0, false) {
-				
 				
 				@Override
 				public void onClick(Mode m) {
@@ -225,7 +219,6 @@ public abstract class GuiBase extends GuiScreen {
 		box = new GuiCombobox(k + 8, l + 7, 80, 12);
 		check = new GuiCheckbox(k + 5, l + 5, 10, 10, new RGBA(Color.white), new RGBA(Color.DARK_GRAY));
 		check.setTooltip(new StringMethod() {
-			
 			
 			@Override
 			public String getString() {
@@ -530,7 +523,6 @@ public abstract class GuiBase extends GuiScreen {
 		GlStateManager.pushMatrix();
 		ClientProxy.getModelRenderHelper().renderItem(itemStack, new Runnable() {
 			
-			
 			@Override
 			public void run() {
 				setupGuiTransform(x, y, true);
@@ -733,7 +725,7 @@ public abstract class GuiBase extends GuiScreen {
 			}
 			onIOModeSwitched();
 		}
-		if(basecon.mode.equals(Mode.NORMAL) && clickedMouseButton == 0){
+		if (basecon.mode.equals(Mode.NORMAL) && clickedMouseButton == 0) {
 			this.handelMouseInput(mouseX, mouseY);
 		}
 		Slot slot = this.getSlotAtPosition(mouseX, mouseY);
@@ -789,7 +781,7 @@ public abstract class GuiBase extends GuiScreen {
 			if (basecon.mode.equals(Mode.COLOR)) {
 				check.handelMouseClick(mouseX, mouseY);
 			}
-			if(basecon.mode.equals(Mode.NORMAL)){
+			if (basecon.mode.equals(Mode.NORMAL)) {
 				this.handelMouseInput(mouseX, mouseY);
 			}
 			if (basecon.mode.equals(Mode.OUTPUT)) {

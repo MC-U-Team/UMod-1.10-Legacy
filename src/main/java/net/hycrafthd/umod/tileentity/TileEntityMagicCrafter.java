@@ -11,7 +11,6 @@ import net.minecraft.util.*;
 
 public class TileEntityMagicCrafter extends TileEntityLockable implements ITickable, ISidedInventory {
 	
-	
 	private ItemStack[] inv = new ItemStack[4];
 	
 	boolean isCreating = false;

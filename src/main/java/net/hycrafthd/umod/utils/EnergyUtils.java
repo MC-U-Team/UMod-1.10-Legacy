@@ -2,7 +2,6 @@ package net.hycrafthd.umod.utils;
 
 public class EnergyUtils {
 	
-	
 	public static String translate(double d) {
 		String norm = ("" + d);
 		if (d >= 1000 && d < 1000000) {
