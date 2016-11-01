@@ -28,9 +28,7 @@ public interface IPowerProvieder {
 	public World getWorld();
 	
 	public void setEnergy(double coun);
-	
-	public String getEnergyClass();
-	
+		
 	public boolean needsPower();
 	
 	public boolean productsPower();

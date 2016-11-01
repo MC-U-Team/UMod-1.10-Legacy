@@ -192,12 +192,6 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public String getEnergyClass() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return true;
 	}

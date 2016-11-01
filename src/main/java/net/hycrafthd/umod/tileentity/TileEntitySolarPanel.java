@@ -140,11 +140,6 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder,
 	}
 	
 	@Override
-	public String getEnergyClass() {
-		return null;
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return false;
 	}

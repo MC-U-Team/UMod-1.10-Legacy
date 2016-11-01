@@ -363,11 +363,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	}
 	
 	@Override
-	public String getEnergyClass() {
-		return "";
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return true;
 	}
