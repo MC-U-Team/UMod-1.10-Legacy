@@ -3,9 +3,10 @@ package net.hycrafthd.umod.ext.enderio;
 import org.apache.logging.log4j.Logger;
 
 import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.ModelRegistry;
 import net.hycrafthd.corelib.registry.TileEntityRegistry;
 import net.hycrafthd.umod.ext.IUmodExtension;
+import net.hycrafthd.umod.ext.abs.AbstractOreDictionaryRegistry;
+import net.hycrafthd.umod.ext.abs.AbstractRecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.event.*;
 
@@ -37,8 +38,18 @@ public class EnderIOExtension implements IUmodExtension{
 	}
 
 	@Override
-	public void clientRegistery() {
-//		ModelRegistry.register(transformer);
+	public AbstractOreDictionaryRegistry oredirctionary() {
+		return null;
 	}
 	
+	@Override
+	public AbstractRecipeRegistry recipes() {
+		return null;
+	}
+	
+	@Override
+	public void clientRegistry() {
+		// TODO Auto-generated method stub
+		
+	}
 }

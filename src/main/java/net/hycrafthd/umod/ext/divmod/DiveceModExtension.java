@@ -1,10 +1,10 @@
 package net.hycrafthd.umod.ext.divmod;
 
 import net.hycrafthd.umod.ext.IUmodExtension;
+import net.hycrafthd.umod.ext.abs.*;
 import net.minecraftforge.fml.common.event.*;
 
 public class DiveceModExtension implements IUmodExtension {
-	
 	
 	@Override
 	public void preinit(FMLPreInitializationEvent evt) {
@@ -31,9 +31,19 @@ public class DiveceModExtension implements IUmodExtension {
 	}
 	
 	@Override
-	public void clientRegistery() {
+	public void clientRegistry() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public AbstractOreDictionaryRegistry oredirctionary() {
+		return null;
+	}
+	
+	@Override
+	public AbstractRecipeRegistry recipes() {
+		return null;
 	}
 	
 }

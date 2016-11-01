@@ -106,11 +106,7 @@ public class URecipes {
 	private void registerPulverizerRecipes() {
 		// Ores -> Dust (without Sulphur Chunk)
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			int b = i + 1;
-			if (i + 1 >= EnumTypeBaseStuff.values().length) {
-				b = 0;
-			}
-			ModRegistryUtils.addPulverRecipe(new PulverizerRecepie(new ItemStack(UBlocks.ores, 1, i), new ItemStack(UItems.dusts, 1, i), new ItemStack(UItems.dusts, 1, b), 5, true));
+			ModRegistryUtils.addPulverRecipe(new PulverizerRecepie(new ItemStack(UBlocks.ores, 1, i), new ItemStack(UItems.dusts, 1, i), new ItemStack(UItems.dusts, 1, i), 5, true));
 		}
 		
 		ModRegistryUtils.addPulverRecipe(new PulverizerRecepie(new ItemStack(UBlocks.oilsand), new ItemStack(Blocks.SAND), new ItemStack(UItems.petrol), 0, false));
