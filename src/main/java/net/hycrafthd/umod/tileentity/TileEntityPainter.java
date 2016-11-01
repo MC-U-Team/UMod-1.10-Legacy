@@ -228,11 +228,6 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	}
 	
 	@Override
-	public String getEnergyClass() {
-		return "";
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return true;
 	}

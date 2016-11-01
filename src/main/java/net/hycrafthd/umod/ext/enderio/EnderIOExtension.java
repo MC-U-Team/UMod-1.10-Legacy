@@ -2,13 +2,18 @@ package net.hycrafthd.umod.ext.enderio;
 
 import org.apache.logging.log4j.Logger;
 
+import net.hycrafthd.corelib.registry.BlockRegistry;
+import net.hycrafthd.corelib.registry.TileEntityRegistry;
 import net.hycrafthd.umod.ext.IUmodExtension;
-import net.hycrafthd.umod.ext.abs.*;
+import net.hycrafthd.umod.ext.abs.AbstractOreDictionaryRegistry;
+import net.hycrafthd.umod.ext.abs.AbstractRecipeRegistry;
+import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.event.*;
 
 public class EnderIOExtension implements IUmodExtension{
 
-	Logger lg;
+	public static Logger lg;
+	public static Block transformer;
 	
 	@Override
 	public void preinit(FMLPreInitializationEvent evt) {
@@ -17,24 +22,17 @@ public class EnderIOExtension implements IUmodExtension{
 
 	@Override
 	public void init(FMLInitializationEvent evt) {
-		// TODO Auto-generated method stub
-		
+		transformer = new BlockEnderIOTransformer().setUnlocalizedName("enderiotransformer");
+		BlockRegistry.register(transformer, "enderiotransformer");
 	}
 
 	@Override
 	public void postinit(FMLPostInitializationEvent evt) {
-		// TODO Auto-generated method stub
-		
+		TileEntityRegistry.register(TileEntityEnderIOTransformer.class);
 	}
 
 	@Override
 	public void serverstarting(FMLServerStartingEvent evt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void clientRegistry() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -49,4 +47,9 @@ public class EnderIOExtension implements IUmodExtension{
 		return null;
 	}
 	
+	@Override
+	public void clientRegistry() {
+		// TODO Auto-generated method stub
+		
+	}
 }

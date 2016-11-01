@@ -239,11 +239,6 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public String getEnergyClass() {
-		return null;
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return false;
 	}
