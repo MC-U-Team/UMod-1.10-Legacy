@@ -9,16 +9,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class URegistryUtils {
 	
-	
-	public static double getDistanceAtoB(double x1, double z1, double x2, double z2) {
-		double dx = x1 - x2;
-		double dz = z1 - z2;
-		return Math.sqrt((dx * dx + dz * dz));
-	}
-	
 	public static void registerItem(Item item) {
 		ItemRegistry.register(item, item.getUnlocalizedName().substring(5));
-		//OreDictionaryRegistry.register(item);
+		OreDictionaryRegistry.register(item);
 	}
 	
 	public static void registerBlock(Block block) {
@@ -27,7 +20,7 @@ public class URegistryUtils {
 	
 	public static void registerBlock(Block block, Class<? extends ItemBlock> bl) {
 		BlockRegistry.register(block, bl, block.getUnlocalizedName().substring(5));
-		//OreDictionaryRegistry.register(block);
+		OreDictionaryRegistry.register(block);
 	}
 	
 	public static void registerHalfSlabs(BlockSlabCreator creator) {

@@ -2,12 +2,11 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.obj.ObjLoader;
 
-public class ObjRenderregister {
-	
+public class ObjRenderRegistry {
 	
 	public static ObjLoader TEST;
 	
-	public ObjRenderregister() {
+	public ObjRenderRegistry() {
 		this.reload();
 	}
 	

@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 
 public class NuclearExplosion implements IProcess {
 	
-	
 	private World worldObj;
 	private int xCoord;
 	private int yCoord;
@@ -38,7 +37,7 @@ public class NuclearExplosion implements IProcess {
 		
 		for (int x = xCoord - size; x < xCoord + size; x++) {
 			for (int z = zCoord - size; z < zCoord + size; z++) {
-				double dist = URegistryUtils.getDistanceAtoB(x, z, xCoord, zCoord);
+				double dist = getDistanceAtoB(x, z, xCoord, zCoord);
 				if (dist < OD && dist >= ID) {
 					float tracePower = power - (float) (expansion / 10D);
 					tracePower *= 1.5F + ((random.nextFloat() - 0.5F) * 0.1);
@@ -57,5 +56,11 @@ public class NuclearExplosion implements IProcess {
 	@Override
 	public boolean isDead() {
 		return isDead;
+	}
+	
+	private double getDistanceAtoB(double x1, double z1, double x2, double z2) {
+		double dx = x1 - x2;
+		double dz = z1 - z2;
+		return Math.sqrt((dx * dx + dz * dz));
 	}
 }

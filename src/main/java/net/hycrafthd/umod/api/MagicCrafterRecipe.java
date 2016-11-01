@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 
 public class MagicCrafterRecipe {
 	
-	
 	public static ArrayList<MagicCrafterRecipe> recipes = new ArrayList<MagicCrafterRecipe>();
 	private int energy;
 	private ItemStack input;
