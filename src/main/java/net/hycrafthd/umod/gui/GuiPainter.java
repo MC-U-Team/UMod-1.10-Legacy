@@ -74,7 +74,7 @@ public class GuiPainter extends GuiBase implements ISliderPro {
 			blue.draw(mc);
 			sat.draw(mc);
 			this.help.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
-			if (Keyboard.isKeyDown(ClientProxy.info.getKeyCode())) {
+			if (Keyboard.isKeyDown(UReference.getClientProxy().getInfoBinding().getKeyCode())) {
 				red.drawOverlay(mc, mouseX, mouseY);
 				green.drawOverlay(mc, mouseX, mouseY);
 				blue.drawOverlay(mc, mouseX, mouseY);

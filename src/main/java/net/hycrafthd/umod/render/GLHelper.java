@@ -455,7 +455,7 @@ public class GLHelper {
 		drawTexturedCube(loc, posX + (0.5 - d / 2), posY + (0.5 - e / 2), posZ + (0.5 - f / 2), d, e, f);
 	}
 	
-	public static void drawTexturePoints(String text, Vec3d vec, Vec3d vec1, Vec3d vec2, Vec3d Vec3d, double u, double v) {
+	public void drawTexturePoints(String text, Vec3d vec, Vec3d vec1, Vec3d vec2, Vec3d Vec3d, double u, double v) {
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(text));
 		Tessellator tessellator = Tessellator.getInstance();
 		VertexBuffer VertexBuffer = tessellator.getBuffer();

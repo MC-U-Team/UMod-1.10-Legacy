@@ -3,6 +3,7 @@ package net.hycrafthd.umod.render;
 import org.lwjgl.opengl.GL11;
 
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.gui.GuiRescources;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;
@@ -17,7 +18,7 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 	private GLHelper help;
 	
 	public TileEntityPulverizerSpecialRender() {
-		this.help = UMod.getGLHelper();
+		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public int time = 0;
@@ -25,7 +26,7 @@ public class TileEntityPulverizerSpecialRender extends TileEntitySpecialRenderer
 	
 	@Override
 	public void renderTileEntityAt(TileEntity tileEntity, final double posX, final double posY, final double posZ, float p_180535_8_, final int p_180535_9_) {
-		WorldViewRender.INSTANCE.render(tileEntity, posX, posY, posZ);
+		InfoFieldRender.INSTANCE.render(tileEntity, posX, posY, posZ);
 		TileEntityPulverizer pul = (TileEntityPulverizer) tileEntity;
 		ItemStack ore = pul.getStackInSlot(3);
 		

@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
@@ -25,7 +26,7 @@ public class GuiCheckbox extends Gui {
 		this.height = height;
 		this.rgb = rgb;
 		this.hover = hover;
-		this.help = UMod.getGLHelper();
+		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public boolean isMouseOver(int x, int y) {

@@ -1,22 +1,26 @@
 package net.hycrafthd.umod;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import net.hycrafthd.umod.api.ProcessHandler;
-import net.hycrafthd.umod.event.*;
+import net.hycrafthd.umod.event.EventChestInventory;
+import net.hycrafthd.umod.event.EventDrawHUD;
+import net.hycrafthd.umod.event.EventExecuteRadiation;
+import net.hycrafthd.umod.event.EventGettingRadiation;
+import net.hycrafthd.umod.event.EventGettingRadiationInv;
+import net.hycrafthd.umod.event.EventLoadWorld;
+import net.hycrafthd.umod.event.EventOnTick;
+import net.hycrafthd.umod.event.EventPlayerJoin;
+import net.hycrafthd.umod.event.EventToolTip;
 import net.hycrafthd.umod.ext.ExtensionList;
-import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
 import net.hycrafthd.umod.network.PacketHandler;
-import net.hycrafthd.umod.obj.ObjInterpretter;
 import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {
@@ -46,10 +50,6 @@ public class UMod {
 		this.registerGenerators();
 		this.registerEvents();
 		UMod.log.info("Init Mod.");
-	}
-	
-	public static GLHelper getGLHelper() {
-		return new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	
 	@EventHandler

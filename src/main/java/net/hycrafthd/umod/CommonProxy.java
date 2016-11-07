@@ -7,6 +7,10 @@ import net.minecraft.item.ItemStack;
 
 public class CommonProxy {
 	
+	//Client Stuff
+	public void init(){
+	}
+	
 	// Client Stuff
 	public void registerModels() {
 	}

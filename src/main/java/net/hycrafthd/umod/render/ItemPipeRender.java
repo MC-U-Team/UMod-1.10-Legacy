@@ -8,9 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class TileEntityItemPipeRender extends TileRender {
+public class ItemPipeRender extends TileRender {
 	
-	public TileEntityItemPipeRender(GLHelper help) {
+	public ItemPipeRender(GLHelper help) {
 		super(help);
 	}
 	

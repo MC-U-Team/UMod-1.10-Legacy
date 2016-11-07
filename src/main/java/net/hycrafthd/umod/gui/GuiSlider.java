@@ -2,6 +2,7 @@ package net.hycrafthd.umod.gui;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.*;
 import net.hycrafthd.umod.render.GLHelper;
@@ -29,7 +30,7 @@ public class GuiSlider extends Gui {
 		slid2 = color3;
 		this.id = id;
 		this.ps = pos;
-		this.help = UMod.getGLHelper();
+		this.help = UReference.getClientProxy().getGLHelper();
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, pos));
 	}
 	

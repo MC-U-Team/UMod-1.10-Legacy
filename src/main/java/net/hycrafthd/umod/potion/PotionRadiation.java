@@ -1,3 +1,4 @@
+
 package net.hycrafthd.umod.potion;
 
 import net.minecraft.potion.Potion;
@@ -5,7 +6,7 @@ import net.minecraft.potion.Potion;
 public class PotionRadiation extends Potion {
 	
 	public PotionRadiation() {
-		super(false, 0);
+		super(true, 0);
 		// TODO Auto-generated constructor stub
 	}
 	/*

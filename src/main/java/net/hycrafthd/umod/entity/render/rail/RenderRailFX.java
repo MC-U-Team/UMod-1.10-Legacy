@@ -1,6 +1,7 @@
 package net.hycrafthd.umod.entity.render.rail;
 
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
 import net.hycrafthd.umod.entity.render.RailRenderHelper;
 import net.hycrafthd.umod.render.GLHelper;
@@ -16,7 +17,7 @@ public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory
 	
 	@Override
 	public void doRender(EntityRailFX entity, double x, double y, double z, float p_76986_8_, float partialTicks) {
-		new RailRenderHelper(UMod.getGLHelper()).drawSwell("textures/blocks/stone.png", x, y - 0.5, z);
+		new RailRenderHelper(UReference.getClientProxy().getGLHelper()).drawSwell("textures/blocks/stone.png", x, y - 0.5, z);
 		// new VIADrawer(fl).drawNormal("", x, y, z, new RGBA(Color.white));
 	}
 	

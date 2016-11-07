@@ -1,7 +1,10 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.api.*;
+import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.api.IConduitBlock;
+import net.hycrafthd.umod.api.IConduitProvider;
 import net.hycrafthd.umod.block.BlockCable;
+import net.hycrafthd.umod.gui.ModlerenderHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,7 +12,15 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ConduitRender {
 	
-	public static boolean render(TileEntity pip, EntityPlayer pl, double posX, double posY, double posZ) {
+	public GLHelper help;
+	public ModlerenderHelper model;
+	
+	public ConduitRender() {
+		this.help = UReference.getClientProxy().getGLHelper();
+        this.model = UReference.getClientProxy().getModelRenderHelper();
+	}
+	
+	public boolean render(TileEntity pip, EntityPlayer pl, double posX, double posY, double posZ) {
 		if (!(pip instanceof IConduitProvider))
 			return false;
 		if (pip != null && (!((IConduitProvider) pip).hasConduit() || (pl.getHeldItemMainhand() != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof IConduitBlock))) {
@@ -17,7 +28,7 @@ public class ConduitRender {
 		} else if (pip != null) {
 			if (pl.getHeldItemMainhand() == null || !(Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof BlockCable)) {
 				GlStateManager.enableLighting();
-				// IMPL_LWJGLU.renderBlockConduit(((IConduitProvider) pip).getConduit(), posX, posY, posZ);
+				this.model.renderConduit(Block.getBlockFromItem(((IConduitProvider) pip).getConduit().getItem()), posX, posY, posZ);
 				GlStateManager.disableLighting();
 				return true;
 			}

@@ -64,7 +64,7 @@ public abstract class GuiBase extends GuiScreen {
 		this.pos = ent.getPos();
 		this.basecon = (ContainerBase) con;
 		this.worldObj = Minecraft.getMinecraft().getIntegratedServer().worldServers[0];
-		this.help = UMod.getGLHelper();
+		this.help = UReference.getClientProxy().getGLHelper();
 		if (pro != null)
 			this.eng = new GuiEnergy(worldObj, pro, false);
 	}
@@ -456,7 +456,7 @@ public abstract class GuiBase extends GuiScreen {
 		for (Object sl : this.basecon.inventorySlots) {
 			Slot slot = (Slot) sl;
 			if (slot != null && this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
-				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasString() && ((BaseSlot) slot).isVisible() && !(Keyboard.isKeyDown(ClientProxy.info.getKeyCode()) && slot.getHasStack())) {
+				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasString() && ((BaseSlot) slot).isVisible() && !(Keyboard.isKeyDown(UReference.getClientProxy().getInfoBinding().getKeyCode()) && slot.getHasStack())) {
 					GlStateManager.pushMatrix();
 					Tessellator ts = Tessellator.getInstance();
 					BaseSlot slt = (BaseSlot) slot;
@@ -521,7 +521,7 @@ public abstract class GuiBase extends GuiScreen {
 	
 	private void renderItemIntoGUI(ItemStack itemStack, final int x, final int y) {
 		GlStateManager.pushMatrix();
-		ClientProxy.getModelRenderHelper().renderItem(itemStack, new Runnable() {
+		UReference.getClientProxy().getModelRenderHelper().renderItem(itemStack, new Runnable() {
 			
 			@Override
 			public void run() {

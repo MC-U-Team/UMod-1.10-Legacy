@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
@@ -19,14 +20,14 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class IMPL_MODELRENDERHELPER {
+public class ModlerenderHelper {
 	
 	private final ItemModelMesher itemModelMesher;
 	private final TextureManager textureManager;
 	private final ItemColors itemColors;
 	private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
 	
-	public IMPL_MODELRENDERHELPER(ItemModelMesher mome, TextureManager tex, ItemColors col) {
+	public ModlerenderHelper(ItemModelMesher mome, TextureManager tex, ItemColors col) {
 		this.itemColors = col;
 		this.itemModelMesher = mome;
 		this.textureManager = tex;
@@ -192,4 +193,11 @@ public class IMPL_MODELRENDERHELPER {
 		}
 	}
 	
+	public void renderConduit(Block b,double posX,double posy,double posz){
+		if(b == null)return;
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(posX, posy, posz);
+		this.renderItem(new ItemStack(b));
+		GlStateManager.popMatrix();
+	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
@@ -26,7 +27,7 @@ public class GuiCombobox extends Gui {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.help = UMod.getGLHelper();
+		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public void draw(Minecraft mc) {

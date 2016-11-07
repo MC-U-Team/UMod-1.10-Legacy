@@ -6,39 +6,88 @@ import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import net.hycrafthd.corelib.registry.*;
+import net.hycrafthd.corelib.registry.KeybindingRegistry;
+import net.hycrafthd.corelib.registry.ModelRegistry;
+import net.hycrafthd.corelib.registry.RenderRegistry;
 import net.hycrafthd.corelib.util.ItemUtil;
-import net.hycrafthd.umod.block.*;
+import net.hycrafthd.umod.block.BlockSlabCreator;
 import net.hycrafthd.umod.block.BlockSolarPanel.EnumTypeSolarPanel;
-import net.hycrafthd.umod.entity.*;
+import net.hycrafthd.umod.block.BlockStairCreator;
+import net.hycrafthd.umod.entity.EntityFX;
+import net.hycrafthd.umod.entity.EntityInfectedCow;
+import net.hycrafthd.umod.entity.EntityInfectedCreeper;
+import net.hycrafthd.umod.entity.EntityInfectedZombie;
+import net.hycrafthd.umod.entity.EntityNukePrimed;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
-import net.hycrafthd.umod.entity.render.*;
+import net.hycrafthd.umod.entity.render.RenderFX;
+import net.hycrafthd.umod.entity.render.RenderInfectedCow;
+import net.hycrafthd.umod.entity.render.RenderInfectedCreeper;
+import net.hycrafthd.umod.entity.render.RenderInfectedZombie;
+import net.hycrafthd.umod.entity.render.RenderNukePrimed;
 import net.hycrafthd.umod.entity.render.rail.RenderRailFX;
-import net.hycrafthd.umod.enumtype.*;
+import net.hycrafthd.umod.enumtype.EnumTypeBackPack;
+import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
+import net.hycrafthd.umod.enumtype.EnumTypeTransformer;
 import net.hycrafthd.umod.ext.ExtensionList;
-import net.hycrafthd.umod.gui.IMPL_MODELRENDERHELPER;
-import net.hycrafthd.umod.render.*;
-import net.hycrafthd.umod.tileentity.*;
+import net.hycrafthd.umod.gui.ModlerenderHelper;
+import net.hycrafthd.umod.render.CabelRender;
+import net.hycrafthd.umod.render.GLHelper;
+import net.hycrafthd.umod.render.ItemPipeRender;
+import net.hycrafthd.umod.render.TileEntityEnergyPannelRender;
+import net.hycrafthd.umod.render.TileEntityPainterSpecialRender;
+import net.hycrafthd.umod.render.TileEntityPulverizerSpecialRender;
+import net.hycrafthd.umod.tileentity.TileEntityCable;
+import net.hycrafthd.umod.tileentity.TileEntityEnergyPannel;
+import net.hycrafthd.umod.tileentity.TileEntityItemPipe;
+import net.hycrafthd.umod.tileentity.TileEntityPainter;
+import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.*;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	
-	public static KeyBinding info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
+	private KeyBinding info;
+	private Minecraft mc;
+	private ObjRenderRegistry regs;
+	private ModlerenderHelper MODEL_HELPER;
+	private GLHelper help;
 	
-	public static ObjRenderRegistry regs;
-	private static IMPL_MODELRENDERHELPER INS;
+	@Override
+	public void init() {
+		this.mc = Minecraft.getMinecraft();
+		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
+		this.MODEL_HELPER = new ModlerenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
+		this.regs = new ObjRenderRegistry();
+		this.help = new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
+	}
+	
+	public GLHelper getGLHelper() {
+		return this.help;
+	}
+	
+	public ModlerenderHelper getModelRenderHelper() {
+		return this.MODEL_HELPER;
+	}
+	
+	public ObjRenderRegistry getObjRenderList(){
+		return this.regs;
+	}
+	
+	public KeyBinding getInfoBinding() {
+		return this.info;
+	}
 	
 	@Override
 	public void registerModels() {
-		Minecraft mc = Minecraft.getMinecraft();
-		INS = new IMPL_MODELRENDERHELPER(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		// Register Base Type Variants
 		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
 		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
@@ -194,17 +243,13 @@ public class ClientProxy extends CommonProxy {
 		KeybindingRegistry.register(info);
 	}
 	
-	public static IMPL_MODELRENDERHELPER getModelRenderHelper() {
-		return INS;
-	}
-	
 	@Override
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
 		
-		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(UMod.getGLHelper()));
-		RenderFX.register(TileEntityCable.class, new TileEntityCabelRender(UMod.getGLHelper()));
-		RenderFX.register(TileEntityItemPipe.class, new TileEntityItemPipeRender(UMod.getGLHelper()));
+		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(this.help));
+		RenderFX.register(TileEntityCable.class, new CabelRender(this.help));
+		RenderFX.register(TileEntityItemPipe.class, new ItemPipeRender(this.help));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));
@@ -215,7 +260,6 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
-		regs = new ObjRenderRegistry();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

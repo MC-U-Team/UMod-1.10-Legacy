@@ -5,6 +5,7 @@ import java.util.*;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.minecraft.client.Minecraft;
@@ -13,13 +14,13 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.tileentity.TileEntity;
 
-public class WorldViewRender {
+public class InfoFieldRender {
 	
-	public static final WorldViewRender INSTANCE = new WorldViewRender();
+	public static final InfoFieldRender INSTANCE = new InfoFieldRender();
 	private GLHelper help;
 	
-	private WorldViewRender() {
-		this.help = UMod.getGLHelper();
+	private InfoFieldRender() {
+		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public void render(TileEntity tileEntity, double posX, double posY, double posZ) {

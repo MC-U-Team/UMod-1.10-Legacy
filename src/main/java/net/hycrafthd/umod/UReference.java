@@ -12,13 +12,26 @@ public class UReference {
 	public static final String version = "alpha0.3";
 	public static final String mcversion = "1.8";
 	
-	public static final String resource = UReference.modid + ":";
+	public static final String resource = modid + ":";
 	
-	@Instance(UReference.modid)
+	@Instance(modid)
 	public static UMod instance = new UMod();
 	
-	@SidedProxy(serverSide = "net.hycrafthd.umod.CommonProxy", clientSide = "net.hycrafthd.umod.ClientProxy", modId = UReference.modid)
+	@SidedProxy(serverSide = "net.hycrafthd.umod.CommonProxy", clientSide = "net.hycrafthd.umod.ClientProxy", modId = modid)
 	public static CommonProxy proxy = new CommonProxy();
+	
+	/**
+	 * 
+	 * @return If client sided this will return the Clientproxy 
+	 * if not this will throw a NullPointerException
+	 */
+	
+	public static ClientProxy getClientProxy(){
+		if(proxy instanceof ClientProxy){
+		return (ClientProxy) proxy;
+		}
+		throw new NullPointerException("No Server Sided Call of this Methode is allowed");
+	}
 	
 	public static CreativeTabs maschines = new UTab();
 	public static CreativeTabs blocks = new CreativeTabs("blocks") {

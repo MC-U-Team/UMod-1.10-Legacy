@@ -5,6 +5,7 @@ import java.awt.Color;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.ClientProxy;
 import net.hycrafthd.umod.UMod;
+import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.block.BlockCable;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.minecraft.block.Block;
@@ -14,9 +15,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class TileEntityCabelRender extends TileRender {
+public class CabelRender extends TileRender {
 	
-	public TileEntityCabelRender(GLHelper help) {
+	public CabelRender(GLHelper help) {
 		super(help);
 	}
 	
@@ -34,7 +35,7 @@ public class TileEntityCabelRender extends TileRender {
 		GlStateManager.shadeModel(7425);
 		GlStateManager.enableLighting();
 		GlStateManager.translate(posX, posY, posZ);
-		ClientProxy.regs.TEST.draw();
+		UReference.getClientProxy().getObjRenderList().TEST.draw();
 		GlStateManager.shadeModel(7424);
 		GlStateManager.disableBlend();
 		GlStateManager.enableAlpha();
