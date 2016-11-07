@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, IMessage> {
 	
-	
 	public BlockPos pos;
 	public EnumFacing ei, eo;
 	

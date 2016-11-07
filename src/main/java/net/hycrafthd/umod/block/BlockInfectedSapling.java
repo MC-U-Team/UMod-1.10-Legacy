@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 
 public class BlockInfectedSapling extends BlockBush implements IGrowable, IInfectedBlock {
 	
-	
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
 	
 	public BlockInfectedSapling() {

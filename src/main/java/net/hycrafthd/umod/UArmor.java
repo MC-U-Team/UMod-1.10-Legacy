@@ -11,7 +11,6 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class UArmor {
 	
-	
 	// Radiation Suit
 	public static ArmorMaterial radiationSuitMaterial;
 	// Energy

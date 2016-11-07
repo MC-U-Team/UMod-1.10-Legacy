@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 
 public class URecipes {
 	
-	
 	public URecipes() {
 		registerMagicCrafterRecipes();
 		registerCraftingRecipes();

@@ -9,7 +9,6 @@ import net.minecraft.potion.PotionEffect;
 
 public class ItemInfectedCrop extends ItemFood {
 	
-	
 	public ItemInfectedCrop() {
 		super(1, 0.2F, false);
 		this.setCreativeTab(UReference.infected);

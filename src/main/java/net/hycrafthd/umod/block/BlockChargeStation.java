@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 
 public class BlockChargeStation extends BlockBaseMachine {
 	
-	
 	public BlockChargeStation() {
 		
 	}

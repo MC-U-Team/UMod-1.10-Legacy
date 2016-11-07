@@ -10,8 +10,8 @@ import net.hycrafthd.umod.ext.abs.AbstractRecipeRegistry;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.event.*;
 
-public class EnderIOExtension implements IUmodExtension{
-
+public class EnderIOExtension implements IUmodExtension {
+	
 	public static Logger lg;
 	public static Block transformer;
 	
@@ -19,24 +19,24 @@ public class EnderIOExtension implements IUmodExtension{
 	public void preinit(FMLPreInitializationEvent evt) {
 		lg = evt.getModLog();
 	}
-
+	
 	@Override
 	public void init(FMLInitializationEvent evt) {
 		transformer = new BlockEnderIOTransformer().setUnlocalizedName("enderiotransformer");
 		BlockRegistry.register(transformer, "enderiotransformer");
 	}
-
+	
 	@Override
 	public void postinit(FMLPostInitializationEvent evt) {
 		TileEntityRegistry.register(TileEntityEnderIOTransformer.class);
 	}
-
+	
 	@Override
 	public void serverstarting(FMLServerStartingEvent evt) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public AbstractOreDictionaryRegistry oredirctionary() {
 		return null;

@@ -15,13 +15,13 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
-public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, ITickable,IIOMode, ISidedInventory, IWorldView {
+public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, ITickable, IIOMode, ISidedInventory, IWorldView {
 	
 	private ItemStack[] stack = new ItemStack[5];
 	private EnumFacing enumfI;
 	private EnumFacing enumfO;
 	private double strpo;
-		
+	
 	@Override
 	public int getSizeInventory() {
 		return stack.length;
@@ -158,8 +158,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	}
 	
 	@Override
-	public NBTTagCompound getUpdateTag() 
-	{
+	public NBTTagCompound getUpdateTag() {
 		return writeToNBT(new NBTTagCompound());
 	}
 	
@@ -430,7 +429,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		}
 		return null;
 	}
-
+	
 	@Override
 	public int getField(int id) {
 		return 0;

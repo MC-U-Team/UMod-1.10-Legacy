@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class ItemCabletester extends ItemBase {
 	
-	
 	public ItemCabletester() {
 		this.setMaxDamage(400);
 		this.setCreativeTab(UReference.maschines);

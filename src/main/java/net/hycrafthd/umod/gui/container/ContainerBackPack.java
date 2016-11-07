@@ -9,7 +9,6 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerBackPack extends Container {
 	
-	
 	public boolean updateNotification;
 	private InventoryBackPack inv;
 	private EnumTypeBackPack type;

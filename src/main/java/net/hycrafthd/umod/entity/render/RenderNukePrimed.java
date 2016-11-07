@@ -14,7 +14,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class RenderNukePrimed extends Render<EntityNukePrimed> implements IRenderFactory<EntityNukePrimed> {
 	
-	
 	public RenderNukePrimed(RenderManager r) {
 		super(r);
 		this.shadowSize = 0.5F;

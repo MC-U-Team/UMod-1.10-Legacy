@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderAdd implements IMessage, IMessageHandler<MessageSliderAdd, IMessage> {
 	
-	
 	public int id, val;
 	public BlockPos pos;
 	

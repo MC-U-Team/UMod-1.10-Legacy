@@ -5,7 +5,6 @@ import net.minecraft.util.math.BlockPos;
 
 public class NetworkUtil {
 	
-	
 	public static void addPosToBuffer(ByteBuf buf, BlockPos ps) {
 		buf.writeInt(ps.getX());
 		buf.writeInt(ps.getY());

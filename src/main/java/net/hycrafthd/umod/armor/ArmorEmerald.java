@@ -10,7 +10,6 @@ import net.minecraft.item.*;
 
 public class ArmorEmerald extends ItemArmor {
 	
-	
 	public ArmorEmerald(ArmorMaterial material, EntityEquipmentSlot armorType) {
 		super(material, 0, armorType);
 		this.setCreativeTab(UReference.things);

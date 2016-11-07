@@ -7,7 +7,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class UEntity {
 	
-	
 	public UEntity() {
 		register();
 	}

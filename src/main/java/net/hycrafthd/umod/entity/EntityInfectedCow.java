@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class EntityInfectedCow extends EntityMob implements IInfectedEntity {
 	
-	
 	public EntityInfectedCow(World worldIn) {
 		super(worldIn);
 		this.tasks.addTask(0, new EntityAISwimming(this));

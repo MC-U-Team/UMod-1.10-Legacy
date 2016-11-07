@@ -10,7 +10,6 @@ import net.minecraft.world.World;
 
 public class ContainerPainter extends ContainerBase {
 	
-	
 	public ContainerPainter(IInventory inv, EntityPlayer pl, World wo) {
 		super(inv, pl, ((TileEntity) inv).getPos(), wo, true, true);
 		super.addSlotToContainer(new ColorSlot(Color.red, (IInventory) ent, 0, 13, 11));

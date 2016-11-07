@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemEmeraldPickaxe extends ItemPickaxe {
 	
-	
 	public ItemEmeraldPickaxe(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.things);

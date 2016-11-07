@@ -9,7 +9,6 @@ import net.minecraftforge.common.util.EnumHelper;
 
 public class UTools {
 	
-	
 	public static ToolMaterial emeraldToolMaterial;
 	public static ToolMaterial magicToolMaterial;
 	

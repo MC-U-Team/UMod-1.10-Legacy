@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicSword extends ItemSword {
 	
-	
 	public ItemMagicSword(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.magic);

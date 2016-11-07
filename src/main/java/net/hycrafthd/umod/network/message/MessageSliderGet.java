@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderGet implements IMessage, IMessageHandler<MessageSliderGet, IMessage> {
 	
-	
 	public int id, val;
 	
 	public MessageSliderGet() {

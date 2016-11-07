@@ -10,7 +10,6 @@ import net.minecraft.world.World;
 
 public class ContainerBase extends Container {
 	
-	
 	public TileEntity ent;
 	public EntityPlayer pls;
 	public BlockPos pos;

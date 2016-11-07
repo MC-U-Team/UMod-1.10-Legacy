@@ -12,7 +12,6 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderFX extends Render<EntityFX> implements IRenderFactory<EntityFX> {
 	
-	
 	private static HashMap<Class<? extends TileEntity>, TileRender> list = new HashMap<Class<? extends TileEntity>, TileRender>();
 	
 	public RenderFX(RenderManager renderManagerIn) {

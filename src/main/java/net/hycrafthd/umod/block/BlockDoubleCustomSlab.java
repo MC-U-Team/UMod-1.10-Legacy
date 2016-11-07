@@ -7,7 +7,6 @@ import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockDoubleCustomSlab extends BlockCustomSlab {
 	
-	
 	BlockDoubleCustomSlab(IBlockState modelState, Block slab, String name) {
 		super(modelState, slab);
 		this.setUnlocalizedName(name);

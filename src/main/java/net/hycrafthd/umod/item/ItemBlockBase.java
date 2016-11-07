@@ -10,7 +10,6 @@ import net.minecraft.item.*;
 
 public class ItemBlockBase extends ItemBlock {
 	
-	
 	public ItemBlockBase(Block block) {
 		super(block);
 		this.setFull3D();

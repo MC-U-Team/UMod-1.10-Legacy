@@ -10,7 +10,6 @@ import net.minecraft.item.EnumDyeColor;
 
 public class UBlocks {
 	
-	
 	// Ores
 	public static Block ores, netherores;
 	// Blocks

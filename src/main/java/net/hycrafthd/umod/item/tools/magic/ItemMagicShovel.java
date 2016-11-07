@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicShovel extends ItemSpade {
 	
-	
 	public ItemMagicShovel(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.magic);

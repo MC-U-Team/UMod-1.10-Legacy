@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 
 public class ItemBackPack extends ItemBase {
 	
-	
 	public ItemBackPack() {
 		super();
 		this.setMaxStackSize(1);

@@ -12,7 +12,6 @@ import net.minecraft.util.math.Vec3d;
 
 public class ObjArea {
 	
-	
 	public final int[] POINTS;
 	public final Material mtl;
 	
@@ -28,38 +27,38 @@ public class ObjArea {
 	}
 	
 	public void addVertices(VertexBuffer bf, ArrayList<Vec3d> ver) {
-		if(!mtl.hasTexture()){
+		if (!mtl.hasTexture()) {
 			RGBA c = mtl.getColor();
-		    for (int i : POINTS) {
-			     Vec3d dro = ver.get(i - 1);
-			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
-		    }
-		}else{
+			for (int i : POINTS) {
+				Vec3d dro = ver.get(i - 1);
+				bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
+			}
+		} else {
 			GlStateManager.enableTexture2D();
 			Tessellator.getInstance().draw();
 			bf.begin(7, DefaultVertexFormats.POSITION_TEX);
 			mtl.bindTex();
 			int x = 0;
-		    for (int i : POINTS) {
-			     Vec3d dro = ver.get(i - 1);
-			     double u = 0,v = 0;
-			     switch (x) {
-				 case 1:
+			for (int i : POINTS) {
+				Vec3d dro = ver.get(i - 1);
+				double u = 0, v = 0;
+				switch (x) {
+				case 1:
 					u = 1;
 					break;
-				 case 2:
+				case 2:
 					v = 1;
 					break;
-				 case 3:
+				case 3:
 					v = 1;
 					u = 1;
 					break;
-				 }
-			     bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(u, v).endVertex();
-			     x++;
-		    }
-		    GlStateManager.disableTexture2D();
-		    Tessellator.getInstance().draw();
+				}
+				bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(u, v).endVertex();
+				x++;
+			}
+			GlStateManager.disableTexture2D();
+			Tessellator.getInstance().draw();
 			bf.begin(7, DefaultVertexFormats.POSITION_COLOR);
 		}
 	}

@@ -6,7 +6,6 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class NBTUtils {
 	
-	
 	public static boolean isInfected(ItemStack itemStack, String main_Tag, String tag) {
 		if (itemStack.getTagCompound() != null) {
 			NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(main_Tag);

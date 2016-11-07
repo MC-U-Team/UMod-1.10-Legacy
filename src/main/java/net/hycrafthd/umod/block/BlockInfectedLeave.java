@@ -19,7 +19,6 @@ import scala.actors.threadpool.Arrays;
 
 public class BlockInfectedLeave extends BlockLeaves implements IInfectedBlock {
 	
-	
 	public BlockInfectedLeave() {
 		super();
 		this.setCreativeTab(UReference.infected);

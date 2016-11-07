@@ -23,7 +23,6 @@ import net.minecraft.world.World;
 @SuppressWarnings("deprecation")
 public class GuiModIngame {
 	
-	
 	private static int ticks = 0;
 	public static ScaledResolution res;
 	

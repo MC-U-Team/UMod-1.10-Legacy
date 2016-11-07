@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemEmeraldHoe extends ItemHoe {
 	
-	
 	public ItemEmeraldHoe(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.things);

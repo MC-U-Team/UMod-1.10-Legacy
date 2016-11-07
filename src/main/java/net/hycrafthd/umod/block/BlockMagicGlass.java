@@ -13,7 +13,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class BlockMagicGlass extends BlockBase {
 	
-	
 	public BlockMagicGlass() {
 		super(Material.GLASS);
 		this.setHardness(0.6F);

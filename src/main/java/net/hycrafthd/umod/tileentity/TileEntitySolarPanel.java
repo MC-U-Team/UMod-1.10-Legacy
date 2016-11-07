@@ -9,8 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder,ITickable {
-	
+public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder, ITickable {
 	
 	public double storedpower = 0;
 	public double MAXIMUM_POWER = 0;

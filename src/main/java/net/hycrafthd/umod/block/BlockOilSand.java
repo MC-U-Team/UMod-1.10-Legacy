@@ -8,7 +8,6 @@ import net.minecraft.init.Blocks;
 
 public class BlockOilSand extends BlockFalling implements IInfectedBlock {
 	
-	
 	public BlockOilSand() {
 		super(Material.SAND);
 		this.setCreativeTab(UReference.blocks);

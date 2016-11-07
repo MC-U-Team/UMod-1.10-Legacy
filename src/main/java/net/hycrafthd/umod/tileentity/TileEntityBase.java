@@ -12,7 +12,6 @@ import net.minecraft.world.IInteractionObject;
 
 public abstract class TileEntityBase extends TileEntity implements ISidedInventory, IInteractionObject, IPowerProvieder {
 	
-	
 	public String customname = null;
 	
 	@Override

@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 
 public class ModRegistryUtils {
 	
-	
 	private static ArrayList<PulverizerRecepie> list = new ArrayList<PulverizerRecepie>();
 	private static ArrayList<CraftSmeltRecepie> craftlist = new ArrayList<CraftSmeltRecepie>();
 	private static ArrayList<CraftSmeltRecepieShapless> craftlist2 = new ArrayList<CraftSmeltRecepieShapless>();

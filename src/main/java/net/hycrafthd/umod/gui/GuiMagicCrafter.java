@@ -6,7 +6,6 @@ import net.minecraft.inventory.*;
 
 public class GuiMagicCrafter extends GuiBase {
 	
-	
 	public GuiMagicCrafter(EntityPlayer pl, IInventory tile, Container con) {
 		super(new GuiRescources("magic_crafter.png"), pl, tile, con);
 	}

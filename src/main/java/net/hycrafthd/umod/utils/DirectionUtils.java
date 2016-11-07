@@ -5,7 +5,6 @@ import net.minecraft.util.math.BlockPos;
 
 public class DirectionUtils {
 	
-	
 	public static EnumFacing getDirectory(BlockPos pos1, BlockPos pos2) {
 		if (pos1.getY() > pos2.getY()) {
 			return EnumFacing.DOWN;

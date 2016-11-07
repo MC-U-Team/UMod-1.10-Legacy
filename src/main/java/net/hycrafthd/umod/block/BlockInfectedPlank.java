@@ -8,7 +8,6 @@ import net.minecraft.init.Blocks;
 
 public class BlockInfectedPlank extends BlockBase implements IInfectedBlock {
 	
-	
 	public BlockInfectedPlank() {
 		super(Material.WOOD);
 		this.setHarvestLevel("axe", 0);

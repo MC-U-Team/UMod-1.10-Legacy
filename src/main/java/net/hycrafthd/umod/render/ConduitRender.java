@@ -9,7 +9,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ConduitRender {
 	
-	
 	public static boolean render(TileEntity pip, EntityPlayer pl, double posX, double posY, double posZ) {
 		if (!(pip instanceof IConduitProvider))
 			return false;

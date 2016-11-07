@@ -14,7 +14,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiCombobox extends Gui {
 	
-	
 	private ArrayList<String> strs = new ArrayList<String>();
 	private String slected = "Choose";
 	private boolean extend = false;

@@ -10,7 +10,6 @@ import net.minecraft.util.text.TextComponentString;
 
 public class CommandConduit extends CommandBase {
 	
-	
 	@Override
 	public String getCommandUsage(ICommandSender sender) {
 		return "commands.conduit.usage";

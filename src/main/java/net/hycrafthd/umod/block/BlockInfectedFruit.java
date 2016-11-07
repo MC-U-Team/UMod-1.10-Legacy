@@ -15,7 +15,6 @@ import scala.actors.threadpool.Arrays;
 
 public class BlockInfectedFruit extends BlockBase implements IInfectedBlock {
 	
-	
 	public BlockInfectedFruit() {
 		super(Material.PLANTS);
 		// this.setBlockBounds(5.5F / 16F, 7.5F / 16F, 5.5F / 16F, 10.5F / 16F, 16F / 16F, 10.5F / 16F);

@@ -18,7 +18,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public abstract class BlockCustomSlab extends BlockSlab {
 	
-	
 	private final Block modelBlock;
 	private final IBlockState modelState;
 	private final Block itemslab;

@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 public class BlockBreaker extends BlockBase {
 	
-	
 	public static final PropertyEnum FACING = PropertyEnum.create("type", EnumFacing.class);
 	
 	public BlockBreaker() {

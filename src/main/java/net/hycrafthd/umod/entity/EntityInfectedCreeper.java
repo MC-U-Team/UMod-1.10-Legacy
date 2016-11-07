@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class EntityInfectedCreeper extends EntityCreeper implements IInfectedEntity {
 	
-	
 	private int lastActiveTime;
 	private int timeSinceIgnited;
 	private int fuseTime = 20;

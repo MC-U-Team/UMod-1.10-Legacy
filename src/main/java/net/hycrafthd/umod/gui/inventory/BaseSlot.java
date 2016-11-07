@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 
 public class BaseSlot extends Slot {
 	
-	
 	private boolean visible = true;
 	private RGBA nstart = null;
 	private RGBA nend = null;

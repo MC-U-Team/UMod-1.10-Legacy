@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicHoe extends ItemHoe {
 	
-	
 	public ItemMagicHoe(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.magic);

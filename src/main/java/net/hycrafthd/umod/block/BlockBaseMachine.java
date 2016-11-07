@@ -13,7 +13,6 @@ import net.minecraft.world.*;
 
 public abstract class BlockBaseMachine extends BlockBase implements ITileEntityProvider, IConduitBlock {
 	
-	
 	private NBTTagCompound compound;
 	
 	public BlockBaseMachine() {

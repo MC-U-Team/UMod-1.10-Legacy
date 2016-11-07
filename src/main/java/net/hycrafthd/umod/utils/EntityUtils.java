@@ -10,7 +10,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class EntityUtils {
 	
-	
 	public static boolean isInfectedEntity(EntityLivingBase base) {
 		return (base instanceof IInfectedEntity);
 	}

@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicAxe extends ItemAxe {
 	
-	
 	public ItemMagicAxe(ToolMaterial material) {
 		super(material, material.getDamageVsEntity(), 0);
 		setCreativeTab(UReference.magic);

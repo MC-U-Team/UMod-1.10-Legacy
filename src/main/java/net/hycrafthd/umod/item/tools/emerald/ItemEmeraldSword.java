@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public class ItemEmeraldSword extends ItemSword {
 	
-	
 	public ItemEmeraldSword(ToolMaterial material) {
 		super(material);
 		setCreativeTab(UReference.things);

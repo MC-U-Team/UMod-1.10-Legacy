@@ -30,7 +30,6 @@ import net.minecraftforge.fml.client.registry.*;
 
 public class ClientProxy extends CommonProxy {
 	
-	
 	public static KeyBinding info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
 	
 	public static ObjRenderRegistry regs;

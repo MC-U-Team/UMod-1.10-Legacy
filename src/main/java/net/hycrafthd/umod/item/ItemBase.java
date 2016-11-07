@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.*;
 
 public abstract class ItemBase extends Item {
 	
-	
 	public ItemBase() {
 		this.setCreativeTab(UReference.things);
 	}

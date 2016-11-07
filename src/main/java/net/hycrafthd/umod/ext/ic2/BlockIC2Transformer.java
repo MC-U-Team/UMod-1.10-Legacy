@@ -26,8 +26,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class BlockIC2Transformer extends BlockBaseMachine{
-
+public class BlockIC2Transformer extends BlockBaseMachine {
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityIC2Transformer();

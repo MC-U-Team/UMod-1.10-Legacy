@@ -11,7 +11,6 @@ import net.hycrafthd.corelib.util.RGBA;
 
 public class MtlInterpretter extends FileInputStream {
 	
-	
 	private HashMap<String, Material> mtls = new HashMap<String, Material>();
 	
 	public MtlInterpretter(String name) throws FileNotFoundException, URISyntaxException {
@@ -35,7 +34,7 @@ public class MtlInterpretter extends FileInputStream {
 					double d = Double.valueOf(st.replace("d ", ""));
 					mtl.setColor(mtl.getColor().setAlpha((int) Math.round((double) 255 * d)));
 				}
-				if(st.startsWith("map_Kd ")){
+				if (st.startsWith("map_Kd ")) {
 					mtl.setMap(st.replace("map_Kd ", ""));
 				}
 			}

@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 
 public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 	
-	
 	public EntityInfectedZombie(World worldIn) {
 		super(worldIn);
 		this.tasks.addTask(1, new EntityAISwimming(this));

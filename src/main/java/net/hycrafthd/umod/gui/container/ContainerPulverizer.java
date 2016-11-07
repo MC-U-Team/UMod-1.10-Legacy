@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 
 public class ContainerPulverizer extends ContainerBase {
 	
-	
 	public ContainerPulverizer(IInventory inv, EntityPlayer pl, World wo) {
 		super(inv, pl, ((TileEntity) inv).getPos(), wo);
 		
@@ -35,8 +34,7 @@ public class ContainerPulverizer extends ContainerBase {
 	}
 	
 	@Override
-	public boolean canInteractWith(EntityPlayer player)
-	{
+	public boolean canInteractWith(EntityPlayer player) {
 		return true;
 	}
 	
@@ -63,10 +61,9 @@ public class ContainerPulverizer extends ContainerBase {
 	}
 	
 	@Override
-	public void onContainerClosed(EntityPlayer player)
-	{
+	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
-		((IInventory)this.ent).closeInventory(player);
+		((IInventory) this.ent).closeInventory(player);
 	}
 	
 	@Override

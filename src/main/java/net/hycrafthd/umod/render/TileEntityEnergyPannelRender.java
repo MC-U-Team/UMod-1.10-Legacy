@@ -9,7 +9,6 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityEnergyPannelRender extends TileRender {
 	
-	
 	public TileEntityEnergyPannelRender(GLHelper help) {
 		super(help);
 	}

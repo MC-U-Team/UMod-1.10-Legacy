@@ -21,7 +21,6 @@ import net.minecraft.util.math.*;
 
 public class GLHelper {
 	
-	
 	private TextureManager tex;
 	private VertexBuffer render;
 	
@@ -382,7 +381,6 @@ public class GLHelper {
 	@Deprecated
 	public void drawFrameInWorld(BlockPos pos, double posX, double posY, double posZ, final double width, final double height, final RGBA frame) {
 		drawSmThInWorld(pos, posX, posY, posZ, new Runnable() {
-			
 			
 			@Override
 			public void run() {

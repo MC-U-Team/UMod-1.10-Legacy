@@ -7,7 +7,6 @@ import net.minecraftforge.common.AchievementPage;
 
 public class UAchievement {
 	
-	
 	public static AchievementPage uachievementpage;
 	public static Achievement firstjoin;
 	

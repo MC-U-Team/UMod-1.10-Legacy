@@ -4,7 +4,6 @@ import net.minecraft.item.ItemStack;
 
 public class CraftSmeltRecepieShapless {
 	
-	
 	private ItemStack[] arr;
 	private ItemStack output;
 	

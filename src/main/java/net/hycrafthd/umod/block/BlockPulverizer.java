@@ -16,7 +16,6 @@ import net.minecraft.world.World;
 
 public class BlockPulverizer extends BlockBaseMachine implements IEnergyMessage {
 	
-	
 	public BlockPulverizer() {
 		super();
 	}

@@ -13,7 +13,6 @@ import net.minecraft.util.*;
 
 public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView {
 	
-	
 	private ItemStack[] stack = new ItemStack[6];
 	
 	@Override

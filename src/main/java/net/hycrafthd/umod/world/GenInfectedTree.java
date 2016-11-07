@@ -12,7 +12,6 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class GenInfectedTree extends WorldGenAbstractTree {
 	
-	
 	private final int minTreeHeight;
 	private final boolean vinesGrow;
 	private final int metaWood;

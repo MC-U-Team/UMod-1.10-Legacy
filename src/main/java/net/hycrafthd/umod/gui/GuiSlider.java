@@ -13,7 +13,6 @@ import net.minecraft.util.math.BlockPos;
 
 public class GuiSlider extends Gui {
 	
-	
 	private int x, y;
 	private RGBA back, slid, slid2;
 	private int val = 0;

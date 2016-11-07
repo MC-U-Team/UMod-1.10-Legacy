@@ -6,7 +6,6 @@ import net.minecraft.client.resources.*;
 
 public class ResourceReload implements IResourceManagerReloadListener {
 	
-	
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager) {
 		ClientProxy.regs = new ObjRenderRegistry();

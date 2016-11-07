@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.Tessellator;
 
 public class ObjLoader {
 	
-	
 	private ObjInterpretter pr;
 	
 	public ObjLoader(String str) {

@@ -14,7 +14,6 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiPulverizer extends GuiBase {
 	
-	
 	public BlockPos pos;
 	
 	public GuiPulverizer(EntityPlayer pl, IInventory tile, World w, BlockPos pos) {
@@ -26,7 +25,6 @@ public class GuiPulverizer extends GuiBase {
 	public void initGui() {
 		super.initGui();
 		box.setOnListClicked(new Runnable() {
-			
 			
 			@Override
 			public void run() {

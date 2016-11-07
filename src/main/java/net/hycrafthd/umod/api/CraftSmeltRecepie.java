@@ -4,7 +4,6 @@ import net.minecraft.item.ItemStack;
 
 public class CraftSmeltRecepie {
 	
-	
 	public ItemStack[] line1;
 	public ItemStack[] line2;
 	public ItemStack[] line3;

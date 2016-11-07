@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 
 public class ItemSwellPlacer extends Item {
 	
-	
 	public ItemSwellPlacer() {
 		this.setCreativeTab(UReference.rail);
 	}
