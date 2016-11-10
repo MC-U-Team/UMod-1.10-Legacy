@@ -9,6 +9,7 @@ public class ResourceReload implements IResourceManagerReloadListener {
 	
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager) {
+		UReference.getClientProxy().getObjRenderList().reload();
 	}
 	
 }

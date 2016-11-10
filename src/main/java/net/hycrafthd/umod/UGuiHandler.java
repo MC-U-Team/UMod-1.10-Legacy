@@ -36,9 +36,6 @@ public class UGuiHandler implements ICustomGuiHandler {
 				return new ContainerBackPack(inventory, player.inventory, type);
 			}
 			break;
-		case BARRELS:
-			// return new ContainerBarrels(player.get);
-			break;
 		case PAINTER:
 			return new ContainerPainter((IInventory) ent, player, world);
 		case MAGIC_CRAFTER:

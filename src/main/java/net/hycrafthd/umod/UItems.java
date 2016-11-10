@@ -46,6 +46,7 @@ public class UItems {
 	public static Item backpack;
 	
 	public static Item railplacer;
+	public static Item genPlacer;
 	
 	public UItems() {
 		init();
@@ -96,6 +97,8 @@ public class UItems {
 		
 		railplacer = new ItemSwellPlacer().setUnlocalizedName("railpl");
 		
+		genPlacer = new ItemGeneratorPlacer().setUnlocalizedName("Generator");
+		
 		UMod.log.debug("Init Items");
 	}
 	
@@ -142,6 +145,8 @@ public class UItems {
 		URegistryUtils.registerItem(backpack);
 		
 		URegistryUtils.registerItem(railplacer);
+		
+		URegistryUtils.registerItem(genPlacer);
 		
 		UMod.log.debug("Register Items");
 	}

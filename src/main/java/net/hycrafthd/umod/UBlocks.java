@@ -62,6 +62,8 @@ public class UBlocks {
 	// Slabs
 	public static BlockSlabCreator[] stoneslabs;
 	
+	public static Block mcase;
+	
 	public UBlocks() {
 		init();
 		register();
@@ -137,6 +139,8 @@ public class UBlocks {
 			stoneslabs[i] = new BlockSlabCreator(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.byMetadata(i)), "stone_" + BlockStone.EnumType.byMetadata(i).getName());
 		}
 		
+		mcase = new BlockMachineCase().setUnlocalizedName("MashineCase");
+		
 		UMod.log.debug("Init Blocks");
 	}
 	
@@ -202,6 +206,9 @@ public class UBlocks {
 		for (BlockSlabCreator creator : stoneslabs) {
 			URegistryUtils.registerHalfSlabs(creator);
 		}
+		
+		URegistryUtils.registerBlock(mcase);
+		
 		UMod.log.debug("Register Blocks");
 	}
 	

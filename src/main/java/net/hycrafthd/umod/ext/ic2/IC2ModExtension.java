@@ -29,6 +29,7 @@ public class IC2ModExtension extends UmodExtension {
 	public void init(FMLInitializationEvent evt) {
 		transformer = new BlockIC2Transformer().setUnlocalizedName("ic22uetransformer");
 		BlockRegistry.register(transformer, "ic22uetransformer");
+		TeBlockRegistry.add(new TileEntityIC2Transformer());
 	}
 	
 	@Override

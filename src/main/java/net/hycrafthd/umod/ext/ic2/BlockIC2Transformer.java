@@ -18,6 +18,8 @@ import net.hycrafthd.umod.block.BlockBaseMachine;
 import net.hycrafthd.umod.ext.enderio.TileEntityEnderIOTransformer;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -26,12 +28,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class BlockIC2Transformer extends BlockBaseMachine {
-	
+public class BlockIC2Transformer extends BlockBaseMachine{
+
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityIC2Transformer();
 	}
-
 	
 }
