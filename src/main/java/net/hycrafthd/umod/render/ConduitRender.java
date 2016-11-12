@@ -4,7 +4,6 @@ import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.api.IConduitBlock;
 import net.hycrafthd.umod.api.IConduitProvider;
 import net.hycrafthd.umod.block.BlockCable;
-import net.hycrafthd.umod.gui.ModlerenderHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;

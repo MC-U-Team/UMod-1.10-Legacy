@@ -14,12 +14,14 @@ import net.hycrafthd.umod.block.BlockSlabCreator;
 import net.hycrafthd.umod.block.BlockSolarPanel.EnumTypeSolarPanel;
 import net.hycrafthd.umod.block.BlockStairCreator;
 import net.hycrafthd.umod.entity.EntityFX;
+import net.hycrafthd.umod.entity.EntityGenerator;
 import net.hycrafthd.umod.entity.EntityInfectedCow;
 import net.hycrafthd.umod.entity.EntityInfectedCreeper;
 import net.hycrafthd.umod.entity.EntityInfectedZombie;
 import net.hycrafthd.umod.entity.EntityNukePrimed;
 import net.hycrafthd.umod.entity.rail.EntityRailFX;
 import net.hycrafthd.umod.entity.render.RenderFX;
+import net.hycrafthd.umod.entity.render.RenderGenerator;
 import net.hycrafthd.umod.entity.render.RenderInfectedCow;
 import net.hycrafthd.umod.entity.render.RenderInfectedCreeper;
 import net.hycrafthd.umod.entity.render.RenderInfectedZombie;
@@ -29,10 +31,10 @@ import net.hycrafthd.umod.enumtype.EnumTypeBackPack;
 import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
 import net.hycrafthd.umod.enumtype.EnumTypeTransformer;
 import net.hycrafthd.umod.ext.ExtensionList;
-import net.hycrafthd.umod.gui.ModlerenderHelper;
 import net.hycrafthd.umod.render.CabelRender;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.render.ItemPipeRender;
+import net.hycrafthd.umod.render.ModlerenderHelper;
 import net.hycrafthd.umod.render.TileEntityEnergyPannelRender;
 import net.hycrafthd.umod.render.TileEntityPainterSpecialRender;
 import net.hycrafthd.umod.render.TileEntityPulverizerSpecialRender;
@@ -257,7 +259,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory) new RenderFX(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory) new RenderRailFX(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory) new RenderInfectedCow(null));
-		
+		RenderingRegistry.registerEntityRenderingHandler(EntityGenerator.class, (IRenderFactory) new RenderGenerator(null));
+
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
 	}

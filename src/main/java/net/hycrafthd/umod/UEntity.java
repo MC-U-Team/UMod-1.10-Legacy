@@ -20,6 +20,7 @@ public class UEntity {
 		reg(EntityInfectedZombie.class, "InfectedZombie", 24, 1, true);
 		reg(EntityRailFX.class, "SWELL", 16, 1, false);
 		reg(EntityFX.class, "TileFX", 16, 1, false);
+		reg(EntityGenerator.class, "Generator", 16, 1, false);
 		UMod.log.debug("Register Entitys");
 	}
 	

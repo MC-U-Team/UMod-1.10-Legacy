@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.render;
 
 import java.util.List;
 

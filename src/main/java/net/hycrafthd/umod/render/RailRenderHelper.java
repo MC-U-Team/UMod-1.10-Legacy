@@ -1,6 +1,5 @@
-package net.hycrafthd.umod.entity.render;
+package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.ResourceLocation;
