@@ -20,14 +20,14 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
-public class ModlerenderHelper {
+public class ModleRenderHelper {
 	
 	private final ItemModelMesher itemModelMesher;
 	private final TextureManager textureManager;
 	private final ItemColors itemColors;
 	private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
 	
-	public ModlerenderHelper(ItemModelMesher mome, TextureManager tex, ItemColors col) {
+	public ModleRenderHelper(ItemModelMesher mome, TextureManager tex, ItemColors col) {
 		this.itemColors = col;
 		this.itemModelMesher = mome;
 		this.textureManager = tex;

@@ -34,7 +34,7 @@ import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.render.CabelRender;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.render.ItemPipeRender;
-import net.hycrafthd.umod.render.ModlerenderHelper;
+import net.hycrafthd.umod.render.ModleRenderHelper;
 import net.hycrafthd.umod.render.TileEntityEnergyPannelRender;
 import net.hycrafthd.umod.render.TileEntityPainterSpecialRender;
 import net.hycrafthd.umod.render.TileEntityPulverizerSpecialRender;
@@ -60,14 +60,14 @@ public class ClientProxy extends CommonProxy {
 	private KeyBinding info;
 	private Minecraft mc;
 	private ObjRenderRegistry regs;
-	private ModlerenderHelper MODEL_HELPER;
+	private ModleRenderHelper MODEL_HELPER;
 	private GLHelper help;
 	
 	@Override
 	public void init() {
 		this.mc = Minecraft.getMinecraft();
 		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
-		this.MODEL_HELPER = new ModlerenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
+		this.MODEL_HELPER = new ModleRenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		this.regs = new ObjRenderRegistry();
 		this.help = new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
@@ -76,7 +76,7 @@ public class ClientProxy extends CommonProxy {
 		return this.help;
 	}
 	
-	public ModlerenderHelper getModelRenderHelper() {
+	public ModleRenderHelper getModelRenderHelper() {
 		return this.MODEL_HELPER;
 	}
 	

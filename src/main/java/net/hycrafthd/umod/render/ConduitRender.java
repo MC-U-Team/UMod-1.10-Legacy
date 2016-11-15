@@ -12,7 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 public class ConduitRender {
 	
 	public GLHelper help;
-	public ModlerenderHelper model;
+	public ModleRenderHelper model;
 	
 	public ConduitRender() {
 		this.help = UReference.getClientProxy().getGLHelper();

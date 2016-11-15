@@ -6,6 +6,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.hycrafthd.umod.UBlocks;
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.entity.EntityGenerator;
 import net.hycrafthd.umod.utils.URegistryUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,7 @@ public class ItemGeneratorPlacer extends ItemBase{
 				}
 			}
 		}
+		worldIn.spawnEntityInWorld(new EntityGenerator(worldIn,pos));
 		return EnumActionResult.SUCCESS;
 	}
 	

@@ -10,8 +10,9 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public class RenderGenerator extends Render<EntityGenerator>{
+public class RenderGenerator extends Render<EntityGenerator> implements IRenderFactory<EntityGenerator>{
 
 	public RenderGenerator(RenderManager renderManager) {
 		super(renderManager);
@@ -46,6 +47,11 @@ public class RenderGenerator extends Render<EntityGenerator>{
 		GlStateManager.disableRescaleNormal();
 		GlStateManager.disableBlend();
 		tes.draw();
+	}
+
+	@Override
+	public Render<? super EntityGenerator> createRenderFor(RenderManager manager) {
+		return new RenderGenerator(manager);
 	}
 	
 }
