@@ -30,6 +30,7 @@ public class UMod {
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
 		log = event.getModLog();
+		UReference.proxy.init();
 		ExtensionList.onStart(event);
 		new UConfig(event.getSuggestedConfigurationFile());
 		new PacketHandler();

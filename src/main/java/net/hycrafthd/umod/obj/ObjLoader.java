@@ -7,6 +7,8 @@ import java.net.URISyntaxException;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.util.ReportedException;
 
 public class ObjLoader {
 	
@@ -17,11 +19,17 @@ public class ObjLoader {
 			this.pr = new ObjInterpretter(new File(ObjLoader.class.getResource(str + ".obj").toURI()));
 		} catch (FileNotFoundException e) {
 			UMod.log.error("Model " + str + " was not found", e);
+			throw new ReportedException(new CrashReport("MODEL LODE ERROR " + str, e));
 		} catch (URISyntaxException e) {
 			UMod.log.error("Model " + str + " has an incorrect URI", e);
+			throw new ReportedException(new CrashReport("MODEL LODE ERROR " + str, e));
 		} catch (NullPointerException e) {
 			UMod.log.error("Model " + str + " was not found", e);
+			throw new ReportedException(new CrashReport("MODEL LODE ERROR " + str, e));
+		} catch(Throwable e){
+			throw new ReportedException(new CrashReport("MODEL LODE ERROR " + str, e));
 		}
+		
 	}
 	
 	public ObjInterpretter getInterpretter() {

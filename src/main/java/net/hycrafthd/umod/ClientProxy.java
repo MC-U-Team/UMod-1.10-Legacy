@@ -58,18 +58,16 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 public class ClientProxy extends CommonProxy {
 	
 	private KeyBinding info;
-	private Minecraft mc;
+	private Minecraft mc = Minecraft.getMinecraft();
 	private ObjRenderRegistry regs;
 	private ModleRenderHelper MODEL_HELPER;
 	private GLHelper help;
 	
 	@Override
 	public void init() {
-		this.mc = Minecraft.getMinecraft();
 		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
-		this.MODEL_HELPER = new ModleRenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 		this.regs = new ObjRenderRegistry();
-		this.help = new GLHelper(Minecraft.getMinecraft().getTextureManager(), Tessellator.getInstance().getBuffer());
+		this.help = new GLHelper(mc.getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	
 	public GLHelper getGLHelper() {
@@ -243,12 +241,14 @@ public class ClientProxy extends CommonProxy {
 		
 		// Keybinding
 		KeybindingRegistry.register(info);
+		
+		this.MODEL_HELPER = new ModleRenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 	}
 	
 	@Override
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
-		
+
 		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(this.help));
 		RenderFX.register(TileEntityCable.class, new CabelRender(this.help));
 		RenderFX.register(TileEntityItemPipe.class, new ItemPipeRender(this.help));
