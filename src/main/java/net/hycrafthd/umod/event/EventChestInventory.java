@@ -1,5 +1,7 @@
 package net.hycrafthd.umod.event;
 
+import net.hycrafthd.corelib.util.NBTUtil;
+import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -35,6 +37,7 @@ public class EventChestInventory {
 	public void onChestPlaced(BlockEvent.PlaceEvent ev) {
 		if (ev.getState().getBlock() instanceof ITileEntityProvider) {
 			TileEntity et = ev.getWorld().getTileEntity(ev.getPos());
+			while(et.isInvalid());
 			if (et != null) {
 				NBTTagCompound comp = ev.getItemInHand().getSubCompound(KEY, false);
 				if (comp != null) {

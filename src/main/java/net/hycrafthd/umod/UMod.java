@@ -9,6 +9,7 @@ import net.hycrafthd.umod.event.EventGettingRadiationInv;
 import net.hycrafthd.umod.event.EventLoadWorld;
 import net.hycrafthd.umod.event.EventOnTick;
 import net.hycrafthd.umod.event.EventPlayerJoin;
+import net.hycrafthd.umod.event.EventRegRegistery;
 import net.hycrafthd.umod.event.EventToolTip;
 import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.network.PacketHandler;
@@ -84,6 +85,7 @@ public class UMod {
 		event.addEvent(new EventToolTip());
 		event.addEvent(new EventOnTick());
 		event.addEvent(new EventChestInventory());
+		event.addEvent(new EventRegRegistery());
 		event.register();
 		UMod.log.info("Registered Mod Events.");
 	}

@@ -5,6 +5,9 @@ import java.util.*;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.*;
 import net.hycrafthd.umod.entity.EntityFX;
+import net.hycrafthd.umod.event.EnergyRegisterEvent;
+import net.hycrafthd.umod.event.RenderEntityClearEvent;
+import net.hycrafthd.umod.event.RenderEntityRegisterEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -13,18 +16,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.*;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.EventBus;
 
-public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, ITickable, IConduitProvider {
+public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IConduitProvider,ITickable{
 	
-	public boolean firstrun = false;
 	public ItemStack conduit = null;
 	public int tun = -1;
-	public int idInT = -1;
-	public boolean isInit = false;
 	public double rate;
 	
-	public TileEntityCable() {
-	}
+	public TileEntityCable() {}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
@@ -132,54 +133,19 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IT
 		this.tun = i;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public void update() {
-		List<EntityFX> p = worldObj.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
-		if (p.size() <= 0) {
-			this.worldObj.spawnEntityInWorld(new EntityFX(this.worldObj, this.pos));
-		}
-		if (!isInit) {
-			this.worldObj.spawnEntityInWorld(new EntityFX(this.worldObj, this.pos));
-			isInit = true;
-		}
-		TileEntity[] args = new TileEntity[] { worldObj.getTileEntity(this.pos.up()), worldObj.getTileEntity(this.pos.down()), worldObj.getTileEntity(this.pos.north()), worldObj.getTileEntity(this.pos.south()), worldObj.getTileEntity(this.pos.east()), worldObj.getTileEntity(this.pos.west()) };
-		if (this.tun > -1) {
-			for (TileEntity ent : args) {
-				if (ent != null && ent instanceof ICabel) {
-					ICabel cab = (ICabel) ent;
-					if (cab.getTunnelIDofCabel() != this.tun) {
-						if (cab.getTunnelIDofCabel() > -1) {
-							TunnelHolder.merge(tun, cab.getTunnelIDofCabel(), worldObj);
-						}
-					}
-				}
-			}
-		}
-		if (this.tun > -1)
-			return;
-		for (TileEntity ent : args) {
-			if (ent != null && ent instanceof ICabel) {
-				ICabel cab = (ICabel) ent;
-				if (cab.getTunnelIDofCabel() > -1 && TunnelHolder.getUETunnel(cab.getTunnelIDofCabel()) != null) {
-					TunnelHolder.getUETunnel(cab.getTunnelIDofCabel()).add(this);
-					return;
-				}
-			}
-		}
-		if (this.tun > -1)
-			return;
-		if (TunnelHolder.contains(pos)) {
-			this.tun = TunnelHolder.getTunnelFromPos(pos);
-			return;
-		}
-		UETunnel tnl = new UETunnel(worldObj);
-		TunnelHolder.getUETunnel(TunnelHolder.addUETunnel(tnl)).add(this);
-	}
-	
 	@Override
 	public double getRate() {
 		return rate;
+	}
+	
+	@Override
+	public void onLoad() {
+	}
+	
+	@Override
+	public void invalidate() {
+		super.invalidate();
+		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(pos, worldObj));
 	}
 	
 	@Override
@@ -216,6 +182,17 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IT
 			i++;
 		}
 		return posses;
+	}
+
+	private boolean firsttick = true;
+	
+	@Override
+	public void update() {
+		if(firsttick){
+			MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(pos, worldObj));
+			MinecraftForge.EVENT_BUS.post(new EnergyRegisterEvent(this,worldObj));
+			firsttick = false;
+		}
 	}
 	
 }

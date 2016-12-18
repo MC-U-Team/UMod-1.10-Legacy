@@ -106,7 +106,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 		boolean flag = playerIn.inventory.addItemStackToInventory(stack);
 		
 		if (flag) {
-			// playerIn.worldObj.playSoundAtEntity(playerIn, "random.pop", 0.2F, ((playerIn.getRNG().nextFloat() - playerIn.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
 			playerIn.inventoryContainer.detectAndSendChanges();
 		}
 		
@@ -194,32 +193,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	@Override
 	public String getMessage(int i) {
 		return "Transports " + powertrans + "UE/t";
-	}
-	
-	@Override
-	public void onBlockDestroyedByExplosion(World worldIn, BlockPos pos, Explosion explosionIn) {
-		entityClear(worldIn, pos);
-		super.onBlockDestroyedByExplosion(worldIn, pos, explosionIn);
-	}
-	
-	@Override
-	public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state) {
-		entityClear(worldIn, pos);
-		super.onBlockDestroyedByPlayer(worldIn, pos, state);
-	}
-	
-	@Override
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		entityClear(worldIn, pos);
-		super.breakBlock(worldIn, pos, state);
-	}
-	
-	private void entityClear(World worldIn, BlockPos pos) {
-		@SuppressWarnings("unchecked")
-		List<EntityFX> p = worldIn.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
-		for (EntityFX fx : p) {
-			fx.setDead();
-		}
 	}
 	
 	@Override
