@@ -6,6 +6,7 @@ import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.*;
 import net.hycrafthd.umod.entity.EntityFX;
 import net.hycrafthd.umod.event.EnergyRegisterEvent;
+import net.hycrafthd.umod.event.EnergyUnregisterEvent;
 import net.hycrafthd.umod.event.RenderEntityClearEvent;
 import net.hycrafthd.umod.event.RenderEntityRegisterEvent;
 import net.minecraft.item.ItemStack;
@@ -145,7 +146,8 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(pos, worldObj));
+		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(pos, worldObj));		
+		MinecraftForge.EVENT_BUS.post(new EnergyUnregisterEvent(this));
 	}
 	
 	@Override
@@ -190,9 +192,11 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	public void update() {
 		if(firsttick){
 			MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(pos, worldObj));
-			MinecraftForge.EVENT_BUS.post(new EnergyRegisterEvent(this,worldObj));
+			MinecraftForge.EVENT_BUS.post(new EnergyRegisterEvent(this));
 			firsttick = false;
 		}
 	}
+	
+	
 	
 }

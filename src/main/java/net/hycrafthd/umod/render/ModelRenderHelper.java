@@ -36,14 +36,14 @@ public class ModelRenderHelper {
 	public void renderItem(ItemStack stack) {
 		if (stack != null && stack.getItem() != null) {
 			IBakedModel ibakedmodel = this.getItemModelWithOverrides(stack, Minecraft.getMinecraft().theWorld, null);
-			this.renderItemModel(stack, ibakedmodel, TransformType.GUI, false, null);
+			this.renderItemModel(stack, ibakedmodel, TransformType.GUI, false);
 		}
 	}
 	
-	public void renderItem(ItemStack stack, Runnable setup) {
+	public void renderItem(ItemStack stack, TransformType type) {
 		if (stack != null && stack.getItem() != null) {
 			IBakedModel ibakedmodel = this.getItemModelWithOverrides(stack, Minecraft.getMinecraft().theWorld, null);
-			this.renderItemModel(stack, ibakedmodel, TransformType.GUI, false, setup);
+			this.renderItemModel(stack, ibakedmodel, type, false);
 		}
 	}
 	
@@ -52,7 +52,7 @@ public class ModelRenderHelper {
 		return ibakedmodel.getOverrides().handleItemState(ibakedmodel, stack, worldIn, entitylivingbaseIn);
 	}
 	
-	protected void renderItemModel(ItemStack stack, IBakedModel bakedmodel, ItemCameraTransforms.TransformType transform, boolean leftHanded, @Nullable Runnable r) {
+	protected void renderItemModel(ItemStack stack, IBakedModel bakedmodel, ItemCameraTransforms.TransformType transform, boolean leftHanded) {
 		if (stack.getItem() != null) {
 			this.textureManager.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 			this.textureManager.getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).setBlurMipmap(false, false);
@@ -62,10 +62,8 @@ public class ModelRenderHelper {
 			GlStateManager.enableBlend();
 			GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			GlStateManager.pushMatrix();
-			if (r != null) {
-				r.run();
-			}
-			bakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(bakedmodel, transform, leftHanded);
+
+			bakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(bakedmodel, transform, false);
 			
 			this.renderItem(stack, bakedmodel);
 			GlStateManager.cullFace(GlStateManager.CullFace.BACK);
@@ -185,14 +183,7 @@ public class ModelRenderHelper {
 		IBakedModel ibakedmodel = this.itemModelMesher.getItemModel(stack);
 		return ibakedmodel == null ? false : ibakedmodel.isGui3d();
 	}
-	
-	public void renderItem(ItemStack stack, ItemCameraTransforms.TransformType cameraTransformType) {
-		if (stack != null) {
-			IBakedModel ibakedmodel = this.getItemModelWithOverrides(stack, (World) null, (EntityLivingBase) null);
-			this.renderItemModel(stack, ibakedmodel, cameraTransformType, false, null);
-		}
-	}
-	
+
 	public void renderConduit(Block b,double posX,double posy,double posz){
 		if(b == null)return;
 		GlStateManager.pushMatrix();

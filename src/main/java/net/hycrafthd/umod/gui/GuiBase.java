@@ -22,6 +22,7 @@ import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.*;
@@ -521,13 +522,8 @@ public abstract class GuiBase extends GuiScreen {
 	
 	private void renderItemIntoGUI(ItemStack itemStack, final int x, final int y) {
 		GlStateManager.pushMatrix();
-		UReference.getClientProxy().getModelRenderHelper().renderItem(itemStack, new Runnable() {
-			
-			@Override
-			public void run() {
-				setupGuiTransform(x, y, true);
-			}
-		});
+		this.setupGuiTransform(x, y);
+		UReference.getClientProxy().getModelRenderHelper().renderItem(itemStack,TransformType.NONE);
 		GlStateManager.popMatrix();
 	}
 	
@@ -535,23 +531,17 @@ public abstract class GuiBase extends GuiScreen {
 		return hal;
 	}
 	
-	private float sclax, sclay;
+	private float sclax = 0, sclay = 0;
 	
-	private void setupGuiTransform(int xPosition, int yPosition, boolean isGui3d) {
+	private void setupGuiTransform(int xPosition, int yPosition) {
 		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);
 		GlStateManager.translate(8.0F, 8.0F, 0.0F);
 		GlStateManager.scale(2.0F, 2.0F, -2.0F);
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);
-		
-		if (isGui3d) {
-			GlStateManager.scale(40.0F, 40.0F, 40.0F);
-			GlStateManager.rotate(sclay + 180, 1.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(sclax, 0.0F, 1.0F, 0.0F);
-			GlStateManager.enableLighting();
-		} else {
-			GlStateManager.scale(64.0F, 64.0F, 64.0F);
-			GlStateManager.disableLighting();
-		}
+		GlStateManager.scale(0.5F, 0.5F, 0.5F);			
+		GlStateManager.scale(40.0F, 40.0F, 40.0F);
+		GlStateManager.rotate(sclay - 180, 1.0F, 0.0F, 0.0F);
+		GlStateManager.rotate(sclax, 0.0F, 1.0F, 0.0F);
+		GlStateManager.enableLighting();
 	}
 	
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {

@@ -1,5 +1,6 @@
 package net.hycrafthd.umod.event;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.hycrafthd.umod.api.energy.ICabel;
@@ -17,10 +18,12 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
 public class EventRegRegistery {
 	
+	public ArrayList<ICabel> cabs = new ArrayList<ICabel>();
+	
 	@SubscribeEvent
-	public void onRegisterEnergy(EnergyRegisterEvent ev){
-		ICabel ccab = ev.cab;
-		World worldObj = ev.w;
+	public void onTick(WorldTickEvent evt){
+		for(ICabel ccab : cabs){
+		World worldObj = ccab.getWorld();
 		BlockPos pos = ccab.getPos();
 		TileEntity[] args = new TileEntity[] { worldObj.getTileEntity(pos.up()), worldObj.getTileEntity(pos.down()), worldObj.getTileEntity(pos.north()), worldObj.getTileEntity(pos.south()), worldObj.getTileEntity(pos.east()), worldObj.getTileEntity(pos.west()) };
 		if (ccab.getTunnelIDofCabel() > -1) {
@@ -54,6 +57,17 @@ public class EventRegRegistery {
 		}
 		UETunnel tnl = new UETunnel(worldObj);
 		TunnelHolder.getUETunnel(TunnelHolder.addUETunnel(tnl)).add(ccab);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onRegisterEnergy(EnergyRegisterEvent ev){
+		cabs.add(ev.cab);
+	}
+	
+	@SubscribeEvent
+	public void onUnregisterEnergy(EnergyUnregisterEvent ev){
+		cabs.remove(ev.cab);
 	}
 	
 	@SubscribeEvent

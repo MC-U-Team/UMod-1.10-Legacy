@@ -28,256 +28,147 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityIC2Transformer extends TileEntityBlock implements IPowerProvieder,IEnergyConductor,IEnergySource,IEnergySink,ITeBlock{
-		
+public class TileEntityIC2Transformer extends TileEntity implements IPowerProvieder,IEnergySource,IEnergySink,ITickable{
+	
+	private double power,maxpower = 150000.0;
+	
 	public TileEntityIC2Transformer() {
 	}
 
 	@Override
 	public double getStoredPower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.power;
 	}
 	
 	@Override
 	public void addPower(double power) {
-		// TODO Auto-generated method stub
-		
+		this.power += power;
 	}
 	
 	@Override
 	public double getPower(double powerneed) {
-		// TODO Auto-generated method stub
-		return 0;
+		this.power -= powerneed;
+		return powerneed;
 	}
 	
 	@Override
 	public double getMaximalPower() {
-		// TODO Auto-generated method stub
-		return 0;
+		return maxpower;
 	}
 	
 	@Override
 	public boolean isWorking() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	@Override
 	public String getErrorMessage() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
 	public boolean hasPower() {
-		// TODO Auto-generated method stub
-		return false;
+		return power > 0;
 	}
 	
 	@Override
 	public double getPowerProducNeeds() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
 	@Override
 	public void setEnergy(double coun) {
-		// TODO Auto-generated method stub
-		
+		this.power = coun;
 	}
 	
 	@Override
 	public boolean needsPower() {
-		// TODO Auto-generated method stub
-		return false;
+		return UE_TO_EU;
 	}
 	
 	@Override
 	public boolean productsPower() {
-		// TODO Auto-generated method stub
-		return false;
+		return !UE_TO_EU;
 	}
+	
+	private boolean UE_TO_EU = true;
 	
 	@Override
 	public boolean isInput() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	@Override
 	public boolean isOutput() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
-		return false;
+		return UE_TO_EU;
 	}
 
 	@Override
 	public boolean acceptsEnergyFrom(IEnergyEmitter emitter, EnumFacing side) {
-		return false;
-	}
-
-	@Override
-	public double getConductionLoss() {
-		return 0;
-	}
-
-	@Override
-	public double getInsulationEnergyAbsorption() {
-		return 0;
-	}
-
-	@Override
-	public double getInsulationBreakdownEnergy() {
-		return 0;
-	}
-
-	@Override
-	public double getConductorBreakdownEnergy() {
-		return 0;
-	}
-
-	@Override
-	public void removeInsulation() {
-		
-	}
-
-	@Override
-	public void removeConductor() {
-		
+		return !UE_TO_EU;
 	}
 
 	@Override
 	public double getDemandedEnergy() {
-		// TODO Auto-generated method stub
-		return 0;
+		return maxpower - power;
 	}
 
 	@Override
 	public int getSinkTier() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Integer.MAX_VALUE;
 	}
 
 	@Override
 	public double injectEnergy(EnumFacing directionFrom, double amount, double voltage) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(amount < maxpower - power){
+			this.addPower(amount*10);
+			return 0;
+		}else{
+			double p = maxpower - power;
+			this.addPower(p*10);
+			return amount - p;
+		}
 	}
 
 	@Override
 	public double getOfferedEnergy() {
-		// TODO Auto-generated method stub
-		return 0;
+		return power;
 	}
 
 	@Override
 	public void drawEnergy(double amount) {
-		// TODO Auto-generated method stub
-		
+		this.getPower(amount*10);
 	}
 
 	@Override
 	public int getSourceTier() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Integer.MAX_VALUE;
 	}
 	
-	@Override
-	public int getId() {
-		return 0;
-	}
-
-	@Override
-	public String getName() {
-		return "";
-	}
-
-	@Override
-	public void addSubBlocks(List<ItemStack> arg0, BlockTileEntity arg1, ItemBlockTileEntity arg2, CreativeTabs arg3) {		
-	}
-
-	@Override
-	public boolean allowWrenchRotating() {
-		return false;
-	}
-
-	@Override
-	public DefaultDrop getDefaultDrop() {
-		return DefaultDrop.Self;
-	}
-
-	@Override
-	public TileEntityBlock getDummyTe() {
-		return new TileEntityIC2Transformer();
-	}
-
-	@Override
-	public float getExplosionResistance() {
-		return 0;
-	}
-
-	@Override
-	public float getHardness() {
-		return 0;
-	}
-
-	@Override
-	public HarvestTool getHarvestTool() {
-		return HarvestTool.Pickaxe;
-	}
-
-	@Override
-	public ResourceLocation getIdentifier() {
-		return new ResourceLocation("");
-	}
-
-	public ITePlaceHandler handl;
+	private boolean firsttick = true;
 	
 	@Override
-	public ITePlaceHandler getPlaceHandler() {
-		return handl;
-	}
-
-	@Override
-	public EnumRarity getRarity() {
-		return EnumRarity.COMMON;
-	}
-
-	@Override
-	public Set<EnumFacing> getSupportedFacings() {
-		ArrayList<EnumFacing> arr = new ArrayList<EnumFacing>();
-		for(EnumFacing fc : EnumFacing.values()){
-			arr.add(fc);
+	public void update() {
+		if(firsttick && !worldObj.isRemote){
+			MinecraftForge.EVENT_BUS.post(new EnergyTileLoadEvent(this));
+			firsttick = false;
 		}
-		return Sets.newEnumSet(arr, EnumFacing.class);
 	}
-
+	
 	@Override
-	public Class<? extends TileEntityBlock> getTeClass() {
-		return TileEntityIC2Transformer.class;
-	}
-
-	@Override
-	public boolean hasActive() {
-		return false;
-	}
-
-	@Override
-	public boolean hasItem() {
-		return false;
-	}
-
-	@Override
-	public void setPlaceHandler(ITePlaceHandler arg0) {
-		
+	public void invalidate() {
+		super.invalidate();
+		if(!worldObj.isRemote)
+		MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
 	}
 	
 }

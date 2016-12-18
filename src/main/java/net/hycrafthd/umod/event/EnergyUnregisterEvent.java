@@ -5,11 +5,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class EnergyRegisterEvent extends Event{
+public class EnergyUnregisterEvent extends Event{
 	
 	protected final ICabel cab;
 	
-	public EnergyRegisterEvent(ICabel cab) {
+	public EnergyUnregisterEvent(ICabel cab) {
 		this.cab = cab;
 	}
 	

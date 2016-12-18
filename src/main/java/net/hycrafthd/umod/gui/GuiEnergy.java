@@ -95,7 +95,7 @@ public class GuiEnergy extends GuiScreen {
 		GlStateManager.translate(x, y + 159, 0);
 		Tessellator ts = Tessellator.getInstance();
 		VertexBuffer ren = ts.getBuffer();
-		ren.begin(7, DefaultVertexFormats.POSITION_COLOR);
+		ren.begin(7, DefaultVertexFormats.POSITION_TEX);
 		ren.pos(30D, -(double) height, 0D).tex(206D * f, 6D * f1).endVertex();
 		ren.pos(0D, -(double) height, 0D).tex(176D * f, 6D * f1).endVertex();
 		ren.pos(0D, 0, 0D).tex(176D * f, (6D + (double) height) * f1).endVertex();
