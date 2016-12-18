@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityItemPipe extends TileEntity implements IPlugabel, IConduitProvider {
+public class TileEntityItemPipe extends TileEntity implements IPlugabel, IConduitProvider, ITickable{
 	
 	public ItemStack cond = null;
 	
@@ -35,9 +35,13 @@ public class TileEntityItemPipe extends TileEntity implements IPlugabel, ICondui
 		return cond != null;
 	}
 	
+    private boolean firsttick = true;
+	
 	@Override
-	public void onLoad() {
+	public void update() {
+		if(firsttick){
 		MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(pos, worldObj));
+		}
 	}
 	
 	@Override
