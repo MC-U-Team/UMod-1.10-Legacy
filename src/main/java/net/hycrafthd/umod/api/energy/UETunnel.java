@@ -21,7 +21,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 	public boolean add(ICabel e) {
 		if (TunnelHolder.contains(e.getPos()))
 			return false;
-		e.setTunnelID(this.id);
+		e.setTunnel(this.id);
 		return this.add(e.getPos());
 	}
 	
@@ -70,7 +70,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 		for (BlockPos pos : this) {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
 			if (cab != null) {
-				cab.setTunnelID(id);
+				cab.setTunnel(id);
 			}
 		}
 	}
@@ -88,10 +88,15 @@ public class UETunnel extends ArrayList<BlockPos> {
 			return;
 		ICabel[] outs = this.getOutput();
 		ICabel[] inpts = this.getInput();
+		System.out.println("----Ticking----");
 		double max = 0;
+		System.out.println("IP");
 		for (ICabel cab : inpts) {
 			for (BlockPos p : cab.getInputs()) {
+				System.out.println(p);
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
+				System.out.println(cab.getRate());
+				System.out.println(pro.getStoredPower());
 				if (0 <= pro.getStoredPower() - cab.getRate()) {
 					pro.getPower(cab.getRate());
 					max += cab.getRate();
@@ -102,8 +107,10 @@ public class UETunnel extends ArrayList<BlockPos> {
 				}
 			}
 		}
+		System.out.println("OP");
 		for (ICabel cab : outs) {
 			for (BlockPos p : cab.getOutputs()) {
+				System.out.println(p);
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 				if (max <= 0)
 					return;
@@ -130,6 +137,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 		if (max > 0) {
 			for (ICabel cab : inpts) {
 				for (BlockPos p : cab.getInputs()) {
+					System.out.println(p);
 					IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 					if (max <= 0)
 						return;

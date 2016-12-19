@@ -120,17 +120,12 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	}
 	
 	@Override
-	public int getTunnelIDofCabel() {
+	public int getTunnel() {
 		return this.tun;
 	}
-	
+		
 	@Override
-	public UETunnel getTunnel() {
-		return TunnelHolder.getUETunnel(tun);
-	}
-	
-	@Override
-	public void setTunnelID(int i) {
+	public void setTunnel(int i) {
 		this.tun = i;
 	}
 	
@@ -146,8 +141,8 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(pos, worldObj));		
-		MinecraftForge.EVENT_BUS.post(new EnergyUnregisterEvent(this));
+		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(worldObj,pos));		
+		MinecraftForge.EVENT_BUS.post(new EnergyUnregisterEvent(worldObj,pos));
 	}
 	
 	@Override
@@ -191,8 +186,8 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	@Override
 	public void update() {
 		if(firsttick){
-			MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(pos, worldObj));
-			MinecraftForge.EVENT_BUS.post(new EnergyRegisterEvent(this));
+			MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(worldObj,pos));
+			MinecraftForge.EVENT_BUS.post(new EnergyRegisterEvent(worldObj,pos));
 			firsttick = false;
 		}
 	}

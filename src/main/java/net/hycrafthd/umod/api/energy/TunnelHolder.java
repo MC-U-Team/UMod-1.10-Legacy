@@ -76,7 +76,7 @@ public class TunnelHolder {
 			UETunnel tnl = tunnels.get(y);
 			for (BlockPos cab : tnl) {
 				ICabel cabs = (ICabel) tnl.getWorld().getTileEntity((BlockPos) cab);
-				cabs.setTunnelID(tnl.getID());
+				cabs.setTunnel(tnl.getID());
 			}
 		}
 		return id;
@@ -94,7 +94,7 @@ public class TunnelHolder {
 					ICabel cabs = (ICabel) tnl.getWorld().getTileEntity((BlockPos) cab);
 					if (cabs == null)
 						continue;
-					cabs.setTunnelID(tnl.getID());
+					cabs.setTunnel(tnl.getID());
 				}
 			}
 			return true;

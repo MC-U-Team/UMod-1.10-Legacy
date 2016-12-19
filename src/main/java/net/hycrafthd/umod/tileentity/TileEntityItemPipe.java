@@ -40,14 +40,14 @@ public class TileEntityItemPipe extends TileEntity implements IPlugabel, ICondui
 	@Override
 	public void update() {
 		if(firsttick){
-		MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(pos, worldObj));
+		MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(worldObj,pos));
 		}
 	}
 	
 	@Override
 	public void invalidate() {
 		super.invalidate();
-		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(pos, worldObj));
+		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(worldObj,pos));
 	}
 	
 	@Override

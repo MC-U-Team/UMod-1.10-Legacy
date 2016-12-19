@@ -5,13 +5,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 
-public class RenderEntityClearEvent extends Event {
-	
-	protected final BlockPos pos;
-	protected final World worldObj;
-	
-	public RenderEntityClearEvent(BlockPos pos,World w) {
-		this.pos = pos;
-		this.worldObj = w;
+public class RenderEntityClearEvent extends RegisterEvents {
+
+	public RenderEntityClearEvent(World worldIn, BlockPos pos) {
+		super(worldIn, pos);
 	}
+	
 }

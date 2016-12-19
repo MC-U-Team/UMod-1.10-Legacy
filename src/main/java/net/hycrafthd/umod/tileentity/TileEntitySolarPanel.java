@@ -150,11 +150,11 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder,
 	
 	@Override
 	public boolean isInput() {
-		return false;
+		return true;
 	}
 	
 	@Override
 	public boolean isOutput() {
-		return true;
+		return false;
 	}
 }

@@ -21,11 +21,9 @@ public interface ICabel {
 	
 	public ICabel[] getInputsFromTunnel();
 	
-	public int getTunnelIDofCabel();
-	
-	public UETunnel getTunnel();
-	
-	public void setTunnelID(int i);
+	public int getTunnel();
+		
+	public void setTunnel(int i);
 	
 	public double getRate();
 	
