@@ -1,16 +1,9 @@
 package net.hycrafthd.umod.render;
 
-import java.awt.Color;
-
-import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.ClientProxy;
-import net.hycrafthd.umod.UMod;
-import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.block.BlockCable;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

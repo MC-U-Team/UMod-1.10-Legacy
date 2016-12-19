@@ -3,15 +3,9 @@ package net.hycrafthd.umod.entity.render;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.entity.EntityGenerator;
 import net.hycrafthd.umod.obj.ObjInterpretter;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderGenerator extends Render<EntityGenerator> implements IRenderFactory<EntityGenerator>{

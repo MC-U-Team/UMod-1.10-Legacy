@@ -1,7 +1,6 @@
 package net.hycrafthd.umod.obj;
 
 import java.io.*;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
 

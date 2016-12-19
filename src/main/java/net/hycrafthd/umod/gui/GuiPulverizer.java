@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.gui;
 
-import net.hycrafthd.umod.gui.container.ContainerPulverizer;
 import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
+import net.hycrafthd.umod.gui.container.ContainerPulverizer;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIOMode;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;

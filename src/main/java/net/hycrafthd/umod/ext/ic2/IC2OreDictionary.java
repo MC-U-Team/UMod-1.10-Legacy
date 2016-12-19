@@ -3,9 +3,7 @@ package net.hycrafthd.umod.ext.ic2;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
 import net.hycrafthd.umod.ext.abs.AbstractOreDictionaryRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.item.*;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.item.ItemStack;
 
 public class IC2OreDictionary extends AbstractOreDictionaryRegistry {
 	

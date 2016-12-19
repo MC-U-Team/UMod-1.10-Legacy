@@ -2,11 +2,9 @@ package net.hycrafthd.umod.ext.enderio;
 
 import org.apache.logging.log4j.Logger;
 
-import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.TileEntityRegistry;
+import net.hycrafthd.corelib.registry.*;
 import net.hycrafthd.umod.ext.IUmodExtension;
-import net.hycrafthd.umod.ext.abs.AbstractOreDictionaryRegistry;
-import net.hycrafthd.umod.ext.abs.AbstractRecipeRegistry;
+import net.hycrafthd.umod.ext.abs.*;
 import net.minecraft.block.Block;
 import net.minecraftforge.fml.common.event.*;
 

@@ -3,7 +3,6 @@ package net.hycrafthd.umod.gui;
 import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;

@@ -1,7 +1,5 @@
 package net.hycrafthd.umod.event;
 
-import net.hycrafthd.corelib.util.NBTUtil;
-import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

@@ -1,10 +1,7 @@
 package net.hycrafthd.umod.tileentity;
 
 import net.hycrafthd.umod.api.*;
-import net.hycrafthd.umod.entity.EntityFX;
-import net.hycrafthd.umod.event.EnergyRegisterEvent;
-import net.hycrafthd.umod.event.RenderEntityClearEvent;
-import net.hycrafthd.umod.event.RenderEntityRegisterEvent;
+import net.hycrafthd.umod.event.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;

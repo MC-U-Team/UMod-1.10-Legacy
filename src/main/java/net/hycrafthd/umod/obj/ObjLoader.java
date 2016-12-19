@@ -1,12 +1,9 @@
 package net.hycrafthd.umod.obj;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URISyntaxException;
 
-import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UMod;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.util.ReportedException;
 

@@ -1,24 +1,19 @@
 package net.hycrafthd.umod.tileentity;
 
-import java.util.*;
+import java.util.ArrayList;
 
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.*;
-import net.hycrafthd.umod.entity.EntityFX;
-import net.hycrafthd.umod.event.EnergyRegisterEvent;
-import net.hycrafthd.umod.event.EnergyUnregisterEvent;
-import net.hycrafthd.umod.event.RenderEntityClearEvent;
-import net.hycrafthd.umod.event.RenderEntityRegisterEvent;
+import net.hycrafthd.umod.event.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.EventBus;
 
 public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IConduitProvider,ITickable{
 	

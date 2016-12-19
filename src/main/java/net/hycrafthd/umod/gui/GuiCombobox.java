@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.Minecraft;

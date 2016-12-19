@@ -1,23 +1,11 @@
 package net.hycrafthd.umod.ext.enderio;
 
-import crazypants.enderio.conduit.TileConduitBundle;
-import crazypants.enderio.power.IPowerApiAdapter;
-import crazypants.enderio.power.IPowerInterface;
-import crazypants.enderio.power.IPowerStorage;
+import crazypants.enderio.power.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
-import net.hycrafthd.umod.tileentity.TileEntityBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.fml.common.Optional;
 
 public class TileEntityEnderIOTransformer extends TileEntity implements IPowerProvieder, IPowerStorage, IPowerApiAdapter, IPowerInterface, IEnergyStorage {
 	

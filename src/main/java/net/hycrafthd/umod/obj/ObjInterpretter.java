@@ -1,25 +1,13 @@
 package net.hycrafthd.umod.obj;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-import javax.print.attribute.TextSyntax;
-
-import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.corelib.via.Vertex;
 import net.hycrafthd.umod.UMod;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.Vec3d;
-import scala.tools.nsc.interactive.tests.core.TestSettings;
 
 public class ObjInterpretter extends FileInputStream {
 	

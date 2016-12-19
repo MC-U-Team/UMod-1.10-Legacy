@@ -1,16 +1,12 @@
 package net.hycrafthd.umod.block;
 
-import java.util.List;
-
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IEnergyMessage;
-import net.hycrafthd.umod.entity.EntityFX;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
