@@ -57,14 +57,10 @@ public class InfoFieldRender {
 		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double) stringmu / 10), posZ, new Runnable() {
 			
 			@Override
-			public void run() {
-				RGBA rgb2 = new RGBA(Color.GREEN);
-				rgb2.setAlpha(50);
-				help.drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb2);
-				
-				RGBA rgb = new RGBA(Color.RED);
-				rgb.setAlpha(75);
-				help.drawFrame((double) (-j - 1.5), (double) (-1 - 0.5), (double) (j2 + 1), (double) (10) * stringmu, rgb);
+			public void run() {				
+				RGBA rgb = new RGBA(Color.BLACK);
+				rgb.setAlpha(125);
+				help.drawFrame((double) (-j - 2), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb);
 				
 				RGBA rgb3 = new RGBA(Color.WHITE);
 				rgb3.setAlpha(255);

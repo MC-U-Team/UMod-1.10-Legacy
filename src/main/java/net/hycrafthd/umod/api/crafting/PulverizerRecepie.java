@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.api;
+package net.hycrafthd.umod.api.crafting;
 
 import net.hycrafthd.umod.UItems;
 import net.minecraft.item.ItemStack;

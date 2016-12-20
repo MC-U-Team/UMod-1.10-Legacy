@@ -1,10 +1,12 @@
-package net.hycrafthd.umod.event;
+package net.hycrafthd.umod.event.apis;
 
 import java.util.*;
 import java.util.function.BiConsumer;
 
 import net.hycrafthd.umod.api.energy.*;
 import net.hycrafthd.umod.entity.EntityFX;
+import net.hycrafthd.umod.event.*;
+import net.hycrafthd.umod.event.apis.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;

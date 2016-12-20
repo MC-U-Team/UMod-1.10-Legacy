@@ -2,6 +2,7 @@ package net.hycrafthd.umod.tileentity;
 
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.event.*;
+import net.hycrafthd.umod.event.apis.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;

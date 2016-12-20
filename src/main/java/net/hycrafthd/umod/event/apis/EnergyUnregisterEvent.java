@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.event;
+package net.hycrafthd.umod.event.apis;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

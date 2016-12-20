@@ -3,6 +3,7 @@ package net.hycrafthd.umod.utils;
 import java.util.ArrayList;
 
 import net.hycrafthd.umod.api.*;
+import net.hycrafthd.umod.api.crafting.*;
 import net.minecraft.item.ItemStack;
 
 public class ModRegistryUtils {

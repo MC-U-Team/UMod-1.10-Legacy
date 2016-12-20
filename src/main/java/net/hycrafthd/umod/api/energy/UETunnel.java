@@ -88,9 +88,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 			return;
 		ICabel[] outs = this.getOutput();
 		ICabel[] inpts = this.getInput();
-		System.out.println("----Ticking----");
 		double max = 0;
-		System.out.println("IP");
 		for (ICabel cab : inpts) {
 			for (BlockPos p : cab.getInputs()) {
 				System.out.println(p);
@@ -107,7 +105,6 @@ public class UETunnel extends ArrayList<BlockPos> {
 				}
 			}
 		}
-		System.out.println("OP");
 		for (ICabel cab : outs) {
 			for (BlockPos p : cab.getOutputs()) {
 				System.out.println(p);
@@ -137,7 +134,6 @@ public class UETunnel extends ArrayList<BlockPos> {
 		if (max > 0) {
 			for (ICabel cab : inpts) {
 				for (BlockPos p : cab.getInputs()) {
-					System.out.println(p);
 					IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 					if (max <= 0)
 						return;

@@ -2,6 +2,7 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.corelib.registry.*;
 import net.hycrafthd.umod.api.*;
+import net.hycrafthd.umod.api.crafting.*;
 import net.hycrafthd.umod.enumtype.EnumTypeBaseStuff;
 import net.hycrafthd.umod.utils.ModRegistryUtils;
 import net.minecraft.init.*;

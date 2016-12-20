@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.block;
 
-import net.hycrafthd.umod.event.CaseDestroyEvent;
+import net.hycrafthd.umod.event.apis.CaseDestroyEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

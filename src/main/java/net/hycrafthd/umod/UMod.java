@@ -2,6 +2,7 @@ package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.api.ProcessHandler;
 import net.hycrafthd.umod.event.*;
+import net.hycrafthd.umod.event.apis.EventRegRegistery;
 import net.hycrafthd.umod.ext.ExtensionList;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.minecraftforge.fml.common.Mod;
