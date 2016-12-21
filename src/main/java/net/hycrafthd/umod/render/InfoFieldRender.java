@@ -58,9 +58,9 @@ public class InfoFieldRender {
 			
 			@Override
 			public void run() {				
-				RGBA rgb = new RGBA(Color.BLACK);
-				rgb.setAlpha(125);
-				help.drawFrame((double) (-j - 2), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb);
+				RGBA rgb = new RGBA(Color.DARK_GRAY);
+				rgb.setAlpha(225);
+				help.drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb);
 				
 				RGBA rgb3 = new RGBA(Color.WHITE);
 				rgb3.setAlpha(255);
