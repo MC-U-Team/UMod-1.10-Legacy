@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 
-public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ISignable, ITickable {
+public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ITickable {
 	
 	public ItemStack[] stack = new ItemStack[11];
 	
@@ -136,16 +136,6 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 				}
 			}
 		}
-	}
-	
-	@Override
-	public void signPlayer(EntityPlayer pl) {
-		
-	}
-	
-	@Override
-	public String getSignedPlayerName() {
-		return null;
 	}
 	
 	@Override

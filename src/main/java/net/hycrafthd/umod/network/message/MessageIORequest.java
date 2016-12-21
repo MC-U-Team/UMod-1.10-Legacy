@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.network.message;
 
 import io.netty.buffer.ByteBuf;
-import net.hycrafthd.umod.api.IIOMode;
+import net.hycrafthd.umod.api.render.IIOMode;
 import net.hycrafthd.umod.utils.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;

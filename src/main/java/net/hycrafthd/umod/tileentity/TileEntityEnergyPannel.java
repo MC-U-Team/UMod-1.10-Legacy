@@ -2,7 +2,7 @@ package net.hycrafthd.umod.tileentity;
 
 import java.util.List;
 
-import net.hycrafthd.umod.api.IBoundsProvider;
+import net.hycrafthd.umod.api.render.IBoundsProvider;
 import net.hycrafthd.umod.entity.EntityFX;
 import net.hycrafthd.umod.item.ItemEnergyDisplay;
 import net.minecraft.entity.player.EntityPlayer;

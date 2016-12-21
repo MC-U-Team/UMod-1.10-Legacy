@@ -7,6 +7,7 @@ import org.lwjgl.input.Keyboard;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
 import net.hycrafthd.umod.api.*;
+import net.hycrafthd.umod.api.render.ISpiritProvider;
 import net.hycrafthd.umod.tileentity.TileEntityItemPipe;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

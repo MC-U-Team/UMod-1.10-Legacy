@@ -3,6 +3,7 @@ package net.hycrafthd.umod.block;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IEnergyMessage;
+import net.hycrafthd.umod.api.render.ISpiritProvider;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.block.*;

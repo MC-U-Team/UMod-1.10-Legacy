@@ -7,7 +7,7 @@ import org.lwjgl.input.Keyboard;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.api.ISliderPro;
+import net.hycrafthd.umod.api.render.ISliderTile;
 import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 
-public class GuiPainter extends GuiBase implements ISliderPro {
+public class GuiPainter extends GuiBase implements ISliderTile {
 	
 	public GuiPainter(EntityPlayer pl, IInventory tile, Container con) {
 		super(new GuiRescources("painter.png"), new GuiRescources("battery.png"), new GuiRescources("IOMode.png"), pl, tile, con);

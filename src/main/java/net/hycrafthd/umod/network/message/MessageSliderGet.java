@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.network.message;
 
 import io.netty.buffer.ByteBuf;
-import net.hycrafthd.umod.api.ISliderPro;
+import net.hycrafthd.umod.api.render.ISliderTile;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.common.network.simpleimpl.*;
@@ -34,8 +34,8 @@ public class MessageSliderGet implements IMessage, IMessageHandler<MessageSlider
 	public IMessage onMessage(MessageSliderGet message, MessageContext ctx) {
 		if (ctx.side.isClient()) {
 			GuiScreen sc = Minecraft.getMinecraft().currentScreen;
-			if (sc instanceof ISliderPro) {
-				ISliderPro sli = (ISliderPro) sc;
+			if (sc instanceof ISliderTile) {
+				ISliderTile sli = (ISliderTile) sc;
 				sli.set(message.id, message.val);
 			}
 		}

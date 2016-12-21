@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.network.message;
 
 import io.netty.buffer.ByteBuf;
-import net.hycrafthd.umod.api.ISliderEntry;
+import net.hycrafthd.umod.api.render.ISliderEntry;
 import net.hycrafthd.umod.utils.NetworkUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

@@ -31,7 +31,14 @@ public interface IPowerProvieder {
 	
 	public boolean productsPower();
 	
+	/**
+	 * @return emits energy
+	 */
 	public boolean isInput();
 	
+	/**
+	 * 
+	 * @return takes energy
+	 */
 	public boolean isOutput();
 }
