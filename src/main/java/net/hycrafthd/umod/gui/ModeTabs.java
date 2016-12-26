@@ -1,33 +1,47 @@
 package net.hycrafthd.umod.gui;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 import com.google.common.collect.Lists;
 
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
+import net.hycrafthd.umod.gui.inventory.BaseSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 @SuppressWarnings("deprecation")
-public abstract class ModeTabs extends Gui {
+public class ModeTabs extends Gui {
 	
 	private ItemStack stack;
 	private String name;
-	private Mode mode;
-	private int x, y;
-	private boolean isUsed;
+	private int y;
+	private ImplGui gui;
+	private ResourceLocation background;
+	private Container container;
+	private GuiBase base_gui;
+	private Consumer<BaseSlot> consumer;
 	
-	public ModeTabs(ItemStack stack, String name, Mode mode, int x, int y, boolean use) {
+	public ModeTabs(ItemStack stack, String name, ImplGui gui, ResourceLocation location,GuiBase base_gui,Consumer<BaseSlot> consumer,int y, boolean use) {
 		this.stack = stack;
 		this.name = name;
-		this.mode = mode;
-		this.x = x;
 		this.y = y;
-		this.isUsed = use;
+		this.gui = gui;
+		this.background = location;
+		this.container = base_gui.container;
+		this.base_gui = base_gui;
+		this.consumer = consumer;
+		if(use){
+			base_gui.activeTab = this;
+		}
+	}
+	
+	public ModeTabs(ItemStack stack, String name, ImplGui gui, ResourceLocation location,GuiBase base_gui,int y, boolean use) {
+		this(stack,name,gui,location,base_gui,null, y, use);
 	}
 	
 	public ItemStack getStack() {
@@ -46,21 +60,14 @@ public abstract class ModeTabs extends Gui {
 		this.name = name;
 	}
 	
-	public Mode getMode() {
-		return mode;
-	}
-	
-	public void setMode(Mode mode) {
-		this.mode = mode;
-	}
-	
 	public boolean isInUse() {
-		return isUsed;
+		return this.equals(base_gui.activeTab);
 	}
 	
-	public void render() {
+	public void render(int i) {
+		int x = 28 * i;
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("textures/gui/container/creative_inventory/tabs.png"));
-		if (!isUsed) {
+		if (!isInUse()) {
 			this.drawTexturedModalRect(x, y - 28, 0, 0, 28, 28);
 			this.renderItemIntoGUI(stack, x + 6, y - 20);
 		} else {
@@ -78,7 +85,8 @@ public abstract class ModeTabs extends Gui {
 		
 	}
 	
-	public void renderToolTip(int mouseX, int mouseY, int guileft, int guitop) {
+	public void renderToolTip(int i,int mouseX, int mouseY, int guileft, int guitop) {
+		int x = 28 * i;
 		int mx = (int) (mouseX - guileft);
 		int my = (int) (mouseY - guitop);
 		if (mx > x && mx < x + 28 && my > y - 33 && my < y) {
@@ -86,17 +94,13 @@ public abstract class ModeTabs extends Gui {
 		}
 	}
 	
-	public void handelMouseInput(int mouseX, int mouseY, int guileft, int guitop) {
+	public void handelMouseInput(int i,int mouseX, int mouseY, int guileft, int guitop) {
+		int x = 28 * i;
 		int mx = (int) (mouseX - guileft);
 		int my = (int) (mouseY - guitop);
 		if (mx > x && mx < x + 28 && my > y - 28 && my < y) {
-			onClick(mode);
-			isUsed = !isUsed;
+			onClick();
 		}
-	}
-	
-	public void setInUse(boolean b) {
-		isUsed = b;
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -161,7 +165,25 @@ public abstract class ModeTabs extends Gui {
 		}
 	}
 	
-	public abstract void onClick(Mode m);
+	public void onClick(){
+		this.base_gui.activeTab = this;
+		for(Slot slot : container.inventorySlots){
+			if(slot instanceof BaseSlot){
+				((BaseSlot) slot).setVisible(false);
+			}
+		}
+		if(consumer != null){
+			for(Slot slot : container.inventorySlots){
+				if(slot instanceof BaseSlot)
+				consumer.accept((BaseSlot) slot);
+			}
+		}
+		this.base_gui.loc = background;
+	}
+	
+	public ImplGui getGui(){
+		return gui;
+	}
 	
 	private void setupGuiTransform(int xPosition, int yPosition, boolean isGui3d) {
 		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);

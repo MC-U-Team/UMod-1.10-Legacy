@@ -12,8 +12,4 @@ public interface IIOMode {
 	
 	public int getModeCount();
 	
-	public void setEnumInput(EnumFacing fac);
-	
-	public void setEnumOutput(EnumFacing fac);
-	
 }

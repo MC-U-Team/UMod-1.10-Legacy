@@ -209,8 +209,8 @@ public class TileEntityMagicCrafter extends TileEntityLockable implements ITicka
 	}
 	
 	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerMagicCrafter(this, playerInventory.player, this.pos, this.worldObj);
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer player) {
+		return new ContainerMagicCrafter(player, this.pos);
 	}
 	
 	@Override

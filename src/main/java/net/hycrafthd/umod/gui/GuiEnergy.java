@@ -12,7 +12,9 @@ import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
@@ -21,22 +23,22 @@ public class GuiEnergy extends GuiScreen {
 	
 	private int xSize;
 	private int ySize;
-	private IPowerProvieder pro;
-	private World w;
+	private IPowerProvieder tile;
+	private World worldObj;
 	private boolean back;
 	
-	public GuiEnergy(World w, IPowerProvieder po, boolean back) {
+	public GuiEnergy(EntityPlayer player,BlockPos pos, boolean back) {
 		super();
 		this.xSize = 176;
 		this.ySize = 166;
-		this.pro = po;
-		this.w = w;
+		this.worldObj = player.worldObj;
+		this.tile = (IPowerProvieder) worldObj.getTileEntity(pos);
 		this.back = back;
 		super.initGui();
 	}
 	
-	public GuiEnergy(World w, IPowerProvieder po) {
-		this(w, po, true);
+	public GuiEnergy(EntityPlayer player,BlockPos pos) {
+		this(player,pos, true);
 	}
 	
 	@Override
@@ -59,13 +61,13 @@ public class GuiEnergy extends GuiScreen {
 		}
 		
 		int high = 0;
-		if (pro.hasPower()) {
-			double ps = pro.getStoredPower() * 100 / pro.getMaximalPower();
+		if (tile.hasPower()) {
+			double ps = tile.getStoredPower() * 100 / tile.getMaximalPower();
 			high = (int) (ps * 0.01 * 152);
 		}
 		
 		this.drawStorage(k, l, high);
-		IBlockState ste = w.getBlockState(((TileEntity) pro).getPos());
+		IBlockState ste = worldObj.getBlockState(((TileEntity) tile).getPos());
 		EnumTypeSolarPanel type = EnumTypeSolarPanel.byMetadata(ste.getBlock().getMetaFromState(ste));
 		
 		this.drawCenteredString(this.fontRendererObj, I18n.format(ste.getBlock().getUnlocalizedName() + (ste.getBlock() instanceof BlockSolarPanel ? type.getName() : "") + ".name"), k + xSize / 2 - 37 / 2, l + 10, 4210752, false);
@@ -74,11 +76,11 @@ public class GuiEnergy extends GuiScreen {
 		String s2 = "Stored: ";
 		String s3 = "Status: ";
 		String s4 = "Error: ";
-		this.fontRendererObj.drawSplitString(s1 + (pro.isWorking() ? (EnergyUtils.translate(pro.getPowerProducNeeds()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
-		this.fontRendererObj.drawSplitString(s2 + EnergyUtils.translate(pro.getStoredPower()) + " / " + EnergyUtils.translate(pro.getMaximalPower()), k + 10, l + 80, maxstringlength, 4210752);
-		this.fontRendererObj.drawSplitString(s3 + (pro.isWorking() ? "On" : "Off"), k + 10, l + 110, maxstringlength, 4210752);
-		if (!pro.isWorking() && pro.getErrorMessage() != null && pro.getErrorMessage() != "") {
-			this.fontRendererObj.drawSplitString(s4 + pro.getErrorMessage(), k + 10, l + 140, maxstringlength, 4210752);
+		this.fontRendererObj.drawSplitString(s1 + (tile.isWorking() ? (EnergyUtils.translate(tile.getPowerProducNeeds()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
+		this.fontRendererObj.drawSplitString(s2 + EnergyUtils.translate(tile.getStoredPower()) + " / " + EnergyUtils.translate(tile.getMaximalPower()), k + 10, l + 80, maxstringlength, 4210752);
+		this.fontRendererObj.drawSplitString(s3 + (tile.isWorking() ? "On" : "Off"), k + 10, l + 110, maxstringlength, 4210752);
+		if (!tile.isWorking() && tile.getErrorMessage() != null && tile.getErrorMessage() != "") {
+			this.fontRendererObj.drawSplitString(s4 + tile.getErrorMessage(), k + 10, l + 140, maxstringlength, 4210752);
 		}
 		
 	}

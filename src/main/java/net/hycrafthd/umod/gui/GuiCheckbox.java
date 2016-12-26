@@ -2,6 +2,8 @@ package net.hycrafthd.umod.gui;
 
 import java.awt.Color;
 
+import com.sun.javafx.scene.traversal.Hueristic2D;
+
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.render.GLHelper;
@@ -9,7 +11,7 @@ import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 
-public class GuiCheckbox extends Gui {
+public class GuiCheckbox extends ImplGui {
 	
 	private double x, width, y, height;
 	private RGBA rgb, hover;
@@ -18,7 +20,8 @@ public class GuiCheckbox extends Gui {
 	private Runnable run;
 	private GLHelper help;
 	
-	public GuiCheckbox(double x, double y, double width, double height, RGBA rgb, RGBA hover) {
+	public GuiCheckbox(GuiBase base,double x, double y, double width, double height, RGBA rgb, RGBA hover) {
+		super(base);
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -32,7 +35,9 @@ public class GuiCheckbox extends Gui {
 		return x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height;
 	}
 	
-	public void draw(int x, int y, Minecraft mc) {
+	@Override
+	public void render(int x, int y) {
+        Minecraft mc = base_gui.mc;
 		RGBA use = null;
 		FontRenderer fontobj = mc.fontRendererObj;
 		this.help.drawFrame(this.x, this.y, this.width, this.height, new RGBA(Color.black), this.zLevel);
@@ -97,7 +102,8 @@ public class GuiCheckbox extends Gui {
 		return ret.getString().contains("\n");
 	}
 	
-	public final void handelMouseClick(int x, int y) {
+	@Override
+	public void onClick(int x, int y) {
 		if (this.isMouseOver(x, y)) {
 			isSelected = !isSelected;
 			if (run != null) {

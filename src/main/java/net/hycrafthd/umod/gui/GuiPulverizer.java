@@ -16,8 +16,8 @@ public class GuiPulverizer extends GuiBase {
 	
 	public BlockPos pos;
 	
-	public GuiPulverizer(EntityPlayer pl, IInventory tile, World w, BlockPos pos) {
-		super(new GuiRescources("pulver.png"), pl, tile, new ContainerPulverizer(tile, pl, w));
+	public GuiPulverizer(EntityPlayer player, BlockPos pos) {
+		super(new GuiRescources("pulver.png"), player, pos, new ContainerPulverizer(player, pos));
 		this.pos = pos;
 	}
 	
@@ -28,23 +28,17 @@ public class GuiPulverizer extends GuiBase {
 			
 			@Override
 			public void run() {
-				if (box.getSelceted() != 2) {
-					if (box.getSelceted() == 0) {
-						PacketHandler.INSTANCE.sendToServer(new MessageIOMode(pos, hal, ((TileEntityPulverizer) ent).getEnumOutput()));
-					} else if (box.getSelceted() == 1) {
-						PacketHandler.INSTANCE.sendToServer(new MessageIOMode(pos, ((TileEntityPulverizer) ent).getEnumInput(), hal));
-					}
-				}
-				worldObj.markChunkDirty(ent.getPos(), ent);
-				worldObj.updateComparatorOutputLevel(ent.getPos(), ent.getBlockType());
+
+				worldObj.markChunkDirty(pos, tile);
+				worldObj.updateComparatorOutputLevel(pos, tile.getBlockType());
 			}
 		});
 	}
 	
 	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		if (basecon.mode.equals(Mode.NORMAL)) {
-			fontRendererObj.drawString(((TileEntityPulverizer) this.ent).getTime() + "%", this.xSize / 2 - 5, this.ySize / 2 - 62, 0x00000);
+		if (this.container.mode.equals(Mode.NORMAL)) {
+			fontRendererObj.drawString(((TileEntityPulverizer) this.tile).getTime() + "%", this.xSize / 2 - 5, this.ySize / 2 - 62, 0x00000);
 		}
 	}
 	

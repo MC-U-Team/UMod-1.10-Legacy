@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class GuiCombobox extends Gui {
+public class GuiCombobox extends ImplGui {
 	
 	private ArrayList<String> strs = new ArrayList<String>();
 	private String slected = "Choose";
@@ -21,15 +21,17 @@ public class GuiCombobox extends Gui {
 	private Runnable runn = null;
 	private GLHelper help;
 	
-	public GuiCombobox(int x, int y, int width, int height) {
+	public GuiCombobox(GuiBase base,int x, int y, int width, int height) {
+		super(base);
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
 		this.help = UReference.getClientProxy().getGLHelper();
 	}
-	
-	public void draw(Minecraft mc) {
+	@Override
+	public void render(int mouseX, int mouseY) {
+        Minecraft mc = base_gui.mc;
 		RGBA rgb = new RGBA(Color.WHITE);
 		this.help.drawGradientRect(x, y, x + width, y + height, rgb, rgb, this.zLevel);
 		RGBA rgb2 = new RGBA(Color.DARK_GRAY);
@@ -69,7 +71,8 @@ public class GuiCombobox extends Gui {
 		return x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height;
 	}
 	
-	public void handelClick(int x, int y) {
+	@Override
+	public void onClick(int mouseX, int mouseY) {
 		if (extend) {
 			if (x >= this.x && x <= this.x + this.width && y >= this.y + this.height) {
 				for (int i = 0; i < strs.size(); i++) {

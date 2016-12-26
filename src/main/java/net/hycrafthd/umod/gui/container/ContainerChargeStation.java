@@ -9,9 +9,9 @@ import net.minecraft.world.World;
 
 public class ContainerChargeStation extends ContainerBase {
 	
-	public ContainerChargeStation(IInventory inv, EntityPlayer pl, BlockPos pos, World wo) {
-		super(inv, pl, pos, wo, false, true);
-		super.addSlotToContainer(new BaseBatteryInputSlot(inv, 0, 80, 30));
+	public ContainerChargeStation(EntityPlayer pl, BlockPos pos) {
+		super(pl, pos);
+		super.addSlotToContainer(new BaseBatteryInputSlot((IInventory) this.tile, 0, 80, 30));
 		
 		int i = 0;
 		int v = 9;

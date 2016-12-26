@@ -1,5 +1,7 @@
 package net.hycrafthd.umod.gui;
 
+import com.enderio.core.client.config.BaseConfigGui;
+
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.network.PacketHandler;
@@ -11,7 +13,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.BlockPos;
 
-public class GuiSlider extends Gui {
+public class GuiSlider extends ImplGui {
 	
 	private int x, y;
 	private RGBA back, slid, slid2;
@@ -21,19 +23,21 @@ public class GuiSlider extends Gui {
 	private int id;
 	private GLHelper help;
 	
-	public GuiSlider(int x, int y, RGBA color1, RGBA color2, RGBA color3, int id, BlockPos pos) {
+	public GuiSlider(GuiBase base,int x, int y, RGBA color1, RGBA color2, RGBA color3, int id) {
+		super(base);
 		this.x = x;
 		this.y = y;
 		back = color1;
 		slid = color2;
 		slid2 = color3;
 		this.id = id;
-		this.ps = pos;
+		this.ps = base.pos;
 		this.help = UReference.getClientProxy().getGLHelper();
-		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, pos));
+		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, this.ps));
 	}
 	
-	public void draw(Minecraft mc) {
+	public void render(int x,int y) {
+		Minecraft mc = base_gui.mc;
 		mc.getTextureManager().bindTexture(new GuiRescources("Slider_Background.png"));
 		GlStateManager.color(back.getRed(), back.getGreen(), back.getBlue(), back.getAlpha());
 		drawScaledCustomSizeModalRect(x, y + 2, 0, 0, 100, 4, 100, 4, 100, 4);
@@ -46,7 +50,9 @@ public class GuiSlider extends Gui {
 		drawScaledCustomSizeModalRect(x + val - ((size / 2) - 1), y + 1, 0, 0, size - 2, size - 2, size - 2, size - 2, size - 2, size - 2);
 	}
 	
-	public void drawOverlay(Minecraft mc, int mousex, int mousey) {
+	@Override
+	public void renderOverlay(int mousex, int mousey) {
+		Minecraft mc = base_gui.mc;
 		if (ret == null)
 			return;
 		if (mousex > x && mousex < x + 100 && mousey > y && mousey < y + 8) {
@@ -106,7 +112,8 @@ public class GuiSlider extends Gui {
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
 	}
 	
-	public void handelMouseClicked(int mousex, int mousey) {
+	@Override
+	public void onClick(int mousex, int mousey) {
 		if (mousex >= x && mousex <= x + 100 && mousey >= y && mousey <= y + 8) {
 			val = mousex - x;
 			PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));

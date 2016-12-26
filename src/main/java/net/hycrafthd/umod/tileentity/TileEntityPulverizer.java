@@ -229,7 +229,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerPulverizer(this, playerIn, playerIn.worldObj);
+		return new ContainerPulverizer(playerIn, this.pos);
 	}
 	
 	@Override

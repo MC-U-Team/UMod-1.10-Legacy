@@ -18,16 +18,14 @@ public class UGuiHandler implements ICustomGuiHandler {
 	@SuppressWarnings("incomplete-switch")
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos p = new BlockPos(x, y, z);
-		TileEntity ent = world.getTileEntity(p);
-		
+		BlockPos pos = new BlockPos(x, y, z);
 		switch (EnumTypeGui.byID(ID)) {
 		case PULVERISER:
-			return new ContainerPulverizer((IInventory) ent, player, world);
+			return new ContainerPulverizer(player, pos);
 		case CHARGESTATION:
-			return new ContainerChargeStation((IInventory) ent, player, p, world);
+			return new ContainerChargeStation(player, pos);
 		case CRAFTFURNANCE:
-			return new ContainerCraftFurnace((IInventory) ent, player, p, world);
+			return new ContainerCraftFurnace(player, pos);
 		case BACKPACK:
 			ItemStack itemstack = player.inventory.getCurrentItem();
 			if (itemstack != null && itemstack.getItem().equals(UItems.backpack)) {
@@ -37,9 +35,9 @@ public class UGuiHandler implements ICustomGuiHandler {
 			}
 			break;
 		case PAINTER:
-			return new ContainerPainter((IInventory) ent, player, world);
+			return new ContainerPainter(player, pos);
 		case MAGIC_CRAFTER:
-			return new ContainerMagicCrafter((IInventory) ent, player, p, world);
+			return new ContainerMagicCrafter(player, pos);
 		}
 		return null;
 	}
@@ -47,20 +45,16 @@ public class UGuiHandler implements ICustomGuiHandler {
 	@SuppressWarnings("incomplete-switch")
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos p = new BlockPos(x, y, z);
-		TileEntity ent = world.getTileEntity(p);
-		
+		BlockPos pos = new BlockPos(x, y, z);		
 		switch (EnumTypeGui.byID(ID)) {
 		case PULVERISER:
-			return new GuiPulverizer(player, (IInventory) ent, world, p);
+			return new GuiPulverizer(player, pos);
 		case SOLARPANEL:
-			return new GuiEnergy(world, (IPowerProvieder) ent);
-		case BATTERIE:
-			return new GuiBattery(world, (IPowerProvieder) ent, player, p, 0);
+			return new GuiEnergy(player, pos);
 		case CHARGESTATION:
-			return new GuiChargstation(player, (IInventory) ent);
+			return new GuiChargstation(player, pos);
 		case CRAFTFURNANCE:
-			return new GuiCraftFurnance(player, (IInventory) ent, p, world);
+			return new GuiCraftFurnance(player, pos);
 		case BACKPACK:
 			ItemStack itemstack = player.inventory.getCurrentItem();
 			if (itemstack != null && itemstack.getItem().equals(UItems.backpack)) {
@@ -70,9 +64,9 @@ public class UGuiHandler implements ICustomGuiHandler {
 			}
 			break;
 		case PAINTER:
-			return new GuiPainter(player, (IInventory) ent, new ContainerPainter((IInventory) ent, player, world));
+			return new GuiPainter(player, pos);
 		case MAGIC_CRAFTER:
-			return new GuiMagicCrafter(player, (IInventory) ent, new ContainerMagicCrafter((IInventory) ent, player, p, world));
+			return new GuiMagicCrafter(player, pos);
 		}
 		return null;
 		

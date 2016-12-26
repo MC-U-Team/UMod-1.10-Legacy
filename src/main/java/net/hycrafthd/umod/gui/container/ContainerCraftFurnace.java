@@ -8,19 +8,19 @@ import net.minecraft.world.World;
 
 public class ContainerCraftFurnace extends ContainerBase {
 	
-	public ContainerCraftFurnace(IInventory inv, EntityPlayer pl, BlockPos pos, World wo) {
-		super(inv, pl, pos, wo);
+	public ContainerCraftFurnace(EntityPlayer pl, BlockPos pos) {
+		super(pl, pos);
 		
 		int i = 0;
 		int j = 0;
 		
 		for (i = 0; i < 3; ++i) {
 			for (j = 0; j < 3; ++j) {
-				super.addSlotToContainer(new BaseCraftSlot(inv, j + (i * 3), 25 + j * 18, 20 + i * 18));
+				super.addSlotToContainer(new BaseCraftSlot((IInventory) this.tile, j + (i * 3), 25 + j * 18, 20 + i * 18));
 			}
 		}
 		
-		super.addSlotToContainer(new BaseSlotOutput(inv, 9, 135, 38));
+		super.addSlotToContainer(new BaseSlotOutput((IInventory) this.tile, 9, 135, 38));
 		
 		int v = 9;
 		

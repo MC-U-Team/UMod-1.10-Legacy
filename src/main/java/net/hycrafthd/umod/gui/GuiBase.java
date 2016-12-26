@@ -3,17 +3,19 @@ package net.hycrafthd.umod.gui;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Consumer;
 
 import org.lwjgl.input.Keyboard;
 
 import com.google.common.collect.Sets;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
+import crazypants.enderio.render.property.IOMode;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.*;
-import net.hycrafthd.umod.api.energy.IPowerProvieder;
+import net.hycrafthd.umod.api.energy.*;
+import net.hycrafthd.umod.api.render.*;
 import net.hycrafthd.umod.gui.container.ContainerBase;
-import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
 import net.hycrafthd.umod.gui.inventory.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIORequest;
@@ -40,47 +42,30 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public abstract class GuiBase extends GuiScreen {
 	
+	public ArrayList<ModeTabs> tabs = new ArrayList<ModeTabs>();
 	public ResourceLocation loc, loc1, loc2, loc3;
 	public static final ResourceLocation CLEAR_GUI = new GuiRescources("clear.png");
-	public EntityPlayer play;
-	public TileEntity ent;
+	public EntityPlayer player;
+	public TileEntity tile;
 	public BlockPos pos;
 	public Slot hoveredSlot;
-	public ContainerBase basecon;
+	public ContainerBase container;
 	public World worldObj;
-	public GuiCheckbox check;
-	public boolean is = true;
 	protected GLHelper help;
+	public ModeTabs activeTab;
 	
-	public GuiBase(ResourceLocation loc, ResourceLocation loc2, ResourceLocation loc3, EntityPlayer pl, IInventory tile, Container con) {
+	public GuiBase(ResourceLocation loc,EntityPlayer player, BlockPos pos, Container con) {
 		super();
 		this.loc = loc;
 		this.loc1 = loc;
-		this.loc2 = loc2;
-		this.loc3 = loc3;
-		this.play = pl;
-		this.ent = (TileEntity) tile;
-		if (tile instanceof IPowerProvieder)
-			this.pro = (IPowerProvieder) tile;
-		this.pos = ent.getPos();
-		this.basecon = (ContainerBase) con;
-		this.worldObj = Minecraft.getMinecraft().getIntegratedServer().worldServers[0];
+		this.loc2 = new GuiRescources("battery.png");
+		this.loc3 = new GuiRescources("IOMode.png");
+		this.player = player;
+		this.worldObj = this.player.getEntityWorld();
+		this.tile = this.worldObj.getTileEntity(pos);
+		this.pos = pos;
+		this.container = (ContainerBase) con;
 		this.help = UReference.getClientProxy().getGLHelper();
-		if (pro != null)
-			this.eng = new GuiEnergy(worldObj, pro, false);
-	}
-	
-	public GuiBase(ResourceLocation loc, EntityPlayer pl, IInventory tile, Container con) {
-		this(loc, new GuiRescources("battery.png"), new GuiRescources("IOMode.png"), pl, tile, con);
-	}
-	
-	public IPowerProvieder pro;
-	public EntityPlayer pl;
-	public int ag;
-	private GuiEnergy eng;
-	
-	public void drawToSMScreen(int mouseX, int mouseY, float partialTicks) {
-		eng.drawScreen(mouseX, mouseY, partialTicks);
 	}
 	
 	public int drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color, boolean shadow) {
@@ -91,151 +76,44 @@ public abstract class GuiBase extends GuiScreen {
 	protected void actionPerformed(GuiButton button) throws IOException {
 	}
 	
-	@Override
-	public void setWorldAndResolution(Minecraft mc, int width, int height) {
-		super.setWorldAndResolution(mc, width, height);
-		eng.setWorldAndResolution(mc, width, height);
-	}
-	
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		this.mc.getTextureManager().bindTexture(loc);
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 	}
-	
-	public ModeTabs[] tabs;
-	
-	public void checkAndAdd(EnumFacing fc, int item) {
-		if (item == Byte.MAX_VALUE) {
-			this.box.setSelected(this.box.getItems().size() - 1);
-			return;
-		}
-		if (this.hal.equals(fc)) {
-			this.box.setSelected(item);
-		} else {
-			this.box.setSelected(0);
-		}
-	}
-	
+		
 	@Override
 	public void initGui() {
 		super.initGui();
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		
-		if (basecon.B) {
-			tabs = new ModeTabs[Mode.values().length];
-			tabs[0] = new ModeTabs(new ItemStack(UBlocks.ores, 0, 5), "Normal Mode", Mode.NORMAL, 0, 0, true) {
-				
-				@Override
-				public void onClick(Mode m) {
-					for (ModeTabs ms : tabs) {
-						ms.setInUse(false);
-					}
-					basecon.setMode(m);
-					is = true;
-					loc = loc1;
-					for (int i = 0; i < basecon.inventorySlots.size(); i++) {
-						if (basecon.inventorySlots.get(i) instanceof BaseSlot) {
-							basecon.setVisisble(i, true);
-						}
-						if (basecon.inventorySlots.get(i) instanceof BaseBatteryInputSlot) {
-							basecon.setVisisble(i, false);
-						}
-					}
-				}
-			};
-			tabs[1] = new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode", Mode.BATTERY, 28, 0, false) {
-				
-				@Override
-				public void onClick(Mode m) {
-					for (ModeTabs ms : tabs) {
-						ms.setInUse(false);
-					}
-					basecon.setMode(m);
-					loc = loc2;
-					is = true;
-					for (int i = 0; i < basecon.inventorySlots.size(); i++) {
-						if (basecon.inventorySlots.get(i) instanceof BaseBatteryInputSlot) {
-							basecon.setVisisble(i, true);
-						} else if (basecon.inventorySlots.get(i) instanceof BaseSlot) {
-							basecon.setVisisble(i, false);
-						}
-					}
-				}
-			};
-			tabs[2] = new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode", Mode.OUTPUT, 28 * 2, 0, false) {
-				
-				@Override
-				public void onClick(Mode m) {
-					for (ModeTabs ms : tabs) {
-						ms.setInUse(false);
-					}
-					basecon.setMode(m);
-					is = true;
-					loc = loc3;
-					for (int i = 0; i < basecon.inventorySlots.size(); i++) {
-						if (basecon.inventorySlots.get(i) instanceof BaseSlot) {
-							basecon.setVisisble(i, false);
-						}
-					}
-				}
-			};
-			tabs[3] = new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", Mode.COLOR, 28 * 3, 0, false) {
-				
-				@Override
-				public void onClick(Mode m) {
-					for (ModeTabs ms : tabs) {
-						ms.setInUse(false);
-					}
-					basecon.setMode(m);
-					is = false;
-					loc = CLEAR_GUI;
-					for (int i = 0; i < basecon.inventorySlots.size(); i++) {
-						if (basecon.inventorySlots.get(i) instanceof BaseSlot) {
-							basecon.setVisisble(i, false);
-						}
-					}
-				}
-			};
-			tabs[4] = new ModeTabs(new ItemStack(UBlocks.solarpanel), "Energy Mode", Mode.ENERGY, 28 * 4, 0, false) {
-				
-				@Override
-				public void onClick(Mode m) {
-					for (ModeTabs ms : tabs) {
-						ms.setInUse(false);
-					}
-					is = false;
-					basecon.setMode(m);
-					loc = new GuiRescources("solar.png");
-					for (int i = 0; i < basecon.inventorySlots.size(); i++) {
-						if (basecon.inventorySlots.get(i) instanceof BaseSlot) {
-							basecon.setVisisble(i, false);
-						}
-					}
-				}
-			};
-		}
-		box = new GuiCombobox(k + 8, l + 7, 80, 12);
-		check = new GuiCheckbox(k + 5, l + 5, 10, 10, new RGBA(Color.white), new RGBA(Color.DARK_GRAY));
-		check.setTooltip(new StringMethod() {
-			
+		tabs.add(new ModeTabs(new ItemStack(UBlocks.ores, 0, 5), "Normal Mode", new ModeNormal(this),this.loc1,this,new Consumer<BaseSlot>() {
 			@Override
-			public String getString() {
-				if (check.isSelceted()) {
-					return "Item Input List is visible";
-				} else {
-					return "Item Input List is hidden";
+			public void accept(BaseSlot arg0) {
+				if(!(arg0 instanceof BaseBatteryInputSlot)){
+						arg0.setVisible(true);
 				}
 			}
-		});
-		this.addToBox(box);
-		this.play.openContainer = this.basecon;
-		this.guiLeft = (this.width - this.xSize) / 2;
-		this.guiTop = (this.height - this.ySize) / 2;
-		box.getItems().add("Choose");
-		box.setSelected(box.getItems().size() - 1);
+		}, 0, true));
+		if(this.tile instanceof IBatteryProvider)
+		tabs.add(new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode",ImplGui.NULL, this.loc2,this,new Consumer<BaseSlot>() {
+
+			@Override
+			public void accept(BaseSlot arg0) {
+				if(arg0 instanceof BaseBatteryInputSlot){
+						arg0.setVisible(true);
+				}
+			}
+		}, 0, false));
+		if(this.tile instanceof IIOMode)
+		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",null,this.loc3,this, 0, false));
+		if(this.tile instanceof IWorldView)
+		tabs.add(new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", new ModeColor(this),this.loc3,this, 0, false)); 
+		if (this.tile instanceof IPowerProvieder)
+		tabs.add(new ModeTabs(new ItemStack(UBlocks.solarpanel), "Energy Mode", new ModeEnergy(this),new GuiRescources("solar.png"),this, 0, false));
+		this.player.openContainer = this.container;
 	}
 	
 	public boolean canColorChange() {
@@ -320,9 +198,8 @@ public abstract class GuiBase extends GuiScreen {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		int k1;
 		
-		if (is) {
-			for (int ig1 = 0; ig1 < this.basecon.inventorySlots.size(); ig1++) {
-				Slot slot = (Slot) this.basecon.inventorySlots.get(ig1);
+			for (int ig1 = 0; ig1 < this.container.inventorySlots.size(); ig1++) {
+				Slot slot = (Slot) this.container.inventorySlots.get(ig1);
 				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasColor() && ((BaseSlot) slot).isVisible() && (!this.isMouseOverSlot(slot, mouseX, mouseY) || !slot.canBeHovered())) {
 					GlStateManager.disableLighting();
 					GlStateManager.disableDepth();
@@ -337,12 +214,6 @@ public abstract class GuiBase extends GuiScreen {
 					GlStateManager.enableDepth();
 				}
 			}
-		}
-		
-		if (basecon.mode.equals(Mode.OUTPUT)) {
-			GlStateManager.enableDepth();
-			this.drawIOMode();
-		}
 		
 		RenderHelper.disableStandardItemLighting();
 		this.drawGuiContainerForegroundLayer(mouseX, mouseY);
@@ -386,29 +257,30 @@ public abstract class GuiBase extends GuiScreen {
 		}
 		
 		if (tabs != null) {
+			int i = 0;
 			for (ModeTabs tab : tabs) {
-				tab.render();
+				tab.render(i);
+				i++;
 			}
 		}
 		
 		GlStateManager.popMatrix();
-		
-		if (basecon.mode.equals(Mode.ENERGY)) {
-			this.drawToSMScreen(mouseX, mouseY, partialTicks);
-		}
+				
+		this.activeTab.getGui().render(mouseX, mouseY);
 		
 		if (inventoryplayer.getItemStack() == null && this.theSlot != null && this.theSlot.getHasStack()) {
 			ItemStack itemstack1 = this.theSlot.getStack();
 			this.renderToolTip(itemstack1, mouseX, mouseY);
 		}
+		
 		if (tabs != null) {
+			int i = 0;
 			for (ModeTabs tab : tabs) {
-				tab.renderToolTip(mouseX, mouseY, this.guiLeft, this.guiTop);
+				tab.renderToolTip(i,mouseX, mouseY, this.guiLeft, this.guiTop);
+				i++;
 			}
 		}
-		if (basecon.mode.equals(Mode.COLOR)) {
-			this.drawColorMode(mouseX, mouseY);
-		}
+		
 		RenderHelper.enableGUIStandardItemLighting();
 		GlStateManager.pushMatrix();
 		GlStateManager.translate((float) k, (float) l, 0.0F);
@@ -416,10 +288,9 @@ public abstract class GuiBase extends GuiScreen {
 		GlStateManager.enableRescaleNormal();
 		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) short1 / 1.0F, (float) short2 / 1.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		for (Object sl : this.basecon.inventorySlots) {
+		for (Object sl : this.container.inventorySlots) {
 			Slot slot = (Slot) sl;
 			if (!(slot instanceof BaseSlot) || ((BaseSlot) slot).isVisible()) {
-				if (is) {
 					this.drawSlot(slot);
 					if (this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
 						this.theSlot = slot;
@@ -436,13 +307,12 @@ public abstract class GuiBase extends GuiScreen {
 							this.help.drawFrame(j1, k1, 16, 16, new RGBA(Color.BLACK));
 						}
 					}
-				}
 			}
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
 		GlStateManager.enableDepth();
-		for (Object sl : this.basecon.inventorySlots) {
+		for (Object sl : this.container.inventorySlots) {
 			Slot slot = (Slot) sl;
 			if (slot != null && this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
 				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasString() && ((BaseSlot) slot).isVisible() && !(Keyboard.isKeyDown(UReference.getClientProxy().getInfoBinding().getKeyCode()) && slot.getHasStack())) {
@@ -486,54 +356,15 @@ public abstract class GuiBase extends GuiScreen {
 		
 	}
 	
-	public void drawColorMode(int x, int y) {
-		check.draw(x, y, mc);
-	}
-	
-	public GuiCombobox box;
-	
-	public void drawIOMode() {
-		int k = this.guiLeft;
-		int l = this.guiTop;
-		GlStateManager.popMatrix();
-		this.renderItemIntoGUI(new ItemStack(ent.getWorld().getBlockState(pos).getBlock()), (width / 2), (height / 2) - (ySize / 4));
-		box.draw(this.mc);
-		GlStateManager.disableDepth();
-		int kl = (this.width - this.xSize) / 2;
-		this.fontRendererObj.drawString(hal.toString(), kl + 10, this.height / 2 - 10, 0xFFFFFF);
-		RenderHelper.enableGUIStandardItemLighting();
-		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) k, (float) l, 0.0F);
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.enableRescaleNormal();
-	}
-	
 	private void renderItemIntoGUI(ItemStack itemStack, final int x, final int y) {
-		GlStateManager.pushMatrix();
-		this.setupGuiTransform(x, y);
-		UReference.getClientProxy().getModelRenderHelper().renderItem(itemStack,TransformType.NONE);
-		GlStateManager.popMatrix();
+
 	}
 	
 	public EnumFacing getIOFaceing() {
 		return hal;
-	}
+	}	
 	
-	private float sclax = 0, sclay = 0;
-	
-	private void setupGuiTransform(int xPosition, int yPosition) {
-		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);
-		GlStateManager.translate(8.0F, 8.0F, 0.0F);
-		GlStateManager.scale(2.0F, 2.0F, -2.0F);
-		GlStateManager.scale(0.5F, 0.5F, 0.5F);			
-		GlStateManager.scale(40.0F, 40.0F, 40.0F);
-		GlStateManager.rotate(sclay - 180, 1.0F, 0.0F, 0.0F);
-		GlStateManager.rotate(sclax, 0.0F, 1.0F, 0.0F);
-		GlStateManager.enableLighting();
-	}
-	
-	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-	}
+	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {}
 	
 	/**
 	 * Render an ItemStack. Args : stack, x, y, format
@@ -570,7 +401,7 @@ public abstract class GuiBase extends GuiScreen {
 				return;
 			}
 			
-			if (Container.canAddItemToSlot(slotIn, itemstack1, true) && this.basecon.canDragIntoSlot(slotIn)) {
+			if (Container.canAddItemToSlot(slotIn, itemstack1, true) && this.container.canDragIntoSlot(slotIn)) {
 				itemstack = itemstack1.copy();
 				flag = true;
 				Container.computeStackSize(this.dragSplittingSlots, this.dragSplittingLimit, itemstack, slotIn.getStack() == null ? 0 : slotIn.getStack().stackSize);
@@ -649,8 +480,8 @@ public abstract class GuiBase extends GuiScreen {
 	 * Returns the slot at the given coordinates or null if there is none.
 	 */
 	public Slot getSlotAtPosition(int x, int y) {
-		for (int k = 0; k < this.basecon.inventorySlots.size(); ++k) {
-			Slot slot = (Slot) this.basecon.inventorySlots.get(k);
+		for (int k = 0; k < this.container.inventorySlots.size(); ++k) {
+			Slot slot = (Slot) this.container.inventorySlots.get(k);
 			
 			if (this.isMouseOverSlot(slot, x, y)) {
 				return slot;
@@ -660,52 +491,11 @@ public abstract class GuiBase extends GuiScreen {
 		return null;
 	}
 	
-	public void handelMouseInput(int mouseX, int mouseY) {
-		
-	}
+	public void handelMouseInput(int mouseX, int mouseY) {}
 	
 	@Override
 	protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
-		if (basecon.mode.equals(Mode.OUTPUT) && clickedMouseButton == 0 && mouseX > 7 + guiLeft && mouseX < 169 + guiLeft && mouseY > guiTop + 6 && mouseY < guiTop + 82) {
-			if (sclax + (mouseX - posX) <= 90 && sclax + (mouseX - posX) >= -180) {
-				sclax += mouseX - posX;
-			}
-			if (sclay + (mouseY - posY) <= 90 && sclay + (mouseY - posY) >= -90) {
-				sclay += mouseY - posY;
-			}
-			posX = mouseX;
-			posY = mouseY;
-			if (sclay >= 45 && sclay <= 135) {
-				hal = EnumFacing.UP;
-				imp_facingchange();
-			}
-			if (sclay <= -45 && sclay >= -215) {
-				hal = EnumFacing.DOWN;
-				imp_facingchange();
-			}
-			if (sclay >= -45 && sclay <= 45) {
-				if (sclax >= -45 && sclax <= 45) {
-					hal = EnumFacing.NORTH;
-					imp_facingchange();
-				}
-				if (sclax <= 135 && sclax >= 45) {
-					hal = EnumFacing.EAST;
-					imp_facingchange();
-				}
-				if (sclax <= -45 && sclax >= -135) {
-					hal = EnumFacing.WEST;
-					imp_facingchange();
-				}
-				if (sclax <= -135 && sclax >= -210) {
-					hal = EnumFacing.SOUTH;
-					imp_facingchange();
-				}
-			}
-			onIOModeSwitched();
-		}
-		if (basecon.mode.equals(Mode.NORMAL) && clickedMouseButton == 0) {
-			this.handelMouseInput(mouseX, mouseY);
-		}
+		if (this.activeTab != null && clickedMouseButton == 0)this.activeTab.getGui().onDrag(mouseX, mouseY);
 		Slot slot = this.getSlotAtPosition(mouseX, mouseY);
 		ItemStack itemstack = this.mc.thePlayer.inventory.getItemStack();
 		
@@ -732,7 +522,7 @@ public abstract class GuiBase extends GuiScreen {
 					}
 				}
 			}
-		} else if (this.dragSplitting && slot != null && itemstack != null && itemstack.stackSize > this.dragSplittingSlots.size() && Container.canAddItemToSlot(slot, itemstack, true) && slot.isItemValid(itemstack) && this.basecon.canDragIntoSlot(slot)) {
+		} else if (this.dragSplitting && slot != null && itemstack != null && itemstack.stackSize > this.dragSplittingSlots.size() && Container.canAddItemToSlot(slot, itemstack, true) && slot.isItemValid(itemstack) && this.container.canDragIntoSlot(slot)) {
 			this.dragSplittingSlots.add(slot);
 			this.updateDragSplitting();
 		}
@@ -741,33 +531,24 @@ public abstract class GuiBase extends GuiScreen {
 	/**
 	 * Called when the mouse is clicked. Args : mouseX, mouseY, clickedButton
 	 */
-	private int posX;
-	private int posY;
 	
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		posX = mouseX;
-		posY = mouseY;
+		if (this.activeTab != null && mouseButton == 0)this.activeTab.getGui().onClick(mouseX, mouseY);
 		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		if (cal.get(Calendar.MONTH) == Calendar.APRIL && cal.get(Calendar.DAY_OF_MONTH) == 1) {
-			Minecraft.getMinecraft().getIntegratedServer().worldServers[0].createExplosion(play, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.5F, false);
-			Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new TextComponentString(ChatFormatting.YELLOW + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET + " " + ChatFormatting.RED + "You be trolled " + ChatFormatting.GREEN + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET));
+			this.worldObj.createExplosion(player, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.5F, false);
+			this.player.addChatComponentMessage(new TextComponentString(ChatFormatting.YELLOW + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET + " " + ChatFormatting.RED + "You be trolled " + ChatFormatting.GREEN + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET));
 		}
+		
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		if (mouseButton == 0) {
-			if (basecon.mode.equals(Mode.COLOR)) {
-				check.handelMouseClick(mouseX, mouseY);
-			}
-			if (basecon.mode.equals(Mode.NORMAL)) {
-				this.handelMouseInput(mouseX, mouseY);
-			}
-			if (basecon.mode.equals(Mode.OUTPUT)) {
-				box.handelClick(mouseX, mouseY);
-			}
 			if (tabs != null) {
+				int i = 0;
 				for (ModeTabs tab : tabs) {
-					tab.handelMouseInput(mouseX, mouseY, this.guiLeft, this.guiTop);
+					tab.handelMouseInput(i,mouseX, mouseY, this.guiLeft, this.guiTop);
+					i++;
 				}
 			}
 		}
@@ -849,13 +630,11 @@ public abstract class GuiBase extends GuiScreen {
 		this.lastClickButton = mouseButton;
 	}
 	
-	private void imp_facingchange() {
+	public void imp_facingchange() {
 		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.pos, this.hal));
 	}
 	
-	public void onMouseClickMoved(int mouseX, int mouseY) {
-		
-	}
+	public void onMouseClickMoved(int mouseX, int mouseY) {}
 	
 	public abstract void onIOModeSwitched();
 	
@@ -880,10 +659,10 @@ public abstract class GuiBase extends GuiScreen {
 			k = -999;
 		}
 		
-		if (this.doubleClick && slot != null && state == 0 && this.basecon.canMergeSlot((ItemStack) null, slot)) {
+		if (this.doubleClick && slot != null && state == 0 && this.container.canMergeSlot((ItemStack) null, slot)) {
 			if (isShiftKeyDown()) {
 				if (slot != null && slot.inventory != null && this.shiftClickedSlot != null) {
-					for (Slot slot2 : this.basecon.inventorySlots) {
+					for (Slot slot2 : this.container.inventorySlots) {
 						if (slot2 != null && slot2.canTakeStack(this.mc.thePlayer) && slot2.getHasStack() && slot2.isSameInventory(slot) && Container.canAddItemToSlot(slot2, this.shiftClickedSlot, true)) {
 							this.handleMouseClick(slot2, slot2.slotNumber, state, ClickType.QUICK_MOVE);
 						}
@@ -1012,14 +791,14 @@ public abstract class GuiBase extends GuiScreen {
 			slotId = slotIn.slotNumber;
 		}
 		
-		this.mc.playerController.windowClick(this.basecon.windowId, slotId, mouseButton, type, this.mc.thePlayer);
+		this.mc.playerController.windowClick(this.container.windowId, slotId, mouseButton, type, this.mc.thePlayer);
 	}
 	
 	/**
 	 * This function is what controls the hotbar shortcut check when you press a number key when hovering a stack. Args : keyCode, Returns true if a Hotbar key is pressed, else false
 	 */
 	protected boolean checkHotbarKeys(int keyCode) {
-		if (this.play.inventory.getItemStack() == null && this.theSlot != null) {
+		if (this.player.inventory.getItemStack() == null && this.theSlot != null) {
 			for (int j = 0; j < 9; ++j) {
 				if (keyCode == this.mc.gameSettings.keyBindsHotbar[j].getKeyCode()) {
 					this.handleMouseClick(this.theSlot, this.theSlot.slotNumber, j, ClickType.SWAP);
@@ -1033,7 +812,7 @@ public abstract class GuiBase extends GuiScreen {
 	
 	public void onGuiClosed() {
 		if (this.mc.thePlayer != null) {
-			this.basecon.onContainerClosed(this.play);
+			this.container.onContainerClosed(this.player);
 		}
 	}
 	
@@ -1043,10 +822,13 @@ public abstract class GuiBase extends GuiScreen {
 	
 	public void updateScreen() {
 		super.updateScreen();
-		
-		if (!this.play.isEntityAlive() || this.play.isDead) {
-			this.play.closeScreen();
+		if (!this.player.isEntityAlive() || this.player.isDead) {
+			this.player.closeScreen();
 		}
+	}
+	
+	public FontRenderer getFontRender(){
+		return fontRendererObj;
 	}
 	
 }

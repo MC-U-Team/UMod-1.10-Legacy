@@ -121,7 +121,7 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer pl) {
-		return new ContainerChargeStation((IInventory) worldObj.getTileEntity(pos), pl, pos, worldObj);
+		return new ContainerChargeStation(pl, pos);
 	}
 	
 	@Override

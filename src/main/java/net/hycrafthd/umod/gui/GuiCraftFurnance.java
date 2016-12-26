@@ -10,8 +10,8 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiCraftFurnance extends GuiBase {
 	
-	public GuiCraftFurnance(EntityPlayer pl, IInventory tile, BlockPos pos, World wo) {
-		super(new GuiRescources("craftfurn.png"), new GuiRescources("battery.png"), new GuiRescources("IOMode.png"), pl, tile, new ContainerCraftFurnace(tile, pl, pos, wo));
+	public GuiCraftFurnance(EntityPlayer player, BlockPos pos) {
+		super(new GuiRescources("craftfurn.png"), player, pos, new ContainerCraftFurnace(player, pos));
 	}
 	
 	@Override

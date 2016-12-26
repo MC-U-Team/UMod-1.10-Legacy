@@ -4,18 +4,17 @@ import net.hycrafthd.umod.gui.inventory.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import net.minecraft.util.math.BlockPos;
 
 public class ContainerPulverizer extends ContainerBase {
 	
-	public ContainerPulverizer(IInventory inv, EntityPlayer pl, World wo) {
-		super(inv, pl, ((TileEntity) inv).getPos(), wo);
+	public ContainerPulverizer(EntityPlayer player, BlockPos pos) {
+		super(player,pos);
 		
-		super.addSlotToContainer(new BaseSlotOutput((IInventory) ent, 0, 116, 24));
-		super.addSlotToContainer(new BaseSlotOutput((IInventory) ent, 1, 98, 54));
-		super.addSlotToContainer(new BaseSlotOutput((IInventory) ent, 2, 126, 54));
-		super.addSlotToContainer(new BaseOreInputSlot((IInventory) ent, 3, 30, 23));
+		super.addSlotToContainer(new BaseSlotOutput((IInventory) this.tile, 0, 116, 24));
+		super.addSlotToContainer(new BaseSlotOutput((IInventory) this.tile, 1, 98, 54));
+		super.addSlotToContainer(new BaseSlotOutput((IInventory) this.tile, 2, 126, 54));
+		super.addSlotToContainer(new BaseOreInputSlot((IInventory) this.tile, 3, 30, 23));
 		
 		int i = 0;
 		int v = 9;
@@ -23,12 +22,12 @@ public class ContainerPulverizer extends ContainerBase {
 		
 		for (i = 0; i < 3; ++i) {
 			for (j = 0; j < 9; ++j) {
-				super.addSlotToContainer(new Slot(pl.inventory, (j + (i * 9)) + v, 8 + j * 18, 84 + i * 18));
+				super.addSlotToContainer(new Slot(player.inventory, (j + (i * 9)) + v, 8 + j * 18, 84 + i * 18));
 			}
 		}
 		
 		for (i = 0; i < 9; ++i) {
-			super.addSlotToContainer(new Slot(pl.inventory, i, 8 + i * 18, 142));
+			super.addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
 		}
 		
 	}
@@ -63,7 +62,7 @@ public class ContainerPulverizer extends ContainerBase {
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
-		((IInventory) this.ent).closeInventory(player);
+		((IInventory) this.tile).closeInventory(player);
 	}
 	
 	@Override

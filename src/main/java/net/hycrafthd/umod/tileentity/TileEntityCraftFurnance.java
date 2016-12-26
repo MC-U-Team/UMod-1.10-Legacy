@@ -103,8 +103,8 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
-		return new ContainerCraftFurnace(this, playerInventory.player, pos, this.worldObj);
+	public Container createContainer(InventoryPlayer playerInventory, EntityPlayer player) {
+		return new ContainerCraftFurnace(player, pos);
 	}
 	
 	@Override
