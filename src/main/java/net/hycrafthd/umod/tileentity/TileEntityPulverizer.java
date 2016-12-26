@@ -16,12 +16,11 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
-public class TileEntityPulverizer extends TileEntityLockable implements IPowerProvieder, ITickable, IIOMode, ISidedInventory, IWorldView {
+public class TileEntityPulverizer extends TileEntityBase implements IPowerProvieder, ITickable, IIOMode, ISidedInventory, IWorldView {
 	
 	private ItemStack[] stack = new ItemStack[5];
-	private EnumFacing enumfI;
-	private EnumFacing enumfO;
-	private double strpo;
+	private EnumFacing enumfI,enumfO;
+	private double energy;
 	
 	@Override
 	public int getSizeInventory() {
@@ -35,7 +34,7 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public void setEnergy(double coun) {
-		strpo = coun;
+		energy = coun;
 	}
 	
 	@Override
@@ -85,10 +84,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		// if (pl == null || pl.equals(player.getName())) {
-		// return true;
-		// }
-		// player.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS IS LOCKED BY " + pl));
 		return true;
 	}
 	
@@ -112,23 +107,15 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		}
 		return false;
 	}
+		
+	@Override
+	public void setField(int id, int value) {}
 	
 	@Override
-	public void openInventory(EntityPlayer player) {
-		// if (pl != null && !player.getName().equals(pl)) {
-		// player.closeScreen();
-		// player.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "THIS PULVERIZER IS LOCKED BY " + pl));
-		// }
-	}
+	public int getField(int id) {return 0;}
 	
 	@Override
-	public void setField(int id, int value) {
-	}
-	
-	@Override
-	public int getFieldCount() {
-		return 0;
-	}
+	public int getFieldCount() {return 0;}
 	
 	@Override
 	public void clear() {
@@ -146,27 +133,10 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	public boolean work = false;
 	
 	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		NBTTagCompound tagCom = pkt.getNbtCompound();
-		this.readFromNBT(tagCom);
-	}
-	
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound tagCom = new NBTTagCompound();
-		this.writeToNBT(tagCom);
-		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tagCom);
-	}
-	
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		return writeToNBT(new NBTTagCompound());
-	}
-	
-	@Override
 	public void update() {
+		if(!worldObj.isRemote)return;
 		ItemStack[] args = ModRegistryUtils.isRecipe(stack[3]);
-		if (args != null && this.strpo > 10) {
+		if (args != null && this.energy > 10) {
 			if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
 				work = true;
 				if (time >= 100) {
@@ -211,7 +181,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	}
 	
 	public static final String
-	
 	ENUMFACING_OUTPUT = "OP", ENUMFACING_INPUT = "IP", INT_ENERGY = "Energy", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items", STRING_PLAYER = "play";
 	
 	public EnumFacing getEnumInput() {
@@ -266,16 +235,6 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	@Override
 	public String getGuiID() {
 		return "0";
-	}
-	
-	@Override
-	public void closeInventory(EntityPlayer player) {
-		this.markDirty();
-	}
-	
-	@Override
-	public boolean hasCustomName() {
-		return false;
 	}
 	
 	@Override
@@ -384,17 +343,17 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 	
 	@Override
 	public double getStoredPower() {
-		return strpo;
+		return energy;
 	}
 	
 	@Override
 	public void addPower(double power) {
-		strpo += power;
+		energy += power;
 	}
 	
 	@Override
 	public double getPower(double powerneed) {
-		strpo -= powerneed;
+		energy -= powerneed;
 		return powerneed;
 	}
 	
@@ -430,10 +389,8 @@ public class TileEntityPulverizer extends TileEntityLockable implements IPowerPr
 		}
 		return null;
 	}
-	
+
 	@Override
-	public int getField(int id) {
-		return 0;
-	}
-	
+	public void openInventory(EntityPlayer player) {}
+
 }

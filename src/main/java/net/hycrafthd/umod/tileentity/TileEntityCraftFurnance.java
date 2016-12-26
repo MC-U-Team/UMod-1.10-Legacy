@@ -13,6 +13,7 @@ import net.minecraft.util.*;
 public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ITickable {
 	
 	public ItemStack[] stack = new ItemStack[11];
+	public double energy,max_energy;
 	
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
@@ -111,16 +112,17 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 		return "4";
 	}
 	
-	int time = 0;
+	private int time = 0;
+	private boolean working;
 	
 	@Override
 	public void update() {
-		
 		ItemStack stac = ModRegistryUtils.isCraftSmelt(new ItemStack[] { stack[0], stack[1], stack[2] }, new ItemStack[] { stack[3], stack[4], stack[5] }, new ItemStack[] { stack[6], stack[7], stack[8] });
-		if (stac != null && this.strpo > 150) {
+		if (stac != null && this.energy > 150) {
+			working = true;
 			time++;
-			this.strpo -= 150;
 			if (time == 80) {
+				this.energy -= 150;
 				time = 0;
 				if (stack[9] == null) {
 					stack[9] = stac.copy();
@@ -135,43 +137,9 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 					}
 				}
 			}
+		}else{
+			working = false;
 		}
-	}
-	
-	@Override
-	public void writeOtherToNBT(NBTTagCompound tagSonstiges) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void writeIOModeToNBT(NBTTagCompound tagIO) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void writeItemsToNBT(NBTTagCompound tagItems) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void readOtherFromNBT(NBTTagCompound tagSonstiges) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void readIOModeFromNBT(NBTTagCompound tagIO) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void readItemsFromNBT(NBTTagCompound tagItems) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -191,14 +159,12 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public boolean isInput() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
 	public boolean isOutput() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -210,6 +176,47 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public double getStoredPower() {
+		return energy;
+	}
+
+	@Override
+	public void addPower(double power) {
+		energy += power;
+	}
+
+	@Override
+	public double getPower(double powerneed) {
+		energy -= powerneed;
+		return powerneed;
+	}
+
+	@Override
+	public double getMaximalPower() {
+		return max_energy;
+	}
+
+	@Override
+	public boolean isWorking() {
+		return this.working;
+	}
+
+	@Override
+	public String getErrorMessage() {
+		return null;
+	}
+
+	@Override
+	public boolean hasPower() {
+		return energy > 0;
+	}
+
+	@Override
+	public void setEnergy(double coun) {
+		this.energy = coun;
 	}
 	
 }

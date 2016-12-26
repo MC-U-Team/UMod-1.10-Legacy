@@ -91,10 +91,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 		double max = 0;
 		for (ICabel cab : inpts) {
 			for (BlockPos p : cab.getInputs()) {
-				System.out.println(p);
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-				System.out.println(cab.getRate());
-				System.out.println(pro.getStoredPower());
 				if (0 <= pro.getStoredPower() - cab.getRate()) {
 					pro.getPower(cab.getRate());
 					max += cab.getRate();
@@ -107,7 +104,6 @@ public class UETunnel extends ArrayList<BlockPos> {
 		}
 		for (ICabel cab : outs) {
 			for (BlockPos p : cab.getOutputs()) {
-				System.out.println(p);
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 				if (max <= 0)
 					return;

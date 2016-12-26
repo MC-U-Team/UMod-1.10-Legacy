@@ -10,23 +10,23 @@ import net.minecraft.tileentity.TileEntity;
 
 public class ConduitRender {
 	
-	public GLHelper help;
-	public ModelRenderHelper model;
+	public final GLHelper help;
+	public final ModelRenderHelper model;
 	
-	public ConduitRender() {
-		this.help = UReference.getClientProxy().getGLHelper();
-        this.model = UReference.getClientProxy().getModelRenderHelper();
+	public ConduitRender(GLHelper help,ModelRenderHelper model) {
+		this.help = help;
+        this.model = model;
 	}
 	
-	public boolean render(TileEntity pip, EntityPlayer pl, double posX, double posY, double posZ) {
-		if (!(pip instanceof IConduitProvider))
+	public boolean render(TileEntity tile,EntityPlayer pl, double posX, double posY, double posZ) {
+		if (!(tile instanceof IConduitProvider))
 			return false;
-		if (pip != null && (!((IConduitProvider) pip).hasConduit() || (pl.getHeldItemMainhand() != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof IConduitBlock))) {
+		if (tile != null && (!((IConduitProvider) tile).hasConduit() || (pl.getHeldItemMainhand() != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) != null && Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof IConduitBlock))) {
 			return false;
-		} else if (pip != null) {
+		} else if (tile != null) {
 			if (pl.getHeldItemMainhand() == null || !(Block.getBlockFromItem(pl.getHeldItemMainhand().getItem()) instanceof BlockCable)) {
 				GlStateManager.enableLighting();
-				this.model.renderConduit(Block.getBlockFromItem(((IConduitProvider) pip).getConduit().getItem()), posX, posY, posZ);
+				this.model.renderConduit(Block.getBlockFromItem(((IConduitProvider) tile).getConduit().getItem()), posX, posY, posZ);
 				GlStateManager.disableLighting();
 				return true;
 			}

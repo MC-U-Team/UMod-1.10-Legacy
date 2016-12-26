@@ -190,53 +190,6 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public void writeOtherToNBT(NBTTagCompound tagSonstiges) {
-		tagSonstiges.setBoolean("Mode", mode);
-		
-	}
-	
-	@Override
-	public void writeIOModeToNBT(NBTTagCompound tagIO) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void writeEnergyToNBT(NBTTagCompound tagEnergy) {
-		tagEnergy.setDouble("Stored", stored);
-	}
-	
-	@Override
-	public void writeItemsToNBT(NBTTagCompound tagItems) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void readOtherFromNBT(NBTTagCompound tagSonstiges) {
-		this.mode = tagSonstiges.getBoolean("Mode");
-		
-	}
-	
-	@Override
-	public void readIOModeFromNBT(NBTTagCompound tagIO) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public void readEnergyFromNBT(NBTTagCompound tagEnergy) {
-		this.stored = tagEnergy.getDouble("Stored");
-		
-	}
-	
-	@Override
-	public void readItemsFromNBT(NBTTagCompound tagItems) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
 	public boolean needsPower() {
 		return false;
 	}
@@ -248,14 +201,12 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public boolean isInput() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
 	public boolean isOutput() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	@Override

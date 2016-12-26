@@ -3,6 +3,7 @@ package net.hycrafthd.umod.tileentity;
 import net.hycrafthd.corelib.util.*;
 import net.hycrafthd.umod.UMod;
 import net.hycrafthd.umod.api.*;
+import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.api.render.*;
 import net.hycrafthd.umod.item.ItemBackPack;
 import net.hycrafthd.umod.utils.DirectionUtils;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraft.util.*;
 
-public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView {
+public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView,IPowerProvieder {
 	
 	private ItemStack[] stack = new ItemStack[6];
 	
@@ -159,21 +160,11 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	private EnumFacing enumfO;
 	
 	@Override
-	public void writeOtherToNBT(NBTTagCompound tagSonstiges) {
-		// tagSonstiges.setShort(SHORT_TIME, (short) time);
-	}
-	
-	@Override
-	public void writeIOModeToNBT(NBTTagCompound tagIO) {
+	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		UMod.log.info("Write IO");
-		tagIO.setByte(ENUMFACING_OUTPUT, (byte) DirectionUtils.getShortFromFacing(enumfO));
-		tagIO.setByte(ENUMFACING_INPUT, (byte) DirectionUtils.getShortFromFacing(enumfI));
-	}
-	
-	@Override
-	public void writeItemsToNBT(NBTTagCompound tagItems) {
+		tag.setByte(ENUMFACING_OUTPUT, (byte) DirectionUtils.getShortFromFacing(enumfO));
+		tag.setByte(ENUMFACING_INPUT, (byte) DirectionUtils.getShortFromFacing(enumfI));
 		NBTTagList nbttaglist = new NBTTagList();
-		
 		for (int i = 0; i < stack.length; ++i) {
 			if (stack[i] != null) {
 				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
@@ -182,24 +173,15 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 		}
-		
-		tagItems.setTag(LIST_ITEMS, nbttaglist);
+		tag.setTag(LIST_ITEMS, nbttaglist);
+		return tag;
 	}
 	
 	@Override
-	public void readOtherFromNBT(NBTTagCompound tagSonstiges) {
-	}
-	
-	@Override
-	public void readIOModeFromNBT(NBTTagCompound tagIO) {
-		enumfI = DirectionUtils.getFacingFromShort(tagIO.getShort(ENUMFACING_INPUT));
-		enumfO = DirectionUtils.getFacingFromShort(tagIO.getShort(ENUMFACING_OUTPUT));
-		
-	}
-	
-	@Override
-	public void readItemsFromNBT(NBTTagCompound tagItems) {
-		NBTTagList nbttaglist = tagItems.getTagList(LIST_ITEMS, 10);
+	public void readFromNBT(NBTTagCompound tag) {
+		enumfI = DirectionUtils.getFacingFromShort(tag.getShort(ENUMFACING_INPUT));
+		enumfO = DirectionUtils.getFacingFromShort(tag.getShort(ENUMFACING_OUTPUT));
+		NBTTagList nbttaglist = tag.getTagList(LIST_ITEMS, 10);
 		stack = new ItemStack[this.getSizeInventory()];
 		
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -224,7 +206,7 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	
 	@Override
 	public double getPowerProducNeeds() {
-		return 0;
+		return 10;
 	}
 	
 	@Override
@@ -267,6 +249,49 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	@Override
 	public String[] textToAdd() {
 		return null;
+	}
+
+	private double energy,max_energy;
+	
+	@Override
+	public double getStoredPower() {
+		return energy;
+	}
+
+	@Override
+	public void addPower(double power) {
+		energy += power;
+	}
+
+	@Override
+	public double getPower(double powerneed) {
+		energy -= powerneed;
+		return powerneed;
+	}
+
+	@Override
+	public double getMaximalPower() {
+		return max_energy;
+	}
+
+	@Override
+	public boolean isWorking() {
+		return true;
+	}
+
+	@Override
+	public String getErrorMessage() {
+		return null;
+	}
+
+	@Override
+	public boolean hasPower() {
+		return energy > 0;
+	}
+
+	@Override
+	public void setEnergy(double coun) {
+		this.energy = coun;
 	}
 	
 }

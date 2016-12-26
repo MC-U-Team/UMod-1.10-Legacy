@@ -302,18 +302,6 @@ public abstract class GuiBase extends GuiScreen {
 		
 		for (ks = 0; ks < this.buttonList.size(); ++ks) {
 			((GuiButton) this.buttonList.get(ks)).drawButton(this.mc, mouseX, mouseY);
-			if (this.buttonList.get(ks) instanceof ExtendedGuiButton && ((ExtendedGuiButton) this.buttonList.get(ks)).isMouseOver() && ((ExtendedGuiButton) this.buttonList.get(ks)).hasString()) {
-				ExtendedGuiButton gui = ((ExtendedGuiButton) this.buttonList.get(ks));
-				RGBA rgb = new RGBA(0, 0, 255, 150);
-				this.help.drawGradientRect(mousePX, mousePY, mousePX + gui.getWidth(), mousePY + gui.getHeight(), rgb, rgb, this.zLevel);
-				if (gui.hasMoreLines()) {
-					String[] str = gui.getString().split("\n");
-					for (int i = 0; i < str.length; i++)
-						this.fontRendererObj.drawString(str[i], mousePX + 4, mousePY + 4 + (i * 16), gui.getFontColor());
-				} else {
-					this.fontRendererObj.drawString(gui.getString(), mousePX + 4, mousePY + 4, gui.getFontColor());
-				}
-			}
 		}
 		
 		for (ks = 0; ks < this.labelList.size(); ++ks) {
