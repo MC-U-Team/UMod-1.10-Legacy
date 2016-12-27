@@ -1,5 +1,7 @@
 package net.hycrafthd.umod.tileentity;
 
+import java.util.ArrayList;
+
 import net.hycrafthd.umod.api.*;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.api.render.*;
@@ -19,7 +21,6 @@ import net.minecraft.util.*;
 public class TileEntityPulverizer extends TileEntityBase implements IPowerProvieder, ITickable, IIOMode, ISidedInventory, IWorldView {
 	
 	private ItemStack[] stack = new ItemStack[5];
-	private EnumFacing enumfI,enumfO;
 	private double energy;
 	
 	@Override
@@ -181,31 +182,13 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	}
 	
 	public static final String
-	ENUMFACING_OUTPUT = "OP", ENUMFACING_INPUT = "IP", INT_ENERGY = "Energy", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items", STRING_PLAYER = "play";
-	
-	public EnumFacing getEnumInput() {
-		return enumfI;
-	}
-	
-	public EnumFacing getEnumOutput() {
-		return enumfO;
-	}
-	
-	@Override
-	public void setEnumInput(EnumFacing fac) {
-		enumfI = fac;
-	}
-	
-	@Override
-	public void setEnumOutput(EnumFacing fac) {
-		enumfO = fac;
-	}
+	FACING_LIST = "face_list", INT_ENERGY = "Energy", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items", STRING_PLAYER = "play";
 	
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		if ((enumfI == null && side.equals(EnumFacing.UP)) || side.equals(enumfI)) {
+		if (getModeFromFacing(side) == 1) {
 			return new int[] { 3 };
-		} else if ((enumfO == null && side.equals(EnumFacing.DOWN)) || side.equals(enumfO)) {
+		} else if (getModeFromFacing(side) == 0) {
 			return new int[] { 0, 1, 2 };
 		}
 		return new int[] {};
@@ -213,7 +196,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	
 	@Override
 	public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction) {
-		if (direction.equals(enumfI)) {
+		if (getModeFromFacing(direction) == 0) {
 			return true;
 		}
 		return false;
@@ -246,8 +229,12 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		tag.setInteger(SHORT_TIME, time);
-		tag.setByte(ENUMFACING_OUTPUT, (byte) DirectionUtils.getShortFromFacing(enumfO));
-		tag.setByte(ENUMFACING_INPUT, (byte) DirectionUtils.getShortFromFacing(enumfI));
+		NBTTagList facelist = new NBTTagList();
+		for(int mode : modes){
+			NBTTagInt inTag = new NBTTagInt(mode);
+			facelist.appendTag(inTag);
+		}
+		tag.setTag(FACING_LIST, facelist);
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < stack.length; ++i) {
 			if (stack[i] != null) {
@@ -264,12 +251,14 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
 		super.readFromNBT(tag);
-		enumfI = DirectionUtils.getFacingFromShort(tag.getByte(ENUMFACING_INPUT));
-		enumfO = DirectionUtils.getFacingFromShort(tag.getByte(ENUMFACING_OUTPUT));
 		time = tag.getInteger(SHORT_TIME);
+		NBTTagList facelist = tag.getTagList(FACING_LIST, 3);
+		for (int i = 0; i < facelist.tagCount(); ++i) {
+			NBTTagInt tagss = (NBTTagInt) facelist.get(i);
+			modes[i] = tagss.getInt();
+		}
 		NBTTagList nbttaglist = tag.getTagList(LIST_ITEMS, 10);
 		stack = new ItemStack[this.getSizeInventory()];
-		
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
 			int b0 = nbttagcompound1.getByte(BYTE_SLOTS);
@@ -278,47 +267,6 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 				stack[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
-	}
-	
-	@Override
-	public EnumFacing getFacing(int i) {
-		switch (i) {
-		case 0:
-			return enumfI;
-		case 1:
-			return enumfO;
-		}
-		return null;
-	}
-	
-	@Override
-	public void setFacing(int i, EnumFacing face) {
-		switch (i) {
-		case 0:
-			enumfI = face;
-			break;
-		case 1:
-			enumfO = face;
-			break;
-		}
-	}
-	
-	@Override
-	public int hasSomefacing(EnumFacing i) {
-		if (i == null)
-			return -1;
-		if (i.equals(enumfI)) {
-			return 0;
-		}
-		if (i.equals(enumfO)) {
-			return 1;
-		}
-		return -1;
-	}
-	
-	@Override
-	public int getModeCount() {
-		return 2;
 	}
 	
 	@Override
@@ -390,7 +338,50 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 		return null;
 	}
 
+	int[] modes = new int[]{-1,-1,-1,-1,-1,-1};
+	
 	@Override
 	public void openInventory(EntityPlayer player) {}
 
+	@Override
+	public EnumFacing[] getFacingFromMode(int mode) {
+		ArrayList<EnumFacing> faces = new ArrayList<EnumFacing>();
+		int z = 0;
+		for(int i : modes){
+			if(i == mode){
+				faces.add(EnumFacing.values()[z]);
+			}
+			z++;
+		}
+		return new Transformer<EnumFacing>(faces).transforme();
+	}
+
+	@Override
+	public int getModeFromFacing(EnumFacing face) {
+		return modes[getPlace(face)];
+	}
+
+	@Override
+	public void setModeToFace(EnumFacing face, int mode) {
+		modes[getPlace(face)] = mode;
+	}
+
+	@Override
+	public boolean hasModeForFaceing(EnumFacing face) {
+		return getModeFromFacing(face) > -1;
+	}
+
+	@Override
+	public int getModeCount() {
+		return 2;
+	}
+	
+	private int getPlace(EnumFacing face){
+		int i = 0;
+		for(EnumFacing fc : EnumFacing.VALUES){
+			if(fc.equals(face))return i;
+			i++;
+		}
+		return 0;
+	}
 }

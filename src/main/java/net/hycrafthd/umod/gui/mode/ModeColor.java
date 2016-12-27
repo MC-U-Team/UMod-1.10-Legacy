@@ -1,8 +1,9 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.mode;
 
 import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.utils.StringMethod;
 
 public class ModeColor extends ImplGui{

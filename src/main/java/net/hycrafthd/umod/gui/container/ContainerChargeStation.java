@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.gui.container;
 
-import net.hycrafthd.umod.gui.inventory.BaseBatteryInputSlot;
+import net.hycrafthd.umod.gui.inventory.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
@@ -19,12 +19,12 @@ public class ContainerChargeStation extends ContainerBase {
 		
 		for (i = 0; i < 3; ++i) {
 			for (j = 0; j < 9; ++j) {
-				super.addSlotToContainer(new Slot(pl.inventory, (j + (i * 9)) + v, 8 + j * 18, 84 + i * 18));
+				super.addSlotToContainer(new BaseNormalSlot(pl.inventory, (j + (i * 9)) + v, 8 + j * 18, 84 + i * 18));
 			}
 		}
 		
 		for (i = 0; i < 9; ++i) {
-			super.addSlotToContainer(new Slot(pl.inventory, i, 8 + i * 18, 142));
+			super.addSlotToContainer(new BaseNormalSlot(pl.inventory, i, 8 + i * 18, 142));
 		}
 	}
 	

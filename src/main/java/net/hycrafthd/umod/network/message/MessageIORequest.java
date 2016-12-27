@@ -12,25 +12,26 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 public class MessageIORequest implements IMessage, IMessageHandler<MessageIORequest, MessageIOCallback> {
 	
 	public BlockPos pos;
-	public EnumFacing prov;
+	public EnumFacing face;
 	
 	public MessageIORequest() {
 	}
 	
 	public MessageIORequest(BlockPos pos, EnumFacing prov) {
 		this.pos = pos;
-		this.prov = prov;
+		this.face = prov;
 	}
 	
 	@Override
 	public MessageIOCallback onMessage(MessageIORequest message, MessageContext ctx) {
 		World w = ctx.getServerHandler().playerEntity.worldObj;
-		TileEntity ent = w.getTileEntity(message.pos);
-		if (message.prov != null && ent != null && ent instanceof IIOMode) {
-			if (((IIOMode) ent).hasSomefacing(message.prov) > -1) {
-				return new MessageIOCallback(message.prov, ((IIOMode) ent).hasSomefacing(message.prov));
+		TileEntity tile = w.getTileEntity(message.pos);
+		if (message.face != null && tile != null && tile instanceof IIOMode) {
+			IIOMode mode = (IIOMode) tile;
+			if (mode.hasModeForFaceing(message.face)) {
+				return new MessageIOCallback(message.face, mode.getModeFromFacing(message.face));
 			} else {
-				return new MessageIOCallback(message.prov, Byte.MAX_VALUE);
+				return new MessageIOCallback(message.face, Byte.MAX_VALUE);
 			}
 		}
 		return null;
@@ -38,14 +39,14 @@ public class MessageIORequest implements IMessage, IMessageHandler<MessageIORequ
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		pos = NetworkUtil.getPosFromBuffer(buf);
-		prov = DirectionUtils.getFacingFromShort(buf.readShort());
+		this.pos = NetworkUtil.getPosFromBuffer(buf);
+		this.face = DirectionUtils.getFacingFromShort(buf.readShort());
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
-		NetworkUtil.addPosToBuffer(buf, pos);
-		buf.writeShort(DirectionUtils.getShortFromFacing(this.prov));
+		NetworkUtil.addPosToBuffer(buf, this.pos);
+		buf.writeShort(DirectionUtils.getShortFromFacing(this.face));
 	}
 	
 }

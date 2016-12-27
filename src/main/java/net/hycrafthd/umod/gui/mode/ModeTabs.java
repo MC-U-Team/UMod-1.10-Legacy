@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.mode;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import com.google.common.collect.Lists;
 
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.gui.inventory.BaseSlot;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;

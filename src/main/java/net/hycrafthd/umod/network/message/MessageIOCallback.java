@@ -1,7 +1,8 @@
 package net.hycrafthd.umod.network.message;
 
 import io.netty.buffer.ByteBuf;
-import net.hycrafthd.umod.gui.GuiBase;
+import net.hycrafthd.umod.gui.*;
+import net.hycrafthd.umod.gui.mode.*;
 import net.hycrafthd.umod.utils.DirectionUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -26,7 +27,11 @@ public class MessageIOCallback implements IMessage, IMessageHandler<MessageIOCal
 		GuiScreen sc = Minecraft.getMinecraft().currentScreen;
 		if (sc != null && sc instanceof GuiBase) {
 			GuiBase bs = (GuiBase) sc;
-			bs.checkAndAdd(message.face, message.item);
+			for(ModeTabs tab : bs.tabs){
+				if(tab != null && tab.getGui() instanceof IOMode){
+					((IOMode)tab.getGui()).checkAndAdd(message.face, message.item);
+				}
+			}
 		}
 		return null;
 	}

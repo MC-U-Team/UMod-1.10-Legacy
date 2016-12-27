@@ -22,12 +22,12 @@ public class ContainerMagicCrafter extends ContainerBase {
 		
 		for (j = 0; j < 3; ++j) {
 			for (k = 0; k < 9; ++k) {
-				this.addSlotToContainer(new Slot(player.inventory, k + j * 9 + 9, 8 + k * 18, 102 + j * 18 + i));
+				this.addSlotToContainer(new BaseNormalSlot(player.inventory, k + j * 9 + 9, 8 + k * 18, 102 + j * 18 + i));
 			}
 		}
 		
 		for (j = 0; j < 9; ++j) {
-			this.addSlotToContainer(new Slot(player.inventory, j, 8 + j * 18, 160 + i));
+			this.addSlotToContainer(new BaseNormalSlot(player.inventory, j, 8 + j * 18, 160 + i));
 		}
 	}
 	

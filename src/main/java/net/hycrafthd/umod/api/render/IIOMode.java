@@ -4,11 +4,13 @@ import net.minecraft.util.EnumFacing;
 
 public interface IIOMode {
 	
-	public EnumFacing getFacing(int i);
+	public EnumFacing[] getFacingFromMode(int mode);
 	
-	public void setFacing(int i, EnumFacing face);
+	public int getModeFromFacing(EnumFacing face);
 	
-	public int hasSomefacing(EnumFacing i);
+	public void setModeToFace(EnumFacing face,int mode);
+	
+	public boolean hasModeForFaceing(EnumFacing face);
 	
 	public int getModeCount();
 	

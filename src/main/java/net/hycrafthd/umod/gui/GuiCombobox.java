@@ -72,7 +72,7 @@ public class GuiCombobox extends ImplGui {
 	}
 	
 	@Override
-	public void onClick(int mouseX, int mouseY) {
+	public void onClick(int x, int y) {
 		if (extend) {
 			if (x >= this.x && x <= this.x + this.width && y >= this.y + this.height) {
 				for (int i = 0; i < strs.size(); i++) {

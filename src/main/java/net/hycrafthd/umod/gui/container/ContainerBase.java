@@ -54,9 +54,14 @@ public class ContainerBase extends Container {
 		}
 	}
 	
+	protected Slot addSlotToContainer(BaseSlot slotIn) {
+		return super.addSlotToContainer(slotIn);
+	}
+	
 	@Override
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
-		if (!(this.getSlot(slotId) instanceof BaseSlot) || ((BaseSlot)this.getSlot(slotId)).isVisible()) {
+		if(clickTypeIn.equals(ClickType.THROW))return super.slotClick(slotId, dragType, clickTypeIn, player);
+		if (!(this.inventorySlots.get(slotId) instanceof BaseSlot) || ((BaseSlot)this.inventorySlots.get(slotId)).isVisible()) {
 			return super.slotClick(slotId, dragType, clickTypeIn, player);
 		}
 		return null;

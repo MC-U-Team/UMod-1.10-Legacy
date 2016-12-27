@@ -10,13 +10,13 @@ import org.lwjgl.input.Keyboard;
 import com.google.common.collect.Sets;
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import crazypants.enderio.render.property.IOMode;
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.api.energy.*;
 import net.hycrafthd.umod.api.render.*;
 import net.hycrafthd.umod.gui.container.ContainerBase;
 import net.hycrafthd.umod.gui.inventory.*;
+import net.hycrafthd.umod.gui.mode.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIORequest;
 import net.hycrafthd.umod.render.GLHelper;
@@ -72,10 +72,6 @@ public abstract class GuiBase extends GuiScreen {
 		return fontRendererIn.drawString(text, (float) (x - fontRendererIn.getStringWidth(text) / 2), (float) y, color, shadow);
 	}
 	
-	@Override
-	protected void actionPerformed(GuiButton button) throws IOException {
-	}
-	
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		this.mc.getTextureManager().bindTexture(loc);
 		int k = (this.width - this.xSize) / 2;
@@ -99,21 +95,22 @@ public abstract class GuiBase extends GuiScreen {
 		}, 0, true));
 		if(this.tile instanceof IBatteryProvider)
 		tabs.add(new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode",ImplGui.NULL, this.loc2,this,new Consumer<BaseSlot>() {
-
 			@Override
 			public void accept(BaseSlot arg0) {
-				if(arg0 instanceof BaseBatteryInputSlot){
+				if(arg0 instanceof BaseBatteryInputSlot && arg0 instanceof BaseNormalSlot){
 						arg0.setVisible(true);
 				}
 			}
 		}, 0, false));
 		if(this.tile instanceof IIOMode)
-		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",null,this.loc3,this, 0, false));
+		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",new IOMode(this),this.loc3,this, 0, false));
 		if(this.tile instanceof IWorldView)
-		tabs.add(new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", new ModeColor(this),this.loc3,this, 0, false)); 
+		tabs.add(new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", new ModeColor(this),CLEAR_GUI,this, 0, false)); 
 		if (this.tile instanceof IPowerProvieder)
 		tabs.add(new ModeTabs(new ItemStack(UBlocks.solarpanel), "Energy Mode", new ModeEnergy(this),new GuiRescources("solar.png"),this, 0, false));
 		this.player.openContainer = this.container;
+		this.guiLeft = (this.width - this.xSize) / 2;
+		this.guiTop = (this.height - this.ySize) / 2;
 	}
 	
 	public boolean canColorChange() {
@@ -123,17 +120,17 @@ public abstract class GuiBase extends GuiScreen {
 	public abstract void addToBox(GuiCombobox box2);
 	
 	/** The X size of the inventory window in pixels. */
-	protected int xSize = 176;
+	public int xSize = 176;
 	/** The Y size of the inventory window in pixels. */
-	protected int ySize = 166;
+	public int ySize = 166;
 	/**
 	 * Starting X position for the Gui. Inconsistent use for Gui backgrounds.
 	 */
-	protected int guiLeft;
+	public int guiLeft;
 	/**
 	 * Starting Y position for the Gui. Inconsistent use for Gui backgrounds.
 	 */
-	protected int guiTop;
+	public int guiTop;
 	/** holds the slot currently hovered */
 	public Slot theSlot;
 	/** Used when touchscreen is enabled. */
@@ -263,16 +260,15 @@ public abstract class GuiBase extends GuiScreen {
 				i++;
 			}
 		}
-		
-		GlStateManager.popMatrix();
-				
-		this.activeTab.getGui().render(mouseX, mouseY);
+						
+		if(this.activeTab != null && !(this.activeTab.getGui() instanceof ModeNormal))this.activeTab.getGui().render(mouseX, mouseY);
 		
 		if (inventoryplayer.getItemStack() == null && this.theSlot != null && this.theSlot.getHasStack()) {
 			ItemStack itemstack1 = this.theSlot.getStack();
 			this.renderToolTip(itemstack1, mouseX, mouseY);
 		}
-		
+		GlStateManager.popMatrix();
+
 		if (tabs != null) {
 			int i = 0;
 			for (ModeTabs tab : tabs) {
@@ -320,14 +316,13 @@ public abstract class GuiBase extends GuiScreen {
 					Tessellator ts = Tessellator.getInstance();
 					BaseSlot slt = (BaseSlot) slot;
 					RGBA sl1 = slt.getHoverColor(0);
-					RGBA sli = new RGBA(sl1.toAWTColor().darker().darker().darker()).setAlpha(180);
+					RGBA sli = new RGBA(sl1.toAWTColor().darker()).setAlpha(180);
 					GlStateManager.disableTexture2D();
 					GlStateManager.enableBlend();
 					GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 					GlStateManager.shadeModel(7425);
 					VertexBuffer rend = ts.getBuffer();
 					rend.begin(7, DefaultVertexFormats.POSITION_COLOR);
-					;
 					rend.pos(mouseX + slt.getWidth(), mouseY, this.zLevel).color(sl1.getRed(), sl1.getGreen(), sl1.getBlue(), sl1.getAlpha()).endVertex();
 					rend.pos(mouseX, mouseY, this.zLevel).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
 					rend.pos(mouseX, mouseY + slt.getHeight(), this.zLevel).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
@@ -354,10 +349,6 @@ public abstract class GuiBase extends GuiScreen {
 		}
 		RenderHelper.enableStandardItemLighting();
 		
-	}
-	
-	private void renderItemIntoGUI(ItemStack itemStack, final int x, final int y) {
-
 	}
 	
 	public EnumFacing getIOFaceing() {
@@ -440,7 +431,6 @@ public abstract class GuiBase extends GuiScreen {
 			if (flag) {
 				drawRect(i, j, i + 16, j + 16, -2130706433);
 			}
-			
 			GlStateManager.enableDepth();
 			this.itemRender.renderItemAndEffectIntoGUI(itemstack, i, j);
 			this.itemRender.renderItemOverlayIntoGUI(this.fontRendererObj, itemstack, i, j, s);
@@ -533,16 +523,12 @@ public abstract class GuiBase extends GuiScreen {
 	 */
 	
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		if (this.activeTab != null && mouseButton == 0)this.activeTab.getGui().onClick(mouseX, mouseY);
-		
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		if (cal.get(Calendar.MONTH) == Calendar.APRIL && cal.get(Calendar.DAY_OF_MONTH) == 1) {
 			this.worldObj.createExplosion(player, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 2.5F, false);
 			this.player.addChatComponentMessage(new TextComponentString(ChatFormatting.YELLOW + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET + " " + ChatFormatting.RED + "You be trolled " + ChatFormatting.GREEN + "" + ChatFormatting.OBFUSCATED + "HOLLO" + ChatFormatting.RESET));
 		}
-		
-		super.mouseClicked(mouseX, mouseY, mouseButton);
 		if (mouseButton == 0) {
 			if (tabs != null) {
 				int i = 0;
@@ -551,6 +537,10 @@ public abstract class GuiBase extends GuiScreen {
 					i++;
 				}
 			}
+		}
+		if (this.activeTab != null && mouseButton == 0 && !(this.activeTab.getGui() instanceof ModeNormal) && !this.activeTab.getGui().equals(ImplGui.NULL)){
+			this.activeTab.getGui().onClick(mouseX, mouseY);
+			return;
 		}
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		boolean flag = this.mc.gameSettings.keyBindPickBlock.isActiveAndMatches(mouseButton - 100);
@@ -790,7 +780,6 @@ public abstract class GuiBase extends GuiScreen {
 		if (slotIn != null) {
 			slotId = slotIn.slotNumber;
 		}
-		
 		this.mc.playerController.windowClick(this.container.windowId, slotId, mouseButton, type, this.mc.thePlayer);
 	}
 	

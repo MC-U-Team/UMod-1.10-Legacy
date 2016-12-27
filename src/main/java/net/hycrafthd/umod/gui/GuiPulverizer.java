@@ -1,14 +1,10 @@
 package net.hycrafthd.umod.gui;
 
-import net.hycrafthd.umod.gui.container.ContainerBase.Mode;
 import net.hycrafthd.umod.gui.container.ContainerPulverizer;
-import net.hycrafthd.umod.network.PacketHandler;
-import net.hycrafthd.umod.network.message.MessageIOMode;
+import net.hycrafthd.umod.gui.mode.ModeNormal;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
@@ -22,22 +18,8 @@ public class GuiPulverizer extends GuiBase {
 	}
 	
 	@Override
-	public void initGui() {
-		super.initGui();
-		box.setOnListClicked(new Runnable() {
-			
-			@Override
-			public void run() {
-
-				worldObj.markChunkDirty(pos, tile);
-				worldObj.updateComparatorOutputLevel(pos, tile.getBlockType());
-			}
-		});
-	}
-	
-	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		if (this.container.mode.equals(Mode.NORMAL)) {
+		if (this.activeTab != null && this.activeTab.getGui() instanceof ModeNormal) {
 			fontRendererObj.drawString(((TileEntityPulverizer) this.tile).getTime() + "%", this.xSize / 2 - 5, this.ySize / 2 - 62, 0x00000);
 		}
 	}

@@ -12,16 +12,16 @@ import net.minecraftforge.fml.common.network.simpleimpl.*;
 public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, IMessage> {
 	
 	public BlockPos pos;
-	public EnumFacing ei;
-	public int i;
+	public EnumFacing face;
+	public int mode;
 	
 	public MessageIOMode() {
 		
 	}
 	
-	public MessageIOMode(BlockPos pos, EnumFacing fac, int i) {
-		ei = fac;
-		this.i = i;
+	public MessageIOMode(BlockPos pos, EnumFacing face, int mode) {
+		this.face = face;
+		this.mode = mode;
 		this.pos = pos;
 	}
 	
@@ -31,24 +31,23 @@ public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, I
 		TileEntity ent = w.getTileEntity(message.pos);
 		if (ent instanceof IIOMode) {
 			IIOMode est = (IIOMode) ent;
-			est.setEnumInput(message.ei);
-			est.setEnumOutput(message.eo);
+			est.setModeToFace(message.face, message.mode);
 		}
 		return null;
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		pos = NetworkUtil.getPosFromBuffer(buf);
-		ei = DirectionUtils.getFacingFromShort(buf.readShort());
-		eo = DirectionUtils.getFacingFromShort(buf.readShort());
+		this.pos = NetworkUtil.getPosFromBuffer(buf);
+		this.face = DirectionUtils.getFacingFromShort(buf.readShort());
+		this.mode = buf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
 		NetworkUtil.addPosToBuffer(buf, pos);
-		buf.writeShort(DirectionUtils.getShortFromFacing(ei));
-		buf.writeShort(DirectionUtils.getShortFromFacing(eo));
+		buf.writeShort(DirectionUtils.getShortFromFacing(this.face));
+		buf.writeInt(mode);
 	}
 	
 }

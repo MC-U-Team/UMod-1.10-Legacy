@@ -1,6 +1,8 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.mode;
 
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.api.render.IIOMode;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIOMode;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
@@ -21,8 +23,6 @@ public class IOMode extends ImplGui{
 		int l = (base_gui.height - base_gui.ySize) / 2;
 		box = new GuiCombobox(base_gui,k + 8, l + 7, 80, 12);
 		base_gui.addToBox(box);
-		base_gui.guiLeft = (base_gui.width - base_gui.xSize) / 2;
-		base_gui.guiTop = (base_gui.height - base_gui.ySize) / 2;
 		box.getItems().add("Choose");
 		box.setSelected(box.getItems().size() - 1);
 	}
@@ -124,13 +124,9 @@ public class IOMode extends ImplGui{
 			
 			@Override
 			public void run() {
-				if (box.getSelceted() != 2) {
-					if (box.getSelceted() == 0) {
-						PacketHandler.INSTANCE.sendToServer(new MessageIOMode(base_gui.pos, base_gui.hal, ((TileEntityPulverizer) tile).getEnumOutput()));
-					} else if (box.getSelceted() == 1) {
-						PacketHandler.INSTANCE.sendToServer(new MessageIOMode(base_gui.pos, ((TileEntityPulverizer) tile).getEnumInput(), base_gui.hal));
-					}
-				}				
+				if(base_gui.tile instanceof IIOMode){
+					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(base_gui.pos, base_gui.hal, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
+				}
 			}
 		});
 	}
