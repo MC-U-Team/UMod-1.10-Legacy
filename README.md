@@ -19,8 +19,8 @@ Note: There is still no release for 1.10 :/ Sorry.
 
 Note: Git MUST be installed and in the system path to use our scripts.
 
-  <p>- Setup: Run [gradle]in the repository root: gradlew[.bat] [setupDevWorkspace|setupDecompWorkspace] [eclipse|idea]</p>
-  <p>- Build: Run [gradle]in the repository root: gradlew[.bat] build</p>
+  - <p>Setup: Run [gradle]in the repository root: gradlew[.bat] [setupDevWorkspace|setupDecompWorkspace] [eclipse|idea]</p>
+  - <p>Build: Run [gradle]in the repository root: gradlew[.bat] build</p>
   - If obscure Gradle issues are found try running 'gradlew clean' and 'gradlew cleanCache'
   - <strong>You must include the newest <a href="https://www.hycrafthd.net/mods/corelib">CoreLib</a> for 1.10.2 in your class paths</strong>
   
