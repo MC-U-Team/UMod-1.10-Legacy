@@ -1,5 +1,6 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.items;
 
+import net.hycrafthd.umod.gui.GuiBase;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

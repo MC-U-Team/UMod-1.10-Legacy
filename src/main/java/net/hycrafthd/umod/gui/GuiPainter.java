@@ -9,6 +9,7 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.api.render.ISliderTile;
 import net.hycrafthd.umod.gui.container.ContainerPainter;
+import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.gui.mode.ModeNormal;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;

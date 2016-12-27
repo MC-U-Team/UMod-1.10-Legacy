@@ -16,6 +16,7 @@ import net.hycrafthd.umod.api.energy.*;
 import net.hycrafthd.umod.api.render.*;
 import net.hycrafthd.umod.gui.container.ContainerBase;
 import net.hycrafthd.umod.gui.inventory.*;
+import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.gui.mode.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.MessageIORequest;

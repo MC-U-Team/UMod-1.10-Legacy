@@ -1,10 +1,11 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.items;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.render.GLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
@@ -56,9 +57,9 @@ public class GuiCombobox extends ImplGui {
 			GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 			GlStateManager.blendFunc(770, 771);
 			drawModalRectWithCustomSizedTexture(x + width - 15, y + height / 2 - 4, 0, 0, 15, 9, 15, 9);
-			this.help.drawGradientRect(x + 1, y + height, x + width - 2, y + strs.size() * 18, rgb, rgb, this.zLevel);
+			this.help.drawGradientRect(x + 1, y + height, x + width, y + strs.size() * (fontrenderer.FONT_HEIGHT + 4), rgb, rgb, this.zLevel);
 			for (int i = 0; i < strs.size(); i++) {
-				fontrenderer.drawString(strs.get(i), x + 3, y + height + 4 + 9 * i, 0x000000);
+				fontrenderer.drawString(strs.get(i), x + 3, y + height + 9 * i, 0x000000);
 			}
 		}
 	}

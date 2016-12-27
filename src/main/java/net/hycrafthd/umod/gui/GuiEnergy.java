@@ -5,6 +5,7 @@ import java.io.IOException;
 import net.hycrafthd.umod.api.energy.IPowerProvieder;
 import net.hycrafthd.umod.block.BlockSolarPanel;
 import net.hycrafthd.umod.block.BlockSolarPanel.EnumTypeSolarPanel;
+import net.hycrafthd.umod.gui.items.GuiRescources;
 import net.hycrafthd.umod.utils.EnergyUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;

@@ -1,6 +1,7 @@
 package net.hycrafthd.umod.gui.mode;
 
 import net.hycrafthd.umod.gui.*;
+import net.hycrafthd.umod.gui.items.ImplGui;
 
 public class ModeNormal extends ImplGui{
 

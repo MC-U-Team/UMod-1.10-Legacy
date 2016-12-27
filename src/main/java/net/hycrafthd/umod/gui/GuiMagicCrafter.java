@@ -1,6 +1,7 @@
 package net.hycrafthd.umod.gui;
 
 import net.hycrafthd.umod.gui.container.ContainerMagicCrafter;
+import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.tileentity.TileEntityMagicCrafter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;

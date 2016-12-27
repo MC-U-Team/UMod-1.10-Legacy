@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.gui.*;
+import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.utils.StringMethod;
 
 public class ModeColor extends ImplGui{

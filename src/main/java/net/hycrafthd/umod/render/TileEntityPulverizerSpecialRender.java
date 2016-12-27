@@ -3,7 +3,7 @@ package net.hycrafthd.umod.render;
 import org.lwjgl.opengl.GL11;
 
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.gui.GuiRescources;
+import net.hycrafthd.umod.gui.items.GuiRescources;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.event;
 
-import net.hycrafthd.umod.UItems;
+import net.hycrafthd.umod.*;
 import net.hycrafthd.umod.gui.GuiModIngame;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ public class EventDrawHUD {
 		EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
 		if (pl != null && pl.worldObj.isRemote) {
 			if (pl.getHeldItemMainhand() != null && pl.getHeldItemMainhand().isItemEqual(new ItemStack(UItems.energydisplay))) {
-				GuiModIngame.renderGameOverlay(ev.getPartialTicks(), ev.getResolution());
+				new GuiModIngame(ev.getResolution(), UReference.getClientProxy().getModelRenderHelper()).render();
 			}
 		}
 	}

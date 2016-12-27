@@ -1,9 +1,10 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.items;
 
 import com.enderio.core.client.config.BaseConfigGui;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.*;
 import net.hycrafthd.umod.render.GLHelper;

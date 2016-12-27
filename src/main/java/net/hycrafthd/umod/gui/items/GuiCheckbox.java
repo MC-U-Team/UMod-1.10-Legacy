@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.items;
 
 import java.awt.Color;
 
@@ -6,6 +6,7 @@ import com.sun.javafx.scene.traversal.Hueristic2D;
 
 import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
+import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.render.GLHelper;
 import net.hycrafthd.umod.utils.StringMethod;
 import net.minecraft.client.Minecraft;
@@ -48,13 +49,13 @@ public class GuiCheckbox extends ImplGui {
 				fontobj.drawString("X", (int) Math.round((float) this.x + this.width / 2) - 2, (int) Math.round((float) this.y + this.height / 2) - 4, Color.RED.getRGB());
 			}
 			if (hasTooltip()) {
-				this.help.drawGradientRect(x, y, x + getWidth(), y + getHeight(), new RGBA(Color.white), this.zLevel);
+				this.help.drawGradientRect(x, y, x + getWidth(fontobj), y + getHeight(fontobj), new RGBA(Color.white), this.zLevel);
 				if (this.hasMoreLines()) {
 					String[] str = ret.getString().split("\n");
 					for (int i = 0; i < str.length; i++)
-						fontobj.drawString(str[i], x + 4, y + 4 + (i * 16), 0x000000);
+						fontobj.drawString(str[i], x + 2, y + 2 + (i * 16), 0x000000);
 				} else {
-					fontobj.drawString(ret.getString(), x + 4, y + 4, 0x000000);
+					fontobj.drawString(ret.getString(), x + 2, y + 2, 0x000000);
 				}
 			}
 		} else {
@@ -66,23 +67,25 @@ public class GuiCheckbox extends ImplGui {
 		}
 	}
 	
-	private int getWidth() {
-		int size;
-		size = ret.getString().length() * 5;
+	private int getWidth(FontRenderer rend) {
+		int size = 0;
+		String stri = ret.getString();
 		if (hasMoreLines()) {
 			size = 0;
-			String[] str = ret.getString().split("\n");
+			String[] str = stri.split("\n");
 			for (int i = 0; i < str.length; i++) {
 				if (str[i].length() * 5 > size) {
 					size = str[i].length() * 5;
 				}
 			}
+		}else{
+			size = rend.getStringWidth(stri);
 		}
-		return size + 10;
+		return size + 4;
 	}
 	
-	private int getHeight() {
-		int size = 16;
+	private int getHeight(FontRenderer rend) {
+		int size = rend.FONT_HEIGHT + 2;
 		if (hasMoreLines()) {
 			String[] str = ret.getString().split("\n");
 			size = size * str.length;

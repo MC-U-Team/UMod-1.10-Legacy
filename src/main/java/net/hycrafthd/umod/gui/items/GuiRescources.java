@@ -1,4 +1,4 @@
-package net.hycrafthd.umod.gui;
+package net.hycrafthd.umod.gui.items;
 
 import net.hycrafthd.umod.UReference;
 import net.minecraft.util.ResourceLocation;

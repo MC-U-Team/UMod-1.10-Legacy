@@ -1,6 +1,7 @@
 package net.hycrafthd.umod.gui;
 
 import net.hycrafthd.umod.gui.container.ContainerPulverizer;
+import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.gui.mode.ModeNormal;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +29,6 @@ public class GuiPulverizer extends GuiBase {
 	public void addToBox(GuiCombobox box2) {
 		box2.getItems().add("Input");
 		box2.getItems().add("Outputs");
-		box2.setSelected(0);
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package net.hycrafthd.umod.gui.mode;
 
 import net.hycrafthd.umod.gui.*;
+import net.hycrafthd.umod.gui.items.ImplGui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
