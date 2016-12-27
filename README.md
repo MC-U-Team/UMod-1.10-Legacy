@@ -13,7 +13,7 @@
 
 Note: There is still no release for 1.10 :/ Sorry. 
 
-Alpha 1.8 releases: https://github.com/HyCraftHD/UMOD/releases
+<a href="https://github.com/HyCraftHD/UMOD/releases">Alpha 1.8 releases</a>
 
 ##Compile from Source
 
