@@ -9,7 +9,7 @@
 - <a href="http://github.com/tom2208">Tom</a> (code, textures)
 - <a href="http://youtube.com/TutAdventures">TutAdventures</a> (textures)
 
-##Releases
+<h2>Releases</h2>
 
 Note: There is still no release for 1.10 :/ Sorry. 
 
