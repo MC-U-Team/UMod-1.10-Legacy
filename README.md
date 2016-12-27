@@ -1,7 +1,7 @@
-# UMOD
-####You are welcome to help in the development! Just install git and request for pulls.
+<h1> UMOD</h1>
+<h4>You are welcome to help in the development! Just install git and request for pulls.</h4>
 
-##People who already helped in the development
+<h2>People who already helped in the development</h2>
 
 - <a href="http://github.com/HyCraftHD">HyCraftHD</a> (code)
 - <a href="http://github.com/GalaxyHDm">GalaxyHD</a> (code)
