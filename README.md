@@ -3,11 +3,11 @@
 
 ##People who already helped in the development
 
-- http://github.com/HyCraftHD (code)
-- http://github.com/GalaxyHDm (code)
-- http://github.com/MrTroble (code)
-- http://github.com/tom2208 (code, textures)
-- http://youtube.com/TutAdventures (textures)
+- <a href="http://github.com/HyCraftHD">HyCraftHD</a> (code)
+- <a href="http://github.com/GalaxyHDm">GalaxyHD</a> (code)
+- <a href="http://github.com/MrTroble">MrTroble</a> (code)
+- <a href="http://github.com/tom2208">Tom</a> (code, textures)
+- <a href="http://youtube.com/TutAdventures">TutAdventures</a> (textures)
 
 ##Releases
 
