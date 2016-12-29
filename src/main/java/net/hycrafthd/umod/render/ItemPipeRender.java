@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.block.BlockItemPipe;
+import net.hycrafthd.umod.block.machine.BlockItemPipe;
 import net.hycrafthd.umod.tileentity.TileEntityItemPipe;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;

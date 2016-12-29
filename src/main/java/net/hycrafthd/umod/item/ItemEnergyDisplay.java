@@ -1,7 +1,7 @@
 package net.hycrafthd.umod.item;
 
 import net.hycrafthd.umod.UReference;
-import net.hycrafthd.umod.block.BlockBaseMachine;
+import net.hycrafthd.umod.block.machine.BlockBaseMachine;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;

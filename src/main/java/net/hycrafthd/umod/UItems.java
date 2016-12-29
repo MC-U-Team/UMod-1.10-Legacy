@@ -1,6 +1,10 @@
 package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.item.*;
+import net.hycrafthd.umod.item.infected.*;
+import net.hycrafthd.umod.item.materials.*;
+import net.hycrafthd.umod.item.materials.energy.*;
+import net.hycrafthd.umod.item.materials.magic.*;
 import net.hycrafthd.umod.utils.URegistryUtils;
 import net.minecraft.item.Item;
 

@@ -3,7 +3,7 @@ package net.hycrafthd.umod.world;
 import java.util.Random;
 
 import net.hycrafthd.umod.UBlocks;
-import net.hycrafthd.umod.block.BlockInfectedSapling;
+import net.hycrafthd.umod.block.infected.BlockInfectedSapling;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.math.*;

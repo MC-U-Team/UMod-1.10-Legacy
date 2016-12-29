@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import net.hycrafthd.umod.block.BlockConduit;
+import net.hycrafthd.umod.block.machine.BlockConduit;
 import net.hycrafthd.umod.item.ItemEnergyDisplay;
 import net.hycrafthd.umod.utils.NBTUtils;
 import net.minecraft.block.Block;

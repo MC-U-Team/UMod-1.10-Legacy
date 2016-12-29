@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.ext.ic2;
 
-import net.hycrafthd.umod.block.BlockBaseMachine;
+import net.hycrafthd.umod.block.machine.BlockBaseMachine;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 

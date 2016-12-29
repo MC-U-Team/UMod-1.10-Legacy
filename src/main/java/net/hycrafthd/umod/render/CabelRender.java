@@ -1,6 +1,6 @@
 package net.hycrafthd.umod.render;
 
-import net.hycrafthd.umod.block.BlockCable;
+import net.hycrafthd.umod.block.machine.BlockCable;
 import net.hycrafthd.umod.tileentity.TileEntityCable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.GlStateManager;

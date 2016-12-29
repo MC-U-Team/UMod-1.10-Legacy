@@ -2,7 +2,9 @@ package net.hycrafthd.umod.utils;
 
 import net.hycrafthd.corelib.registry.*;
 import net.hycrafthd.umod.block.*;
+import net.hycrafthd.umod.block.deco.*;
 import net.hycrafthd.umod.item.*;
+import net.hycrafthd.umod.item.block.*;
 import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;

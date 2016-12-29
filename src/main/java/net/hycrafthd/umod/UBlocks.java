@@ -1,8 +1,12 @@
 package net.hycrafthd.umod;
 
 import net.hycrafthd.umod.block.*;
+import net.hycrafthd.umod.block.deco.*;
+import net.hycrafthd.umod.block.infected.*;
+import net.hycrafthd.umod.block.machine.*;
 import net.hycrafthd.umod.block.rail.*;
 import net.hycrafthd.umod.item.*;
+import net.hycrafthd.umod.item.block.*;
 import net.hycrafthd.umod.utils.URegistryUtils;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
