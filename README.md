@@ -5,7 +5,7 @@
 
 - <a href="http://github.com/HyCraftHD">HyCraftHD</a> (code)
 - <a href="http://github.com/GalaxyHDm">GalaxyHD</a> (code)
-- <a href="http://github.com/MrTroble">MrTroble</a> (code)
+- <a href="http://github.com/MrTroble">MrTroble</a> (code, textures)
 - <a href="http://github.com/tom2208">Tom</a> (code, textures)
 - <a href="http://youtube.com/TutAdventures">TutAdventures</a> (textures)
 
