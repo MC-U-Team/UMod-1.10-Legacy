@@ -35,7 +35,7 @@ public class GuiCombobox extends ImplGui {
         Minecraft mc = base_gui.mc;
 		RGBA rgb = new RGBA(Color.WHITE);
 		this.help.drawGradientRect(x, y, x + width, y + height, rgb, rgb, this.zLevel);
-		RGBA rgb2 = new RGBA(Color.DARK_GRAY);
+		RGBA rgb2 = new RGBA(Color.GRAY);
 		this.help.drawHLine(x, x + width, y, rgb2, this.zLevel);
 		this.help.drawHLine(x, x + width, y + height, rgb2, this.zLevel);
 		this.help.drawVLine(x, y, y + height, rgb2, this.zLevel);
@@ -60,11 +60,11 @@ public class GuiCombobox extends ImplGui {
 			this.help.drawGradientRect(x + 1, y + height, x + width, y + strs.size() * (fontrenderer.FONT_HEIGHT + 4), rgb, rgb, this.zLevel);
 			for (int i = 0; i < strs.size(); i++) {
 				ComboboxItem item = strs.get(i);
-				fontrenderer.drawString(item.item, x + 3, y + height + 9 * i, item.color.toAWTColor().getRGB());
 				int itm = this.y + this.height + ((fontrenderer.FONT_HEIGHT)*i);
 				if(mouseX >= this.x + 1 && mouseX <= this.x + this.width - 1 && mouseY >= itm && mouseY < itm + fontrenderer.FONT_HEIGHT){
-					this.help.drawFrame(this.x + 2, itm, this.width - 3, fontrenderer.FONT_HEIGHT - 1, rgb2);
+					this.help.drawGradientRect(this.x + 2, itm, this.x + 2  + (this.width - 3),itm + (fontrenderer.FONT_HEIGHT - 1), rgb2);
 				}
+				fontrenderer.drawString(item.item, x + 3, y + height + 9 * i, item.color.toAWTColor().getRGB());
 			}
 		}
 	}

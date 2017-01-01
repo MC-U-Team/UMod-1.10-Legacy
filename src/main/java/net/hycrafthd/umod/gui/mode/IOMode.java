@@ -85,7 +85,8 @@ public class IOMode extends ImplGui{
 		//SOUTH
 		int south = args[getPlace(EnumFacing.SOUTH)];
 		if(south >= 0 && south < this.box.getItems().size() - 1){
-		RGBA southR = box.getItems().get(south).color.setAlpha(125);
+		RGBA southR = new RGBA(box.getItems().get(south).color.toAWTColor()).setAlpha(125);
+		southR.setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, southR,southR,-0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, southR,southR,-0.5001);
 		}
@@ -93,7 +94,7 @@ public class IOMode extends ImplGui{
 		//NORTH
 		int north = args[getPlace(EnumFacing.NORTH)];
 		if(north >= 0 && north < this.box.getItems().size() - 1){
-		RGBA northR = box.getItems().get(north).color.setAlpha(125);
+		RGBA northR = new RGBA(box.getItems().get(north).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, northR,northR,0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, northR,northR,0.5001);
 		}
@@ -103,7 +104,7 @@ public class IOMode extends ImplGui{
 		//UP
 		int up = args[getPlace(EnumFacing.UP)];
 		if(up >= 0 && up < this.box.getItems().size() - 1){
-		RGBA upR = box.getItems().get(up).color.setAlpha(125);
+		RGBA upR = new RGBA(box.getItems().get(up).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, upR,upR,-0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, upR,upR,-0.5001);
 		}
@@ -111,7 +112,7 @@ public class IOMode extends ImplGui{
 		//DOWN
 		int down = args[getPlace(EnumFacing.DOWN)];
 		if(down >= 0 && down < this.box.getItems().size() - 1){
-		RGBA downR = box.getItems().get(down).color.setAlpha(125);
+		RGBA downR = new RGBA(box.getItems().get(down).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, downR,downR,0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, downR,downR,0.5001);
 		}
@@ -121,14 +122,14 @@ public class IOMode extends ImplGui{
 		//EAST
 		int east = args[getPlace(EnumFacing.EAST)];
 		if(east >= 0 && east < this.box.getItems().size() - 1){
-		RGBA eastR = box.getItems().get(east).color.setAlpha(125);
+		RGBA eastR = new RGBA(box.getItems().get(east).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, eastR,eastR,-0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, eastR,eastR,-0.5001);
 		}
 		//WEST
 		int west = args[getPlace(EnumFacing.WEST)];
 		if(west >= 0 && west < this.box.getItems().size() - 1){
-		RGBA westR = box.getItems().get(west).color.setAlpha(125);
+		RGBA westR = new RGBA(box.getItems().get(west).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, westR,westR,0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, westR,westR,0.5001);
 		}
@@ -158,29 +159,41 @@ public class IOMode extends ImplGui{
 			posX = mouseX;
 			posY = mouseY;
 			if (sclay >= 45 && sclay <= 135) {
-				base_gui.hal = EnumFacing.UP;
-				this.imp_facingchange();
+				if(base_gui.hal != EnumFacing.UP){
+					base_gui.hal = EnumFacing.UP;
+					this.imp_facingchange();
+				}
 			}
 			if (sclay <= -45 && sclay >= -215) {
-				base_gui.hal = EnumFacing.DOWN;
-				this.imp_facingchange();
+				if(base_gui.hal != EnumFacing.DOWN){
+					base_gui.hal = EnumFacing.DOWN;
+					this.imp_facingchange();
+				}
 			}
 			if (sclay >= -45 && sclay <= 45) {
 				if (sclax >= -45 && sclax <= 45) {
-					base_gui.hal = EnumFacing.NORTH;
-					this.imp_facingchange();
+					if(base_gui.hal != EnumFacing.NORTH){
+						base_gui.hal = EnumFacing.NORTH;
+						this.imp_facingchange();
+					}
 				}
 				if (sclax <= 135 && sclax >= 45) {
-					base_gui.hal = EnumFacing.EAST;
-					this.imp_facingchange();
+					if(base_gui.hal != EnumFacing.EAST){
+						base_gui.hal = EnumFacing.EAST;
+						this.imp_facingchange();
+					}
 				}
 				if (sclax <= -45 && sclax >= -135) {
-					base_gui.hal = EnumFacing.WEST;
-					this.imp_facingchange();
+					if(base_gui.hal != EnumFacing.WEST){
+						base_gui.hal = EnumFacing.WEST;
+						this.imp_facingchange();
+					}
 				}
 				if (sclax <= -135 && sclax >= -210) {
-					base_gui.hal = EnumFacing.SOUTH;
-					this.imp_facingchange();
+					if(base_gui.hal != EnumFacing.SOUTH){
+						base_gui.hal = EnumFacing.SOUTH;
+						this.imp_facingchange();
+					}
 				}
 			}
 			base_gui.onIOModeSwitched();
