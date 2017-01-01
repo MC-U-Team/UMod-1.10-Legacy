@@ -6,6 +6,7 @@ import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.utils.StringMethod;
+import net.minecraft.client.renderer.*;
 
 public class ModeColor extends ImplGui{
 
@@ -31,7 +32,18 @@ public class ModeColor extends ImplGui{
 
 	@Override
 	public void render(int mouseX, int mouseY) {
+		int k = base_gui.guiLeft;
+		int l = base_gui.guiTop;
+		GlStateManager.enableDepth();
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
 		check.render(mouseX, mouseY);
+		RenderHelper.enableGUIStandardItemLighting();
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		GlStateManager.translate((float) k, (float) l, 0.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.enableRescaleNormal();
 	}
 	
 	@Override

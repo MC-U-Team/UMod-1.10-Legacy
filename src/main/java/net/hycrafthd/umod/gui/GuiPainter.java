@@ -104,7 +104,7 @@ public class GuiPainter extends GuiBase implements ISliderTile {
 	
 	@Override
 	public void addToBox(GuiCombobox box2) {
-		box2.getItems().add("Input");
+		box2.getItems().add(ComboboxItem.INPUT);
 		
 	}
 	

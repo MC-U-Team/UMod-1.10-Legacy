@@ -15,8 +15,8 @@ import net.minecraftforge.fml.relauncher.*;
 @SideOnly(Side.CLIENT)
 public class GuiCombobox extends ImplGui {
 	
-	private ArrayList<String> strs = new ArrayList<String>();
-	private String slected = "Choose";
+	private ArrayList<ComboboxItem> strs = new ArrayList<ComboboxItem>();
+	private ComboboxItem slected = ComboboxItem.CHOOSE;
 	private boolean extend = false;
 	private int x, y, width, height;
 	private Runnable runn = null;
@@ -49,7 +49,7 @@ public class GuiCombobox extends ImplGui {
 			GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 			GlStateManager.blendFunc(770, 771);
 			drawModalRectWithCustomSizedTexture(x + width - 15, y + height / 2 - 4, 0, 0, 15, 9, 15, 9);
-			fontrenderer.drawString(slected, x + 3, y + 2, 0x000000);
+			fontrenderer.drawString(slected.item, x + 3, y + 2, slected.color.toAWTColor().getRGB());
 		} else {
 			mc.getTextureManager().bindTexture(new GuiRescources("menuup.png"));
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -59,12 +59,17 @@ public class GuiCombobox extends ImplGui {
 			drawModalRectWithCustomSizedTexture(x + width - 15, y + height / 2 - 4, 0, 0, 15, 9, 15, 9);
 			this.help.drawGradientRect(x + 1, y + height, x + width, y + strs.size() * (fontrenderer.FONT_HEIGHT + 4), rgb, rgb, this.zLevel);
 			for (int i = 0; i < strs.size(); i++) {
-				fontrenderer.drawString(strs.get(i), x + 3, y + height + 9 * i, 0x000000);
+				ComboboxItem item = strs.get(i);
+				fontrenderer.drawString(item.item, x + 3, y + height + 9 * i, item.color.toAWTColor().getRGB());
+				int itm = this.y + this.height + ((fontrenderer.FONT_HEIGHT)*i);
+				if(mouseX >= this.x + 1 && mouseX <= this.x + this.width - 1 && mouseY >= itm && mouseY < itm + fontrenderer.FONT_HEIGHT){
+					this.help.drawFrame(this.x + 2, itm, this.width - 3, fontrenderer.FONT_HEIGHT - 1, rgb2);
+				}
 			}
 		}
 	}
 	
-	public ArrayList<String> getItems() {
+	public ArrayList<ComboboxItem> getItems() {
 		return strs;
 	}
 	

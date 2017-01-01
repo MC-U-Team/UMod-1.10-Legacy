@@ -508,4 +508,16 @@ public class GLHelper {
 		bytebuffer.flip();
 		return bytebuffer;
 	}
+	
+	public void drawAreaWithColor(double x,double y,double z,double height,double width,RGBA rgb){
+		Tessellator tessellator = Tessellator.getInstance();
+		VertexBuffer worldrenderer = tessellator.getBuffer();
+		worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+		worldrenderer.pos(x,y,z).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();
+		worldrenderer.pos(x + width,y,z).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();
+		worldrenderer.pos(x + height,y + width,z).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();
+		worldrenderer.pos(x,y + height,z).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();
+		tessellator.draw();
+	}
+	
 }

@@ -52,7 +52,7 @@ public abstract class GuiBase extends GuiScreen {
 	public Slot hoveredSlot;
 	public ContainerBase container;
 	public World worldObj;
-	protected GLHelper help;
+	public GLHelper help;
 	public ModeTabs activeTab;
 	
 	public GuiBase(ResourceLocation loc,EntityPlayer player, BlockPos pos, Container con) {
@@ -83,6 +83,7 @@ public abstract class GuiBase extends GuiScreen {
 	@Override
 	public void initGui() {
 		super.initGui();
+		tabs.clear();
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		
@@ -619,10 +620,6 @@ public abstract class GuiBase extends GuiScreen {
 		this.lastClickSlot = slot;
 		this.lastClickTime = i;
 		this.lastClickButton = mouseButton;
-	}
-	
-	public void imp_facingchange() {
-		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.pos, this.hal));
 	}
 	
 	public void onMouseClickMoved(int mouseX, int mouseY) {}

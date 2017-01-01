@@ -27,8 +27,8 @@ public class GuiPulverizer extends GuiBase {
 	
 	@Override
 	public void addToBox(GuiCombobox box2) {
-		box2.getItems().add("Input");
-		box2.getItems().add("Outputs");
+		box2.getItems().add(ComboboxItem.INPUT);
+		box2.getItems().add(ComboboxItem.OUTPUT);
 	}
 	
 	@Override

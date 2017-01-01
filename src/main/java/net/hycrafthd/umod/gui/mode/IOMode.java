@@ -1,11 +1,14 @@
 package net.hycrafthd.umod.gui.mode;
 
+import java.awt.Color;
+
+import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.UReference;
 import net.hycrafthd.umod.api.render.IIOMode;
 import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.network.PacketHandler;
-import net.hycrafthd.umod.network.message.MessageIOMode;
+import net.hycrafthd.umod.network.message.*;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
@@ -17,17 +20,44 @@ public class IOMode extends ImplGui{
 	public GuiCombobox box;
 	private float sclax = 0, sclay = 0;
 	private int posX,posY;
-
+	private Runnable autorun;
+    private int[] args = new int[] {-1,-1,-1,-1,-1,-1};
+	
 	public IOMode(GuiBase base_gui) {
 		super(base_gui);
 		int k = (base_gui.width - base_gui.xSize) / 2;
 		int l = (base_gui.height - base_gui.ySize) / 2;
 		box = new GuiCombobox(base_gui,k + 8, l + 7, 80, 12);
 		base_gui.addToBox(box);
-		box.getItems().add("Choose");
+		box.getItems().add(new ComboboxItem("Choose", new RGBA(Color.DARK_GRAY)));
 		box.setSelected(box.getItems().size() - 1);
+        box.setOnListClicked(new Runnable() {
+			
+			@Override
+			public void run() {
+				if(IOMode.this.base_gui.tile instanceof IIOMode){
+					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(IOMode.this.base_gui.pos, IOMode.this.base_gui.hal, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
+					args[getPlace(IOMode.this.base_gui.hal)] = (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1);
+					if(autorun != null)autorun.run();
+				}
+			}
+		});
+        for(EnumFacing face : EnumFacing.values()){
+        	PacketHandler.INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, face));
+        	
+        }
+    	PacketHandler.INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, EnumFacing.NORTH));
 	}
 
+	private int getPlace(EnumFacing face){
+		int i = 0;
+		for(EnumFacing fc : EnumFacing.VALUES){
+			if(fc.equals(face))return i;
+			i++;
+		}
+		return 0;
+	}
+	
 	@Override
 	public void render(int mouseX, int mouseY) {
 		int k = base_gui.guiLeft;
@@ -37,6 +67,7 @@ public class IOMode extends ImplGui{
 		GlStateManager.pushMatrix();
 		this.setupGuiTransform((base_gui.width / 2), (base_gui.height / 2) - (base_gui.ySize / 4));
 		UReference.getClientProxy().getModelRenderHelper().renderItem(new ItemStack(base_gui.worldObj.getBlockState(base_gui.pos).getBlock()),TransformType.NONE);
+		this.drawRects();
 		GlStateManager.popMatrix();
 		GlStateManager.disableDepth();
 		int kl = (base_gui.width - base_gui.xSize) / 2;
@@ -47,6 +78,61 @@ public class IOMode extends ImplGui{
 		GlStateManager.translate((float) k, (float) l, 0.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GlStateManager.enableRescaleNormal();
+	}
+	
+	private void drawRects(){
+		
+		//SOUTH
+		int south = args[getPlace(EnumFacing.SOUTH)];
+		if(south >= 0 && south < this.box.getItems().size() - 1){
+		RGBA southR = box.getItems().get(south).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, southR,southR,-0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, southR,southR,-0.5001);
+		}
+		
+		//NORTH
+		int north = args[getPlace(EnumFacing.NORTH)];
+		if(north >= 0 && north < this.box.getItems().size() - 1){
+		RGBA northR = box.getItems().get(north).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, northR,northR,0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, northR,northR,0.5001);
+		}
+		
+		GlStateManager.rotate(90, 1, 0, 0);
+		
+		//UP
+		int up = args[getPlace(EnumFacing.UP)];
+		if(up >= 0 && up < this.box.getItems().size() - 1){
+		RGBA upR = box.getItems().get(up).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, upR,upR,-0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, upR,upR,-0.5001);
+		}
+		
+		//DOWN
+		int down = args[getPlace(EnumFacing.DOWN)];
+		if(down >= 0 && down < this.box.getItems().size() - 1){
+		RGBA downR = box.getItems().get(down).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, downR,downR,0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, downR,downR,0.5001);
+		}
+		
+		GlStateManager.rotate(90, 0, 1, 0);
+		
+		//EAST
+		int east = args[getPlace(EnumFacing.EAST)];
+		if(east >= 0 && east < this.box.getItems().size() - 1){
+		RGBA eastR = box.getItems().get(east).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, eastR,eastR,-0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, eastR,eastR,-0.5001);
+		}
+		//WEST
+		int west = args[getPlace(EnumFacing.WEST)];
+		if(west >= 0 && west < this.box.getItems().size() - 1){
+		RGBA westR = box.getItems().get(west).color.setAlpha(125);
+		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, westR,westR,0.5001);
+		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, westR,westR,0.5001);
+		}
+		
 	}
 	
 	private void setupGuiTransform(int xPosition, int yPosition) {
@@ -73,32 +159,36 @@ public class IOMode extends ImplGui{
 			posY = mouseY;
 			if (sclay >= 45 && sclay <= 135) {
 				base_gui.hal = EnumFacing.UP;
-				base_gui.imp_facingchange();
+				this.imp_facingchange();
 			}
 			if (sclay <= -45 && sclay >= -215) {
 				base_gui.hal = EnumFacing.DOWN;
-				base_gui.imp_facingchange();
+				this.imp_facingchange();
 			}
 			if (sclay >= -45 && sclay <= 45) {
 				if (sclax >= -45 && sclax <= 45) {
 					base_gui.hal = EnumFacing.NORTH;
-					base_gui.imp_facingchange();
+					this.imp_facingchange();
 				}
 				if (sclax <= 135 && sclax >= 45) {
 					base_gui.hal = EnumFacing.EAST;
-					base_gui.imp_facingchange();
+					this.imp_facingchange();
 				}
 				if (sclax <= -45 && sclax >= -135) {
 					base_gui.hal = EnumFacing.WEST;
-					base_gui.imp_facingchange();
+					this.imp_facingchange();
 				}
 				if (sclax <= -135 && sclax >= -210) {
 					base_gui.hal = EnumFacing.SOUTH;
-					base_gui.imp_facingchange();
+					this.imp_facingchange();
 				}
 			}
 			base_gui.onIOModeSwitched();
 		}
+	}
+	
+	private void imp_facingchange() {
+		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.base_gui.pos, this.base_gui.hal));
 	}
 	
 	@Override
@@ -109,26 +199,18 @@ public class IOMode extends ImplGui{
 	}
 	
 	public void checkAndAdd(EnumFacing fc, int item) {
-		if (item == Byte.MAX_VALUE) {
+		if (item == Byte.MAX_VALUE || item < 0 || item >= this.box.getItems().size()) {
 			this.box.setSelected(this.box.getItems().size() - 1);
+			args[getPlace(fc)] = this.box.getItems().size() - 1;
 			return;
 		}
+		args[getPlace(fc)] = item;
 		if (base_gui.hal.equals(fc)) {
 			this.box.setSelected(item);
-		} else {
-			this.box.setSelected(0);
-		}
+		} 
 	}
 	
 	public void addListener(Runnable run){
-		box.setOnListClicked(new Runnable() {
-			
-			@Override
-			public void run() {
-				if(base_gui.tile instanceof IIOMode){
-					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(base_gui.pos, base_gui.hal, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
-				}
-			}
-		});
+		this.autorun = run;
 	}
 }

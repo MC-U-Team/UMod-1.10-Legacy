@@ -1,5 +1,8 @@
 package net.hycrafthd.umod.gui;
 
+import java.awt.Color;
+
+import net.hycrafthd.corelib.util.RGBA;
 import net.hycrafthd.umod.gui.container.ContainerCraftFurnace;
 import net.hycrafthd.umod.gui.items.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,8 +20,7 @@ public class GuiCraftFurnance extends GuiBase {
 	
 	@Override
 	public void addToBox(GuiCombobox box2) {
-		box2.getItems().add("Choose");
-		box2.getItems().add("Output");
+		box2.getItems().add(ComboboxItem.OUTPUT);
 	}
 	
 	@Override
