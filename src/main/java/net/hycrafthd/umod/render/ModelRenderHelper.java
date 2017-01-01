@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.hycrafthd.umod.utils.Transformer;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -34,16 +35,21 @@ public class ModelRenderHelper {
 	}
 	
 	public void renderItem(ItemStack stack) {
-		if (stack != null && stack.getItem() != null) {
-			IBakedModel ibakedmodel = this.getItemModelWithOverrides(stack, Minecraft.getMinecraft().theWorld, null);
-			this.renderItemModel(stack, ibakedmodel, TransformType.GUI, false);
-		}
+		this.renderItem(stack, 1F);
+	}
+	
+	public void renderItem(ItemStack stack,float alpha) {
+		this.renderItem(stack, TransformType.GUI, alpha);
 	}
 	
 	public void renderItem(ItemStack stack, TransformType type) {
+		this.renderItem(stack, type, 1F);
+	}
+	
+	public void renderItem(ItemStack stack, TransformType type,float alpha) {
 		if (stack != null && stack.getItem() != null) {
 			IBakedModel ibakedmodel = this.getItemModelWithOverrides(stack, Minecraft.getMinecraft().theWorld, null);
-			this.renderItemModel(stack, ibakedmodel, type, false);
+			this.renderItemModel(stack, ibakedmodel, type, false,alpha);
 		}
 	}
 	
@@ -52,16 +58,17 @@ public class ModelRenderHelper {
 		return ibakedmodel.getOverrides().handleItemState(ibakedmodel, stack, worldIn, entitylivingbaseIn);
 	}
 	
-	protected void renderItemModel(ItemStack stack, IBakedModel bakedmodel, ItemCameraTransforms.TransformType transform, boolean leftHanded) {
+	protected void renderItemModel(ItemStack stack, IBakedModel bakedmodel, ItemCameraTransforms.TransformType transform, boolean leftHanded,float alpha) {
 		if (stack.getItem() != null) {
 			this.textureManager.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 			this.textureManager.getTexture(TextureMap.LOCATION_BLOCKS_TEXTURE).setBlurMipmap(false, false);
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			GlStateManager.color(1.0F, 1.0F, 1.0F, alpha);
 			GlStateManager.enableRescaleNormal();
-			GlStateManager.alphaFunc(516, 0.1F);
+//			GlStateManager.alphaFunc(516, 0.1F);
 			GlStateManager.enableBlend();
 			GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 			GlStateManager.pushMatrix();
+			GlStateManager.enableAlpha();
 
 			bakedmodel = net.minecraftforge.client.ForgeHooksClient.handleCameraTransforms(bakedmodel, transform, false);
 			

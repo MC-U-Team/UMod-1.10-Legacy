@@ -9,11 +9,15 @@ import net.hycrafthd.umod.gui.*;
 import net.hycrafthd.umod.gui.items.*;
 import net.hycrafthd.umod.network.PacketHandler;
 import net.hycrafthd.umod.network.message.*;
+import net.hycrafthd.umod.render.ModelRenderHelper;
 import net.hycrafthd.umod.tileentity.TileEntityPulverizer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class IOMode extends ImplGui{
 
@@ -21,10 +25,12 @@ public class IOMode extends ImplGui{
 	private float sclax = 0, sclay = 0;
 	private int posX,posY;
 	private Runnable autorun;
+	private ModelRenderHelper helper;
     private int[] args = new int[] {-1,-1,-1,-1,-1,-1};
 	
 	public IOMode(GuiBase base_gui) {
 		super(base_gui);
+		this.helper = UReference.getClientProxy().getModelRenderHelper();
 		int k = (base_gui.width - base_gui.xSize) / 2;
 		int l = (base_gui.height - base_gui.ySize) / 2;
 		box = new GuiCombobox(base_gui,k + 8, l + 7, 80, 12);
@@ -65,13 +71,14 @@ public class IOMode extends ImplGui{
 		GlStateManager.enableDepth();
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
-		this.setupGuiTransform((base_gui.width / 2), (base_gui.height / 2) - (base_gui.ySize / 4));
-		UReference.getClientProxy().getModelRenderHelper().renderItem(new ItemStack(base_gui.worldObj.getBlockState(base_gui.pos).getBlock()),TransformType.NONE);
+		this.setupGuiTransform((base_gui.width / 2), (float) ((base_gui.height / 2) - 0.5));
+		this.helper.renderItem(new ItemStack(base_gui.worldObj.getBlockState(base_gui.pos).getBlock()),TransformType.NONE);
 		this.drawRects();
+		this.drawSouroundings();
 		GlStateManager.popMatrix();
 		GlStateManager.disableDepth();
 		int kl = (base_gui.width - base_gui.xSize) / 2;
-		base_gui.getFontRender().drawString(base_gui.hal.toString(), kl + 10, base_gui.height / 2 - 10, 0xFFFFFF);
+		base_gui.getFontRender().drawString(base_gui.hal.toString(), kl + 10, base_gui.guiTop + base_gui.ySize - 18, 0xFFFFFF);
 		box.render(mouseX,mouseY);
 		RenderHelper.enableGUIStandardItemLighting();
 		GlStateManager.pushMatrix();
@@ -80,6 +87,35 @@ public class IOMode extends ImplGui{
 		GlStateManager.enableRescaleNormal();
 	}
 	
+	private void drawSouroundings() {
+		BlockPos upP = this.base_gui.pos.up();
+		BlockPos downP = this.base_gui.pos.down();
+		BlockPos northP = this.base_gui.pos.north();
+		BlockPos southP = this.base_gui.pos.south();
+		BlockPos westP = this.base_gui.pos.west();
+		BlockPos eastP = this.base_gui.pos.east();
+
+		this.drawSouround(upP, 1, 0, 0);
+		this.drawSouround(downP, -1,0, 0);
+		this.drawSouround(northP, 0, 1, 0);
+		this.drawSouround(southP, 0, -1, 0);
+		this.drawSouround(westP, 0, 0, 1);
+		this.drawSouround(eastP, 0, 0, -1);
+	}
+	
+	private void drawSouround(BlockPos pos,double x,double y,double z){
+		IBlockState state = base_gui.worldObj.getBlockState(pos);
+		if(state.getRenderType().equals(EnumBlockRenderType.INVISIBLE) || state.getBlock().isAir(state,this.base_gui.worldObj, pos))return;
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		
+		GlStateManager.rotate(-90, 0, 0, 1);
+		GlStateManager.rotate(90, 0, 1, 0);
+		this.helper.renderItem(new ItemStack(state.getBlock()),TransformType.NONE,0.25F);
+		
+		GlStateManager.popMatrix();
+	}
+
 	private void drawRects(){
 		
 		//SOUTH
@@ -136,9 +172,8 @@ public class IOMode extends ImplGui{
 		
 	}
 	
-	private void setupGuiTransform(int xPosition, int yPosition) {
+	private void setupGuiTransform(float xPosition, float yPosition) {
 		GlStateManager.translate((float) xPosition, (float) yPosition, 100.0F + this.zLevel);
-		GlStateManager.translate(8.0F, 8.0F, 0.0F);
 		GlStateManager.scale(2.0F, 2.0F, -2.0F);
 		GlStateManager.scale(0.5F, 0.5F, 0.5F);			
 		GlStateManager.scale(40.0F, 40.0F, 40.0F);
@@ -149,7 +184,7 @@ public class IOMode extends ImplGui{
 	
 	@Override
 	public void onDrag(int mouseX, int mouseY) {
-		if (mouseX > 7 + base_gui.guiLeft && mouseX < 169 + base_gui.guiLeft && mouseY > base_gui.guiTop + 6 && mouseY < base_gui.guiTop + 82) {
+		if (mouseX > 7 + base_gui.guiLeft && mouseX < (base_gui.xSize + base_gui.guiLeft) - 7 && mouseY > base_gui.guiTop + 6 && mouseY < (base_gui.guiTop + base_gui.ySize) - 6) {
 			if (sclax + (mouseX - posX) <= 90 && sclax + (mouseX - posX) >= -180) {
 				sclax += mouseX - posX;
 			}

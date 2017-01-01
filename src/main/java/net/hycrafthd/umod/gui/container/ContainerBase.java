@@ -60,7 +60,7 @@ public class ContainerBase extends Container {
 	
 	@Override
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
-		if(clickTypeIn.equals(ClickType.THROW))return super.slotClick(slotId, dragType, clickTypeIn, player);
+		if(clickTypeIn.equals(ClickType.THROW) || this.inventorySlots.size() < slotId)return super.slotClick(slotId, dragType, clickTypeIn, player);
 		if (!(this.inventorySlots.get(slotId) instanceof BaseSlot) || ((BaseSlot)this.inventorySlots.get(slotId)).isVisible()) {
 			return super.slotClick(slotId, dragType, clickTypeIn, player);
 		}

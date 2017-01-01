@@ -289,7 +289,6 @@ public abstract class GuiBase extends GuiScreen {
 		for (Object sl : this.container.inventorySlots) {
 			Slot slot = (Slot) sl;
 			if (!(slot instanceof BaseSlot) || ((BaseSlot) slot).isVisible()) {
-					this.drawSlot(slot);
 					if (this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
 						this.theSlot = slot;
 						int j1 = slot.xDisplayPosition;
@@ -302,9 +301,15 @@ public abstract class GuiBase extends GuiScreen {
 							this.drawGradientRect(j1, k1, j1 + 16, k1 + 16, -2130706433, -2130706433);
 						}
 						if (slot instanceof BaseSlot) {
-							this.help.drawFrame(j1, k1, 16, 16, new RGBA(Color.BLACK));
+							int xc = j1 - 1,yc = k1,widthc = 18,heightc = 18;
+							RGBA rgbc = new RGBA(Color.DARK_GRAY);
+							this.help.drawGradientRect(xc - 1, yc - 2,xc + widthc + 1, yc, rgbc);
+							this.help.drawGradientRect(xc - 1, yc + heightc - 2,xc + widthc + 1, yc + heightc, rgbc);
+							this.help.drawGradientRect(xc - 1, yc,xc + 1, yc + heightc, rgbc);
+							this.help.drawGradientRect(xc + widthc - 1, yc ,xc + widthc + 1,yc + heightc, rgbc);
 						}
 					}
+					this.drawSlot(slot);
 			}
 		}
 		GlStateManager.popMatrix();
