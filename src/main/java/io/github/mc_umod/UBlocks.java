@@ -1,0 +1,218 @@
+package io.github.mc_umod;
+
+import io.github.mc_umod.block.*;
+import io.github.mc_umod.block.deco.*;
+import io.github.mc_umod.block.infected.*;
+import io.github.mc_umod.block.machine.*;
+import io.github.mc_umod.block.rail.*;
+import io.github.mc_umod.item.block.*;
+import io.github.mc_umod.utils.URegistryUtils;
+import net.minecraft.block.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
+
+public class UBlocks {
+	
+	// Ores
+	public static Block ores, netherores;
+	// Blocks
+	public static Block blocks;
+	// SolarPanel
+	public static Block solarpanel;
+	// Machinery
+	public static Block pulver;
+	public static Block charge;
+	public static Block painter;
+	public static Block craftfurnance;
+	public static Block energyMonitor;
+	// Infected
+	public static Block infectedGrass;
+	public static Block infectedDirt;
+	public static Block infectedLog;
+	public static Block infectedLeave;
+	public static Block infectedSapling;
+	public static Block infectedPlank;
+	public static Block infectedFruit;
+	public static Block oilsand;
+	public static Block oilglass;
+	
+	public static Block infestedCleaner;
+	// Pipes
+	public static Block high_voltage_cable;
+	public static Block medium_voltage_cable;
+	public static Block low_voltage_cable;
+	
+	public static Block itempipe_normal;
+	// magic crafter
+	public static Block magic_crafter;
+	public static Block magic_glass;
+	// Normal Blocks
+	public static Block nuke;
+	public static Block conduit;
+	
+	public static Block barrels;
+	
+	public static Block rail;
+	public static Block rail2;
+	
+	public static Block blockbreaker;
+	
+	// Stairs
+	public static BlockStairCreator[] stonestairs;
+	public static BlockStairCreator[] woolstairs;
+	public static BlockStairCreator[] claystairs;
+	
+	// Slabs
+	public static BlockSlabCreator[] stoneslabs;
+	
+	public static Block mcase;
+	
+	public UBlocks() {
+		init();
+		register();
+	}
+	
+	private void init() {
+		// magic crafter
+		magic_crafter = new BlockMagicCrafter().setUnlocalizedName("magic_crafter");
+		magic_glass = new BlockMagicGlass().setUnlocalizedName("magic_glass");
+		// Ore
+		ores = new BlockOres().setUnlocalizedName("ores");
+		netherores = new BlockNetherOres().setUnlocalizedName("netherores");
+		// Blocks
+		blocks = new BlockBlocks().setUnlocalizedName("blocks");
+		// Machinery
+		pulver = new BlockPulverizer().setUnlocalizedName("pulver");
+		craftfurnance = new BlockCraftFurnance().setUnlocalizedName("craftfurn");
+		energyMonitor = new BlockEnergyPanel().setUnlocalizedName("energymonitor");
+		painter = new BlockPainter().setUnlocalizedName("painter");
+		// SolarPanel
+		solarpanel = new BlockSolarPanel().setUnlocalizedName("solarpanel");
+		charge = new BlockChargeStation().setUnlocalizedName("charge");
+		// Infected
+		infectedGrass = new BlockInfectedGrass().setUnlocalizedName("infectedgrass");
+		infectedDirt = new BlockInfectedDirt().setUnlocalizedName("infecteddirt");
+		infectedLog = new BlockInfectedLog().setUnlocalizedName("infectedlog");
+		infectedLeave = new BlockInfectedLeave().setUnlocalizedName("infectedleave");
+		infectedSapling = new BlockInfectedSapling().setUnlocalizedName("infectedsapling");
+		infectedPlank = new BlockInfectedPlank().setUnlocalizedName("infectedplank");
+		infectedFruit = new BlockInfectedFruit().setUnlocalizedName("infectedfruit");
+		
+		oilglass = new BlockOilGlass().setUnlocalizedName("oilglass");
+		oilsand = new BlockOilSand().setUnlocalizedName("oilsand");
+		
+		infestedCleaner = new BlockInfestedCleaner().setUnlocalizedName("cleaner");
+		// Cable
+		high_voltage_cable = new BlockCable("high_voltage_cable", 62, 62, false, "high_voltage_cable");
+		medium_voltage_cable = new BlockCable("medium_voltage_cable", 38, 38, false, "medium_voltage_cable");
+		low_voltage_cable = new BlockCable("low_voltage_cable", 9, 9, false, "low_voltage_cable");
+		
+		itempipe_normal = new BlockItemPipe("normal_item_pipe").setUnlocalizedName("itempipe_normal");
+		// Normal Blocks
+		nuke = new BlockNuke().setUnlocalizedName("nuke");
+		conduit = new BlockConduit().setUnlocalizedName("conduit");
+		
+		barrels = new BlockBarrels().setUnlocalizedName("barrels");
+		
+		blockbreaker = new BlockBreaker().setUnlocalizedName("blockbreacker");
+		
+		rail = new BlockExtendedRail().setUnlocalizedName("ExRail");
+		rail2 = new Block2rail().setUnlocalizedName("railhelp");
+		
+		// Stairs
+		stonestairs = new BlockStairCreator[BlockStone.EnumType.values().length];
+		for (int i = 0; i < BlockStone.EnumType.values().length; i++) {
+			stonestairs[i] = new BlockStairCreator(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.byMetadata(i)), "stone_" + BlockStone.EnumType.byMetadata(i).getName());
+		}
+		
+		woolstairs = new BlockStairCreator[EnumDyeColor.values().length];
+		for (int i = 0; i < EnumDyeColor.values().length; i++) {
+			woolstairs[i] = new BlockStairCreator(Blocks.WOOL.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.byMetadata(i)), "wool_" + EnumDyeColor.byDyeDamage(i).getName());
+		}
+		
+		claystairs = new BlockStairCreator[EnumDyeColor.values().length + 1];
+		for (int i = 0; i < EnumDyeColor.values().length; i++) {
+			claystairs[i] = new BlockStairCreator(Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.byMetadata(i)), "clay_stained_" + EnumDyeColor.byDyeDamage(i).getName());
+		}
+		claystairs[EnumDyeColor.values().length] = new BlockStairCreator(Blocks.HARDENED_CLAY.getDefaultState(), "clay_hardened");
+		
+		// Slabs
+		stoneslabs = new BlockSlabCreator[BlockStone.EnumType.values().length];
+		for (int i = 0; i < BlockStone.EnumType.values().length; i++) {
+			stoneslabs[i] = new BlockSlabCreator(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.byMetadata(i)), "stone_" + BlockStone.EnumType.byMetadata(i).getName());
+		}
+		
+		mcase = new BlockMachineCase().setUnlocalizedName("MashineCase");
+		
+		UMod.log.debug("Init Blocks");
+	}
+	
+	private void register() {
+		// Ore
+		URegistryUtils.registerBlock(ores, ItemBlockOres.class);
+		URegistryUtils.registerBlock(netherores, ItemBlockOres.class);
+		// Blocks
+		URegistryUtils.registerBlock(blocks, ItemBlockBlocks.class);
+		// Magic
+		URegistryUtils.registerBlock(magic_crafter);
+		URegistryUtils.registerBlock(magic_glass);
+		// Machinery
+		URegistryUtils.registerBlock(craftfurnance, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(pulver, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(energyMonitor);
+		URegistryUtils.registerBlock(painter);
+		// SolarPanel
+		URegistryUtils.registerBlock(solarpanel, ItemBlockSolarPanel.class);
+		URegistryUtils.registerBlock(charge);
+		// Infected
+		URegistryUtils.registerBlock(infectedGrass);
+		URegistryUtils.registerBlock(infectedDirt);
+		URegistryUtils.registerBlock(infectedLog);
+		URegistryUtils.registerBlock(infectedLeave);
+		URegistryUtils.registerBlock(infectedSapling);
+		URegistryUtils.registerBlock(infectedPlank);
+		URegistryUtils.registerBlock(infectedFruit);
+		
+		URegistryUtils.registerBlock(oilglass);
+		URegistryUtils.registerBlock(oilsand);
+		
+		URegistryUtils.registerBlock(infestedCleaner);
+		
+		// Pipes
+		URegistryUtils.registerBlock(medium_voltage_cable, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(high_voltage_cable, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(low_voltage_cable, ItemBlockEnergy.class);
+		
+		URegistryUtils.registerBlock(itempipe_normal, ItemBlockBase.class);
+		// Normal Block
+		URegistryUtils.registerBlock(nuke);
+		URegistryUtils.registerBlock(conduit, ItemBlockConduit.class);
+		
+		URegistryUtils.registerBlock(barrels, ItemBlockBarrels.class);
+		
+		URegistryUtils.registerBlock(rail);
+		URegistryUtils.registerBlock(rail2);
+		
+		URegistryUtils.registerBlock(blockbreaker);
+		
+		// Stairs
+		for (BlockStairCreator creator : stonestairs) {
+			URegistryUtils.registerBlock(creator.getStair());
+		}
+		for (BlockStairCreator creator : woolstairs) {
+			URegistryUtils.registerBlock(creator.getStair());
+		}
+		for (BlockStairCreator creator : claystairs) {
+			URegistryUtils.registerBlock(creator.getStair());
+		}
+		// Slabs
+		for (BlockSlabCreator creator : stoneslabs) {
+			URegistryUtils.registerHalfSlabs(creator);
+		}
+		
+		URegistryUtils.registerBlock(mcase);
+		
+		UMod.log.debug("Register Blocks");
+	}
+	
+}
