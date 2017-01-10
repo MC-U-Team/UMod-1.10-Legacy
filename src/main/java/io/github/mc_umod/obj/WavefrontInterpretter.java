@@ -10,13 +10,13 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.util.math.*;
 
-public class ObjInterpretter extends FileInputStream {
+public class WavefrontInterpretter extends FileInputStream {
 	
 	private ArrayList<Vec3d> vert = new ArrayList<Vec3d>();
-	private ArrayList<ObjArea> area = new ArrayList<ObjArea>();
-	private ArrayList<MtlInterpretter> mtls = new ArrayList<MtlInterpretter>();
+	private ArrayList<WavefrontField> area = new ArrayList<WavefrontField>();
+	private ArrayList<MaterialInterpretter> mtls = new ArrayList<MaterialInterpretter>();
 	
-	public ObjInterpretter(File fl) throws FileNotFoundException {
+	public WavefrontInterpretter(File fl,String ModID) throws FileNotFoundException {
 		super(fl);
 		try {
 			Scanner sc = new Scanner(this);
@@ -28,14 +28,14 @@ public class ObjInterpretter extends FileInputStream {
 					vert.add(new Vec3d(Double.valueOf(st[0]), Double.valueOf(st[1]), Double.valueOf(st[2])));
 				}
 				if (stc.startsWith("f ")) {
-					area.add(new ObjArea(mtl, stc.replace("f ", "").split(" ")));
+					area.add(new WavefrontField(mtl, stc.replace("f ", "").split(" ")));
 				}
 				if (stc.startsWith("mtllib ")) {
-					mtls.add(new MtlInterpretter(stc.replace("mtllib ", "")));
+					mtls.add(new MaterialInterpretter(stc.replace("mtllib ", ""),ModID));
 				}
 				if (stc.startsWith("usemtl ")) {
 					String s = stc.replace("usemtl ", "");
-					for (MtlInterpretter mt : mtls) {
+					for (MaterialInterpretter mt : mtls) {
 						Material mv = mt.searchfor(s);
 						if (mv != null) {
 							mtl = mv;
@@ -70,14 +70,14 @@ public class ObjInterpretter extends FileInputStream {
 	
 	public void drawOnlyArea(VertexBuffer bf) {
 		bf.begin(7, DefaultVertexFormats.POSITION_COLOR);
-		for (ObjArea are : this.area) {
+		for (WavefrontField are : this.area) {
 			are.addVertices(bf, this.vert);
 		}
 	}
 	
 	public void drawOnlyBoundingBox(VertexBuffer bf) {
 		bf.begin(3, DefaultVertexFormats.POSITION_COLOR);
-		for (ObjArea are : this.area) {
+		for (WavefrontField are : this.area) {
 			are.addVerticesToBounding(bf, this.vert);
 		}
 	}

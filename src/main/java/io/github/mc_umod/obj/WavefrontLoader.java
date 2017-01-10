@@ -7,13 +7,13 @@ import io.github.mc_umod.*;
 import net.minecraft.crash.*;
 import net.minecraft.util.*;
 
-public class ObjLoader {
+public class WavefrontLoader {
 	
-	private ObjInterpretter pr;
+	private WavefrontInterpretter pr;
 	
-	public ObjLoader(String str) {
+	public WavefrontLoader(String str) {
 		try {
-			this.pr = new ObjInterpretter(new File(ObjLoader.class.getResource(str + ".obj").toURI()));
+			this.pr = new WavefrontInterpretter(new File(WavefrontLoader.class.getResource(str + ".obj").toURI()),UReference.modid);
 		} catch (FileNotFoundException e) {
 			UMod.log.error("Model " + str + " was not found", e);
 			throw new ReportedException(new CrashReport("MODEL LODE ERROR " + str, e));
@@ -29,7 +29,7 @@ public class ObjLoader {
 		
 	}
 	
-	public ObjInterpretter getInterpretter() {
+	public WavefrontInterpretter getInterpretter() {
 		return pr;
 	}
 	

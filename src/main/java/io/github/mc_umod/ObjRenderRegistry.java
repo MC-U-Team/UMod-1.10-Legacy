@@ -4,15 +4,15 @@ import io.github.mc_umod.obj.*;
 
 public class ObjRenderRegistry {
 	
-	public ObjLoader TEST;
-	public ObjLoader GENERATOR;
+	public WavefrontLoader TEST;
+	public WavefrontLoader GENERATOR;
 	
 	public ObjRenderRegistry() {
 		this.reload();
 	}
 	
 	public void reload() {
-		TEST = new ObjLoader("test");
-		GENERATOR = new ObjLoader("generator");
+		TEST = new WavefrontLoader("test");
+		GENERATOR = new WavefrontLoader("generator");
 	}
 }

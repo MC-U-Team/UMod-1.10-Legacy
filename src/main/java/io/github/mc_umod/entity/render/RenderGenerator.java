@@ -23,7 +23,7 @@ public class RenderGenerator extends Render<EntityGenerator> implements IRenderF
 	public void doRender(EntityGenerator entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (entity == null || entity.getPosition() == null)
 			return;
-		ObjInterpretter itp = UReference.getClientProxy().getObjRenderList().GENERATOR.getInterpretter();
+		WavefrontInterpretter itp = UReference.getClientProxy().getObjRenderList().GENERATOR.getInterpretter();
 		Tessellator tes = Tessellator.getInstance();
 		VertexBuffer bf = tes.getBuffer();
 		GlStateManager.pushMatrix();

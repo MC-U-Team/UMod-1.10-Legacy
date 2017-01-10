@@ -23,8 +23,8 @@ public class Material {
 		this.color = c;
 	}
 	
-	public void setMap(String st) {
-		this.loc = new ResourceLocation(UReference.modid, "textures/maps/" + st);
+	public void setMap(ResourceLocation st) {
+		this.loc = st;
 	}
 	
 	public boolean hasTexture() {

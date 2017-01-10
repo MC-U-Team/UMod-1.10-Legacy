@@ -9,12 +9,12 @@ import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.util.math.*;
 
-public class ObjArea {
+public class WavefrontField {
 	
 	public final int[] POINTS;
 	public final Material mtl;
 	
-	public ObjArea(Material mtl, String... strings) {
+	public WavefrontField(Material mtl, String... strings) {
 		this.mtl = mtl;
 		this.POINTS = new int[strings.length];
 		int i = 0;

@@ -6,14 +6,16 @@ import java.util.*;
 
 import org.lwjgl.util.*;
 
+import io.github.mc_umod.*;
 import net.hycrafthd.corelib.util.*;
+import net.minecraft.util.*;
 
-public class MtlInterpretter extends FileInputStream {
+public class MaterialInterpretter extends FileInputStream {
 	
 	private HashMap<String, Material> mtls = new HashMap<String, Material>();
 	
-	public MtlInterpretter(String name) throws FileNotFoundException, URISyntaxException {
-		super(new File(MtlInterpretter.class.getResource(name).toURI()));
+	public MaterialInterpretter(String name,String modID) throws FileNotFoundException, URISyntaxException {
+		super(new File(MaterialInterpretter.class.getResource(name).toURI()));
 		try {
 			Scanner sc = new Scanner(this);
 			Material mtl = null;
@@ -34,7 +36,7 @@ public class MtlInterpretter extends FileInputStream {
 					mtl.setColor(mtl.getColor().setAlpha((int) Math.round((double) 255 * d)));
 				}
 				if (st.startsWith("map_Kd ")) {
-					mtl.setMap(st.replace("map_Kd ", ""));
+					mtl.setMap(new ResourceLocation(modID, "textures/maps/" + st.replace("map_Kd ", "")));
 				}
 			}
 			if (mtl != null) {
