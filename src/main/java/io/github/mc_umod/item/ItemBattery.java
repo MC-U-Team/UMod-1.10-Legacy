@@ -1,6 +1,6 @@
 package io.github.mc_umod.item;
 
-import io.github.mc_umod.UReference;
+import io.github.mc_umod.*;
 
 public class ItemBattery extends ItemBase {
 	

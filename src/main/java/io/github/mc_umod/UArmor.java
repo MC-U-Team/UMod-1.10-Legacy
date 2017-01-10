@@ -1,15 +1,13 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.armor.ArmorEmerald;
-import io.github.mc_umod.armor.ArmorMagic;
-import io.github.mc_umod.armor.ArmorRadiation;
-import io.github.mc_umod.item.tools.energy.ItemEnergyGlasses;
-import io.github.mc_umod.utils.URegistryUtils;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.util.EnumHelper;
+import io.github.mc_umod.armor.*;
+import io.github.mc_umod.item.tools.energy.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.init.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.item.ItemArmor.*;
+import net.minecraftforge.common.util.*;
 
 public class UArmor {
 	

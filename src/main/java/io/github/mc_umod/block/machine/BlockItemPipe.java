@@ -1,30 +1,24 @@
 package io.github.mc_umod.block.machine;
 
-import java.util.List;
+import java.util.*;
 
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.*;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import com.mojang.realmsclient.gui.*;
 
-import io.github.mc_umod.api.IBlockInformation;
-import io.github.mc_umod.api.IConduitBlock;
-import io.github.mc_umod.api.IPlugabel;
-import io.github.mc_umod.api.render.ISpiritProvider;
-import io.github.mc_umod.tileentity.TileEntityItemPipe;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.tileentity.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, IConduitBlock, IPlugabel, IBlockInformation {
 	

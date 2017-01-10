@@ -1,7 +1,7 @@
 package io.github.mc_umod.utils;
 
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 
 public class DirectionUtils {
 	

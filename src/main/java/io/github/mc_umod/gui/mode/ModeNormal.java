@@ -1,7 +1,7 @@
 package io.github.mc_umod.gui.mode;
 
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.gui.items.ImplGui;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.gui.items.*;
 
 public class ModeNormal extends ImplGui{
 

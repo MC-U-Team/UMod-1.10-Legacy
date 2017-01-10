@@ -1,12 +1,11 @@
 package io.github.mc_umod.item.materials;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.item.ItemBase;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.item.*;
+import net.minecraft.creativetab.*;
+import net.minecraft.item.*;
 
 public class ItemIngots extends ItemBase {
 	

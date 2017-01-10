@@ -1,16 +1,15 @@
 package io.github.mc_umod.gui.items;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.network.PacketHandler;
-import io.github.mc_umod.network.message.MessageSliderAdd;
-import io.github.mc_umod.network.message.MessageSliderRequest;
-import io.github.mc_umod.render.GLHelper;
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.*;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.network.*;
+import io.github.mc_umod.network.message.*;
+import io.github.mc_umod.render.*;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.util.math.*;
 
 public class GuiSlider extends ImplGui {
 	

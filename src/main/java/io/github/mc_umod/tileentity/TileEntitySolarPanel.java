@@ -1,13 +1,13 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
-import io.github.mc_umod.utils.WorldUtils;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.api.energy.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.nbt.*;
+import net.minecraft.network.*;
+import net.minecraft.network.play.server.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 
 public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder, ITickable {
 	

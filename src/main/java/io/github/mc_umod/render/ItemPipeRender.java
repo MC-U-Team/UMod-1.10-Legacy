@@ -1,12 +1,12 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.block.machine.BlockItemPipe;
-import io.github.mc_umod.tileentity.TileEntityItemPipe;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import io.github.mc_umod.block.machine.*;
+import io.github.mc_umod.tileentity.*;
+import net.minecraft.block.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class ItemPipeRender extends TileRender {
 	

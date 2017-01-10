@@ -1,6 +1,6 @@
 package io.github.mc_umod.api;
 
-import io.github.mc_umod.render.TileRender;
+import io.github.mc_umod.render.*;
 
 public interface ISnowable {
 	

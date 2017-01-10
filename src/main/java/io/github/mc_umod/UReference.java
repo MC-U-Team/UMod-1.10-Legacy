@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraft.creativetab.*;
+import net.minecraft.item.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.Mod.*;
 
 public class UReference {
 	

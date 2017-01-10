@@ -1,19 +1,16 @@
 package io.github.mc_umod.item;
 
-import java.util.List;
+import java.util.*;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import com.mojang.realmsclient.gui.*;
 
-import io.github.mc_umod.UBlocks;
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.entity.EntityGenerator;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class ItemGeneratorPlacer extends ItemBase{
 	

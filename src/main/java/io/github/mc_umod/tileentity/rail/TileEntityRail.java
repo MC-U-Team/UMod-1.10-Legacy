@@ -1,11 +1,11 @@
 package io.github.mc_umod.tileentity.rail;
 
-import io.github.mc_umod.entity.rail.EntityRailFX;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
+import io.github.mc_umod.entity.rail.*;
+import net.minecraft.nbt.*;
+import net.minecraft.network.*;
+import net.minecraft.network.play.server.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
 
 public class TileEntityRail extends TileEntity implements ITickable {
 	

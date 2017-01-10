@@ -1,24 +1,20 @@
 package io.github.mc_umod.gui.mode;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.*;
+import java.util.function.*;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.gui.inventory.BaseSlot;
-import io.github.mc_umod.gui.items.ImplGui;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import io.github.mc_umod.*;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.gui.inventory.*;
+import io.github.mc_umod.gui.items.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
 
 @SuppressWarnings("deprecation")
 public class ModeTabs extends Gui {

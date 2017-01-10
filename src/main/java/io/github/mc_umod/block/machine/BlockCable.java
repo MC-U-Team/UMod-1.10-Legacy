@@ -1,31 +1,21 @@
 package io.github.mc_umod.block.machine;
 
-import io.github.mc_umod.UBlocks;
-import io.github.mc_umod.UDamageSource;
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IConduitBlock;
-import io.github.mc_umod.api.energy.IEnergyMessage;
-import io.github.mc_umod.api.render.ISpiritProvider;
-import io.github.mc_umod.tileentity.TileEntityCable;
-import io.github.mc_umod.utils.NBTUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.api.energy.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.tileentity.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.block.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
 	

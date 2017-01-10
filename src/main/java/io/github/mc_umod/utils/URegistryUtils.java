@@ -1,17 +1,11 @@
 package io.github.mc_umod.utils;
 
-import io.github.mc_umod.block.deco.BlockDoubleCustomSlab;
-import io.github.mc_umod.block.deco.BlockHalfCustomSlab;
-import io.github.mc_umod.block.deco.BlockSlabCreator;
-import io.github.mc_umod.item.block.ItemBlockBase;
-import io.github.mc_umod.item.block.ItemBlockCustomSlab;
-import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.ItemRegistry;
-import net.hycrafthd.corelib.registry.OreDictionaryRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import io.github.mc_umod.block.deco.*;
+import io.github.mc_umod.item.block.*;
+import net.hycrafthd.corelib.registry.*;
+import net.minecraft.block.*;
+import net.minecraft.item.*;
+import net.minecraftforge.fml.common.registry.*;
 
 public class URegistryUtils {
 	

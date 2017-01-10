@@ -1,13 +1,11 @@
 package io.github.mc_umod.item.tools.magic;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class ItemMagicPickaxe extends ItemPickaxe {
 	

@@ -1,14 +1,13 @@
 package io.github.mc_umod;
 
-import java.util.Random;
+import java.util.*;
 
-import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.utils.GenerationUtils;
-import net.minecraft.init.Blocks;
-import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkGenerator;
-import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.init.*;
+import net.minecraft.world.*;
+import net.minecraft.world.chunk.*;
+import net.minecraftforge.fml.common.*;
 
 public class UOreGeneration implements IWorldGenerator {
 	

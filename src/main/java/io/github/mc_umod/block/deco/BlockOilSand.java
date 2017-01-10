@@ -1,12 +1,10 @@
 package io.github.mc_umod.block.deco;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IInfectedBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFalling;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import net.minecraft.block.*;
+import net.minecraft.block.material.*;
+import net.minecraft.init.*;
 
 public class BlockOilSand extends BlockFalling implements IInfectedBlock {
 	

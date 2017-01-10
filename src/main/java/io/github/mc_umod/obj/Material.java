@@ -1,9 +1,9 @@
 package io.github.mc_umod.obj;
 
-import io.github.mc_umod.UReference;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ResourceLocation;
+import io.github.mc_umod.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.*;
+import net.minecraft.util.*;
 
 public class Material {
 	

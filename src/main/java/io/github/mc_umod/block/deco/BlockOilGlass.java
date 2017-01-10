@@ -1,19 +1,16 @@
 package io.github.mc_umod.block.deco;
 
-import java.util.Random;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.block.BlockBase;
-import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import io.github.mc_umod.block.*;
+import net.minecraft.block.*;
+import net.minecraft.block.material.*;
+import net.minecraft.block.state.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class BlockOilGlass extends BlockBase {
 	

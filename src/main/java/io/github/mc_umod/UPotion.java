@@ -1,12 +1,11 @@
 package io.github.mc_umod;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.lang.reflect.*;
+import java.util.*;
 
-import io.github.mc_umod.potion.PotionRadiation;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.ResourceLocation;
+import io.github.mc_umod.potion.*;
+import net.minecraft.potion.*;
+import net.minecraft.util.*;
 
 public class UPotion {
 	

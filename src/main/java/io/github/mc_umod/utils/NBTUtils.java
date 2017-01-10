@@ -1,8 +1,8 @@
 package io.github.mc_umod.utils;
 
-import io.github.mc_umod.UMod;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import io.github.mc_umod.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
 
 public class NBTUtils {
 	

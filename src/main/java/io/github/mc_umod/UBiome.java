@@ -1,11 +1,10 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.biome.BiomeInfected;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biome.BiomeProperties;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.BiomeManager.BiomeEntry;
-import net.minecraftforge.common.BiomeManager.BiomeType;
+import io.github.mc_umod.biome.*;
+import net.minecraft.world.biome.*;
+import net.minecraft.world.biome.Biome.*;
+import net.minecraftforge.common.*;
+import net.minecraftforge.common.BiomeManager.*;
 
 public class UBiome {
 	

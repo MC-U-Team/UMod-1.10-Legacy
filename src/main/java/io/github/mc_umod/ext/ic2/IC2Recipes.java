@@ -1,12 +1,10 @@
 package io.github.mc_umod.ext.ic2;
 
-import ic2.api.recipe.RecipeInputItemStack;
-import ic2.api.recipe.Recipes;
-import io.github.mc_umod.UBlocks;
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.ext.abs.AbstractRecipeRegistry;
-import net.minecraft.item.ItemStack;
+import ic2.api.recipe.*;
+import io.github.mc_umod.*;
+import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.ext.abs.*;
+import net.minecraft.item.*;
 
 public class IC2Recipes extends AbstractRecipeRegistry {
 	

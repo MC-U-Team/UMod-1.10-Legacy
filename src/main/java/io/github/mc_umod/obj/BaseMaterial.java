@@ -1,8 +1,8 @@
 package io.github.mc_umod.obj;
 
-import java.awt.Color;
+import java.awt.*;
 
-import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.corelib.util.*;
 
 public class BaseMaterial extends Material {
 	

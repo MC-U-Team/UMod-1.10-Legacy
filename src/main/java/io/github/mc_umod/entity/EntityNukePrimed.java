@@ -1,18 +1,15 @@
 package io.github.mc_umod.entity;
 
-import java.util.Random;
+import java.util.*;
 
-import io.github.mc_umod.api.ProcessHandler;
-import io.github.mc_umod.world.explosion.NuclearExplosion;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.world.explosion.*;
+import net.minecraft.entity.*;
+import net.minecraft.nbt.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class EntityNukePrimed extends Entity {
 	

@@ -1,23 +1,17 @@
 package io.github.mc_umod.block.infected;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IInfectedBlock;
-import io.github.mc_umod.block.BlockBase;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.block.*;
+import net.minecraft.block.*;
+import net.minecraft.block.material.*;
+import net.minecraft.block.state.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 import scala.actors.threadpool.Arrays;
 
 public class BlockInfectedFruit extends BlockBase implements IInfectedBlock {

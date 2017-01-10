@@ -1,7 +1,7 @@
 package io.github.mc_umod.utils;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.util.math.BlockPos;
+import io.netty.buffer.*;
+import net.minecraft.util.math.*;
 
 public class NetworkUtil {
 	

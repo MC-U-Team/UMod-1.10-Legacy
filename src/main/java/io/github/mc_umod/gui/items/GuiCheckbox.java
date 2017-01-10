@@ -1,14 +1,14 @@
 package io.github.mc_umod.gui.items;
 
-import java.awt.Color;
+import java.awt.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.render.GLHelper;
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import io.github.mc_umod.*;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.render.*;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gui.*;
 
 public class GuiCheckbox extends ImplGui {
 	

@@ -1,10 +1,10 @@
 package io.github.mc_umod;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.eventhandler.EventBus;
+import net.minecraftforge.common.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class UEvent {
 	

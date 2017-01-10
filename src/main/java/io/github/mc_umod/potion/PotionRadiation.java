@@ -1,7 +1,7 @@
 
 package io.github.mc_umod.potion;
 
-import net.minecraft.potion.Potion;
+import net.minecraft.potion.*;
 
 public class PotionRadiation extends Potion {
 	

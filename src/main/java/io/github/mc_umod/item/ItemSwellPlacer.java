@@ -1,7 +1,7 @@
 package io.github.mc_umod.item;
 
-import io.github.mc_umod.UReference;
-import net.minecraft.item.Item;
+import io.github.mc_umod.*;
+import net.minecraft.item.*;
 
 public class ItemSwellPlacer extends Item {
 	

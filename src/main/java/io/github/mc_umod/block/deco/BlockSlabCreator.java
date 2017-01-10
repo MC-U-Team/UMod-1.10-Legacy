@@ -1,7 +1,7 @@
 package io.github.mc_umod.block.deco;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.*;
+import net.minecraft.block.state.*;
 
 public class BlockSlabCreator {
 	

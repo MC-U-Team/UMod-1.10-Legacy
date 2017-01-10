@@ -1,17 +1,16 @@
 package io.github.mc_umod.gui.items;
 
-import java.awt.Color;
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.render.GLHelper;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.render.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
+import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
 public class GuiCombobox extends ImplGui {

@@ -1,11 +1,9 @@
 package io.github.mc_umod;
 
-import java.util.Map;
+import java.util.*;
 
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.MCVersion;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.Name;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
+import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin.*;
 
 @MCVersion(UReference.mcversion)
 @Name(UReference.name)

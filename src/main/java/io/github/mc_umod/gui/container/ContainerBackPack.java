@@ -1,14 +1,11 @@
 package io.github.mc_umod.gui.container;
 
-import io.github.mc_umod.enumtype.EnumTypeBackPack;
-import io.github.mc_umod.gui.inventory.InventoryBackPack;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ClickType;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.gui.inventory.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
 
 public class ContainerBackPack extends Container {
 	

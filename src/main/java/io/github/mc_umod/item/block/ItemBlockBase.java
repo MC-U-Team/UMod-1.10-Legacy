@@ -1,13 +1,12 @@
 package io.github.mc_umod.item.block;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IBlockInformation;
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
 
 public class ItemBlockBase extends ItemBlock {
 	

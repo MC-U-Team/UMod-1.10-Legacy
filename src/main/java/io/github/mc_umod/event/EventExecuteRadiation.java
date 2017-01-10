@@ -1,17 +1,16 @@
 package io.github.mc_umod.event;
 
-import java.util.HashMap;
+import java.util.*;
 
-import io.github.mc_umod.UDamageSource;
-import io.github.mc_umod.UPotion;
-import io.github.mc_umod.armor.ArmorRadiation;
-import io.github.mc_umod.utils.EntityUtils;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import io.github.mc_umod.*;
+import io.github.mc_umod.armor.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.potion.*;
+import net.minecraftforge.event.entity.living.LivingEvent.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class EventExecuteRadiation {
 	

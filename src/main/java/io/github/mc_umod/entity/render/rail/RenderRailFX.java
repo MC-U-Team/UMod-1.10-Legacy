@@ -1,12 +1,11 @@
 package io.github.mc_umod.entity.render.rail;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.entity.rail.EntityRailFX;
-import io.github.mc_umod.render.RailRenderHelper;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.rail.*;
+import io.github.mc_umod.render.*;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraft.util.*;
+import net.minecraftforge.fml.client.registry.*;
 
 public class RenderRailFX extends Render<EntityRailFX> implements IRenderFactory<EntityRailFX> {
 	

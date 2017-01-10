@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
-import java.io.File;
+import java.io.*;
 
-import io.github.mc_umod.entity.EntityNukePrimed;
-import net.minecraftforge.common.config.Configuration;
+import io.github.mc_umod.entity.*;
+import net.minecraftforge.common.config.*;
 
 public class UConfig {
 	

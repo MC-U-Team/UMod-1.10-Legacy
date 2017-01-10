@@ -1,13 +1,11 @@
 package io.github.mc_umod.network.message;
 
-import io.github.mc_umod.tileentity.TileEntityChargeStation;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import io.github.mc_umod.tileentity.*;
+import io.netty.buffer.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessagePowerBase implements IMessage, IMessageHandler<MessagePowerBase, IMessage> {
 	

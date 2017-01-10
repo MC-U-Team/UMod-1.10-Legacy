@@ -1,25 +1,18 @@
 package io.github.mc_umod.block;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.entity.EntityNukePrimed;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.*;
+import net.minecraft.block.material.*;
+import net.minecraft.block.properties.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.entity.projectile.*;
+import net.minecraft.init.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class BlockNuke extends BlockBase {
 	

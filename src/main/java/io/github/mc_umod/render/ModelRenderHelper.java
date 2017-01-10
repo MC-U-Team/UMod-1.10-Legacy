@@ -1,33 +1,25 @@
 package io.github.mc_umod.render;
 
-import java.util.List;
+import java.util.*;
 
-import javax.annotation.Nullable;
+import javax.annotation.*;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.EntityRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.ItemModelMesher;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.block.*;
+import net.minecraft.block.state.*;
+import net.minecraft.client.*;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.Vec3i;
-import net.minecraft.world.World;
+import net.minecraft.client.renderer.block.model.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;
+import net.minecraft.client.renderer.color.*;
+import net.minecraft.client.renderer.texture.*;
+import net.minecraft.client.renderer.tileentity.*;
+import net.minecraft.client.renderer.vertex.*;
+import net.minecraft.entity.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class ModelRenderHelper {
 	

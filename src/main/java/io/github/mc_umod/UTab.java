@@ -1,7 +1,7 @@
 package io.github.mc_umod;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
+import net.minecraft.creativetab.*;
+import net.minecraft.item.*;
 
 public class UTab extends CreativeTabs {
 	

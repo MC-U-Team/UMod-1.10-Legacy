@@ -1,12 +1,10 @@
 package io.github.mc_umod.gui.container;
 
-import io.github.mc_umod.gui.inventory.BaseNormalSlot;
-import io.github.mc_umod.gui.inventory.BaseOreInputSlot;
-import io.github.mc_umod.gui.inventory.BaseSlotOutput;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.gui.inventory.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.util.math.*;
 
 public class ContainerPulverizer extends ContainerBase {
 	

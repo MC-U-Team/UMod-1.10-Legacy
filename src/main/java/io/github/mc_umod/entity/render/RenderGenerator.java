@@ -1,15 +1,12 @@
 package io.github.mc_umod.entity.render;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.entity.EntityGenerator;
-import io.github.mc_umod.obj.ObjInterpretter;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.*;
+import io.github.mc_umod.obj.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraft.util.*;
+import net.minecraftforge.fml.client.registry.*;
 
 public class RenderGenerator extends Render<EntityGenerator> implements IRenderFactory<EntityGenerator>{
 

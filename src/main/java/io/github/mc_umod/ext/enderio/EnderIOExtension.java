@@ -1,17 +1,12 @@
 package io.github.mc_umod.ext.enderio;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.*;
 
-import io.github.mc_umod.ext.IUmodExtension;
-import io.github.mc_umod.ext.abs.AbstractOreDictionaryRegistry;
-import io.github.mc_umod.ext.abs.AbstractRecipeRegistry;
-import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.TileEntityRegistry;
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import io.github.mc_umod.ext.*;
+import io.github.mc_umod.ext.abs.*;
+import net.hycrafthd.corelib.registry.*;
+import net.minecraft.block.*;
+import net.minecraftforge.fml.common.event.*;
 
 public class EnderIOExtension implements IUmodExtension {
 	

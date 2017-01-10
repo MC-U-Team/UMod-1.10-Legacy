@@ -1,10 +1,10 @@
 package io.github.mc_umod.api.energy;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import io.github.mc_umod.UMod;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import io.github.mc_umod.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class TunnelHolder {
 	

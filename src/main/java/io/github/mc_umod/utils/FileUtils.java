@@ -1,6 +1,6 @@
 package io.github.mc_umod.utils;
 
-import java.io.File;
+import java.io.*;
 
 public class FileUtils {
 	

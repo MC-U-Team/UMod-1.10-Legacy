@@ -1,9 +1,9 @@
 package io.github.mc_umod.api.energy;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class UETunnel extends ArrayList<BlockPos> {
 	

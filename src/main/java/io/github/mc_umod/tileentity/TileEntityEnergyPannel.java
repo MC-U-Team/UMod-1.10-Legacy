@@ -1,18 +1,16 @@
 package io.github.mc_umod.tileentity;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.api.render.IBoundsProvider;
-import io.github.mc_umod.entity.EntityFX;
-import io.github.mc_umod.item.ItemEnergyDisplay;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ITickable;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.entity.*;
+import io.github.mc_umod.item.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 
 public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBoundsProvider {
 	

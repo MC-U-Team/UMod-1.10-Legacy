@@ -1,16 +1,8 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.tileentity.TileEntityCable;
-import io.github.mc_umod.tileentity.TileEntityChargeStation;
-import io.github.mc_umod.tileentity.TileEntityCraftFurnance;
-import io.github.mc_umod.tileentity.TileEntityEnergyPannel;
-import io.github.mc_umod.tileentity.TileEntityItemPipe;
-import io.github.mc_umod.tileentity.TileEntityMagicCrafter;
-import io.github.mc_umod.tileentity.TileEntityPainter;
-import io.github.mc_umod.tileentity.TileEntityPulverizer;
-import io.github.mc_umod.tileentity.TileEntitySolarPanel;
-import io.github.mc_umod.tileentity.rail.TileEntityRail;
-import net.hycrafthd.corelib.registry.TileEntityRegistry;
+import io.github.mc_umod.tileentity.*;
+import io.github.mc_umod.tileentity.rail.*;
+import net.hycrafthd.corelib.registry.*;
 
 public class UTiles {
 	

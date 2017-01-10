@@ -1,6 +1,6 @@
 package io.github.mc_umod.gui.inventory;
 
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.*;
 
 public class BaseNormalSlot extends BaseSlot{
 

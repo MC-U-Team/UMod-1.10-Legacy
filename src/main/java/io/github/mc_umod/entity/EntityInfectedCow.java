@@ -1,26 +1,17 @@
 package io.github.mc_umod.entity;
 
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.api.IInfectedEntity;
-import net.minecraft.block.Block;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import net.minecraft.block.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.init.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class EntityInfectedCow extends EntityMob implements IInfectedEntity {
 	

@@ -1,7 +1,7 @@
 package io.github.mc_umod.api.energy;
 
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public interface ICabel {
 	

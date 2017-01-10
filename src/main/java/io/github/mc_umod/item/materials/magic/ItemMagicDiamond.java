@@ -1,6 +1,6 @@
 package io.github.mc_umod.item.materials.magic;
 
-import io.github.mc_umod.api.Crystal;
+import io.github.mc_umod.api.*;
 
 public class ItemMagicDiamond extends Crystal {
 	

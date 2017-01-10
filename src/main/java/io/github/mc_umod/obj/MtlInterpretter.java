@@ -1,16 +1,12 @@
 package io.github.mc_umod.obj;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
-import org.lwjgl.util.Color;
+import org.lwjgl.util.*;
 
-import net.hycrafthd.corelib.util.RGBA;
+import net.hycrafthd.corelib.util.*;
 
 public class MtlInterpretter extends FileInputStream {
 	

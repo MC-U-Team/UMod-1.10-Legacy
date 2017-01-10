@@ -1,34 +1,12 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.item.ItemBackPack;
-import io.github.mc_umod.item.ItemBattery;
-import io.github.mc_umod.item.ItemCabletester;
-import io.github.mc_umod.item.ItemEnergyDisplay;
-import io.github.mc_umod.item.ItemGeneratorPlacer;
-import io.github.mc_umod.item.ItemSwellPlacer;
-import io.github.mc_umod.item.infected.ItemInfectedBeef;
-import io.github.mc_umod.item.infected.ItemInfectedCrop;
-import io.github.mc_umod.item.infected.ItemInfectedMilk;
-import io.github.mc_umod.item.materials.ItemAcid;
-import io.github.mc_umod.item.materials.ItemDusts;
-import io.github.mc_umod.item.materials.ItemFundamental;
-import io.github.mc_umod.item.materials.ItemIngots;
-import io.github.mc_umod.item.materials.ItemManganOxid;
-import io.github.mc_umod.item.materials.ItemPetrol;
-import io.github.mc_umod.item.materials.ItemPlastic;
-import io.github.mc_umod.item.materials.energy.ItemCopperCoil;
-import io.github.mc_umod.item.materials.energy.ItemCopperWire;
-import io.github.mc_umod.item.materials.energy.ItemSolarCell;
-import io.github.mc_umod.item.materials.energy.ItemThickerCopperCoil;
-import io.github.mc_umod.item.materials.energy.ItemThickerCopperWire;
-import io.github.mc_umod.item.materials.energy.ItemTransformer;
-import io.github.mc_umod.item.materials.magic.ItemChargedQuartz;
-import io.github.mc_umod.item.materials.magic.ItemMagicBottle;
-import io.github.mc_umod.item.materials.magic.ItemMagicBrew;
-import io.github.mc_umod.item.materials.magic.ItemMagicDiamond;
-import io.github.mc_umod.item.materials.magic.ItemMagicIngot;
-import io.github.mc_umod.utils.URegistryUtils;
-import net.minecraft.item.Item;
+import io.github.mc_umod.item.*;
+import io.github.mc_umod.item.infected.*;
+import io.github.mc_umod.item.materials.*;
+import io.github.mc_umod.item.materials.energy.*;
+import io.github.mc_umod.item.materials.magic.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.item.*;
 
 public class UItems {
 	

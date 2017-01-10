@@ -1,19 +1,15 @@
 package io.github.mc_umod.event.apis;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.function.BiConsumer;
+import java.util.*;
+import java.util.function.*;
 
-import io.github.mc_umod.api.energy.ICabel;
-import io.github.mc_umod.api.energy.TunnelHolder;
-import io.github.mc_umod.api.energy.UETunnel;
-import io.github.mc_umod.entity.EntityFX;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
+import io.github.mc_umod.api.energy.*;
+import io.github.mc_umod.entity.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.common.eventhandler.*;
+import net.minecraftforge.fml.common.gameevent.TickEvent.*;
 
 public class EventRegRegistery {
 	

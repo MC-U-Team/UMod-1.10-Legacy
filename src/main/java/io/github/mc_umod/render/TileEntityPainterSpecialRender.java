@@ -1,7 +1,7 @@
 package io.github.mc_umod.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.client.renderer.tileentity.*;
+import net.minecraft.tileentity.*;
 
 public class TileEntityPainterSpecialRender extends TileEntitySpecialRenderer<TileEntity> {
 	

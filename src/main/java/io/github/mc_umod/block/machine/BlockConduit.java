@@ -1,9 +1,9 @@
 package io.github.mc_umod.block.machine;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IConduitBlock;
-import io.github.mc_umod.block.BlockBase;
-import net.minecraft.block.material.Material;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.block.*;
+import net.minecraft.block.material.*;
 
 public class BlockConduit extends BlockBase implements IConduitBlock {
 	

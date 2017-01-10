@@ -1,17 +1,17 @@
 package io.github.mc_umod.event;
 
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.*;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import com.mojang.realmsclient.gui.*;
 
-import io.github.mc_umod.block.machine.BlockConduit;
-import io.github.mc_umod.item.ItemEnergyDisplay;
-import io.github.mc_umod.utils.NBTUtils;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import io.github.mc_umod.block.machine.*;
+import io.github.mc_umod.item.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.block.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
+import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class EventToolTip {
 	

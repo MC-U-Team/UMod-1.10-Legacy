@@ -1,26 +1,23 @@
 package io.github.mc_umod.gui;
 
-import java.awt.Color;
-import java.io.IOException;
+import java.awt.*;
+import java.io.*;
 
-import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.render.ISliderTile;
-import io.github.mc_umod.gui.container.ContainerPainter;
-import io.github.mc_umod.gui.items.ComboboxItem;
-import io.github.mc_umod.gui.items.GuiCombobox;
-import io.github.mc_umod.gui.items.GuiRescources;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.gui.items.*;
 import io.github.mc_umod.gui.items.GuiSlider;
-import io.github.mc_umod.gui.mode.ModeNormal;
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.gui.mode.*;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.util.math.*;
 
 public class GuiPainter extends GuiBase implements ISliderTile {
 	

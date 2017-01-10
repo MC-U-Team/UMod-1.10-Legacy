@@ -1,14 +1,13 @@
 package io.github.mc_umod.event;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
+import net.minecraft.tileentity.*;
+import net.minecraftforge.event.world.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class EventChestInventory {
 	

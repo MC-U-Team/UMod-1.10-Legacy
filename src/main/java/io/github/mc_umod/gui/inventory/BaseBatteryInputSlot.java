@@ -1,10 +1,10 @@
 package io.github.mc_umod.gui.inventory;
 
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.*;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
 
 public class BaseBatteryInputSlot extends BaseSlot {
 	

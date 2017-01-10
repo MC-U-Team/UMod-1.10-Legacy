@@ -1,18 +1,13 @@
 package io.github.mc_umod.ext;
 
-import java.util.ArrayList;
+import java.util.*;
 
-import io.github.mc_umod.UMod;
-import io.github.mc_umod.ext.abs.AbstractOreDictionaryRegistry;
-import io.github.mc_umod.ext.abs.AbstractRecipeRegistry;
-import io.github.mc_umod.ext.enderio.EnderIOExtension;
-import io.github.mc_umod.ext.ic2.IC2ModExtension;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.ModContainer;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import io.github.mc_umod.*;
+import io.github.mc_umod.ext.abs.*;
+import io.github.mc_umod.ext.enderio.*;
+import io.github.mc_umod.ext.ic2.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.event.*;
 
 public class ExtensionList {
 	

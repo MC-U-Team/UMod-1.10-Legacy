@@ -1,26 +1,21 @@
 package io.github.mc_umod.block.rail;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.entity.rail.EntityRailFX;
-import io.github.mc_umod.tileentity.rail.TileEntityRail;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.rail.*;
+import io.github.mc_umod.tileentity.rail.*;
+import net.minecraft.block.*;
+import net.minecraft.block.material.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.item.*;
+import net.minecraft.nbt.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class BlockExtendedRail extends Block implements ITileEntityProvider {
 	

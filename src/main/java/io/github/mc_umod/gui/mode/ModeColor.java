@@ -1,14 +1,12 @@
 package io.github.mc_umod.gui.mode;
 
-import java.awt.Color;
+import java.awt.*;
 
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.gui.items.GuiCheckbox;
-import io.github.mc_umod.gui.items.ImplGui;
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.gui.items.*;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.renderer.*;
 
 public class ModeColor extends ImplGui{
 

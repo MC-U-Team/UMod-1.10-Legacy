@@ -1,18 +1,16 @@
 package io.github.mc_umod.block.machine;
 
-import io.github.mc_umod.item.ItemEnergyDisplay;
-import io.github.mc_umod.tileentity.TileEntityEnergyPannel;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+import io.github.mc_umod.item.*;
+import io.github.mc_umod.tileentity.*;
+import net.minecraft.block.state.*;
+import net.minecraft.client.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class BlockEnergyPanel extends BlockBaseMachine {
 	

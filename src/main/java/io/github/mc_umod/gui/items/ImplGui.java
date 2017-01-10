@@ -1,7 +1,7 @@
 package io.github.mc_umod.gui.items;
 
-import io.github.mc_umod.gui.GuiBase;
-import net.minecraft.client.gui.Gui;
+import io.github.mc_umod.gui.*;
+import net.minecraft.client.gui.*;
 
 public abstract class ImplGui extends Gui{
 	

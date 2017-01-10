@@ -1,6 +1,6 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.obj.ObjLoader;
+import io.github.mc_umod.obj.*;
 
 public class ObjRenderRegistry {
 	

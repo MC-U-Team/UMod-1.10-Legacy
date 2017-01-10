@@ -1,12 +1,11 @@
 package io.github.mc_umod.obj;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
+import java.io.*;
+import java.net.*;
 
-import io.github.mc_umod.UMod;
-import net.minecraft.crash.CrashReport;
-import net.minecraft.util.ReportedException;
+import io.github.mc_umod.*;
+import net.minecraft.crash.*;
+import net.minecraft.util.*;
 
 public class ObjLoader {
 	

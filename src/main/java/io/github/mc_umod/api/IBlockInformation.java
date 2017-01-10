@@ -1,9 +1,9 @@
 package io.github.mc_umod.api;
 
-import java.util.List;
+import java.util.*;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
 
 public interface IBlockInformation {
 	

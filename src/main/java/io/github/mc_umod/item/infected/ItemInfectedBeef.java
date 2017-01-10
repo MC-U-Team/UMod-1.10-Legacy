@@ -1,13 +1,11 @@
 package io.github.mc_umod.item.infected;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UPotion;
-import io.github.mc_umod.UReference;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
+import io.github.mc_umod.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.potion.*;
 
 public class ItemInfectedBeef extends ItemFood {
 	

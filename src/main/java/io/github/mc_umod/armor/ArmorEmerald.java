@@ -1,13 +1,12 @@
 package io.github.mc_umod.armor;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
 
 public class ArmorEmerald extends ItemArmor {
 	

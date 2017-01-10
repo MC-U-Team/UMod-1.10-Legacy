@@ -1,6 +1,6 @@
 package io.github.mc_umod.utils;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Transformer<T> {
 	

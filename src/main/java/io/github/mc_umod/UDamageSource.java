@@ -1,9 +1,7 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.damagesource.DamageSourceElectroShock;
-import io.github.mc_umod.damagesource.DamageSourceNuclearExplosion;
-import io.github.mc_umod.damagesource.DamageSourceRadiation;
-import net.minecraft.util.DamageSource;
+import io.github.mc_umod.damagesource.*;
+import net.minecraft.util.*;
 
 public class UDamageSource {
 	

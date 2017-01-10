@@ -1,11 +1,11 @@
 package io.github.mc_umod.render;
 
-import java.awt.Color;
+import java.awt.*;
 
-import io.github.mc_umod.tileentity.TileEntityEnergyPannel;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.tileentity.TileEntity;
+import io.github.mc_umod.tileentity.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.tileentity.*;
 
 public class TileEntityEnergyPannelRender extends TileRender {
 	

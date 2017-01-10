@@ -1,10 +1,10 @@
 package io.github.mc_umod.gui.inventory;
 
-import java.awt.Color;
+import java.awt.*;
 
-import io.github.mc_umod.utils.StringMethod;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.inventory.IInventory;
+import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.inventory.*;
 
 public class ColorSlot extends BaseSlot {
 	

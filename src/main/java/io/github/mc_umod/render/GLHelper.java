@@ -1,28 +1,24 @@
 package io.github.mc_umod.render;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import java.awt.image.*;
+import java.io.*;
+import java.nio.*;
 
-import javax.imageio.ImageIO;
+import javax.imageio.*;
 
-import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.*;
 
-import net.hycrafthd.corelib.util.RGBA;
-import net.hycrafthd.corelib.via.Vertex;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import net.hycrafthd.corelib.util.*;
+import net.hycrafthd.corelib.via.*;
+import net.minecraft.client.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.client.renderer.texture.*;
+import net.minecraft.client.renderer.vertex.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 
 public class GLHelper {
 	

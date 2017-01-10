@@ -1,13 +1,10 @@
 package io.github.mc_umod.ext.ic2;
 
-import io.github.mc_umod.ext.UmodExtension;
-import io.github.mc_umod.ext.abs.AbstractOreDictionaryRegistry;
-import io.github.mc_umod.ext.abs.AbstractRecipeRegistry;
-import net.hycrafthd.corelib.registry.BlockRegistry;
-import net.hycrafthd.corelib.registry.TileEntityRegistry;
-import net.minecraft.block.Block;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import io.github.mc_umod.ext.*;
+import io.github.mc_umod.ext.abs.*;
+import net.hycrafthd.corelib.registry.*;
+import net.minecraft.block.*;
+import net.minecraftforge.fml.common.event.*;
 
 public class IC2ModExtension extends UmodExtension {
 	

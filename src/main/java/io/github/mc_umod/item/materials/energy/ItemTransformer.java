@@ -1,13 +1,12 @@
 package io.github.mc_umod.item.materials.energy;
 
-import java.util.List;
+import java.util.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.enumtype.EnumTypeTransformer;
-import io.github.mc_umod.item.ItemBase;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.*;
+import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.item.*;
+import net.minecraft.creativetab.*;
+import net.minecraft.item.*;
 
 public class ItemTransformer extends ItemBase {
 	

@@ -1,6 +1,6 @@
 package io.github.mc_umod.api.render;
 
-import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.*;
 
 public interface IBoundsProvider {
 	

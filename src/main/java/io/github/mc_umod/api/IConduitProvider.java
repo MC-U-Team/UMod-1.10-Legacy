@@ -1,6 +1,6 @@
 package io.github.mc_umod.api;
 
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 
 public interface IConduitProvider {
 	

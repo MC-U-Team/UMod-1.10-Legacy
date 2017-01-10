@@ -1,6 +1,6 @@
 package io.github.mc_umod.block.deco;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.state.*;
 
 public class BlockStairCreator {
 	

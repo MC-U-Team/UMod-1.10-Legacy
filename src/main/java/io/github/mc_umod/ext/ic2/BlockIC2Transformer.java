@@ -1,8 +1,8 @@
 package io.github.mc_umod.ext.ic2;
 
-import io.github.mc_umod.block.machine.BlockBaseMachine;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
+import io.github.mc_umod.block.machine.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.world.*;
 
 public class BlockIC2Transformer extends BlockBaseMachine{
 

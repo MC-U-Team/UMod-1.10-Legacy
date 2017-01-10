@@ -1,13 +1,13 @@
 package io.github.mc_umod.item.block;
 
-import java.util.List;
+import java.util.*;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
+import com.mojang.realmsclient.gui.*;
 
-import io.github.mc_umod.api.energy.IEnergyMessage;
-import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import io.github.mc_umod.api.energy.*;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
 
 public class ItemBlockEnergy extends ItemBlockBase {
 	

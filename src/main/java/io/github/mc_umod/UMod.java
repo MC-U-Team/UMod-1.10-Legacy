@@ -1,23 +1,13 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.api.ProcessHandler;
-import io.github.mc_umod.event.EventChestInventory;
-import io.github.mc_umod.event.EventDrawHUD;
-import io.github.mc_umod.event.EventExecuteRadiation;
-import io.github.mc_umod.event.EventGettingRadiation;
-import io.github.mc_umod.event.EventGettingRadiationInv;
-import io.github.mc_umod.event.EventLoadWorld;
-import io.github.mc_umod.event.EventPlayerJoin;
-import io.github.mc_umod.event.EventToolTip;
-import io.github.mc_umod.event.apis.EventRegRegistery;
-import io.github.mc_umod.ext.ExtensionList;
-import io.github.mc_umod.network.PacketHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.event.*;
+import io.github.mc_umod.event.apis.*;
+import io.github.mc_umod.ext.*;
+import io.github.mc_umod.network.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.Mod.*;
+import net.minecraftforge.fml.common.event.*;
 
 @Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {

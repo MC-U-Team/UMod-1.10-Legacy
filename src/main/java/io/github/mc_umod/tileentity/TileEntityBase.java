@@ -1,14 +1,13 @@
 package io.github.mc_umod.tileentity;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.IInteractionObject;
+import net.minecraft.entity.player.*;
+import net.minecraft.inventory.*;
+import net.minecraft.nbt.*;
+import net.minecraft.network.*;
+import net.minecraft.network.play.server.*;
+import net.minecraft.tileentity.*;
+import net.minecraft.util.text.*;
+import net.minecraft.world.*;
 
 public abstract class TileEntityBase extends TileEntity implements ISidedInventory, IInteractionObject {
 	

@@ -1,9 +1,9 @@
 package io.github.mc_umod.event.apis;
 
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.eventhandler.Event;
+import net.minecraft.block.state.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class CaseDestroyEvent extends Event{
 	

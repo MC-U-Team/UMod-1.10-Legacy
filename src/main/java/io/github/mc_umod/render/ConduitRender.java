@@ -1,12 +1,11 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.api.IConduitBlock;
-import io.github.mc_umod.api.IConduitProvider;
-import io.github.mc_umod.block.machine.BlockCable;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.block.machine.*;
+import net.minecraft.block.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.tileentity.*;
 
 public class ConduitRender {
 	

@@ -1,7 +1,7 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.command.CommandConduit;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import io.github.mc_umod.command.*;
+import net.minecraftforge.fml.common.event.*;
 
 public class UCommands {
 	

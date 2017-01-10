@@ -1,27 +1,22 @@
 package io.github.mc_umod.event;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-import io.github.mc_umod.UItems;
-import io.github.mc_umod.UPotion;
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IInfectedBlock;
-import io.github.mc_umod.armor.ArmorRadiation;
-import io.github.mc_umod.utils.NBTUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.armor.*;
+import io.github.mc_umod.utils.*;
+import net.minecraft.block.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.item.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.item.*;
+import net.minecraft.potion.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.event.entity.living.LivingEvent.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class EventGettingRadiationInv {
 	

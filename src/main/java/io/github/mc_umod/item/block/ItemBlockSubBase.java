@@ -1,6 +1,6 @@
 package io.github.mc_umod.item.block;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.*;
 
 public class ItemBlockSubBase extends ItemBlockBase {
 	

@@ -1,20 +1,18 @@
 package io.github.mc_umod.block.infected;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.IInfectedBlock;
-import io.github.mc_umod.block.BlockBase;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Biomes;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.Chunk;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
+import io.github.mc_umod.block.*;
+import net.minecraft.block.*;
+import net.minecraft.block.material.*;
+import net.minecraft.block.state.*;
+import net.minecraft.entity.*;
+import net.minecraft.init.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraft.world.biome.*;
+import net.minecraft.world.chunk.*;
 
 public class BlockInfestedCleaner extends BlockBase {
 	

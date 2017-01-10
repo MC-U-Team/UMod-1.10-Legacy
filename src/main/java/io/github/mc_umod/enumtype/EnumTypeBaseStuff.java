@@ -1,6 +1,6 @@
 package io.github.mc_umod.enumtype;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.*;
 
 public enum EnumTypeBaseStuff implements IStringSerializable {
 	

@@ -1,11 +1,10 @@
 package io.github.mc_umod.gui;
 
-import io.github.mc_umod.gui.container.ContainerMagicCrafter;
-import io.github.mc_umod.gui.items.GuiCombobox;
-import io.github.mc_umod.gui.items.GuiRescources;
-import io.github.mc_umod.tileentity.TileEntityMagicCrafter;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.gui.items.*;
+import io.github.mc_umod.tileentity.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.util.math.*;
 
 public class GuiMagicCrafter extends GuiBase {
 	

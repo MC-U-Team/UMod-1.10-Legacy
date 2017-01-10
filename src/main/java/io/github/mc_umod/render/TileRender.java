@@ -1,8 +1,8 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.UReference;
-import net.minecraft.client.Minecraft;
-import net.minecraft.tileentity.TileEntity;
+import io.github.mc_umod.*;
+import net.minecraft.client.*;
+import net.minecraft.tileentity.*;
 
 public abstract class TileRender {
 	

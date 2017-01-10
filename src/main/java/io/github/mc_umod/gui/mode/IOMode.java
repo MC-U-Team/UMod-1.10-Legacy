@@ -1,26 +1,21 @@
 package io.github.mc_umod.gui.mode;
 
-import java.awt.Color;
+import java.awt.*;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.api.render.IIOMode;
-import io.github.mc_umod.gui.GuiBase;
-import io.github.mc_umod.gui.items.ComboboxItem;
-import io.github.mc_umod.gui.items.GuiCombobox;
-import io.github.mc_umod.gui.items.ImplGui;
-import io.github.mc_umod.network.PacketHandler;
-import io.github.mc_umod.network.message.MessageIOMode;
-import io.github.mc_umod.network.message.MessageIORequest;
-import io.github.mc_umod.render.ModelRenderHelper;
-import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
+import io.github.mc_umod.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.gui.*;
+import io.github.mc_umod.gui.items.*;
+import io.github.mc_umod.network.*;
+import io.github.mc_umod.network.message.*;
+import io.github.mc_umod.render.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.block.state.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
 
 public class IOMode extends ImplGui{
 

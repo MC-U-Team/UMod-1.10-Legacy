@@ -1,15 +1,12 @@
 package io.github.mc_umod.entity.render;
 
-import io.github.mc_umod.UReference;
-import io.github.mc_umod.entity.EntityInfectedCreeper;
-import io.github.mc_umod.entity.model.ModelInfectedCreeper;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.registry.IRenderFactory;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import io.github.mc_umod.*;
+import io.github.mc_umod.entity.*;
+import io.github.mc_umod.entity.model.*;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraft.util.*;
+import net.minecraftforge.fml.client.registry.*;
+import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
 public class RenderInfectedCreeper extends RenderLiving<EntityInfectedCreeper> implements IRenderFactory<EntityInfectedCreeper> {
