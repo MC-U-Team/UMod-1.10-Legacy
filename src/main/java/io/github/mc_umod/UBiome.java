@@ -4,7 +4,8 @@ import io.github.mc_umod.biome.BiomeInfected;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.BiomeProperties;
 import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.BiomeManager.*;
+import net.minecraftforge.common.BiomeManager.BiomeEntry;
+import net.minecraftforge.common.BiomeManager.BiomeType;
 
 public class UBiome {
 	

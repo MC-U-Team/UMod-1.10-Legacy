@@ -1,7 +1,15 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.item.tools.emerald.*;
-import io.github.mc_umod.item.tools.magic.*;
+import io.github.mc_umod.item.tools.emerald.ItemEmeraldAxe;
+import io.github.mc_umod.item.tools.emerald.ItemEmeraldHoe;
+import io.github.mc_umod.item.tools.emerald.ItemEmeraldPickaxe;
+import io.github.mc_umod.item.tools.emerald.ItemEmeraldSpade;
+import io.github.mc_umod.item.tools.emerald.ItemEmeraldSword;
+import io.github.mc_umod.item.tools.magic.ItemMagicAxe;
+import io.github.mc_umod.item.tools.magic.ItemMagicHoe;
+import io.github.mc_umod.item.tools.magic.ItemMagicPickaxe;
+import io.github.mc_umod.item.tools.magic.ItemMagicShovel;
+import io.github.mc_umod.item.tools.magic.ItemMagicSword;
 import io.github.mc_umod.utils.URegistryUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;

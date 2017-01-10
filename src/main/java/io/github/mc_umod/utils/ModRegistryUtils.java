@@ -2,7 +2,10 @@ package io.github.mc_umod.utils;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.api.crafting.*;
+import io.github.mc_umod.api.crafting.CraftSmeltRecepie;
+import io.github.mc_umod.api.crafting.CraftSmeltRecepieShapless;
+import io.github.mc_umod.api.crafting.MagicCrafterRecipe;
+import io.github.mc_umod.api.crafting.PulverizerRecepie;
 import net.minecraft.item.ItemStack;
 
 public class ModRegistryUtils {

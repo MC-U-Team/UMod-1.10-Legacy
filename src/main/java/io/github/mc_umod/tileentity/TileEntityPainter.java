@@ -2,15 +2,20 @@ package io.github.mc_umod.tileentity;
 
 import io.github.mc_umod.UMod;
 import io.github.mc_umod.api.energy.IPowerProvieder;
-import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.api.render.ISliderEntry;
+import io.github.mc_umod.api.render.IWorldView;
 import io.github.mc_umod.item.ItemBackPack;
 import io.github.mc_umod.utils.DirectionUtils;
-import net.hycrafthd.corelib.util.*;
-import net.minecraft.entity.player.*;
+import net.hycrafthd.corelib.util.ColorUtils;
+import net.hycrafthd.corelib.util.RGBA;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.*;
-import net.minecraft.util.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
 
 public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView,IPowerProvieder {
 	

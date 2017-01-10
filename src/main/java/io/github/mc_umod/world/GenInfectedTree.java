@@ -6,7 +6,8 @@ import io.github.mc_umod.UBlocks;
 import io.github.mc_umod.block.infected.BlockInfectedSapling;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 

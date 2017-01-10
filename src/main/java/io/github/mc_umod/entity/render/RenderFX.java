@@ -4,10 +4,12 @@ import java.util.HashMap;
 
 import io.github.mc_umod.entity.EntityFX;
 import io.github.mc_umod.render.TileRender;
-import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderFX extends Render<EntityFX> implements IRenderFactory<EntityFX> {

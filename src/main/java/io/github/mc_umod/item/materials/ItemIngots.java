@@ -5,7 +5,8 @@ import java.util.List;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
 import io.github.mc_umod.item.ItemBase;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ItemIngots extends ItemBase {
 	

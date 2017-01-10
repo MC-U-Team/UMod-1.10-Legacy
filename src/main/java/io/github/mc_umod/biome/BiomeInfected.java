@@ -3,7 +3,9 @@ package io.github.mc_umod.biome;
 import java.util.Random;
 
 import io.github.mc_umod.UBlocks;
-import io.github.mc_umod.entity.*;
+import io.github.mc_umod.entity.EntityInfectedCow;
+import io.github.mc_umod.entity.EntityInfectedCreeper;
+import io.github.mc_umod.entity.EntityInfectedZombie;
 import io.github.mc_umod.world.GenInfectedTree;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;

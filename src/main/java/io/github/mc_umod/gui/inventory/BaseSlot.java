@@ -2,7 +2,8 @@ package io.github.mc_umod.gui.inventory;
 
 import io.github.mc_umod.utils.StringMethod;
 import net.hycrafthd.corelib.util.RGBA;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class BaseSlot extends Slot {

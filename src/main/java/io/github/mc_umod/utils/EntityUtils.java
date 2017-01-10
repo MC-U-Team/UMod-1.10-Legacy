@@ -1,7 +1,8 @@
 package io.github.mc_umod.utils;
 
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import io.github.mc_umod.api.IInfectedEntity;
 import net.minecraft.entity.EntityLivingBase;

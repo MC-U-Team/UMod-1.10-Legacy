@@ -1,8 +1,12 @@
 package io.github.mc_umod.obj;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Scanner;
 
 import org.lwjgl.util.Color;
 

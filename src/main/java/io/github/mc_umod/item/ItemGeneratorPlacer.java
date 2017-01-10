@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UBlocks;
+import io.github.mc_umod.UReference;
 import io.github.mc_umod.entity.EntityGenerator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 

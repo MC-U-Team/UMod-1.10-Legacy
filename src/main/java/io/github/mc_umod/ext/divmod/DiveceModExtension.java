@@ -1,8 +1,12 @@
 package io.github.mc_umod.ext.divmod;
 
 import io.github.mc_umod.ext.IUmodExtension;
-import io.github.mc_umod.ext.abs.*;
-import net.minecraftforge.fml.common.event.*;
+import io.github.mc_umod.ext.abs.AbstractOreDictionaryRegistry;
+import io.github.mc_umod.ext.abs.AbstractRecipeRegistry;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
 public class DiveceModExtension implements IUmodExtension {
 	

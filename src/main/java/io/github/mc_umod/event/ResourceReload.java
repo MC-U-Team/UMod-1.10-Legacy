@@ -1,7 +1,8 @@
 package io.github.mc_umod.event;
 
 import io.github.mc_umod.UReference;
-import net.minecraft.client.resources.*;
+import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.client.resources.IResourceManagerReloadListener;
 
 public class ResourceReload implements IResourceManagerReloadListener {
 	

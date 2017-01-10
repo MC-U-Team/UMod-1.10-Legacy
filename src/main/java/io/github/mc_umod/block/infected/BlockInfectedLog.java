@@ -2,9 +2,12 @@ package io.github.mc_umod.block.infected;
 
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.api.IInfectedBlock;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.state.*;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 
 public class BlockInfectedLog extends BlockLog implements IInfectedBlock {

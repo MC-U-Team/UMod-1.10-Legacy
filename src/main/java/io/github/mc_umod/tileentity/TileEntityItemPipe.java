@@ -1,7 +1,9 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.event.apis.*;
+import io.github.mc_umod.api.IConduitProvider;
+import io.github.mc_umod.api.IPlugabel;
+import io.github.mc_umod.event.apis.RenderEntityClearEvent;
+import io.github.mc_umod.event.apis.RenderEntityRegisterEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;

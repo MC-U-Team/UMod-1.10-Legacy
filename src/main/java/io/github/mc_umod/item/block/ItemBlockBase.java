@@ -6,7 +6,8 @@ import io.github.mc_umod.UReference;
 import io.github.mc_umod.api.IBlockInformation;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 
 public class ItemBlockBase extends ItemBlock {
 	

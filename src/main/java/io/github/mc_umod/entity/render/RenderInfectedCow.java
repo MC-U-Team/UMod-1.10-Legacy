@@ -3,10 +3,13 @@ package io.github.mc_umod.entity.render;
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.entity.EntityInfectedCow;
 import io.github.mc_umod.entity.model.ModelInfectedCow;
-import net.minecraft.client.renderer.entity.*;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderInfectedCow extends RenderLiving<EntityInfectedCow> implements IRenderFactory<EntityInfectedCow> {

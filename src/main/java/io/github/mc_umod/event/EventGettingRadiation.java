@@ -2,7 +2,9 @@ package io.github.mc_umod.event;
 
 import java.util.Random;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UBiome;
+import io.github.mc_umod.UBlocks;
+import io.github.mc_umod.UPotion;
 import io.github.mc_umod.api.IInfectedBlock;
 import io.github.mc_umod.armor.ArmorRadiation;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;

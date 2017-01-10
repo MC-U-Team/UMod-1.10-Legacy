@@ -6,7 +6,8 @@ import io.github.mc_umod.UReference;
 import io.github.mc_umod.enumtype.EnumTypeTransformer;
 import io.github.mc_umod.item.ItemBase;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ItemTransformer extends ItemBase {
 	

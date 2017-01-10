@@ -3,7 +3,8 @@ package io.github.mc_umod.utils;
 import net.minecraft.block.BlockAir;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 
 public class WorldUtils {
 	

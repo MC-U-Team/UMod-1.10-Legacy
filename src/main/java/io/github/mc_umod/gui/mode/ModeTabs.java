@@ -1,6 +1,7 @@
 package io.github.mc_umod.gui.mode;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
 
 import com.google.common.collect.Lists;
@@ -10,9 +11,12 @@ import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.inventory.BaseSlot;
 import io.github.mc_umod.gui.items.ImplGui;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.inventory.*;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 

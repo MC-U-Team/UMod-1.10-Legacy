@@ -17,7 +17,7 @@ public class UReference {
 	@Instance(modid)
 	public static UMod instance = new UMod();
 	
-	@SidedProxy(serverSide = "net.hycrafthd.umod.CommonProxy", clientSide = "net.hycrafthd.umod.ClientProxy", modId = modid)
+	@SidedProxy(serverSide = "io.github.mc_umod.CommonProxy", clientSide = "io.github.mc_umod.ClientProxy", modId = modid)
 	public static CommonProxy proxy = new CommonProxy();
 	
 	/**

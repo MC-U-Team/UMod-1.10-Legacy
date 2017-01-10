@@ -1,6 +1,8 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.armor.*;
+import io.github.mc_umod.armor.ArmorEmerald;
+import io.github.mc_umod.armor.ArmorMagic;
+import io.github.mc_umod.armor.ArmorRadiation;
 import io.github.mc_umod.item.tools.energy.ItemEnergyGlasses;
 import io.github.mc_umod.utils.URegistryUtils;
 import net.minecraft.init.SoundEvents;

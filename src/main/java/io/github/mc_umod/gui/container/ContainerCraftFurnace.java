@@ -1,6 +1,8 @@
 package io.github.mc_umod.gui.container;
 
-import io.github.mc_umod.gui.inventory.*;
+import io.github.mc_umod.gui.inventory.BaseCraftSlot;
+import io.github.mc_umod.gui.inventory.BaseNormalSlot;
+import io.github.mc_umod.gui.inventory.BaseSlotOutput;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.math.BlockPos;

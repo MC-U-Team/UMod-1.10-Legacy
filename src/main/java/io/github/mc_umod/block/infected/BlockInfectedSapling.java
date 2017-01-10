@@ -2,14 +2,21 @@ package io.github.mc_umod.block.infected;
 
 import java.util.Random;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UBlocks;
+import io.github.mc_umod.UReference;
 import io.github.mc_umod.api.IInfectedBlock;
 import io.github.mc_umod.world.GenInfectedTree;
-import net.minecraft.block.*;
-import net.minecraft.block.properties.*;
-import net.minecraft.block.state.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class BlockInfectedSapling extends BlockBush implements IGrowable, IInfectedBlock {

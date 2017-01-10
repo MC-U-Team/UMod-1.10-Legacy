@@ -1,6 +1,7 @@
 package io.github.mc_umod.obj;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 
 import io.github.mc_umod.UMod;

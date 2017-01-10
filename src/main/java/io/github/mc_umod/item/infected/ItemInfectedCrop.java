@@ -2,9 +2,11 @@ package io.github.mc_umod.item.infected;
 
 import java.util.List;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UPotion;
+import io.github.mc_umod.UReference;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 
 public class ItemInfectedCrop extends ItemFood {

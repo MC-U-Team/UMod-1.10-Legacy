@@ -1,9 +1,13 @@
 package io.github.mc_umod.gui.container;
 
 import io.github.mc_umod.api.energy.IBatteryProvider;
-import io.github.mc_umod.gui.inventory.*;
+import io.github.mc_umod.gui.inventory.BaseBatteryInputSlot;
+import io.github.mc_umod.gui.inventory.BaseSlot;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.ClickType;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
@@ -34,8 +38,7 @@ public class ContainerBase extends Container {
 	}
 	
 	@Override
-	protected void retrySlotClick(int p_75133_1_, int p_75133_2_, boolean p_75133_3_, EntityPlayer p_75133_4_) {
-	}
+	protected void retrySlotClick(int p_75133_1_, int p_75133_2_, boolean p_75133_3_, EntityPlayer p_75133_4_) {}
 	
 	@Override
 	public void onContainerClosed(EntityPlayer entityPlayer) {
@@ -60,7 +63,7 @@ public class ContainerBase extends Container {
 	
 	@Override
 	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
-		if(clickTypeIn.equals(ClickType.THROW) || this.inventorySlots.size() < slotId)return super.slotClick(slotId, dragType, clickTypeIn, player);
+		if(clickTypeIn.equals(ClickType.THROW) || this.inventorySlots.size() < slotId || slotId < 0)return super.slotClick(slotId, dragType, clickTypeIn, player);
 		if (!(this.inventorySlots.get(slotId) instanceof BaseSlot) || ((BaseSlot)this.inventorySlots.get(slotId)).isVisible()) {
 			return super.slotClick(slotId, dragType, clickTypeIn, player);
 		}

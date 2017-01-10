@@ -1,6 +1,8 @@
 package io.github.mc_umod.ext.enderio;
 
-import crazypants.enderio.power.*;
+import crazypants.enderio.power.IPowerApiAdapter;
+import crazypants.enderio.power.IPowerInterface;
+import crazypants.enderio.power.IPowerStorage;
 import io.github.mc_umod.api.energy.IPowerProvieder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;

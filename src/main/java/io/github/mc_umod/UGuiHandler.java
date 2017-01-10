@@ -1,8 +1,20 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.gui.*;
-import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.enumtype.EnumTypeBackPack;
+import io.github.mc_umod.enumtype.EnumTypeGui;
+import io.github.mc_umod.gui.GuiBackPack;
+import io.github.mc_umod.gui.GuiChargstation;
+import io.github.mc_umod.gui.GuiCraftFurnance;
+import io.github.mc_umod.gui.GuiEnergy;
+import io.github.mc_umod.gui.GuiMagicCrafter;
+import io.github.mc_umod.gui.GuiPainter;
+import io.github.mc_umod.gui.GuiPulverizer;
+import io.github.mc_umod.gui.container.ContainerBackPack;
+import io.github.mc_umod.gui.container.ContainerChargeStation;
+import io.github.mc_umod.gui.container.ContainerCraftFurnace;
+import io.github.mc_umod.gui.container.ContainerMagicCrafter;
+import io.github.mc_umod.gui.container.ContainerPainter;
+import io.github.mc_umod.gui.container.ContainerPulverizer;
 import io.github.mc_umod.gui.inventory.InventoryBackPack;
 import net.hycrafthd.corelib.util.ICustomGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;

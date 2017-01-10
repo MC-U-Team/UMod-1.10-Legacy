@@ -1,6 +1,7 @@
 package io.github.mc_umod.item.block;
 
-import io.github.mc_umod.block.*;
+import io.github.mc_umod.block.BlockNetherOres;
+import io.github.mc_umod.block.BlockOres;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;

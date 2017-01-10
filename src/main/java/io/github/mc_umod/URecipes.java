@@ -1,10 +1,14 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.api.crafting.*;
+import io.github.mc_umod.api.crafting.CraftSmeltRecepieShapless;
+import io.github.mc_umod.api.crafting.MagicCrafterRecipe;
+import io.github.mc_umod.api.crafting.PulverizerRecepie;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
 import io.github.mc_umod.utils.ModRegistryUtils;
-import net.hycrafthd.corelib.registry.*;
-import net.minecraft.init.*;
+import net.hycrafthd.corelib.registry.RecipeRegistry;
+import net.hycrafthd.corelib.registry.SmeltingRegistry;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class URecipes {

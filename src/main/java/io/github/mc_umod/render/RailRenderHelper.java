@@ -1,6 +1,7 @@
 package io.github.mc_umod.render;
 
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 

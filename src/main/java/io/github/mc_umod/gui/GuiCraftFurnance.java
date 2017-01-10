@@ -1,10 +1,13 @@
 package io.github.mc_umod.gui;
 
 import io.github.mc_umod.gui.container.ContainerCraftFurnace;
-import io.github.mc_umod.gui.items.*;
+import io.github.mc_umod.gui.items.ComboboxItem;
+import io.github.mc_umod.gui.items.GuiCombobox;
+import io.github.mc_umod.gui.items.GuiRescources;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCraftFurnance extends GuiBase {

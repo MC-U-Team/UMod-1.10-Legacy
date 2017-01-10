@@ -2,9 +2,15 @@ package io.github.mc_umod.tileentity;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.event.apis.*;
+import io.github.mc_umod.api.IConduitProvider;
+import io.github.mc_umod.api.IPlugabel;
+import io.github.mc_umod.api.energy.ICabel;
+import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.api.energy.TunnelHolder;
+import io.github.mc_umod.event.apis.EnergyRegisterEvent;
+import io.github.mc_umod.event.apis.EnergyUnregisterEvent;
+import io.github.mc_umod.event.apis.RenderEntityClearEvent;
+import io.github.mc_umod.event.apis.RenderEntityRegisterEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;

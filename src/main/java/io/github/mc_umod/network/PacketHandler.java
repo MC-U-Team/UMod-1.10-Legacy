@@ -1,6 +1,11 @@
 package io.github.mc_umod.network;
 
-import io.github.mc_umod.network.message.*;
+import io.github.mc_umod.network.message.MessageIOCallback;
+import io.github.mc_umod.network.message.MessageIOMode;
+import io.github.mc_umod.network.message.MessageIORequest;
+import io.github.mc_umod.network.message.MessageSliderAdd;
+import io.github.mc_umod.network.message.MessageSliderGet;
+import io.github.mc_umod.network.message.MessageSliderRequest;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;

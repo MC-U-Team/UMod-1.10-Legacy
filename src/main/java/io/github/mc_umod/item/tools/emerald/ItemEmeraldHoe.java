@@ -4,8 +4,10 @@ import java.util.List;
 
 import io.github.mc_umod.UReference;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraft.item.ItemHoe;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemEmeraldHoe extends ItemHoe {
 	

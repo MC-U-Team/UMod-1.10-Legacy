@@ -1,6 +1,11 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.entity.*;
+import io.github.mc_umod.entity.EntityFX;
+import io.github.mc_umod.entity.EntityGenerator;
+import io.github.mc_umod.entity.EntityInfectedCow;
+import io.github.mc_umod.entity.EntityInfectedCreeper;
+import io.github.mc_umod.entity.EntityInfectedZombie;
+import io.github.mc_umod.entity.EntityNukePrimed;
 import io.github.mc_umod.entity.rail.EntityRailFX;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.registry.EntityRegistry;

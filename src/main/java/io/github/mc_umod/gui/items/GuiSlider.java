@@ -3,7 +3,8 @@ package io.github.mc_umod.gui.items;
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.network.PacketHandler;
-import io.github.mc_umod.network.message.*;
+import io.github.mc_umod.network.message.MessageSliderAdd;
+import io.github.mc_umod.network.message.MessageSliderRequest;
 import io.github.mc_umod.render.GLHelper;
 import io.github.mc_umod.utils.StringMethod;
 import net.hycrafthd.corelib.util.RGBA;
@@ -34,7 +35,8 @@ public class GuiSlider extends ImplGui {
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, this.ps));
 	}
 	
-	public void render(int x,int y) {
+	@Override
+	public void render(int mouseX,int mouseY) {
 		Minecraft mc = base_gui.mc;
 		mc.getTextureManager().bindTexture(new GuiRescources("Slider_Background.png"));
 		GlStateManager.color(back.getRed(), back.getGreen(), back.getBlue(), back.getAlpha());
@@ -111,7 +113,7 @@ public class GuiSlider extends ImplGui {
 	}
 	
 	@Override
-	public void onClick(int mousex, int mousey) {
+	public void onDrag(int mousex, int mousey) {
 		if (mousex >= x && mousex <= x + 100 && mousey >= y && mousey <= y + 8) {
 			val = mousex - x;
 			PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));

@@ -1,14 +1,19 @@
 package io.github.mc_umod.item.block;
 
-import io.github.mc_umod.block.deco.*;
-import net.minecraft.block.*;
+import io.github.mc_umod.block.deco.BlockDoubleCustomSlab;
+import io.github.mc_umod.block.deco.BlockHalfCustomSlab;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBlockCustomSlab extends ItemBlockBase {
 	

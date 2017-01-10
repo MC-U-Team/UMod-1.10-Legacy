@@ -1,13 +1,16 @@
 package io.github.mc_umod.network.message;
 
 import io.github.mc_umod.api.render.IIOMode;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.utils.DirectionUtils;
+import io.github.mc_umod.utils.NetworkUtil;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.simpleimpl.*;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, IMessage> {
 	

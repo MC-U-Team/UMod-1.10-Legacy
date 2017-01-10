@@ -8,13 +8,17 @@ import org.lwjgl.input.Keyboard;
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.api.render.ISliderTile;
 import io.github.mc_umod.gui.container.ContainerPainter;
-import io.github.mc_umod.gui.items.*;
+import io.github.mc_umod.gui.items.ComboboxItem;
+import io.github.mc_umod.gui.items.GuiCombobox;
+import io.github.mc_umod.gui.items.GuiRescources;
+import io.github.mc_umod.gui.items.GuiSlider;
 import io.github.mc_umod.gui.mode.ModeNormal;
 import io.github.mc_umod.utils.StringMethod;
 import net.hycrafthd.corelib.util.RGBA;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 
@@ -67,7 +71,6 @@ public class GuiPainter extends GuiBase implements ISliderTile {
 	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		
 		GlStateManager.popMatrix();
 		if (this.activeTab.getGui() instanceof ModeNormal) {
 			red.render(mouseX, mouseY);
@@ -121,10 +124,10 @@ public class GuiPainter extends GuiBase implements ISliderTile {
 	@Override
 	public void handelMouseInput(int mouseX, int mouseY) {
 		if (this.activeTab.getGui() instanceof ModeNormal) {
-			red.onClick(mouseX, mouseY);
-			green.onClick(mouseX, mouseY);
-			blue.onClick(mouseX, mouseY);
-			sat.onClick(mouseX, mouseY);
+			red.onDrag(mouseX, mouseY);
+			green.onDrag(mouseX, mouseY);
+			blue.onDrag(mouseX, mouseY);
+			sat.onDrag(mouseX, mouseY);
 		}
 	}
 	

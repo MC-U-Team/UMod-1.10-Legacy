@@ -2,7 +2,8 @@ package io.github.mc_umod.event;
 
 import java.util.HashMap;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UDamageSource;
+import io.github.mc_umod.UPotion;
 import io.github.mc_umod.armor.ArmorRadiation;
 import io.github.mc_umod.utils.EntityUtils;
 import net.minecraft.entity.EntityLivingBase;
