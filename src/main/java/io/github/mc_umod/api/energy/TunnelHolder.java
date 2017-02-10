@@ -18,7 +18,6 @@ public class TunnelHolder {
 		int num = tunnels.size();
 		tn.setID(num);
 		tunnels.add(tn);
-		System.out.println("Added " + num);
 		return num;
 	}
 	

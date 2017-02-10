@@ -1,9 +1,11 @@
 package io.github.mc_umod.render;
 
+import io.github.mc_umod.*;
 import io.github.mc_umod.block.machine.*;
 import io.github.mc_umod.tileentity.*;
 import net.minecraft.block.*;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
@@ -20,6 +22,15 @@ public class CabelRender extends TileRender {
 		// if (pl.inventory.armorInventory[3] != null && pl.inventory.armorInventory[3].getItem() instanceof ItemEnergyGlasses && tile instanceof IPowerProvieder) {
 		// TODO Create Overlay only IO Pipes
 		// }
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(posX, posY, posZ);
+		GlStateManager.enableBlend();
+		GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+		GlStateManager.shadeModel(7425);
+		UReference.getClientProxy().getObjRenderList().GENERATOR.draw(DefaultVertexFormats.POSITION_TEX_COLOR);
+		GlStateManager.shadeModel(7424);
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
 		Block blo = tile.getWorld().getBlockState(tile.getPos()).getBlock();
 		if (blo != null && tile instanceof TileEntityCable && blo instanceof BlockCable) {
 			BlockCable cab = (BlockCable) blo;

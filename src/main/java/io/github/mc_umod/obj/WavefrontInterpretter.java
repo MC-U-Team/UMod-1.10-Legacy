@@ -4,28 +4,44 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import static org.lwjgl.opengl.GL11.*;
+
 import io.github.mc_umod.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.*;
+import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 
 public class WavefrontInterpretter extends FileInputStream {
 	
-	private ArrayList<Vec3d> vert = new ArrayList<Vec3d>();
+	private WaveFrontBuffer buffer;
+	private ArrayList<Vec3d> 
+	        vertex = new ArrayList<Vec3d>(),
+			vertexTexture = new ArrayList<Vec3d>(),
+	        vertexNormal = new ArrayList<Vec3d>();
 	private ArrayList<WavefrontField> area = new ArrayList<WavefrontField>();
 	private ArrayList<MaterialInterpretter> mtls = new ArrayList<MaterialInterpretter>();
 	
-	public WavefrontInterpretter(File fl,String ModID) throws FileNotFoundException {
+	public WavefrontInterpretter(File fl,String ModID) throws Exception {
 		super(fl);
+		this.buffer = new WaveFrontBuffer();
 		try {
 			Scanner sc = new Scanner(this);
 			Material mtl = new BaseMaterial();
 			while (sc.hasNextLine()) {
 				String stc = sc.nextLine();
+				if (stc.startsWith("vt ")) {
+					String[] st = stc.replace("vt ", "").split(" ");
+					vertexTexture.add(new Vec3d(Double.valueOf(st[0]), Double.valueOf(st[1]), Double.valueOf(st[2])));
+				}
+				if (stc.startsWith("vn ")) {
+					String[] st = stc.replace("vn ", "").split(" ");
+					vertexNormal.add(new Vec3d(Double.valueOf(st[0]), Double.valueOf(st[1]), Double.valueOf(st[2])));
+				}
 				if (stc.startsWith("v ")) {
 					String[] st = stc.replace("v ", "").split(" ");
-					vert.add(new Vec3d(Double.valueOf(st[0]), Double.valueOf(st[1]), Double.valueOf(st[2])));
+					vertex.add(new Vec3d(Double.valueOf(st[0]), Double.valueOf(st[1]), Double.valueOf(st[2])));
 				}
 				if (stc.startsWith("f ")) {
 					area.add(new WavefrontField(mtl, stc.replace("f ", "").split(" ")));
@@ -43,6 +59,9 @@ public class WavefrontInterpretter extends FileInputStream {
 						}
 					}
 				}
+				if(stc.startsWith("# ")){
+					UMod.log.debug(stc);
+				}
 			}
 			sc.close();
 			this.close();
@@ -59,26 +78,13 @@ public class WavefrontInterpretter extends FileInputStream {
 		}
 	}
 	
-	public void draw() {
-		Tessellator ts = Tessellator.getInstance();
-		VertexBuffer bf = ts.getBuffer();
-		drawOnlyArea(bf);
-		ts.draw();
-		drawOnlyBoundingBox(bf);
-		ts.draw();
-	}
-	
-	public void drawOnlyArea(VertexBuffer bf) {
-		bf.begin(7, DefaultVertexFormats.POSITION_COLOR);
+	public void draw(VertexFormat form) {
 		for (WavefrontField are : this.area) {
-			are.addVertices(bf, this.vert);
-		}
-	}
-	
-	public void drawOnlyBoundingBox(VertexBuffer bf) {
-		bf.begin(3, DefaultVertexFormats.POSITION_COLOR);
-		for (WavefrontField are : this.area) {
-			are.addVerticesToBounding(bf, this.vert);
+			are.addVertices(this.buffer, this.vertex, this.vertexTexture, this.vertexNormal);
+			glBegin(GL_POLYGON);
+			this.buffer.draw();
+			glEnd();
+			this.buffer.clear();
 		}
 	}
 }

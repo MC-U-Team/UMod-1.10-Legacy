@@ -1,90 +1,37 @@
 package io.github.mc_umod.obj;
 
-import java.awt.*;
 import java.util.*;
 
-import net.hycrafthd.corelib.util.*;
+import com.sun.corba.se.impl.ior.*;
+
+import io.github.mc_umod.*;
+import net.minecraft.client.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.util.math.*;
+import net.minecraftforge.event.entity.minecart.*;
 
 public class WavefrontField {
 	
-	public final int[] POINTS;
+	public final WavefrontVertex[] POINTS;
 	public final Material mtl;
 	
-	public WavefrontField(Material mtl, String... strings) {
+	public WavefrontField(Material mtl, String... strings) throws Exception {
 		this.mtl = mtl;
-		this.POINTS = new int[strings.length];
+		this.POINTS = new WavefrontVertex[strings.length];
 		int i = 0;
 		for (String string : strings) {
-			String[] dt = string.split("//");
-			POINTS[i] = Integer.valueOf(dt[0]);
+			this.POINTS[i] = new WavefrontVertex(string);
 			i++;
 		}
 	}
 	
-	public void addVertices(VertexBuffer bf, ArrayList<Vec3d> ver) {
-		if (!mtl.hasTexture()) {
-			RGBA c = mtl.getColor();
-			for (int i : POINTS) {
-				Vec3d dro = ver.get(i - 1);
-				bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
+	public void addVertices(WaveFrontBuffer buffer,ArrayList<Vec3d> vertieces,ArrayList<Vec3d> vertex_texture_cords,ArrayList<Vec3d> vertex_normals) {
+		    if(this.mtl.hasTexture())this.mtl.bindTex();
+		    for (WavefrontVertex v : POINTS) {
+				v.addVertex(this.mtl, buffer, vertieces, vertex_texture_cords, vertex_normals);
 			}
-		} else {
-			GlStateManager.enableTexture2D();
-			Tessellator.getInstance().draw();
-			bf.begin(7, DefaultVertexFormats.POSITION_TEX);
-			mtl.bindTex();
-			int x = 0;
-			for (int i : POINTS) {
-				Vec3d dro = ver.get(i - 1);
-				double u = 0, v = 0;
-				switch (x) {
-				case 1:
-					u = 1;
-					break;
-				case 2:
-					v = 1;
-					break;
-				case 3:
-					v = 1;
-					u = 1;
-					break;
-				}
-				bf.pos(dro.xCoord, dro.yCoord, dro.zCoord).tex(u, v).endVertex();
-				x++;
-			}
-			GlStateManager.disableTexture2D();
-			Tessellator.getInstance().draw();
-			bf.begin(7, DefaultVertexFormats.POSITION_COLOR);
-		}
 	}
 	
-	public void addVerticesToBounding(VertexBuffer bf, ArrayList<Vec3d> ver) {
-		RGBA c = new RGBA(Color.BLACK);
-		for (int i : POINTS) {
-			Vec3d dro = ver.get(i - 1);
-			final double d = 0.00001;
-			double x = dro.xCoord, y = dro.yCoord + 0.01, z = dro.zCoord + 0.01;
-			if (x < 0) {
-				x -= d;
-			} else {
-				x += d;
-			}
-			if (y < 0) {
-				y -= d;
-			} else {
-				y += d;
-			}
-			if (z < 0) {
-				z -= d;
-			} else {
-				z += d;
-			}
-			bf.pos(x, y, z).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
-		}
-		
-	}
 }

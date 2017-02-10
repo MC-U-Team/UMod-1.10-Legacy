@@ -6,6 +6,8 @@ import io.github.mc_umod.*;
 import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.gui.container.*;
 import io.github.mc_umod.utils.*;
+import net.hycrafthd.corelib.util.*;
+import net.minecraft.client.renderer.color.*;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
@@ -15,7 +17,7 @@ import net.minecraft.nbt.*;
 import net.minecraft.util.*;
 import net.minecraft.world.*;
 
-public class ItemBackPack extends ItemBase {
+public class ItemBackPack extends ItemBase implements IItemColor{
 	
 	public ItemBackPack() {
 		super();
@@ -71,5 +73,10 @@ public class ItemBackPack extends ItemBase {
 				container.updateNotification = false;
 			}
 		}
+	}
+
+	@Override
+	public int getColorFromItemstack(ItemStack stack, int tintIndex) {
+		return ColorUtils.getColor(stack);
 	}
 }

@@ -6,7 +6,6 @@ import java.util.*;
 
 import org.lwjgl.util.*;
 
-import io.github.mc_umod.*;
 import net.hycrafthd.corelib.util.*;
 import net.minecraft.util.*;
 
@@ -36,7 +35,7 @@ public class MaterialInterpretter extends FileInputStream {
 					mtl.setColor(mtl.getColor().setAlpha((int) Math.round((double) 255 * d)));
 				}
 				if (st.startsWith("map_Kd ")) {
-					mtl.setMap(new ResourceLocation(modID, "textures/maps/" + st.replace("map_Kd ", "")));
+					mtl.setMap(st.replace("map_Kd ", ""));
 				}
 			}
 			if (mtl != null) {
