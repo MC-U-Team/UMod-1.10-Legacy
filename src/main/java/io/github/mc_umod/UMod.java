@@ -5,9 +5,11 @@ import io.github.mc_umod.event.*;
 import io.github.mc_umod.event.apis.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.network.*;
+import net.minecraft.client.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.network.*;
 
 @Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {

@@ -24,16 +24,21 @@ public class RenderGenerator extends Render<EntityGenerator> implements IRenderF
 	public void doRender(EntityGenerator entity, double x, double y, double z, float entityYaw, float partialTicks) {
 		if (entity == null || entity.getPosition() == null)
 			return;
-		glPushMatrix();
-		glTranslated(x, y, z);
-		glScaled(0.1, 0.1, 0.1);
-		glEnable(GL_BLEND);
+		GlStateManager.pushMatrix();
+		GlStateManager.enableAlpha();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.scale(0.2, 0.2, 0.2);
+		GlStateManager.rotate(-90, 0, 1, 0);
+		GlStateManager.enableLighting();
+		glLighti(GL_LIGHT4, GL_MAX_NAME_STACK_DEPTH, GL_3_BYTES);
+		GlStateManager.enableBlend();
 		GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 		GlStateManager.shadeModel(7425);
 		UReference.getClientProxy().getObjRenderList().GENERATOR.draw();
 		GlStateManager.shadeModel(7424);
-		glDisable(GL_BLEND);
-		glPopMatrix();
+		GlStateManager.disableBlend();
+		GlStateManager.disableAlpha();
+		GlStateManager.popMatrix();
 	}
 
 	@Override

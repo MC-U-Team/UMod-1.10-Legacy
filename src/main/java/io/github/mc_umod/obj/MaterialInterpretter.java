@@ -7,6 +7,7 @@ import java.util.*;
 
 import io.github.mc_umod.renderapi.*;
 import net.hycrafthd.corelib.util.*;
+import net.minecraft.util.*;
 
 /**
  * Reads the Materials out of the given File
@@ -15,12 +16,12 @@ import net.hycrafthd.corelib.util.*;
  *
  */
 
-public class MaterialInterpretter extends FileInputStream {
+public class MaterialInterpretter extends DataInputStream {
 	
 	private HashMap<String, Material> mtls = new HashMap<String, Material>();
 	
-	public MaterialInterpretter(String name,String modID) throws FileNotFoundException, URISyntaxException {
-		super(new File(MaterialInterpretter.class.getResource(name).toURI()));
+	public MaterialInterpretter(ResourceLocation name,String modID) throws URISyntaxException, IOException {
+		super(new ResourceStream(name));
 		try {
 			Scanner sc = new Scanner(this);
 			Material mtl = null;

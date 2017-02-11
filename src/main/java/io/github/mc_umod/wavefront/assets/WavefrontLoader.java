@@ -5,6 +5,7 @@ import java.net.*;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.obj.*;
+import io.github.mc_umod.renderapi.*;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.crash.*;
 import net.minecraft.util.*;
@@ -15,7 +16,7 @@ public class WavefrontLoader {
 	
 	public WavefrontLoader(String str) {
 		try {
-			this.pr = new WavefrontInterpretter(new File(WavefrontLoader.class.getResource(str + ".obj").toURI()),UReference.modid);
+			this.pr = new WavefrontInterpretter(new ResourceStream(new MapResource(str + ".obj")),UReference.modid);
 		} catch (FileNotFoundException e) {
 			UMod.log.error("Model " + str + " was not found", e);
 			throw new ReportedException(new CrashReport("MODEL LOAD ERROR " + str, e));

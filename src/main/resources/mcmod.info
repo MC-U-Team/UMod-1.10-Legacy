@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
+  "modid": "umod",
+  "name": "Umod",
+  "description": "Community MOD.",
+  "version": "alpha 0.3",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["HycraftHD","MrTroble","GalaxyHD","Tutadventures","Luc_ZZ"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -20,7 +20,7 @@ import net.minecraft.util.math.*;
  *
  */
 
-public class WavefrontInterpretter extends FileInputStream {
+public class WavefrontInterpretter extends DataInputStream {
 	
 	private Logger LOG = LogManager.getLogger();
 	private RenderBuffer buffer;
@@ -31,8 +31,8 @@ public class WavefrontInterpretter extends FileInputStream {
 	private ArrayList<WavefrontField> area = new ArrayList<WavefrontField>();
 	private ArrayList<MaterialInterpretter> mtls = new ArrayList<MaterialInterpretter>();
 	
-	public WavefrontInterpretter(File fl,String ModID) throws Exception {
-		super(fl);
+	public WavefrontInterpretter(ResourceStream str,String ModID) throws Exception {
+		super(str);
 		this.buffer = new RenderBuffer();
 		try {
 			Scanner sc = new Scanner(this);
@@ -55,7 +55,7 @@ public class WavefrontInterpretter extends FileInputStream {
 					area.add(new WavefrontField(mtl, stc.replace("f ", "").split(" ")));
 				}
 				if (stc.startsWith("mtllib ")) {
-					mtls.add(new MaterialInterpretter(stc.replace("mtllib ", ""),ModID));
+					mtls.add(new MaterialInterpretter(new MapResource(stc.replace("mtllib ", "")),ModID));
 				}
 				if (stc.startsWith("usemtl ")) {
 					String s = stc.replace("usemtl ", "");
@@ -74,15 +74,15 @@ public class WavefrontInterpretter extends FileInputStream {
 			sc.close();
 			this.close();
 		} catch (IOException e1) {
-			LOG.error("Error loading model " + fl.getName() + " (IO failer)", e1);
+			LOG.error("Error loading model (IO failer)", e1);
 		} catch (NumberFormatException ex) {
-			LOG.error("Error loading model " + fl.getName() + " (Number failer)", ex);
+			LOG.error("Error loading model (Number failer)", ex);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			LOG.error("Error loading model " + fl.getName() + " (Array failer)", e);
+			LOG.error("Error loading model (Array failer)", e);
 		} catch (URISyntaxException e) {
-			LOG.error("Model " + fl.getName() + " has an incorrect URI", e);
+			LOG.error("Model has an incorrect URI", e);
 		} catch(Throwable th){
-			LOG.error("Model " + fl.getName() + " load error", th);
+			LOG.error("Model load error", th);
 		}
 	}
 	

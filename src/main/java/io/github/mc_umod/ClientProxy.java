@@ -13,6 +13,7 @@ import io.github.mc_umod.entity.rail.*;
 import io.github.mc_umod.entity.render.*;
 import io.github.mc_umod.entity.render.rail.*;
 import io.github.mc_umod.enumtype.*;
+import io.github.mc_umod.event.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
@@ -41,6 +42,7 @@ public class ClientProxy extends CommonProxy {
 	public void init() {
 		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
 		this.regs = new ObjRenderRegistry();
+		((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener((IResourceManagerReloadListener) new ResourceReload());
 		this.help = new GLHelper(mc.getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	

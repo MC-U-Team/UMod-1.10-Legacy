@@ -6,7 +6,7 @@ import io.github.mc_umod.renderapi.*;
 import net.minecraft.util.math.*;
 
 /**
- * Storage for all points of an Pylogen
+ * Storage for all points of an Polygon
  * 
  * @author MrTroble
  *
