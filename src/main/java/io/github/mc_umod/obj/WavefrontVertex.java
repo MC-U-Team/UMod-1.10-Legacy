@@ -1,11 +1,17 @@
 package io.github.mc_umod.obj;
 
-import java.nio.*;
 import java.util.*;
 
+import io.github.mc_umod.renderapi.*;
 import net.hycrafthd.corelib.util.*;
-import net.minecraft.client.renderer.*;
 import net.minecraft.util.math.*;
+
+/**
+ * Loads the current vertices
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class WavefrontVertex {
 
@@ -33,7 +39,7 @@ public class WavefrontVertex {
 		}
 	}
 	
-	public void addVertex(Material mat,WaveFrontBuffer buffer,ArrayList<Vec3d> vertieces,ArrayList<Vec3d> vertex_texture_cords,ArrayList<Vec3d> vertex_normals){
+	public void addVertex(Material mat,RenderBuffer buffer,ArrayList<Vec3d> vertieces,ArrayList<Vec3d> vertex_texture_cords,ArrayList<Vec3d> vertex_normals){
 		if(this.VERTEX <= 0)return;
 		int ver = buffer.addVertex(vertieces.get(this.VERTEX - 1));
 		

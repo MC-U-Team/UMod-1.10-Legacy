@@ -1,8 +1,15 @@
-package io.github.mc_umod.obj;
+package io.github.mc_umod.renderapi;
 
 import java.awt.*;
 
 import net.hycrafthd.corelib.util.*;
+
+/**
+ * Material that is used when no Material is given
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class BaseMaterial extends Material {
 	

@@ -1,13 +1,19 @@
 package io.github.mc_umod.obj;
 
+import java.awt.*;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import org.lwjgl.util.*;
-
+import io.github.mc_umod.renderapi.*;
 import net.hycrafthd.corelib.util.*;
-import net.minecraft.util.*;
+
+/**
+ * Reads the Materials out of the given File
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class MaterialInterpretter extends FileInputStream {
 	

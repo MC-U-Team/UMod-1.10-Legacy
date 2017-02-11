@@ -1,23 +1,15 @@
-package io.github.mc_umod.obj;
-
-import java.awt.image.*;
-import java.io.*;
-import java.nio.*;
-
-import javax.imageio.*;
-
-import org.apache.commons.io.*;
-import org.lwjgl.*;
-import org.lwjgl.opengl.*;
-
-import static org.lwjgl.opengl.GL11.*;
+package io.github.mc_umod.renderapi;
 
 import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.client.resources.*;
-import net.minecraft.client.resources.data.*;
 import net.minecraft.util.*;
+
+/**
+ * Just a Storage class
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class Material {
 	

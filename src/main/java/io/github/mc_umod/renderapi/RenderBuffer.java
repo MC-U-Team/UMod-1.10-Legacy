@@ -1,12 +1,18 @@
-package io.github.mc_umod.obj;
+package io.github.mc_umod.renderapi;
 
-import java.nio.*;
 import java.util.*;
 
 import net.hycrafthd.corelib.util.*;
 import net.minecraft.util.math.*;
 
-public class WaveFrontBuffer{
+/**
+ * Vertex buffer and editor 
+ * 
+ * @author MrTroble
+ *
+ */
+
+public class RenderBuffer{
 	
 	public final ArrayList<Vertex> vec = new ArrayList<Vertex>();
 	

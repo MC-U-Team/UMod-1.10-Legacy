@@ -1,9 +1,16 @@
-package io.github.mc_umod.obj;
+package io.github.mc_umod.renderapi;
 
 import static org.lwjgl.opengl.GL11.*;
 
 import net.hycrafthd.corelib.util.*;
 import net.minecraft.util.math.*;
+
+/**
+ * Storage and draw class for each vertex
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class Vertex extends Vec3d{
 
@@ -53,7 +60,7 @@ public class Vertex extends Vec3d{
 	public void draw(){
 		if(rgb != null)glColor4d((double)rgb.getRed() / 255, (double)rgb.getGreen() / 255, (double)rgb.getBlue() / 255, (double)rgb.getAlpha() / 255);
 		if(normal != null)glNormal3d(this.normal.xCoord, this.normal.yCoord, this.normal.zCoord);
-		if(this.uv)glTexCoord2d(this.u, this.v);
+		if(this.uv)glTexCoord2d(this.u, 1 - this.v);
 		glVertex3d(this.xCoord, this.yCoord, this.zCoord);
 	}
 

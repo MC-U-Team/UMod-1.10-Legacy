@@ -1,10 +1,10 @@
-package io.github.mc_umod.obj;
+package io.github.mc_umod.wavefront.assets;
 
 import java.io.*;
 import java.net.*;
 
 import io.github.mc_umod.*;
-import net.minecraft.client.renderer.*;
+import io.github.mc_umod.obj.*;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.crash.*;
 import net.minecraft.util.*;
@@ -18,15 +18,15 @@ public class WavefrontLoader {
 			this.pr = new WavefrontInterpretter(new File(WavefrontLoader.class.getResource(str + ".obj").toURI()),UReference.modid);
 		} catch (FileNotFoundException e) {
 			UMod.log.error("Model " + str + " was not found", e);
-			throw new ReportedException(new CrashReport("MODEL LOADE ERROR " + str, e));
+			throw new ReportedException(new CrashReport("MODEL LOAD ERROR " + str, e));
 		} catch (URISyntaxException e) {
 			UMod.log.error("Model " + str + " has an incorrect URI", e);
-			throw new ReportedException(new CrashReport("MODEL LOADE ERROR " + str, e));
+			throw new ReportedException(new CrashReport("MODEL LOAD ERROR " + str, e));
 		} catch (NullPointerException e) {
 			UMod.log.error("Model " + str + " was not found", e);
-			throw new ReportedException(new CrashReport("MODEL LOADE ERROR " + str, e));
+			throw new ReportedException(new CrashReport("MODEL LOAD ERROR " + str, e));
 		} catch(Throwable e){
-			throw new ReportedException(new CrashReport("MODEL LOADE ERROR " + str, e));
+			throw new ReportedException(new CrashReport("MODEL LOAD ERROR " + str, e));
 		}
 		
 	}
@@ -35,7 +35,7 @@ public class WavefrontLoader {
 		return pr;
 	}
 	
-	public void draw(VertexFormat form) {
-		pr.draw(form);
+	public void draw() {
+		pr.draw();
 	}
 }

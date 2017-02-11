@@ -1,10 +1,7 @@
-package io.github.mc_umod;
-
-import io.github.mc_umod.obj.*;
+package io.github.mc_umod.wavefront.assets;
 
 public class ObjRenderRegistry {
 	
-	public WavefrontLoader TEST;
 	public WavefrontLoader GENERATOR;
 	
 	public ObjRenderRegistry() {
@@ -12,7 +9,6 @@ public class ObjRenderRegistry {
 	}
 	
 	public void reload() {
-		TEST = new WavefrontLoader("test");
 		GENERATOR = new WavefrontLoader("generator");
 	}
 }

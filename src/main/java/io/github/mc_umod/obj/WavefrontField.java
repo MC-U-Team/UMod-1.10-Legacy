@@ -2,15 +2,15 @@ package io.github.mc_umod.obj;
 
 import java.util.*;
 
-import com.sun.corba.se.impl.ior.*;
-
-import io.github.mc_umod.*;
-import net.minecraft.client.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.vertex.*;
+import io.github.mc_umod.renderapi.*;
 import net.minecraft.util.math.*;
-import net.minecraftforge.event.entity.minecart.*;
+
+/**
+ * Storage for all points of an Pylogen
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class WavefrontField {
 	
@@ -27,7 +27,7 @@ public class WavefrontField {
 		}
 	}
 	
-	public void addVertices(WaveFrontBuffer buffer,ArrayList<Vec3d> vertieces,ArrayList<Vec3d> vertex_texture_cords,ArrayList<Vec3d> vertex_normals) {
+	public void addVertices(RenderBuffer buffer,ArrayList<Vec3d> vertieces,ArrayList<Vec3d> vertex_texture_cords,ArrayList<Vec3d> vertex_normals) {
 		    if(this.mtl.hasTexture())this.mtl.bindTex();
 		    for (WavefrontVertex v : POINTS) {
 				v.addVertex(this.mtl, buffer, vertieces, vertex_texture_cords, vertex_normals);

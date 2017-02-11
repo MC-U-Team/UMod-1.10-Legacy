@@ -16,6 +16,7 @@ import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
+import io.github.mc_umod.wavefront.assets.*;
 import net.hycrafthd.corelib.registry.*;
 import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;

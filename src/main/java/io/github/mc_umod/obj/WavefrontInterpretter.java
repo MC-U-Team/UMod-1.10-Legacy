@@ -1,21 +1,29 @@
 package io.github.mc_umod.obj;
 
+import static org.lwjgl.opengl.GL11.*;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import static org.lwjgl.opengl.GL11.*;
+import org.apache.logging.log4j.*;
 
 import io.github.mc_umod.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
+import io.github.mc_umod.renderapi.*;
 import net.minecraft.client.renderer.vertex.*;
-import net.minecraft.util.*;
 import net.minecraft.util.math.*;
+
+/**
+ * Reads and parses the given .obj File
+ * 
+ * @author MrTroble
+ *
+ */
 
 public class WavefrontInterpretter extends FileInputStream {
 	
-	private WaveFrontBuffer buffer;
+	private Logger LOG = LogManager.getLogger();
+	private RenderBuffer buffer;
 	private ArrayList<Vec3d> 
 	        vertex = new ArrayList<Vec3d>(),
 			vertexTexture = new ArrayList<Vec3d>(),
@@ -25,7 +33,7 @@ public class WavefrontInterpretter extends FileInputStream {
 	
 	public WavefrontInterpretter(File fl,String ModID) throws Exception {
 		super(fl);
-		this.buffer = new WaveFrontBuffer();
+		this.buffer = new RenderBuffer();
 		try {
 			Scanner sc = new Scanner(this);
 			Material mtl = new BaseMaterial();
@@ -66,25 +74,29 @@ public class WavefrontInterpretter extends FileInputStream {
 			sc.close();
 			this.close();
 		} catch (IOException e1) {
-			UMod.log.error("Error Loading Model " + fl.getName() + " (IO Failer)", e1);
+			LOG.error("Error loading model " + fl.getName() + " (IO failer)", e1);
 		} catch (NumberFormatException ex) {
-			UMod.log.error("Error Loading Model " + fl.getName() + " (Number Failer)", ex);
+			LOG.error("Error loading model " + fl.getName() + " (Number failer)", ex);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			UMod.log.error("Error Loading Model " + fl.getName() + " (Array Failer)", e);
+			LOG.error("Error loading model " + fl.getName() + " (Array failer)", e);
 		} catch (URISyntaxException e) {
-			UMod.log.error("Model " + fl.getName() + " has an incorrect URI", e);
-		} catch (NullPointerException e) {
-			UMod.log.error("Model " + fl.getName() + " has an Nullpointer", e);
+			LOG.error("Model " + fl.getName() + " has an incorrect URI", e);
+		} catch(Throwable th){
+			LOG.error("Model " + fl.getName() + " load error", th);
 		}
 	}
 	
-	public void draw(VertexFormat form) {
+	public void draw() {
+		try{
 		for (WavefrontField are : this.area) {
 			are.addVertices(this.buffer, this.vertex, this.vertexTexture, this.vertexNormal);
 			glBegin(GL_POLYGON);
 			this.buffer.draw();
 			glEnd();
 			this.buffer.clear();
+		}
+		}catch(Throwable th){
+			LOG.error("Model render error", th);
 		}
 	}
 }

@@ -1,11 +1,10 @@
-package io.github.mc_umod.obj;
+package io.github.mc_umod.renderapi;
 
 import io.github.mc_umod.*;
 import net.minecraft.util.*;
 
 /**
- * TEMPORARY FOR {@link Texture}
- * <br>
+ * Location of all Textures
  * @author MrTroble
  */
 
