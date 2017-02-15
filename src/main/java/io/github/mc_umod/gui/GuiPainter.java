@@ -7,12 +7,12 @@ import org.lwjgl.input.*;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.gui.container.*;
 import io.github.mc_umod.gui.items.*;
 import io.github.mc_umod.gui.items.GuiSlider;
 import io.github.mc_umod.gui.mode.*;
 import io.github.mc_umod.utils.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;

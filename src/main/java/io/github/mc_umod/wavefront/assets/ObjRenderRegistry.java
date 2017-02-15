@@ -1,7 +1,5 @@
 package io.github.mc_umod.wavefront.assets;
 
-import net.minecraft.client.resources.*;
-
 public class ObjRenderRegistry {
 	
 	public WavefrontLoader GENERATOR;

@@ -4,9 +4,9 @@ import java.awt.*;
 import java.util.*;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.render.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;

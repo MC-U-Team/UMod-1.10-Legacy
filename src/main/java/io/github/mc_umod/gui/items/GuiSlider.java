@@ -1,12 +1,12 @@
 package io.github.mc_umod.gui.items;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.network.*;
 import io.github.mc_umod.network.message.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.utils.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.util.math.*;

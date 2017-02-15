@@ -4,13 +4,13 @@ import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.gui.container.*;
 import io.github.mc_umod.gui.inventory.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
+import net.minecraftforge.fml.common.network.*;
 
-public class UGuiHandler implements ICustomGuiHandler {
+public class UGuiHandler implements IGuiHandler {
 	
 	@SuppressWarnings("incomplete-switch")
 	@Override
@@ -68,10 +68,5 @@ public class UGuiHandler implements ICustomGuiHandler {
 		return null;
 		
 	}
-	
-	@Override
-	public String getMod() {
-		return UReference.modid;
-	}
-	
+		
 }

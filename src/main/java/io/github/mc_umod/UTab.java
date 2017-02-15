@@ -1,6 +1,5 @@
 package io.github.mc_umod;
 
-import net.minecraft.client.*;
 import net.minecraft.creativetab.*;
 import net.minecraft.item.*;
 

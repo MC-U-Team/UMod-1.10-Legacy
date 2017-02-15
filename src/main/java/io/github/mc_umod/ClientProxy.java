@@ -8,6 +8,7 @@ import com.mojang.realmsclient.gui.*;
 
 import io.github.mc_umod.block.deco.*;
 import io.github.mc_umod.block.machine.BlockSolarPanel.*;
+import io.github.mc_umod.corelib.api.ClientRegistry;
 import io.github.mc_umod.entity.*;
 import io.github.mc_umod.entity.rail.*;
 import io.github.mc_umod.entity.render.*;
@@ -18,8 +19,6 @@ import io.github.mc_umod.ext.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
 import io.github.mc_umod.wavefront.assets.*;
-import net.hycrafthd.corelib.registry.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.*;
@@ -37,6 +36,7 @@ public class ClientProxy extends CommonProxy {
 	private ObjRenderRegistry regs;
 	private ModelRenderHelper MODEL_HELPER;
 	private GLHelper help;
+	private ClientRegistry reg;
 	
 	@Override
 	public void init() {
@@ -65,158 +65,158 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerModels() {
 		// Register Base Type Variants
-		ResourceLocation[] rs3 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		ResourceLocation[] rs5 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		ResourceLocation[] rs6 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		ResourceLocation[] rs7 = new ResourceLocation[EnumTypeBaseStuff.values().length];
-		ResourceLocation[] rs8 = new ResourceLocation[EnumTypeBaseStuff.values().length];
+		String[] rs3 = new String[EnumTypeBaseStuff.values().length];
+		String[] rs5 = new String[EnumTypeBaseStuff.values().length];
+		String[] rs6 = new String[EnumTypeBaseStuff.values().length];
+		String[] rs7 = new String[EnumTypeBaseStuff.values().length];
+		String[] rs8 = new String[EnumTypeBaseStuff.values().length];
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
-			ModelRegistry.register(UItems.dusts, i, new ModelResourceLocation(UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			ModelRegistry.register(UItems.ingots, i, new ModelResourceLocation(UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			ModelRegistry.register(ItemUtil.from(UBlocks.blocks), i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			ModelRegistry.register(ItemUtil.from(UBlocks.ores), i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			ModelRegistry.register(ItemUtil.from(UBlocks.netherores), i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			rs3[i] = new ResourceLocation(UReference.modid, "dust" + EnumTypeBaseStuff.byMetadata(i).getName());
-			rs5[i] = new ResourceLocation(UReference.modid, "ingot" + EnumTypeBaseStuff.byMetadata(i).getName());
-			rs6[i] = new ResourceLocation(UReference.modid, "block" + EnumTypeBaseStuff.byMetadata(i).getName());
-			rs7[i] = new ResourceLocation(UReference.modid, "netherore" + EnumTypeBaseStuff.byMetadata(i).getName());
-			rs8[i] = new ResourceLocation(UReference.modid, "ore" + EnumTypeBaseStuff.byMetadata(i).getName());
+			this.reg.registerModel(UItems.dusts, i, new ModelResourceLocation(UReference.resource + "dust" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			this.reg.registerModel(UItems.ingots, i, new ModelResourceLocation(UReference.resource + "ingot" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			this.reg.registerModel(UBlocks.blocks, i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			this.reg.registerModel(UBlocks.ores, i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			this.reg.registerModel(UBlocks.netherores, i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
+			rs3[i] = ":dust" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs5[i] = ":ingot" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs6[i] = ":block" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs7[i] = ":netherore" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs8[i] = ":ore" + EnumTypeBaseStuff.byMetadata(i).getName();
 		}
-		ModelRegistry.registerVariants(UItems.dusts, rs3);
-		ModelRegistry.registerVariants(UItems.ingots, rs5);
-		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.blocks), rs6);
-		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.netherores), rs7);
-		ModelRegistry.registerVariants(Item.getItemFromBlock(UBlocks.ores), rs8);
-		ModelRegistry.register(UItems.cdust);
+		this.reg.registerModelVariants(UItems.dusts, rs3);
+		this.reg.registerModelVariants(UItems.ingots, rs5);
+		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.blocks), rs6);
+		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.netherores), rs7);
+		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.ores), rs8);
+		this.reg.registerModelVariants(UItems.cdust);
 		
 		// Transformer
-		ResourceLocation[] rs4 = new ResourceLocation[EnumTypeTransformer.values().length];
+		String[] rs4 = new String[EnumTypeTransformer.values().length];
 		for (int i = 0; i < EnumTypeTransformer.values().length; i++) {
-			ModelRegistry.register(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
-			rs4[i] = new ResourceLocation(UReference.modid, "transformer" + EnumTypeTransformer.byMetadata(i).getName());
+			this.reg.registerModel(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
+			rs4[i] = ":transformer" + EnumTypeTransformer.byMetadata(i).getName();
 		}
-		ModelRegistry.registerVariants(UItems.transformer, rs4);
+		this.reg.registerModelVariants(UItems.transformer, rs4);
 		
-		ModelRegistry.register(UItems.manganoxid);
+		this.reg.registerModel(UItems.manganoxid);
 		
 		// Pulverizer
-		ModelRegistry.register(UBlocks.charge);
-		ModelRegistry.register(ItemUtil.from(UBlocks.pulver), 0, new ModelResourceLocation(UReference.resource + "pulver", "inventory"));
-		ModelRegistry.register(UBlocks.craftfurnance);
-		ModelRegistry.register(UBlocks.painter);
-		ModelRegistry.register(UBlocks.craftfurnance);
+		this.reg.registerModel(UBlocks.charge);
+		this.reg.registerModel(UBlocks.pulver, 0, new ModelResourceLocation(UReference.resource + "pulver", "inventory"));
+		this.reg.registerModel(UBlocks.craftfurnance);
+		this.reg.registerModel(UBlocks.painter);
+		this.reg.registerModel(UBlocks.craftfurnance);
 		
 		// Energy
-		ModelRegistry.register(UItems.battery);
-		ModelRegistry.register(UItems.copper_wire);
-		ModelRegistry.register(UItems.copper_coil);
-		ModelRegistry.register(UItems.transformer);
-		ModelRegistry.register(UItems.thicker_copper_wire);
-		ModelRegistry.register(UItems.petrol);
+		this.reg.registerModel(UItems.battery);
+		this.reg.registerModel(UItems.copper_wire);
+		this.reg.registerModel(UItems.copper_coil);
+		this.reg.registerModel(UItems.transformer);
+		this.reg.registerModel(UItems.thicker_copper_wire);
+		this.reg.registerModel(UItems.petrol);
 		
 		// magic
-		ModelRegistry.register(UBlocks.magic_crafter);
-		ModelRegistry.register(UItems.magic_diamond);
-		ModelRegistry.register(UItems.magic_ingot);
-		ModelRegistry.register(UItems.charged_quartz);
-		ModelRegistry.register(UItems.magic_brew);
-		ModelRegistry.register(UBlocks.magic_glass);
-		ModelRegistry.register(UItems.magic_bottle);
+		this.reg.registerModel(UBlocks.magic_crafter);
+		this.reg.registerModel(UItems.magic_diamond);
+		this.reg.registerModel(UItems.magic_ingot);
+		this.reg.registerModel(UItems.charged_quartz);
+		this.reg.registerModel(UItems.magic_brew);
+		this.reg.registerModel(UBlocks.magic_glass);
+		this.reg.registerModel(UItems.magic_bottle);
 		
 		// SolarPanel
-		ResourceLocation[] rs1 = new ResourceLocation[EnumTypeSolarPanel.values().length];
+		String[] rs1 = new String[EnumTypeSolarPanel.values().length];
 		for (int i = 0; i < EnumTypeSolarPanel.values().length; i++) {
-			ModelRegistry.register(ItemUtil.from(UBlocks.solarpanel), i, new ModelResourceLocation(UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName(), "inventory"));
-			rs1[i] = new ResourceLocation(UReference.modid, "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName());
+			this.reg.registerModel(UBlocks.solarpanel, i, new ModelResourceLocation(UReference.resource + "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName(), "inventory"));
+			rs1[i] = "solarpanel" + EnumTypeSolarPanel.byMetadata(i).getName();
 		}
-		ModelRegistry.registerVariants(ItemUtil.from(UBlocks.solarpanel), rs1);
+		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.solarpanel), rs1);
 		
 		// Armor
-		ModelRegistry.register(UArmor.radiationSuitHelmet);
-		ModelRegistry.register(UArmor.radiationSuitChestplate);
-		ModelRegistry.register(UArmor.radiationSuitLeggings);
-		ModelRegistry.register(UArmor.radiationSuitBoots);
+		this.reg.registerModel(UArmor.radiationSuitHelmet);
+		this.reg.registerModel(UArmor.radiationSuitChestplate);
+		this.reg.registerModel(UArmor.radiationSuitLeggings);
+		this.reg.registerModel(UArmor.radiationSuitBoots);
 		
-		ModelRegistry.register(UArmor.emeraldHelmet);
-		ModelRegistry.register(UArmor.emeraldChestplate);
-		ModelRegistry.register(UArmor.emeraldLeggings);
-		ModelRegistry.register(UArmor.emeraldBoots);
+		this.reg.registerModel(UArmor.emeraldHelmet);
+		this.reg.registerModel(UArmor.emeraldChestplate);
+		this.reg.registerModel(UArmor.emeraldLeggings);
+		this.reg.registerModel(UArmor.emeraldBoots);
 		
-		ModelRegistry.register(UArmor.magicHelmet);
-		ModelRegistry.register(UArmor.magicChestplate);
-		ModelRegistry.register(UArmor.magicLeggings);
-		ModelRegistry.register(UArmor.magicBoots);
+		this.reg.registerModel(UArmor.magicHelmet);
+		this.reg.registerModel(UArmor.magicChestplate);
+		this.reg.registerModel(UArmor.magicLeggings);
+		this.reg.registerModel(UArmor.magicBoots);
 		
 		// Infected
-		ModelRegistry.register(UBlocks.infectedGrass);
-		ModelRegistry.register(UBlocks.infectedDirt);
-		ModelRegistry.register(UBlocks.infectedLog);
-		ModelRegistry.register(UBlocks.infectedLeave);
-		ModelRegistry.register(UBlocks.infectedPlank);
-		ModelRegistry.register(UBlocks.infectedSapling);
-		ModelRegistry.register(UBlocks.infectedFruit);
-		ModelRegistry.register(UItems.infectedcrop);
-		ModelRegistry.register(UItems.infectedleather);
-		ModelRegistry.register(UItems.infectedbeef);
-		ModelRegistry.register(UItems.infectedmilk);
+		this.reg.registerModel(UBlocks.infectedGrass);
+		this.reg.registerModel(UBlocks.infectedDirt);
+		this.reg.registerModel(UBlocks.infectedLog);
+		this.reg.registerModel(UBlocks.infectedLeave);
+		this.reg.registerModel(UBlocks.infectedPlank);
+		this.reg.registerModel(UBlocks.infectedSapling);
+		this.reg.registerModel(UBlocks.infectedFruit);
+		this.reg.registerModel(UItems.infectedcrop);
+		this.reg.registerModel(UItems.infectedleather);
+		this.reg.registerModel(UItems.infectedbeef);
+		this.reg.registerModel(UItems.infectedmilk);
 		
-		ModelRegistry.register(UItems.acid);
-		ModelRegistry.register(UItems.plastic);
-		ModelRegistry.register(UBlocks.oilsand);
-		ModelRegistry.register(UBlocks.oilglass);
+		this.reg.registerModel(UItems.acid);
+		this.reg.registerModel(UItems.plastic);
+		this.reg.registerModel(UBlocks.oilsand);
+		this.reg.registerModel(UBlocks.oilglass);
 		
-		ModelRegistry.register(UBlocks.infestedCleaner);
+		this.reg.registerModel(UBlocks.infestedCleaner);
 		
 		// Pipes
-		ModelRegistry.register(UBlocks.medium_voltage_cable);
-		ModelRegistry.register(UBlocks.high_voltage_cable);
-		ModelRegistry.register(UBlocks.low_voltage_cable);
+		this.reg.registerModel(UBlocks.medium_voltage_cable);
+		this.reg.registerModel(UBlocks.high_voltage_cable);
+		this.reg.registerModel(UBlocks.low_voltage_cable);
 		
 		// Normal Blocks
-		ModelRegistry.register(UBlocks.nuke);
-		ModelRegistry.register(UBlocks.rail);
+		this.reg.registerModel(UBlocks.nuke);
+		this.reg.registerModel(UBlocks.rail);
 		
 		// Stairs
 		for (BlockStairCreator creator : UBlocks.stonestairs) {
-			ModelRegistry.register(creator.getStair());
+			this.reg.registerModel(creator.getStair());
 		}
 		
 		for (BlockStairCreator creator : UBlocks.woolstairs) {
-			ModelRegistry.register(creator.getStair());
+			this.reg.registerModel(creator.getStair());
 		}
 		
 		for (BlockStairCreator creator : UBlocks.claystairs) {
-			ModelRegistry.register(creator.getStair());
+			this.reg.registerModel(creator.getStair());
 		}
 		
 		// Slabs
 		for (BlockSlabCreator creator : UBlocks.stoneslabs) {
-			ModelRegistry.register(creator.getSlab());
+			this.reg.registerModel(creator.getSlab());
 		}
 		
 		// Backpack
-		ResourceLocation[] rs2 = new ResourceLocation[EnumTypeBackPack.values().length];
+		String[] rs2 = new String[EnumTypeBackPack.values().length];
 		for (int i = 0; i < EnumTypeBackPack.values().length; i++) {
-			ModelRegistry.register(UItems.backpack, i, new ModelResourceLocation(UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName(), "inventory"));
-			rs2[i] = new ResourceLocation(UReference.modid, "backpack" + EnumTypeBackPack.byMetadata(i).getName());
+			this.reg.registerModel(UItems.backpack, i, new ModelResourceLocation(UReference.resource + "backpack" + EnumTypeBackPack.byMetadata(i).getName(), "inventory"));
+			rs2[i] = "backpack" + EnumTypeBackPack.byMetadata(i).getName();
 		}
-		ModelRegistry.registerVariants(ItemUtil.from(UItems.backpack), rs2);
+		this.reg.registerModelVariants(UItems.backpack, rs2);
 		
 		// Tools
-		ModelRegistry.register(UTools.emeraldAxe);
-		ModelRegistry.register(UTools.emeraldPickaxe);
-		ModelRegistry.register(UTools.emeraldSword);
-		ModelRegistry.register(UTools.emeraldSpade);
-		ModelRegistry.register(UTools.emeraldHoe);
+		this.reg.registerModel(UTools.emeraldAxe);
+		this.reg.registerModel(UTools.emeraldPickaxe);
+		this.reg.registerModel(UTools.emeraldSword);
+		this.reg.registerModel(UTools.emeraldSpade);
+		this.reg.registerModel(UTools.emeraldHoe);
 		
-		ModelRegistry.register(UTools.magicAxe);
-		ModelRegistry.register(UTools.magicPickaxe);
-		ModelRegistry.register(UTools.magicShovel);
-		ModelRegistry.register(UTools.magicSword);
-		ModelRegistry.register(UTools.magicHoe);
+		this.reg.registerModel(UTools.magicAxe);
+		this.reg.registerModel(UTools.magicPickaxe);
+		this.reg.registerModel(UTools.magicShovel);
+		this.reg.registerModel(UTools.magicSword);
+		this.reg.registerModel(UTools.magicHoe);
 		
 		// Keybinding
-		KeybindingRegistry.register(info);
+		this.reg.registerKeybinding(info);
 		
 		this.MODEL_HELPER = new ModelRenderHelper(mc.getRenderItem().getItemModelMesher(), mc.getTextureManager(), mc.getItemColors());
 	}
@@ -237,8 +237,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory) new RenderInfectedCow(null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGenerator.class, (IRenderFactory) new RenderGenerator(null));
 
-		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
-		RenderRegistry.bindTileEntitySpecialRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
+		this.reg.registerSpecialTileEntityRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
+		this.reg.registerSpecialTileEntityRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })

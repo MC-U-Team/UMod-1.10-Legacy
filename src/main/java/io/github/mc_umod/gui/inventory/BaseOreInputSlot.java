@@ -1,8 +1,8 @@
 package io.github.mc_umod.gui.inventory;
 
 import io.github.mc_umod.block.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.utils.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;

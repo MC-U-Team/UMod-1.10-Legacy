@@ -1,8 +1,9 @@
 package io.github.mc_umod.utils;
 
 import io.github.mc_umod.block.deco.*;
+import io.github.mc_umod.corelib.*;
+import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.item.block.*;
-import net.hycrafthd.corelib.registry.*;
 import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.common.registry.*;
@@ -10,8 +11,8 @@ import net.minecraftforge.fml.common.registry.*;
 public class URegistryUtils {
 	
 	public static void registerItem(Item item) {
-		ItemRegistry.register(item, item.getUnlocalizedName().substring(5));
-		OreDictionaryRegistry.register(item);
+		CoreLib.getInstance().getCommonRegistry().registerItem(item, item.getUnlocalizedName().substring(5));
+		CoreLib.getInstance().getCommonRegistry().registerOreDictionary(item,item.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerBlock(Block block) {
@@ -19,8 +20,8 @@ public class URegistryUtils {
 	}
 	
 	public static void registerBlock(Block block, Class<? extends ItemBlock> bl) {
-		BlockRegistry.register(block, bl, block.getUnlocalizedName().substring(5));
-		OreDictionaryRegistry.register(block);
+		CoreLib.getInstance().getCommonRegistry().registerBlock(block, block.getUnlocalizedName().substring(5));
+		CoreLib.getInstance().getCommonRegistry().registerOreDictionary(block,block.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerHalfSlabs(BlockSlabCreator creator) {
@@ -32,7 +33,7 @@ public class URegistryUtils {
 		BlockDoubleCustomSlab doubleSlab = creator.getDoubleslab();
 		GameRegistry.registerBlock(slab, bl, slab.getUnlocalizedName().substring(5), slab, doubleSlab);
 		GameRegistry.registerBlock(doubleSlab, null, doubleSlab.getUnlocalizedName().substring(5), slab, doubleSlab);
-		OreDictionaryRegistry.register(slab);
+		CoreLib.getInstance().getCommonRegistry().registerOreDictionary(slab,slab.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerEntity() {

@@ -1,11 +1,9 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.*;
 import io.github.mc_umod.block.machine.*;
 import io.github.mc_umod.tileentity.*;
 import net.minecraft.block.*;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;

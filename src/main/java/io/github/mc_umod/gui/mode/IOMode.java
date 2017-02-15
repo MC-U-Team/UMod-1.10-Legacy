@@ -4,12 +4,12 @@ import java.awt.*;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.gui.items.*;
 import io.github.mc_umod.network.*;
 import io.github.mc_umod.network.message.*;
 import io.github.mc_umod.render.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.block.state.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;

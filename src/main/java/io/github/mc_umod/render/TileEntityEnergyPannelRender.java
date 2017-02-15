@@ -2,8 +2,8 @@ package io.github.mc_umod.render;
 
 import java.awt.*;
 
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.tileentity.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.tileentity.*;
 

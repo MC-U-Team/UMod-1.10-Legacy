@@ -5,7 +5,6 @@ import io.github.mc_umod.event.*;
 import io.github.mc_umod.event.apis.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.network.*;
-import net.minecraft.client.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
@@ -49,7 +48,7 @@ public class UMod {
 		new URecipes();
 		new UChestLoot();
 		new UAchievement();
-		net.hycrafthd.corelib.registry.NetworkRegistry.registerGuiHandler(new UGuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(UReference.modid,new UGuiHandler());
 		UReference.proxy.registerModels();
 		UMod.log.info("Registered Mod.");
 	}

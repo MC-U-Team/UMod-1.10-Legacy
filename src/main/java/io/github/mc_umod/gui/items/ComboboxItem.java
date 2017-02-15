@@ -2,7 +2,7 @@ package io.github.mc_umod.gui.items;
 
 import java.awt.*;
 
-import net.hycrafthd.corelib.util.*;
+import io.github.mc_umod.corelib.api.util.*;
 
 public class ComboboxItem {
 	

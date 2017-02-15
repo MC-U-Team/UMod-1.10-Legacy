@@ -3,9 +3,9 @@ package io.github.mc_umod.tileentity;
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.corelib.api.util.*;
 import io.github.mc_umod.item.*;
 import io.github.mc_umod.utils.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
@@ -197,7 +197,7 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	public void update() {
 		if (this.getStackInSlot(3) != null) {
 			if (this.getStackInSlot(3).getItem() instanceof ItemBackPack) {
-				ColorUtils.setColor(this.getStackInSlot(3), new RGBA(this.getValueFromId(0), this.getValueFromId(1), this.getValueFromId(2), this.getValueFromId(3)).toAWTColor().getRGB());
+//				ColorUtils.setColor(this.getStackInSlot(3), new RGBA(this.getValueFromId(0), this.getValueFromId(1), this.getValueFromId(2), this.getValueFromId(3)).toAWTColor().getRGB());
 			}
 			// if(Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) != null && Block.getBlockFromItem(((Slot)this.inventorySlots.get(3)).getStack().getItem()) instanceof BlockConduit){}
 		}

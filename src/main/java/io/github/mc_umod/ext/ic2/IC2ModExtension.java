@@ -1,29 +1,31 @@
 package io.github.mc_umod.ext.ic2;
 
+import io.github.mc_umod.corelib.api.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.ext.abs.*;
-import net.hycrafthd.corelib.registry.*;
 import net.minecraft.block.*;
 import net.minecraftforge.fml.common.event.*;
 
 public class IC2ModExtension extends UmodExtension {
 	
+	public CommonRegistry reg;
+	public static Block transformer;
+
 	@Override
 	public AbstractOreDictionaryRegistry oredirctionary() {
 		return new IC2OreDictionary();
 	}
 	
-	public static Block transformer;
 	
 	@Override
 	public void init(FMLInitializationEvent evt) {
 		transformer = new BlockIC2Transformer().setUnlocalizedName("ic22uetransformer");
-		BlockRegistry.register(transformer, "ic22uetransformer");
+		this.reg.registerBlock(transformer, "ic22uetransformer");
 	}
 	
 	@Override
 	public void postinit(FMLPostInitializationEvent evt) {
-		TileEntityRegistry.register(TileEntityIC2Transformer.class);
+		this.reg.registerTileEntity(TileEntityIC2Transformer.class,"ic2trafo");
 	}
 	
 	@Override

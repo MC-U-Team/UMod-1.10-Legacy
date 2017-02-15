@@ -2,9 +2,9 @@ package io.github.mc_umod.ext.enderio;
 
 import org.apache.logging.log4j.*;
 
+import io.github.mc_umod.corelib.api.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.ext.abs.*;
-import net.hycrafthd.corelib.registry.*;
 import net.minecraft.block.*;
 import net.minecraftforge.fml.common.event.*;
 
@@ -12,6 +12,7 @@ public class EnderIOExtension implements IUmodExtension {
 	
 	public static Logger lg;
 	public static Block transformer;
+	public CommonRegistry reg;
 	
 	@Override
 	public void preinit(FMLPreInitializationEvent evt) {
@@ -21,12 +22,12 @@ public class EnderIOExtension implements IUmodExtension {
 	@Override
 	public void init(FMLInitializationEvent evt) {
 		transformer = new BlockEnderIOTransformer().setUnlocalizedName("enderiotransformer");
-		BlockRegistry.register(transformer, "enderiotransformer");
+		this.reg.registerBlock(transformer, "enderiotransformer");
 	}
 	
 	@Override
 	public void postinit(FMLPostInitializationEvent evt) {
-		TileEntityRegistry.register(TileEntityEnderIOTransformer.class);
+		this.reg.registerTileEntity(TileEntityEnderIOTransformer.class,"enderiotrafo");
 	}
 	
 	@Override

@@ -3,7 +3,6 @@ package io.github.mc_umod.block.deco;
 import java.util.*;
 
 import io.github.mc_umod.*;
-import net.hycrafthd.corelib.util.*;
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.block.properties.*;
@@ -42,9 +41,9 @@ public abstract class BlockCustomSlab extends BlockSlab {
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		if (itemslab == null && !this.isDouble()) {
-			return ItemUtil.from(this);
+			return Item.getItemFromBlock(this);
 		}
-		return ItemUtil.from(itemslab);
+		return Item.getItemFromBlock(itemslab);
 	}
 	
 	/*
