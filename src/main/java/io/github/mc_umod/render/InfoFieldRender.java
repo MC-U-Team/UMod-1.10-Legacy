@@ -6,7 +6,7 @@ import java.util.*;
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.api.util.*;
+import io.github.mc_umod.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;

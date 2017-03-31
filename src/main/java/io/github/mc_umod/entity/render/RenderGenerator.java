@@ -27,7 +27,7 @@ public class RenderGenerator extends Render<EntityGenerator> implements IRenderF
 		GlStateManager.pushMatrix();
 		GlStateManager.enableAlpha();
 		GlStateManager.translate(x, y, z);
-		GlStateManager.scale(0.2, 0.2, 0.2);
+		GlStateManager.scale(0.02, 0.02, 0.02);
 		GlStateManager.rotate(-90, 0, 1, 0);
 		GlStateManager.enableLighting();
 		glLighti(GL_LIGHT4, GL_MAX_NAME_STACK_DEPTH, GL_3_BYTES);

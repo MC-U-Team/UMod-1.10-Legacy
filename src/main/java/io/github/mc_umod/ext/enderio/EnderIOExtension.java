@@ -2,7 +2,7 @@ package io.github.mc_umod.ext.enderio;
 
 import org.apache.logging.log4j.*;
 
-import io.github.mc_umod.corelib.api.*;
+import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.ext.abs.*;
 import net.minecraft.block.*;

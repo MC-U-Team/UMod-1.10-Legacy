@@ -3,7 +3,8 @@ package io.github.mc_umod.gui.items;
 import java.awt.*;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.corelib.api.util.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.corelib.util.*;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.utils.*;

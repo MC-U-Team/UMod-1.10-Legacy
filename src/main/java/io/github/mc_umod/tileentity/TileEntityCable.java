@@ -81,39 +81,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 		this.rate = compound.getDouble("Rate");
 		super.readFromNBT(compound);
 	}
-	
-	@Override
-	public String getEnergyClass() {
-		return "";
-	}
-	
-	protected boolean isout = false, isin = false;
-	
-	@Override
-	public boolean isInput() {
-		return getInputs().length > 0;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return getOutputs().length > 0;
-	}
-	
-	@Override
-	public void addToTunnel(ICabel cab) {
-		TunnelHolder.getUETunnel(tun).add(cab);
-	}
-	
-	@Override
-	public ICabel[] getOutputsFromTunnel() {
-		return TunnelHolder.getUETunnel(tun).getOutput();
-	}
-	
-	@Override
-	public ICabel[] getInputsFromTunnel() {
-		return TunnelHolder.getUETunnel(tun).getInput();
-	}
-	
+			
 	@Override
 	public int getTunnel() {
 		return this.tun;
@@ -138,42 +106,6 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 		super.invalidate();
 		MinecraftForge.EVENT_BUS.post(new RenderEntityClearEvent(worldObj,pos));		
 		MinecraftForge.EVENT_BUS.post(new EnergyUnregisterEvent(worldObj,pos));
-	}
-	
-	@Override
-	public BlockPos[] getInputs() {
-		ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
-		TileEntity[] args = new TileEntity[] { worldObj.getTileEntity(this.pos.up()), worldObj.getTileEntity(this.pos.down()), worldObj.getTileEntity(this.pos.north()), worldObj.getTileEntity(this.pos.south()), worldObj.getTileEntity(this.pos.east()), worldObj.getTileEntity(this.pos.west()) };
-		for (TileEntity ent : args) {
-			if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
-				ins.add(ent.getPos());
-			}
-		}
-		BlockPos[] posses = new BlockPos[ins.size()];
-		int i = 0;
-		for (BlockPos pos : ins) {
-			posses[i] = pos;
-			i++;
-		}
-		return posses;
-	}
-	
-	@Override
-	public BlockPos[] getOutputs() {
-		ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
-		TileEntity[] args = new TileEntity[] { worldObj.getTileEntity(this.pos.up()), worldObj.getTileEntity(this.pos.down()), worldObj.getTileEntity(this.pos.north()), worldObj.getTileEntity(this.pos.south()), worldObj.getTileEntity(this.pos.east()), worldObj.getTileEntity(this.pos.west()) };
-		for (TileEntity ent : args) {
-			if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isOutput()) {
-				ins.add(ent.getPos());
-			}
-		}
-		BlockPos[] posses = new BlockPos[ins.size()];
-		int i = 0;
-		for (BlockPos pos : ins) {
-			posses[i] = pos;
-			i++;
-		}
-		return posses;
 	}
 
 	private boolean firsttick = true;

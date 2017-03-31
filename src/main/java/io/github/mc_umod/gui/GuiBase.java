@@ -13,7 +13,7 @@ import com.mojang.realmsclient.gui.*;
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.api.util.*;
+import io.github.mc_umod.corelib.util.*;
 import io.github.mc_umod.gui.container.*;
 import io.github.mc_umod.gui.inventory.*;
 import io.github.mc_umod.gui.items.*;

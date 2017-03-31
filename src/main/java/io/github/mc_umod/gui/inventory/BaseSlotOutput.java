@@ -1,6 +1,7 @@
 package io.github.mc_umod.gui.inventory;
 
-import io.github.mc_umod.corelib.api.util.*;
+import io.github.mc_umod.api.render.*;
+import io.github.mc_umod.corelib.util.*;
 import io.github.mc_umod.utils.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;

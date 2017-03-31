@@ -10,7 +10,7 @@ public class Transformer<T> {
 		this.toFrom = toForm;
 	}
 	
-	public T[] transforme(){
+	public T[] transform(){
 		Object[] obj = new Object[toFrom.size()];
 		int i = 0;
 		for(Object o : toFrom){

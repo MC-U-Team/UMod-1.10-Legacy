@@ -13,5 +13,5 @@ public interface ISnowable {
 	
 	public boolean hasSnow();
 	
-	public void setSnow();
+	public void setSnow(boolean snowy);
 }

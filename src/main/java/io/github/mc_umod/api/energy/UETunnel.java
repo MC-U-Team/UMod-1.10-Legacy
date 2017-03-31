@@ -2,6 +2,8 @@ package io.github.mc_umod.api.energy;
 
 import java.util.*;
 
+import net.minecraft.tileentity.*;
+import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 
@@ -32,8 +34,13 @@ public class UETunnel extends ArrayList<BlockPos> {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
 			if (cab == null) {
 				remos.add(pos);
-			} else if (cab.isOutput()) {
-				cabs.add(cab);
+			} else {
+				for (EnumFacing face : EnumFacing.values()) {
+					TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
+					if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isOutput()) {
+						cabs.add(cab);
+					}
+				}
 			}
 		}
 		for (BlockPos pos : remos) {
@@ -52,8 +59,12 @@ public class UETunnel extends ArrayList<BlockPos> {
 		ArrayList<ICabel> cabs = new ArrayList<ICabel>();
 		for (BlockPos pos : this) {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
-			if (cab.isInput()) {
-				cabs.add(cab);
+			ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
+			for (EnumFacing face : EnumFacing.values()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
+				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
+					cabs.add(cab);
+				}
 			}
 		}
 		ICabel[] inputs = new ICabel[cabs.size()];
@@ -90,7 +101,14 @@ public class UETunnel extends ArrayList<BlockPos> {
 		ICabel[] inpts = this.getInput();
 		double max = 0;
 		for (ICabel cab : inpts) {
-			for (BlockPos p : cab.getInputs()) {
+			ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
+			for (EnumFacing face : EnumFacing.values()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
+				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
+					ins.add(ent.getPos());
+				}
+			}
+			for (BlockPos p : ins) {
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 				if (0 <= pro.getStoredPower() - cab.getRate()) {
 					pro.getPower(cab.getRate());
@@ -103,7 +121,14 @@ public class UETunnel extends ArrayList<BlockPos> {
 			}
 		}
 		for (ICabel cab : outs) {
-			for (BlockPos p : cab.getOutputs()) {
+			ArrayList<BlockPos> out = new ArrayList<BlockPos>();
+			for (EnumFacing face : EnumFacing.values()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
+				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isOutput()) {
+					out.add(ent.getPos());
+				}
+			}
+			for (BlockPos p : out) {
 				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 				if (max <= 0)
 					return;
@@ -129,7 +154,14 @@ public class UETunnel extends ArrayList<BlockPos> {
 		}
 		if (max > 0) {
 			for (ICabel cab : inpts) {
-				for (BlockPos p : cab.getInputs()) {
+				ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
+				for (EnumFacing face : EnumFacing.values()) {
+					TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
+					if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
+						ins.add(ent.getPos());
+					}
+				}
+				for (BlockPos p : ins) {
 					IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
 					if (max <= 0)
 						return;

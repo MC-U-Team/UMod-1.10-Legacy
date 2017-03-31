@@ -2,7 +2,6 @@ package io.github.mc_umod.utils;
 
 import io.github.mc_umod.block.deco.*;
 import io.github.mc_umod.corelib.*;
-import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.item.block.*;
 import net.minecraft.block.*;
 import net.minecraft.item.*;

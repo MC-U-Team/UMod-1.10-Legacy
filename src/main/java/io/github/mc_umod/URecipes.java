@@ -1,7 +1,8 @@
 package io.github.mc_umod;
 
 import io.github.mc_umod.api.crafting.*;
-import io.github.mc_umod.corelib.api.*;
+import io.github.mc_umod.corelib.*;
+import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.utils.*;
 import net.minecraft.init.*;
@@ -12,6 +13,7 @@ public class URecipes {
 	public CommonRegistry reg;
 	
 	public URecipes() {
+		this.reg = CoreLib.getInstance().getCommonRegistry();
 		registerMagicCrafterRecipes();
 		registerCraftingRecipes();
 		registerFurnaceRecipes();

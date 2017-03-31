@@ -8,8 +8,7 @@ import javax.imageio.*;
 
 import org.lwjgl.opengl.*;
 
-import io.github.mc_umod.corelib.api.util.*;
-import io.github.mc_umod.corelib.renderapi.*;
+import io.github.mc_umod.corelib.util.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;

@@ -1,6 +1,6 @@
 package io.github.mc_umod.ext.ic2;
 
-import io.github.mc_umod.corelib.api.*;
+import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.ext.abs.*;
 import net.minecraft.block.*;

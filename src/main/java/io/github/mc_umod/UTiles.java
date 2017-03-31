@@ -1,6 +1,7 @@
 package io.github.mc_umod;
 
-import io.github.mc_umod.corelib.api.*;
+import io.github.mc_umod.corelib.*;
+import io.github.mc_umod.corelib.core.*;
 import io.github.mc_umod.tileentity.*;
 import io.github.mc_umod.tileentity.rail.*;
 
@@ -9,6 +10,7 @@ public class UTiles {
 	public CommonRegistry reg;
 	
 	public UTiles() {
+		this.reg = CoreLib.getInstance().getCommonRegistry();
 		register();
 	}
 	

@@ -10,14 +10,12 @@ public interface ISignable {
 	 */
 	
 	public void signPlayer(EntityPlayer pl);
-	
-	public void signPlayers(EntityPlayer pl,EntityPlayer[] pls);
-	
-	public void setPublic(EntityPlayer pl);
-	
+		
 	public boolean isPlayerSigned(EntityPlayer pl);
 			
 	public EnumSignStates getSignState();
 	
 	public boolean isOwner(EntityPlayer pl);
+	
+	public void setOwner(EntityPlayer pl);
 }

@@ -8,13 +8,13 @@ import com.mojang.realmsclient.gui.*;
 
 import io.github.mc_umod.block.deco.*;
 import io.github.mc_umod.block.machine.BlockSolarPanel.*;
-import io.github.mc_umod.corelib.api.ClientRegistry;
+import io.github.mc_umod.corelib.*;
+import io.github.mc_umod.corelib.core.ClientRegistry;
 import io.github.mc_umod.entity.*;
 import io.github.mc_umod.entity.rail.*;
 import io.github.mc_umod.entity.render.*;
 import io.github.mc_umod.entity.render.rail.*;
 import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.event.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
@@ -26,7 +26,6 @@ import net.minecraft.client.resources.*;
 import net.minecraft.client.settings.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.*;
-import net.minecraft.util.*;
 import net.minecraftforge.fml.client.registry.*;
 
 public class ClientProxy extends CommonProxy {
@@ -40,9 +39,10 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void init() {
+		this.reg = CoreLib.getInstance().getClientRegistry();
 		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
 		this.regs = new ObjRenderRegistry();
-		((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener((IResourceManagerReloadListener) new ResourceReload());
+		((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(this.regs);
 		this.help = new GLHelper(mc.getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
 	

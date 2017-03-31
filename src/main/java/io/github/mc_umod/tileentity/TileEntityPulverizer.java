@@ -349,7 +349,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 			}
 			z++;
 		}
-		return new Transformer<EnumFacing>(faces).transforme();
+		return new Transformer<EnumFacing>(faces).transform();
 	}
 
 	@Override

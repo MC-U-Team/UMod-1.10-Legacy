@@ -2,6 +2,7 @@ package io.github.mc_umod.api;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.item.*;
+import net.minecraft.client.*;
 import net.minecraft.item.*;
 
 public abstract class Crystal extends ItemBase {
