@@ -3,6 +3,7 @@ package io.github.mc_umod.block.machine;
 import java.util.*;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.block.*;
 import io.github.mc_umod.enumtype.*;
@@ -19,7 +20,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 
-public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IEnergyMessage {
+public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IBlockInformation {
 	
 	public static final PropertyEnum TYPE = PropertyEnum.create("type", EnumTypeSolarPanel.class);
 	
@@ -99,23 +100,6 @@ public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, I
 		return true;
 	}
 	
-	@Override
-	public String getMessage(int meta) {
-		switch (EnumTypeSolarPanel.byMetadata(meta)) {
-		case LOWVOLTAGE:
-			return "Products 2UE/t";
-		case MEDIUMVOLTAGE:
-			return "Products 20UE/t";
-		case HIGHVOLTAGE:
-			return "Products 200UE/t";
-		case ULTRAVOLTAGE:
-			return "Products 2000UE/t";
-		case EXTREMEVOLTAGE:
-			return "Products 20000UE/t";
-		}
-		return null;
-	}
-	
 	public enum EnumTypeSolarPanel implements IStringSerializable {
 		
 		LOWVOLTAGE(0, "lowvoltage"),
@@ -165,6 +149,27 @@ public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, I
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state) {
 		return EnumBlockRenderType.MODEL;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
+		switch (EnumTypeSolarPanel.byMetadata(stack.getMetadata())) {
+		case LOWVOLTAGE:
+			tip.add("Products 2UE/t");
+			break;
+		case MEDIUMVOLTAGE:
+			tip.add("Products 20UE/t");
+			break;
+		case HIGHVOLTAGE:
+			tip.add("Products 200UE/t");
+			break;
+		case ULTRAVOLTAGE:
+			tip.add("Products 2000UE/t");
+			break;
+		case EXTREMEVOLTAGE:
+			tip.add("Products 20000UE/t");
+			break;
+		}
 	}
 	
 }

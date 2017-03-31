@@ -157,8 +157,8 @@ public class UBlocks {
 		URegistryUtils.registerBlock(magic_crafter);
 		URegistryUtils.registerBlock(magic_glass);
 		// Machinery
-		URegistryUtils.registerBlock(craftfurnance, ItemBlockEnergy.class);
-		URegistryUtils.registerBlock(pulver, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(pulver);
+		URegistryUtils.registerBlock(craftfurnance);
 		URegistryUtils.registerBlock(energyMonitor);
 		URegistryUtils.registerBlock(painter);
 		// SolarPanel
@@ -179,11 +179,11 @@ public class UBlocks {
 		URegistryUtils.registerBlock(infestedCleaner);
 		
 		// Pipes
-		URegistryUtils.registerBlock(medium_voltage_cable, ItemBlockEnergy.class);
-		URegistryUtils.registerBlock(high_voltage_cable, ItemBlockEnergy.class);
-		URegistryUtils.registerBlock(low_voltage_cable, ItemBlockEnergy.class);
+		URegistryUtils.registerBlock(medium_voltage_cable);
+		URegistryUtils.registerBlock(high_voltage_cable);
+		URegistryUtils.registerBlock(low_voltage_cable);
 		
-		URegistryUtils.registerBlock(itempipe_normal, ItemBlockBase.class);
+		URegistryUtils.registerBlock(itempipe_normal);
 		// Normal Block
 		URegistryUtils.registerBlock(nuke);
 		URegistryUtils.registerBlock(conduit, ItemBlockConduit.class);

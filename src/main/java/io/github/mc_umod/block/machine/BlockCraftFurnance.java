@@ -1,6 +1,9 @@
 package io.github.mc_umod.block.machine;
 
+import java.util.*;
+
 import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.tileentity.*;
@@ -12,7 +15,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 
-public class BlockCraftFurnance extends BlockBaseMachine implements IEnergyMessage {
+public class BlockCraftFurnance extends BlockBaseMachine implements IBlockInformation {
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
@@ -26,10 +29,12 @@ public class BlockCraftFurnance extends BlockBaseMachine implements IEnergyMessa
 		}
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 	}
-	
+
 	@Override
-	public String getMessage(int meta) {
-		return "Needs 150 EU/t";
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
+		tip.add("Needs 150 EU/t");
+		
 	}
+	
 	
 }

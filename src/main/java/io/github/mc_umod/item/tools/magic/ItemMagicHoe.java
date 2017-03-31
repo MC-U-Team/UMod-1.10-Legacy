@@ -3,6 +3,7 @@ package io.github.mc_umod.item.tools.magic;
 import java.util.*;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.utils.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.relauncher.*;
@@ -18,7 +19,7 @@ public class ItemMagicHoe extends ItemHoe {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
+		URegistryUtils.addTooltip(stack, tooltip);
 	}
 	
 }

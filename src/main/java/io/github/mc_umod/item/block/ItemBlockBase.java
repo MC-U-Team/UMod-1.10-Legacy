@@ -22,7 +22,6 @@ public class ItemBlockBase extends ItemBlock {
 			((IBlockInformation) this.block).addInformation(stack, player, tooltip, advanced);
 			return;
 		}
-		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
 	}
 	
 }

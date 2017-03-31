@@ -19,7 +19,7 @@ public interface IPowerProvieder {
 	
 	public boolean hasPower();
 	
-	public double getPowerProducNeeds();
+	public double getIOPower();
 	
 	public BlockPos getPos();
 	

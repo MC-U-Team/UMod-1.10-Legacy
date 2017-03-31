@@ -141,7 +141,7 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return 10;
 	}
 	

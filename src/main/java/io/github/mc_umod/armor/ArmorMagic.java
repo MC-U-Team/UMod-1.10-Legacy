@@ -3,6 +3,7 @@ package io.github.mc_umod.armor;
 import java.util.*;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.utils.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
@@ -34,7 +35,7 @@ public class ArmorMagic extends ItemArmor {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
+		URegistryUtils.addTooltip(stack, tooltip);
 	}
 	
 }

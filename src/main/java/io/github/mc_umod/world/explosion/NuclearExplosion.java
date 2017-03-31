@@ -46,9 +46,6 @@ public class NuclearExplosion implements IProcess {
 		
 		isDead = expansion >= power * 10;
 		expansion += 1;
-		if (isDead()) {
-			System.out.println("Fertig!");
-		}
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package io.github.mc_umod.event.apis;
 import java.util.*;
 import java.util.function.*;
 
+import io.github.mc_umod.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.entity.*;
 import net.minecraft.tileentity.*;
@@ -14,6 +15,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.*;
 public class EventRegRegistery {
 	
 	public HashMap<BlockPos,World> cabs = new HashMap<BlockPos,World>();
+	private TunnelHolder holder;
+	
+	public EventRegRegistery() {
+		this.holder = UReference.proxy.getTunnelHolder();
+	}
 	
 	@SubscribeEvent
 	public void onTick(ServerTickEvent evt){
@@ -33,7 +39,7 @@ public class EventRegRegistery {
 							ICabel cab = (ICabel) ent;
 							if (cab.getTunnel() != tun) {
 								if (cab.getTunnel() > -1) {
-									TunnelHolder.merge(tun, cab.getTunnel(), worldObj);
+									holder.merge(tun, cab.getTunnel(), worldObj);
 								}
 							}
 						}
@@ -44,24 +50,24 @@ public class EventRegRegistery {
 				for (TileEntity ent : args) {
 					if (ent != null && ent instanceof ICabel) {
 						ICabel cab = (ICabel) ent;
-						if (cab.getTunnel() > -1 && TunnelHolder.getUETunnel(cab.getTunnel()) != null) {
-							TunnelHolder.getUETunnel(cab.getTunnel()).add(ccab);
+						if (cab.getTunnel() > -1 && holder.getUETunnel(cab.getTunnel()) != null) {
+							holder.getUETunnel(cab.getTunnel()).add(ccab);
 							return;
 						}
 					}
 				}
 				if (tun > -1)
 					return;
-				if (TunnelHolder.contains(pos)) {
-					ccab.setTunnel(TunnelHolder.getTunnelFromPos(pos));
+				if (holder.contains(pos)) {
+					ccab.setTunnel(holder.getTunnelFromPos(pos));
 					return;
 				}
 				UETunnel tnl = new UETunnel(worldObj);
-				TunnelHolder.getUETunnel(TunnelHolder.addUETunnel(tnl)).add(ccab);
+				holder.getUETunnel(holder.addUETunnel(tnl)).add(ccab);
 			}
 		});
-		for (int i = 0; i < TunnelHolder.getMax(); i++) {
-			TunnelHolder.getUETunnel(i).onTick();
+		for (int i = 0; i < this.holder.getMax(); i++) {
+			this.holder.getUETunnel(i).onTick();
 		}
 	}
 	

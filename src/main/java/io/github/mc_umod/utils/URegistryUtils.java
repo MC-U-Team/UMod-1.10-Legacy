@@ -1,10 +1,16 @@
 package io.github.mc_umod.utils;
 
+import java.util.*;
+
+import com.mojang.realmsclient.gui.*;
+
 import io.github.mc_umod.block.deco.*;
 import io.github.mc_umod.corelib.*;
 import io.github.mc_umod.item.block.*;
 import net.minecraft.block.*;
+import net.minecraft.client.resources.*;
 import net.minecraft.item.*;
+import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.registry.*;
 
 public class URegistryUtils {
@@ -35,7 +41,10 @@ public class URegistryUtils {
 		CoreLib.getInstance().getCommonRegistry().registerOreDictionary(slab,slab.getUnlocalizedName().substring(5));
 	}
 	
-	public static void registerEntity() {
-		
+	public static void addTooltip(ItemStack stack, List tooltip){
+		String tip = I18n.format("tooltip." + stack.getUnlocalizedName());
+		if (!tip.startsWith("tooltip.")) {
+			tooltip.add(ChatFormatting.BLUE + tip + ChatFormatting.RESET);
+		}
 	}
 }

@@ -2,26 +2,27 @@ package io.github.mc_umod;
 
 import java.util.*;
 
+import io.github.mc_umod.api.energy.*;
 import net.minecraft.entity.player.*;
 import net.minecraft.item.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class CommonProxy {
 	
-	//Client Stuff
+	private TunnelHolder holder;
+	
 	public void init(){
+		this.holder = new TunnelHolder();
 	}
 	
 	// Client Stuff
-	public void registerModels() {
-	}
+	public void registerModels() {}
 	
 	// Client Stuff
-	@SuppressWarnings("rawtypes")
-	public void addTooltip(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-	}
+	public void registerRenderer() {}
 	
-	// Client Stuff
-	public void registerRenderer() {
+	@SideOnly(Side.SERVER)
+	public TunnelHolder getTunnelHolder(){
+		return this.holder;
 	}
-	
 }

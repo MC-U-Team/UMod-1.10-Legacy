@@ -10,17 +10,22 @@ import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.*;
 
+@Singelton
 @Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
 public class UMod {
 	
 	public static org.apache.logging.log4j.Logger log;
+	private UConfig config;
+	
+	@Instance
+	public static UMod INSTANCE;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
 		log = event.getModLog();
 		UReference.proxy.init();
 		ExtensionList.onStart(event);
-		new UConfig(event.getSuggestedConfigurationFile());
+		this.config = new UConfig(event.getSuggestedConfigurationFile());
 		new PacketHandler();
 		UReference.proxy.registerRenderer();
 	}
@@ -81,6 +86,10 @@ public class UMod {
 		generation.addGenerator(new UOreGeneration(), 0);
 		generation.register();
 		UMod.log.info("Registered Mod Generators.");
+	}
+	
+	public UConfig getUConfig(){
+		return this.config;
 	}
 	
 }

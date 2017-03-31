@@ -2,11 +2,14 @@ package io.github.mc_umod.api.energy;
 
 import java.util.*;
 
+import io.github.mc_umod.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
+@SideOnly(Side.SERVER)
 public class UETunnel extends ArrayList<BlockPos> {
 	
 	/**
@@ -15,13 +18,15 @@ public class UETunnel extends ArrayList<BlockPos> {
 	private static final long serialVersionUID = 6142151165474828749L;
 	private int id = -1;
 	private World w;
+	private TunnelHolder holder;
 	
 	public UETunnel(World w) {
 		this.w = w;
+		this.holder = UReference.proxy.getTunnelHolder();
 	}
 	
 	public boolean add(ICabel e) {
-		if (TunnelHolder.contains(e.getPos()))
+		if (this.holder.contains(e.getPos()))
 			return false;
 		e.setTunnel(this.id);
 		return this.add(e.getPos());
@@ -95,7 +100,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 	}
 	
 	public void onTick() {
-		if (TunnelHolder.remove(id))
+		if (this.holder.remove(id))
 			return;
 		ICabel[] outs = this.getOutput();
 		ICabel[] inpts = this.getInput();

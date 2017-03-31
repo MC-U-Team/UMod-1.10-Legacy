@@ -121,7 +121,7 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder,
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return producing;
 	}
 	

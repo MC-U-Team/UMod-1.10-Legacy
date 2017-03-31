@@ -15,15 +15,7 @@ public class ItemBlockSolarPanel extends ItemBlockSubBase {
 	public ItemBlockSolarPanel(Block block) {
 		super(block);
 	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
-		if (this.block instanceof IEnergyMessage) {
-			tip.add(ChatFormatting.BLUE + ((IEnergyMessage) this.block).getMessage(stack.getMetadata()));
-		}
-	}
-	
+		
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		EnumTypeSolarPanel type = EnumTypeSolarPanel.byMetadata(stack.getMetadata());

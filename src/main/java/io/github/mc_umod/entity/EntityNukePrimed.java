@@ -2,6 +2,7 @@ package io.github.mc_umod.entity;
 
 import java.util.*;
 
+import io.github.mc_umod.*;
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.world.explosion.*;
 import net.minecraft.entity.*;
@@ -12,12 +13,10 @@ import net.minecraft.world.*;
 import net.minecraftforge.fml.relauncher.*;
 
 public class EntityNukePrimed extends Entity {
-	
-	public static int fuseSec;
-	public static int nukePower;
-	
+		
 	public int fuse;
-	private EntityLivingBase tntPlacedBy;
+	
+	private EntityLivingBase placer;
 	
 	public EntityNukePrimed(World worldIn) {
 		super(worldIn);
@@ -32,11 +31,11 @@ public class EntityNukePrimed extends Entity {
 		this.motionX = -((float) Math.sin(f)) * 0.02F;
 		this.motionY = 0.20000000298023224D;
 		this.motionZ = -((float) Math.cos(f)) * 0.02F;
-		this.fuse = fuseSec * 20;
+		this.entityInit();
 		this.prevPosX = p_i1730_2_;
 		this.prevPosY = p_i1730_4_;
 		this.prevPosZ = p_i1730_6_;
-		this.tntPlacedBy = p_i1730_8_;
+		this.placer = p_i1730_8_;
 	}
 	
 	@Override
@@ -109,7 +108,7 @@ public class EntityNukePrimed extends Entity {
 	}
 	
 	public EntityLivingBase getTntPlacedBy() {
-		return this.tntPlacedBy;
+		return this.placer;
 	}
 	
 	@Override
@@ -119,7 +118,7 @@ public class EntityNukePrimed extends Entity {
 	
 	@Override
 	protected void entityInit() {
-		this.fuse = fuseSec * 20;
+		this.fuse = UMod.INSTANCE.getUConfig().getConfig().getInt("fuse", "Nuke", 24, 10, 60, "The fuse time for the Nuke in seconds") * 20;
 	}
 	
 	@SideOnly(Side.CLIENT)

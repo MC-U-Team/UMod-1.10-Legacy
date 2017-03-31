@@ -15,10 +15,4 @@ public class ItemInfectedBeef extends ItemFood {
 		this.setPotionEffect(new PotionEffect(UPotion.radiationPotion, 5, 1), 0.8F);
 	}
 	
-	@SuppressWarnings("rawtypes")
-	@Override
-	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-		UReference.proxy.addTooltip(stack, player, tooltip, advanced);
-	}
-	
 }

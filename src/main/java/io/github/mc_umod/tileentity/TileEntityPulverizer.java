@@ -217,7 +217,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return 10;
 	}
 	

@@ -203,7 +203,7 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return 10;
 	}
 	

@@ -184,7 +184,7 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return 2;
 	}
 	

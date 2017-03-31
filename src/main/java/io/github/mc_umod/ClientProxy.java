@@ -240,13 +240,4 @@ public class ClientProxy extends CommonProxy {
 		this.reg.registerSpecialTileEntityRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		this.reg.registerSpecialTileEntityRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());
 	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public void addTooltip(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
-		String tip = I18n.format("tooltip." + stack.getUnlocalizedName());
-		if (!tip.startsWith("tooltip.")) {
-			tooltip.add(ChatFormatting.BLUE + tip + ChatFormatting.RESET);
-		}
-	}
 }

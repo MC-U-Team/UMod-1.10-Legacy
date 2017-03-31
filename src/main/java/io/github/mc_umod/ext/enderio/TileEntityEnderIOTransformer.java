@@ -52,7 +52,7 @@ public class TileEntityEnderIOTransformer extends TileEntity implements IPowerPr
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

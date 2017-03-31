@@ -78,7 +78,7 @@ public class GuiEnergy extends GuiScreen {
 		String s2 = "Stored: ";
 		String s3 = "Status: ";
 		String s4 = "Error: ";
-		this.fontRendererObj.drawSplitString(s1 + (tile.isWorking() ? (EnergyUtils.translate(tile.getPowerProducNeeds()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
+		this.fontRendererObj.drawSplitString(s1 + (tile.isWorking() ? (EnergyUtils.translate(tile.getIOPower()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
 		this.fontRendererObj.drawSplitString(s2 + EnergyUtils.translate(tile.getStoredPower()) + " / " + EnergyUtils.translate(tile.getMaximalPower()), k + 10, l + 80, maxstringlength, 4210752);
 		this.fontRendererObj.drawSplitString(s3 + (tile.isWorking() ? "On" : "Off"), k + 10, l + 110, maxstringlength, 4210752);
 		if (!tile.isWorking() && tile.getErrorMessage() != null && tile.getErrorMessage() != "") {

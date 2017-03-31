@@ -51,7 +51,7 @@ public class TileEntityIC2Transformer extends TileEntity implements IPowerProvie
 	}
 	
 	@Override
-	public double getPowerProducNeeds() {
+	public double getIOPower() {
 		return 0;
 	}
 	

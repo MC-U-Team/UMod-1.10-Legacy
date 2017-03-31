@@ -1,5 +1,7 @@
 package io.github.mc_umod.block.machine;
 
+import java.util.*;
+
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.energy.*;
@@ -17,7 +19,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 import net.minecraftforge.fml.relauncher.*;
 
-public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IEnergyMessage, ISpiritProvider, IConduitBlock {
+public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IBlockInformation, ISpiritProvider, IConduitBlock {
 	
 	public int powertrans;
 	public int lo;
@@ -186,14 +188,15 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	public boolean isIsolated() {
 		return iso;
 	}
-	
-	@Override
-	public String getMessage(int i) {
-		return "Transports " + powertrans + "UE/t";
-	}
-	
+		
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		return 0;
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
+		tip.add("Transports " + powertrans + "UE/t");
+		
 	}
 }

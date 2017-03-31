@@ -3,6 +3,7 @@ package io.github.mc_umod.block.machine;
 import java.util.*;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.tileentity.*;
@@ -14,7 +15,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 
-public class BlockPulverizer extends BlockBaseMachine implements IEnergyMessage {
+public class BlockPulverizer extends BlockBaseMachine implements IBlockInformation {
 	
 	public BlockPulverizer() {
 		super();
@@ -49,14 +50,8 @@ public class BlockPulverizer extends BlockBaseMachine implements IEnergyMessage 
 	}
 	
 	@Override
-	public String getMessage(int n) {
-		return "Needs 10UE/t";
-	}
-	
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		super.updateTick(worldIn, pos, state, rand);
-		worldIn.spawnParticle(EnumParticleTypes.BLOCK_DUST, pos.getX(), pos.getX(), pos.getX(), 0, 0, 0, 120);
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
+		tip.add("Needs 10UE/t");
 	}
 	
 }
