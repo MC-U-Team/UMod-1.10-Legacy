@@ -11,6 +11,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 import net.minecraftforge.fml.common.eventhandler.*;
 import net.minecraftforge.fml.common.gameevent.TickEvent.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class EventRegRegistery {
 	
@@ -79,19 +80,5 @@ public class EventRegRegistery {
 	@SubscribeEvent
 	public void onUnregisterEnergy(EnergyUnregisterEvent ev){
 		cabs.remove(ev.pos);
-	}
-	
-	@SubscribeEvent
-	public void onRegisterRender(RenderEntityRegisterEvent e){
-		e.worldObj.spawnEntityInWorld(new EntityFX(e.worldObj, e.pos));
-	}
-	
-	@SubscribeEvent
-	public void onUnregisterRender(RenderEntityClearEvent e){
-		@SuppressWarnings("unchecked")
-		List<EntityFX> p = e.worldObj.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(e.pos, e.pos.add(1, 1, 1)));
-		for (EntityFX fx : p) {
-			fx.setDead();
-		}
 	}
 }

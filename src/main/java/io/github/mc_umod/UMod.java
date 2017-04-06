@@ -5,10 +5,12 @@ import io.github.mc_umod.event.*;
 import io.github.mc_umod.event.apis.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.network.*;
+import io.github.mc_umod.render.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.*;
+import net.minecraftforge.fml.relauncher.*;
 
 @Singelton
 @Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
@@ -42,7 +44,7 @@ public class UMod {
 		new UEntity();
 		new UTools();
 		this.registerGenerators();
-		this.registerEvents();
+		this.registerEvents(event);
 		UMod.log.info("Init Mod.");
 	}
 	
@@ -65,7 +67,7 @@ public class UMod {
 		UMod.log.info("Registered Mod Commands.");
 	}
 	
-	public void registerEvents() {
+	public void registerEvents(FMLInitializationEvent evt) {
 		UEvent event = new UEvent();
 		event.addEvent(new EventGettingRadiation());
 		event.addEvent(new EventExecuteRadiation());
@@ -76,7 +78,9 @@ public class UMod {
 		event.addEvent(new EventPlayerJoin());
 		event.addEvent(new EventToolTip());
 		event.addEvent(new EventChestInventory());
-		event.addEvent(new EventRegRegistery());
+		if(evt.getSide().equals(Side.SERVER))event.addEvent(new EventRegRegistery());
+		if(evt.getSide().equals(Side.CLIENT))event.addEvent(new EventRenderRegistery());
+		event.addEvent(new RenderDiscordOverlay());
 		event.register();
 		UMod.log.info("Registered Mod Events.");
 	}
