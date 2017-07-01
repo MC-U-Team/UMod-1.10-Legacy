@@ -6,6 +6,7 @@ import io.github.mc_umod.event.apis.*;
 import io.github.mc_umod.ext.*;
 import io.github.mc_umod.network.*;
 import io.github.mc_umod.render.*;
+import net.minecraft.inventory.*;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;

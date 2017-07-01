@@ -26,8 +26,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		NBTTagCompound tagCom = pkt.getNbtCompound();
-		this.readFromNBT(tagCom);
-	}
+		this.readFromNBT(tagCom);	}
 	
 	@Override
 	public SPacketUpdateTileEntity getUpdatePacket() {

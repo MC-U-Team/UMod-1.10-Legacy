@@ -16,14 +16,15 @@ import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
+import net.minecraftforge.client.model.b3d.B3DModel.*;
 
 public class IOMode extends ImplGui{
 
 	public GuiCombobox box;
 	private float sclax = 0, sclay = 0;
 	private int posX,posY;
-	private Runnable autorun;
 	private ModelRenderHelper helper;
+	private EnumFacing facing;
     private int[] args = new int[] {-1,-1,-1,-1,-1,-1};
 	
 	public IOMode(GuiBase base_gui) {
@@ -40,9 +41,8 @@ public class IOMode extends ImplGui{
 			@Override
 			public void run() {
 				if(IOMode.this.base_gui.tile instanceof IIOMode){
-					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(IOMode.this.base_gui.pos, IOMode.this.base_gui.hal, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
-					args[getPlace(IOMode.this.base_gui.hal)] = (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1);
-					if(autorun != null)autorun.run();
+					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(IOMode.this.base_gui.pos, IOMode.this.facing, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
+					args[facing.ordinal()] = (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1);
 				}
 			}
 		});
@@ -51,15 +51,6 @@ public class IOMode extends ImplGui{
         	
         }
     	PacketHandler.INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, EnumFacing.NORTH));
-	}
-
-	private int getPlace(EnumFacing face){
-		int i = 0;
-		for(EnumFacing fc : EnumFacing.VALUES){
-			if(fc.equals(face))return i;
-			i++;
-		}
-		return 0;
 	}
 	
 	@Override
@@ -76,7 +67,7 @@ public class IOMode extends ImplGui{
 		GlStateManager.popMatrix();
 		GlStateManager.disableDepth();
 		int kl = (base_gui.width - base_gui.xSize) / 2;
-		base_gui.getFontRender().drawString(base_gui.hal.toString(), kl + 10, base_gui.guiTop + base_gui.ySize - 18, 0xFFFFFF);
+		base_gui.getFontRender().drawString(facing.toString(), kl + 10, base_gui.guiTop + base_gui.ySize - 18, 0xFFFFFF);
 		box.render(mouseX,mouseY);
 		RenderHelper.enableGUIStandardItemLighting();
 		GlStateManager.pushMatrix();
@@ -117,7 +108,7 @@ public class IOMode extends ImplGui{
 	private void drawRects(){
 		
 		//SOUTH
-		int south = args[getPlace(EnumFacing.SOUTH)];
+		int south = args[EnumFacing.SOUTH.ordinal()];
 		if(south >= 0 && south < this.box.getItems().size() - 1){
 		RGBA southR = new RGBA(box.getItems().get(south).color.toAWTColor()).setAlpha(125);
 		southR.setAlpha(125);
@@ -126,7 +117,7 @@ public class IOMode extends ImplGui{
 		}
 		
 		//NORTH
-		int north = args[getPlace(EnumFacing.NORTH)];
+		int north = args[EnumFacing.NORTH.ordinal()];
 		if(north >= 0 && north < this.box.getItems().size() - 1){
 		RGBA northR = new RGBA(box.getItems().get(north).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, northR,northR,0.5001);
@@ -136,7 +127,7 @@ public class IOMode extends ImplGui{
 		GlStateManager.rotate(90, 1, 0, 0);
 		
 		//UP
-		int up = args[getPlace(EnumFacing.UP)];
+		int up = args[EnumFacing.UP.ordinal()];
 		if(up >= 0 && up < this.box.getItems().size() - 1){
 		RGBA upR = new RGBA(box.getItems().get(up).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, upR,upR,-0.5001);
@@ -144,7 +135,7 @@ public class IOMode extends ImplGui{
 		}
 		
 		//DOWN
-		int down = args[getPlace(EnumFacing.DOWN)];
+		int down = args[EnumFacing.DOWN.ordinal()];
 		if(down >= 0 && down < this.box.getItems().size() - 1){
 		RGBA downR = new RGBA(box.getItems().get(down).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, downR,downR,0.5001);
@@ -154,20 +145,25 @@ public class IOMode extends ImplGui{
 		GlStateManager.rotate(90, 0, 1, 0);
 		
 		//EAST
-		int east = args[getPlace(EnumFacing.EAST)];
+		int east = args[EnumFacing.EAST.ordinal()];
 		if(east >= 0 && east < this.box.getItems().size() - 1){
 		RGBA eastR = new RGBA(box.getItems().get(east).color.toAWTColor()).setAlpha(125);
 		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, eastR,eastR,-0.5001);
 		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, eastR,eastR,-0.5001);
 		}
 		//WEST
-		int west = args[getPlace(EnumFacing.WEST)];
-		if(west >= 0 && west < this.box.getItems().size() - 1){
-		RGBA westR = new RGBA(box.getItems().get(west).color.toAWTColor()).setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, westR,westR,0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, westR,westR,0.5001);
-		}
+		int west = args[EnumFacing.WEST.ordinal()];
 		
+		
+	}
+	
+	private void checkAndDraw(EnumFacing face){
+		int count = face.ordinal();
+		if(count >= 0 && count < this.box.getItems().size() - 1){
+			RGBA westR = new RGBA(box.getItems().get(count).color.toAWTColor()).setAlpha(125);
+			base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, westR,westR,0.5001);
+			base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, westR,westR,0.5001);
+		}
 	}
 	
 	private void setupGuiTransform(float xPosition, float yPosition) {
@@ -192,39 +188,39 @@ public class IOMode extends ImplGui{
 			posX = mouseX;
 			posY = mouseY;
 			if (sclay >= 45 && sclay <= 135) {
-				if(base_gui.hal != EnumFacing.UP){
-					base_gui.hal = EnumFacing.UP;
+				if(facing != EnumFacing.UP){
+					facing = EnumFacing.UP;
 					this.imp_facingchange();
 				}
 			}
 			if (sclay <= -45 && sclay >= -215) {
-				if(base_gui.hal != EnumFacing.DOWN){
-					base_gui.hal = EnumFacing.DOWN;
+				if(facing != EnumFacing.DOWN){
+					facing = EnumFacing.DOWN;
 					this.imp_facingchange();
 				}
 			}
 			if (sclay >= -45 && sclay <= 45) {
 				if (sclax >= -45 && sclax <= 45) {
-					if(base_gui.hal != EnumFacing.NORTH){
-						base_gui.hal = EnumFacing.NORTH;
+					if(facing != EnumFacing.NORTH){
+						facing = EnumFacing.NORTH;
 						this.imp_facingchange();
 					}
 				}
 				if (sclax <= 135 && sclax >= 45) {
-					if(base_gui.hal != EnumFacing.EAST){
-						base_gui.hal = EnumFacing.EAST;
+					if(facing != EnumFacing.EAST){
+						facing = EnumFacing.EAST;
 						this.imp_facingchange();
 					}
 				}
 				if (sclax <= -45 && sclax >= -135) {
-					if(base_gui.hal != EnumFacing.WEST){
-						base_gui.hal = EnumFacing.WEST;
+					if(facing != EnumFacing.WEST){
+						facing = EnumFacing.WEST;
 						this.imp_facingchange();
 					}
 				}
 				if (sclax <= -135 && sclax >= -210) {
-					if(base_gui.hal != EnumFacing.SOUTH){
-						base_gui.hal = EnumFacing.SOUTH;
+					if(facing != EnumFacing.SOUTH){
+						facing = EnumFacing.SOUTH;
 						this.imp_facingchange();
 					}
 				}
@@ -234,7 +230,7 @@ public class IOMode extends ImplGui{
 	}
 	
 	private void imp_facingchange() {
-		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.base_gui.pos, this.base_gui.hal));
+		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.base_gui.pos, facing));
 	}
 	
 	@Override
@@ -247,16 +243,12 @@ public class IOMode extends ImplGui{
 	public void checkAndAdd(EnumFacing fc, int item) {
 		if (item == Byte.MAX_VALUE || item < 0 || item >= this.box.getItems().size()) {
 			this.box.setSelected(this.box.getItems().size() - 1);
-			args[getPlace(fc)] = this.box.getItems().size() - 1;
+			args[fc.ordinal()] = this.box.getItems().size() - 1;
 			return;
 		}
-		args[getPlace(fc)] = item;
-		if (base_gui.hal.equals(fc)) {
+		args[fc.ordinal()] = item;
+		if (facing.equals(fc)) {
 			this.box.setSelected(item);
 		} 
-	}
-	
-	public void addListener(Runnable run){
-		this.autorun = run;
 	}
 }

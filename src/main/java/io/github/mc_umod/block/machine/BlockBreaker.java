@@ -35,27 +35,6 @@ public class BlockBreaker extends BlockBase {
 	}
 	
 	@Override
-	public int tickRate(World worldIn) {
-		return 10;
-	}
-	
-	@Override
-	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-		System.out.println("s");
-		if (worldIn.isBlockPowered(pos)) {
-			EnumFacing type = (EnumFacing) state.getValue(FACING);
-			// BlockPos po = DirectionUtils.getPosfromFacing(type, pos);
-			// IBlockState st = worldIn.getBlockState(po);
-			// if(worldIn.getBlockState(po) != null && !(st.getBlock() instanceof BlockAir)){
-			// worldIn.setBlockToAir(po);
-			// worldIn.playSound(po.getX(), po.getY(), po.getZ(), s.soundName, s.volume, s.frequency, true);
-			// spawnAsEntity(worldIn, po, new ItemStack(st.getBlock(),1,st.getBlock().getMetaFromState(st)));
-			// System.out.println("Hollo");
-			// }
-		}
-	}
-	
-	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		EnumFacing type = DirectionUtils.getFacingFromShort((short) meta);
 		return this.getDefaultState().withProperty(FACING, type);

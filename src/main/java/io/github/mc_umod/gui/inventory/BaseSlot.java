@@ -1,10 +1,20 @@
 package io.github.mc_umod.gui.inventory;
 
+import java.awt.*;
+
+import akka.io.Udp.*;
+import io.github.mc_umod.*;
 import io.github.mc_umod.api.render.*;
 import io.github.mc_umod.corelib.util.*;
+import io.github.mc_umod.render.*;
 import io.github.mc_umod.utils.*;
+import net.minecraft.client.gui.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.*;
+import net.minecraftforge.fml.relauncher.*;
 
 public class BaseSlot extends Slot {
 	
@@ -44,20 +54,6 @@ public class BaseSlot extends Slot {
 		this.nend = nend;
 	}
 	
-	public RGBA getHoverColor(int b) {
-		switch (b) {
-		case 0:
-			return nstart;
-		case 1:
-			return nend;
-		case 2:
-			return start;
-		case 3:
-			return end;
-		}
-		return null;
-	}
-	
 	public boolean hasColor() {
 		return start != null && end != null;
 	}
@@ -74,35 +70,79 @@ public class BaseSlot extends Slot {
 		ret = returnm;
 	}
 	
-	public int getWidth() {
-		int size;
-		size = ret.getString().length() * 5;
-		if (hasMoreLines()) {
-			size = 0;
-			String[] str = ret.getString().split("\n");
-			for (int i = 0; i < str.length; i++) {
-				if (str[i].length() * 5 > size) {
-					size = str[i].length() * 5;
-				}
-			}
-		}
-		return size + 10;
-	}
-	
-	public int getHeight() {
-		int size = 16;
-		if (hasMoreLines()) {
-			String[] str = ret.getString().split("\n");
-			size = size * str.length;
-		}
-		return size;
-	}
-	
 	public boolean hasMoreLines() {
 		return ret.getString().contains("\n");
 	}
 	
 	public int getFontColor() {
 		return 0xFFFFFF;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void render(){
+		GlStateManager.disableLighting();
+		GlStateManager.disableDepth();
+		int j1 = this.xDisplayPosition;
+		int k1 = this.yDisplayPosition;
+		GlStateManager.colorMask(true, true, true, false);
+		UReference.getClientProxy().getGLHelper().drawGradientRect(j1, k1, j1 + 16, k1 + 16, start, end, 1);
+		GlStateManager.colorMask(true, true, true, true);
+		GlStateManager.enableLighting();
+		GlStateManager.enableDepth();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void renderOverlay(){
+		GLHelper help = UReference.getClientProxy().getGLHelper();
+		int j1 = this.xDisplayPosition;
+		int k1 = this.yDisplayPosition;
+		if (this.hasColor()) {
+			help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, nstart, nend, 2);
+		} 
+		int xc = j1 - 1,yc = k1,widthc = 18,heightc = 18;
+		RGBA rgbc = new RGBA(Color.DARK_GRAY);
+		help.drawGradientRect(xc - 1, yc - 2,xc + widthc + 1, yc, rgbc);
+		help.drawGradientRect(xc - 1, yc + heightc - 2,xc + widthc + 1, yc + heightc, rgbc);
+		help.drawGradientRect(xc - 1, yc,xc + 1, yc + heightc, rgbc);
+		help.drawGradientRect(xc + widthc - 1, yc ,xc + widthc + 1,yc + heightc, rgbc);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void renderTooltip(int mouseX,int mouseY,int z,FontRenderer fontRendererObj){
+		GlStateManager.pushMatrix();
+		Tessellator ts = Tessellator.getInstance();
+		RGBA sl1 = start;
+		RGBA sli = new RGBA(sl1.toAWTColor().darker()).setAlpha(180);
+		String[] lines = ret.getString().split("\n");
+		int height = (fontRendererObj.FONT_HEIGHT + 4) * lines.length;
+		int width = 0;
+		for(String str : lines)
+			width = Math.max(width, fontRendererObj.getStringWidth(str));
+		width += 4;
+		GlStateManager.disableTexture2D();
+		GlStateManager.enableBlend();
+		GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+		GlStateManager.shadeModel(7425);
+		VertexBuffer rend = ts.getBuffer();
+		rend.begin(7, DefaultVertexFormats.POSITION_COLOR);
+		rend.pos(mouseX + width, mouseY, z).color(sl1.getRed(), sl1.getGreen(), sl1.getBlue(), sl1.getAlpha()).endVertex();
+		rend.pos(mouseX, mouseY, z).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
+		rend.pos(mouseX, mouseY + height, z).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
+		rend.pos(mouseX + width, mouseY + height, z).color(sl1.getRed(), sl1.getGreen(), sl1.getBlue(), sl1.getAlpha()).endVertex();
+		ts.draw();
+		GlStateManager.shadeModel(7424);
+		GlStateManager.disableBlend();
+		GlStateManager.enableAlpha();
+		GlStateManager.enableTexture2D();
+		if (this.hasMoreLines()) {
+			String[] str = this.getString().split("\n");
+			for (int i = 0; i < str.length; i++)
+				fontRendererObj.drawString(str[i], mouseX + 4, mouseY + 4 + (i * 16), this.getFontColor());
+		} else {
+			fontRendererObj.drawString(this.getString(), mouseX + 4, mouseY + 4, this.getFontColor());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.enableLighting();
+		GlStateManager.enableDepth();
 	}
 }

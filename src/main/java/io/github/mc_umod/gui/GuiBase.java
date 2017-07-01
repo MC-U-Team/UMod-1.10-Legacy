@@ -42,7 +42,7 @@ import net.minecraftforge.fml.relauncher.*;
 public abstract class GuiBase extends GuiScreen {
 	
 	public ArrayList<ModeTabs> tabs = new ArrayList<ModeTabs>();
-	public ResourceLocation loc, loc1, loc2, loc3;
+	public ResourceLocation loc, loc1;
 	public static final ResourceLocation CLEAR_GUI = new GuiRescources("clear.png");
 	public EntityPlayer player;
 	public TileEntity tile;
@@ -57,8 +57,6 @@ public abstract class GuiBase extends GuiScreen {
 		super();
 		this.loc = loc;
 		this.loc1 = loc;
-		this.loc2 = new GuiRescources("battery.png");
-		this.loc3 = new GuiRescources("IOMode.png");
 		this.player = player;
 		this.worldObj = this.player.getEntityWorld();
 		this.tile = this.worldObj.getTileEntity(pos);
@@ -93,8 +91,9 @@ public abstract class GuiBase extends GuiScreen {
 				}
 			}
 		}, 0, true));
+		
 		if(this.tile instanceof IBatteryProvider)
-		tabs.add(new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode",ImplGui.NULL, this.loc2,this,new Consumer<BaseSlot>() {
+		tabs.add(new ModeTabs(new ItemStack(UBlocks.charge), "Battery Mode",ImplGui.nullptr, new GuiRescources("battery.png"),this,new Consumer<BaseSlot>() {
 			@Override
 			public void accept(BaseSlot arg0) {
 				if(arg0 instanceof BaseBatteryInputSlot && arg0 instanceof BaseNormalSlot){
@@ -103,7 +102,7 @@ public abstract class GuiBase extends GuiScreen {
 			}
 		}, 0, false));
 		if(this.tile instanceof IIOMode)
-		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",new IOMode(this),this.loc3,this, 0, false));
+		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",new IOMode(this),new GuiRescources("IOMode.png"),this, 0, false));
 		if(this.tile instanceof IWorldView)
 		tabs.add(new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", new ModeColor(this),CLEAR_GUI,this, 0, false)); 
 		if (this.tile instanceof IPowerProvieder)
@@ -131,19 +130,14 @@ public abstract class GuiBase extends GuiScreen {
 	 * Starting Y position for the Gui. Inconsistent use for Gui backgrounds.
 	 */
 	public int guiTop;
-	/** holds the slot currently hovered */
 	public Slot theSlot;
-	/** Used when touchscreen is enabled. */
 	public Slot clickedSlot;
-	/** Used when touchscreen is enabled. */
 	public boolean isRightMouseClick;
-	/** Used when touchscreen is enabled */
 	public ItemStack draggedStack;
 	public int touchUpX;
 	public int touchUpY;
 	public Slot returningStackDestSlot;
 	public long returningStackTime;
-	/** Used when touchscreen is enabled */
 	public ItemStack returningStack;
 	public Slot currentDragTargetSlot;
 	public long dragItemDropDelay;
@@ -159,8 +153,6 @@ public abstract class GuiBase extends GuiScreen {
 	public int lastClickButton;
 	public boolean doubleClick;
 	public ItemStack shiftClickedSlot;
-	public static final String __OBFID = "CL_00000737";
-	public EnumFacing hal = EnumFacing.NORTH;
 	
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		int mousePX = mouseX;
@@ -198,17 +190,7 @@ public abstract class GuiBase extends GuiScreen {
 			for (int ig1 = 0; ig1 < this.container.inventorySlots.size(); ig1++) {
 				Slot slot = (Slot) this.container.inventorySlots.get(ig1);
 				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasColor() && ((BaseSlot) slot).isVisible() && (!this.isMouseOverSlot(slot, mouseX, mouseY) || !slot.canBeHovered())) {
-					GlStateManager.disableLighting();
-					GlStateManager.disableDepth();
-					int j1 = slot.xDisplayPosition;
-					k1 = slot.yDisplayPosition;
-					GlStateManager.colorMask(true, true, true, false);
-					RGBA st = ((BaseSlot) slot).getHoverColor(0);
-					RGBA en = ((BaseSlot) slot).getHoverColor(1);
-					this.help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
-					GlStateManager.colorMask(true, true, true, true);
-					GlStateManager.enableLighting();
-					GlStateManager.enableDepth();
+					((BaseSlot)slot).render();
 				}
 			}
 		
@@ -288,23 +270,8 @@ public abstract class GuiBase extends GuiScreen {
 			Slot slot = (Slot) sl;
 			if (!(slot instanceof BaseSlot) || ((BaseSlot) slot).isVisible()) {
 					if (this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
-						this.theSlot = slot;
-						int j1 = slot.xDisplayPosition;
-						k1 = slot.yDisplayPosition;
-						if (slot instanceof BaseSlot && ((BaseSlot) slot).hasColor()) {
-							RGBA st = ((BaseSlot) slot).getHoverColor(2);
-							RGBA en = ((BaseSlot) slot).getHoverColor(3);
-							this.help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, st, en, this.zLevel);
-						} else {
-							this.drawGradientRect(j1, k1, j1 + 16, k1 + 16, -2130706433, -2130706433);
-						}
-						if (slot instanceof BaseSlot) {
-							int xc = j1 - 1,yc = k1,widthc = 18,heightc = 18;
-							RGBA rgbc = new RGBA(Color.DARK_GRAY);
-							this.help.drawGradientRect(xc - 1, yc - 2,xc + widthc + 1, yc, rgbc);
-							this.help.drawGradientRect(xc - 1, yc + heightc - 2,xc + widthc + 1, yc + heightc, rgbc);
-							this.help.drawGradientRect(xc - 1, yc,xc + 1, yc + heightc, rgbc);
-							this.help.drawGradientRect(xc + widthc - 1, yc ,xc + widthc + 1,yc + heightc, rgbc);
+						if(slot instanceof BaseSlot){
+							((BaseSlot) slot).renderOverlay();
 						}
 					}
 					this.drawSlot(slot);
@@ -317,36 +284,7 @@ public abstract class GuiBase extends GuiScreen {
 			Slot slot = (Slot) sl;
 			if (slot != null && this.isMouseOverSlot(slot, mouseX, mouseY) && slot.canBeHovered()) {
 				if (slot instanceof BaseSlot && ((BaseSlot) slot).hasString() && ((BaseSlot) slot).isVisible() && !(Keyboard.isKeyDown(UReference.getClientProxy().getInfoBinding().getKeyCode()) && slot.getHasStack())) {
-					GlStateManager.pushMatrix();
-					Tessellator ts = Tessellator.getInstance();
-					BaseSlot slt = (BaseSlot) slot;
-					RGBA sl1 = slt.getHoverColor(0);
-					RGBA sli = new RGBA(sl1.toAWTColor().darker()).setAlpha(180);
-					GlStateManager.disableTexture2D();
-					GlStateManager.enableBlend();
-					GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-					GlStateManager.shadeModel(7425);
-					VertexBuffer rend = ts.getBuffer();
-					rend.begin(7, DefaultVertexFormats.POSITION_COLOR);
-					rend.pos(mouseX + slt.getWidth(), mouseY, this.zLevel).color(sl1.getRed(), sl1.getGreen(), sl1.getBlue(), sl1.getAlpha()).endVertex();
-					rend.pos(mouseX, mouseY, this.zLevel).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
-					rend.pos(mouseX, mouseY + slt.getHeight(), this.zLevel).color(sli.getRed(), sli.getGreen(), sli.getBlue(), sli.getAlpha()).endVertex();
-					rend.pos(mouseX + slt.getWidth(), mouseY + slt.getHeight(), this.zLevel).color(sl1.getRed(), sl1.getGreen(), sl1.getBlue(), sl1.getAlpha()).endVertex();
-					ts.draw();
-					GlStateManager.shadeModel(7424);
-					GlStateManager.disableBlend();
-					GlStateManager.enableAlpha();
-					GlStateManager.enableTexture2D();
-					if (((BaseSlot) slot).hasMoreLines()) {
-						String[] str = ((BaseSlot) slot).getString().split("\n");
-						for (int i = 0; i < str.length; i++)
-							this.fontRendererObj.drawString(str[i], mouseX + 4, mouseY + 4 + (i * 16), ((BaseSlot) slot).getFontColor());
-					} else {
-						this.fontRendererObj.drawString(((BaseSlot) slot).getString(), mouseX + 4, mouseY + 4, ((BaseSlot) slot).getFontColor());
-					}
-					GlStateManager.popMatrix();
-					GlStateManager.enableLighting();
-					GlStateManager.enableDepth();
+					
 				} else if (slot != null && slot.getHasStack()) {
 					this.renderToolTip(slot.getStack(), mouseX, mouseY);
 				}
@@ -354,10 +292,6 @@ public abstract class GuiBase extends GuiScreen {
 		}
 		RenderHelper.enableStandardItemLighting();
 		
-	}
-	
-	public EnumFacing getIOFaceing() {
-		return hal;
 	}	
 	
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {}
@@ -543,7 +477,7 @@ public abstract class GuiBase extends GuiScreen {
 				}
 			}
 		}
-		if (this.activeTab != null && mouseButton == 0 && !(this.activeTab.getGui() instanceof ModeNormal) && !this.activeTab.getGui().equals(ImplGui.NULL)){
+		if (this.activeTab != null && mouseButton == 0 && !(this.activeTab.getGui() instanceof ModeNormal) && !this.activeTab.getGui().equals(ImplGui.nullptr)){
 			this.activeTab.getGui().onClick(mouseX, mouseY);
 			return;
 		}

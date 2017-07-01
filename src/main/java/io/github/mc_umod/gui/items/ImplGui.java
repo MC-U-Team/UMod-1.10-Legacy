@@ -5,7 +5,7 @@ import net.minecraft.client.gui.*;
 
 public abstract class ImplGui extends Gui{
 	
-	public static final ImplGui NULL = new ImplGui(null) {@Override public void render(int mouseX, int mouseY) {}};
+	public static final ImplGui nullptr = new ImplGui(null) {@Override public void render(int mouseX, int mouseY) {}};
 	
 	protected GuiBase base_gui;
 	

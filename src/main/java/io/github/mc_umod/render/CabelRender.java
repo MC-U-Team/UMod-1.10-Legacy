@@ -3,7 +3,9 @@ package io.github.mc_umod.render;
 import io.github.mc_umod.block.machine.*;
 import io.github.mc_umod.tileentity.*;
 import net.minecraft.block.*;
+import net.minecraft.client.*;
 import net.minecraft.client.renderer.*;
+import net.minecraft.entity.player.*;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
@@ -16,7 +18,7 @@ public class CabelRender extends TileRender {
 	
 	@Override
 	public void renderTileEntityAt(TileEntity tile,double posX, double posY, double posZ) {
-		// EntityPlayer pl = Minecraft.getMinecraft().thePlayer;
+		//EntityPlayer pl = Minecraft.getMinecraft().thePlayer;		
 		// if (pl.inventory.armorInventory[3] != null && pl.inventory.armorInventory[3].getItem() instanceof ItemEnergyGlasses && tile instanceof IPowerProvieder) {
 		// TODO Create Overlay only IO Pipes
 		// }
@@ -30,6 +32,7 @@ public class CabelRender extends TileRender {
 				return;
 			GlStateManager.disableCull();
 			BlockPos pos = pip.getPos();
+			
 			boolean csouth = pip.canConnect(w, pos.south());
 			boolean cnorth = pip.canConnect(w, pos.north());
 			boolean cdown = pip.canConnect(w, pos.down());

@@ -13,6 +13,8 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.vertex.*;
 import net.minecraft.client.settings.*;
 import net.minecraftforge.client.event.*;
+import net.minecraftforge.common.capabilities.*;
+import net.minecraftforge.energy.*;
 import net.minecraftforge.fml.common.eventhandler.*;
 import net.minecraftforge.fml.common.gameevent.*;
 import net.minecraftforge.fml.common.gameevent.InputEvent.*;
