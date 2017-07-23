@@ -1,9 +1,9 @@
 package io.github.mc_umod.network;
 
 import io.github.mc_umod.network.message.*;
-import net.minecraftforge.fml.common.network.*;
-import net.minecraftforge.fml.common.network.simpleimpl.*;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketHandler {
 	

@@ -1,18 +1,16 @@
 package io.github.mc_umod.block.machine;
 
-import java.util.*;
-
-import io.github.mc_umod.*;
-import io.github.mc_umod.block.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.block.material.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.block.BlockBase;
+import io.github.mc_umod.utils.DirectionUtils;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
-import net.minecraft.entity.*;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class BlockBreaker extends BlockBase {
 	

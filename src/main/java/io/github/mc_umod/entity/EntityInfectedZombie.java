@@ -1,14 +1,14 @@
 package io.github.mc_umod.entity;
 
-import io.github.mc_umod.api.*;
-import net.minecraft.block.*;
+import io.github.mc_umod.api.IInfectedEntity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class EntityInfectedZombie extends EntityMob implements IInfectedEntity {
 	

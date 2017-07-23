@@ -1,8 +1,8 @@
 package io.github.mc_umod.event;
 
-import net.minecraft.world.*;
-import net.minecraftforge.event.world.*;
-import net.minecraftforge.fml.common.eventhandler.*;
+import net.minecraft.world.GameRules;
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventLoadWorld {
 	

@@ -6,10 +6,10 @@ import io.github.mc_umod.block.infected.*;
 import io.github.mc_umod.block.machine.*;
 import io.github.mc_umod.block.rail.*;
 import io.github.mc_umod.item.block.*;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.utils.URegistryUtils;
 import net.minecraft.block.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 
 public class UBlocks {
 	

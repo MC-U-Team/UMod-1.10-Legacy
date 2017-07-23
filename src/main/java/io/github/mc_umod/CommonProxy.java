@@ -1,10 +1,6 @@
 package io.github.mc_umod;
 
-import java.util.*;
-
-import io.github.mc_umod.api.energy.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.api.energy.TunnelHolder;
 import net.minecraftforge.fml.relauncher.*;
 
 public class CommonProxy {

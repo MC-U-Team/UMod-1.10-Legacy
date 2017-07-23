@@ -1,12 +1,12 @@
 package io.github.mc_umod.event;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.gui.*;
-import net.minecraft.client.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.fml.common.eventhandler.*;
+import io.github.mc_umod.gui.GuiModIngame;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.*;
 
 public class EventDrawHUD {

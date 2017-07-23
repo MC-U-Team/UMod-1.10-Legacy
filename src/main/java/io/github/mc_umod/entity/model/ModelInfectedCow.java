@@ -1,8 +1,8 @@
 package io.github.mc_umod.entity.model;
 
 import net.minecraft.client.model.*;
-import net.minecraft.entity.*;
-import net.minecraft.util.math.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelInfectedCow extends ModelBase {
 	

@@ -1,8 +1,8 @@
 package io.github.mc_umod.ext.abs;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 import net.minecraft.item.*;
-import net.minecraftforge.oredict.*;
+import net.minecraftforge.oredict.OreDictionary;
 
 public abstract class AbstractOreDictionaryRegistry {
 	

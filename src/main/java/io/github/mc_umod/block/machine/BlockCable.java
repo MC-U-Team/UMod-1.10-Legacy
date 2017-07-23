@@ -1,19 +1,18 @@
 package io.github.mc_umod.block.machine;
 
-import java.util.*;
+import java.util.List;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.*;
-import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.tileentity.*;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.api.render.ISpiritProvider;
+import io.github.mc_umod.tileentity.TileEntityCable;
+import io.github.mc_umod.utils.NBTUtils;
 import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;

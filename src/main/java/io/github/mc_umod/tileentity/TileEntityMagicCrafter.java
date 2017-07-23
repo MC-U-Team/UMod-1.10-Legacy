@@ -1,13 +1,13 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.api.crafting.*;
-import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.api.Crystal;
+import io.github.mc_umod.api.crafting.MagicCrafterRecipe;
+import io.github.mc_umod.gui.container.ContainerMagicCrafter;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
-import net.minecraft.tileentity.*;
+import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.*;
 
 public class TileEntityMagicCrafter extends TileEntityLockable implements ITickable, ISidedInventory {

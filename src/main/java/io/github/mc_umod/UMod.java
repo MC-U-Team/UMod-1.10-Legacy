@@ -3,19 +3,20 @@ package io.github.mc_umod;
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.event.*;
 import io.github.mc_umod.event.apis.*;
-import io.github.mc_umod.ext.*;
-import io.github.mc_umod.network.*;
-import io.github.mc_umod.render.*;
-import net.minecraft.inventory.*;
-import net.minecraftforge.fml.common.*;
+import io.github.mc_umod.ext.ExtensionList;
+import io.github.mc_umod.network.PacketHandler;
+import io.github.mc_umod.render.RenderDiscordOverlay;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.*;
 import net.minecraftforge.fml.common.event.*;
-import net.minecraftforge.fml.common.network.*;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Singelton
-@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name, dependencies = "required-after:corelib")
+@Mod(modid = UReference.modid, version = UReference.version, name = UReference.name)
 public class UMod {
+	
+	//, dependencies = "required-after:corelib"
 	
 	public static org.apache.logging.log4j.Logger log;
 	private UConfig config;

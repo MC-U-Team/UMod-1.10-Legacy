@@ -1,13 +1,16 @@
 package io.github.mc_umod.entity.render;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_3_BYTES;
+import static org.lwjgl.opengl.GL11.GL_LIGHT4;
+import static org.lwjgl.opengl.GL11.GL_MAX_NAME_STACK_DEPTH;
+import static org.lwjgl.opengl.GL11.glLighti;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.entity.*;
-import net.minecraft.client.renderer.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.entity.EntityGenerator;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.util.*;
-import net.minecraftforge.fml.client.registry.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderGenerator extends Render<EntityGenerator> implements IRenderFactory<EntityGenerator>{
 

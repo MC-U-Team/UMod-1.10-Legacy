@@ -1,11 +1,11 @@
 package io.github.mc_umod.ext;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UMod;
 import io.github.mc_umod.ext.abs.*;
-import io.github.mc_umod.ext.enderio.*;
-import io.github.mc_umod.ext.ic2.*;
+import io.github.mc_umod.ext.enderio.EnderIOExtension;
+import io.github.mc_umod.ext.ic2.IC2ModExtension;
 import net.minecraftforge.fml.common.*;
 import net.minecraftforge.fml.common.event.*;
 

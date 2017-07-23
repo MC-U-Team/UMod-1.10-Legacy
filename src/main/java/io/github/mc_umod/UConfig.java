@@ -1,9 +1,8 @@
 package io.github.mc_umod;
 
-import java.io.*;
+import java.io.File;
 
-import io.github.mc_umod.entity.*;
-import net.minecraftforge.common.config.*;
+import net.minecraftforge.common.config.Configuration;
 
 public class UConfig {
 	

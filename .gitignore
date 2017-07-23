@@ -20,21 +20,29 @@ build
 # other
 eclipse
 run
-/corelib-0.5-alpha-mc1.10.2-deobf.jar
 /CREDITS-fml.txt
 /EnderCore-1.10.2-0.4.1.56-beta.jar
 /EnderIO-1.10.2-3.0.1.120_beta.jar
 /forge-1.10.2-12.18.2.2102-changelog.txt
+/forge-1.10.2-12.18.3.2316-changelog.txt
+/gradle.properties
 /gradlew
 /gradlew.bat
 /industrialcraft-2-2.6.96-ex110-dev.jar
 /LICENSE-new.txt
 /MinecraftForge-Credits.txt
+/options.txt
 /Paulscode IBXM Library License.txt
 /Paulscode SoundSystem CodecIBXM License.txt
 /README.txt
-/options.txt
+/TestClass.class
 /usercache.json
 /usernamecache.json
-/corelib-1.0.jar
-/TestClass.class
+/run
+/crash-reports
+/build
+/saves
+/mods
+
+*.dat
+*.gz

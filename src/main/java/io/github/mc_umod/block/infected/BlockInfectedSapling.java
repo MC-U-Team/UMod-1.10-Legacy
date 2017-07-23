@@ -1,16 +1,16 @@
 package io.github.mc_umod.block.infected;
 
-import java.util.*;
+import java.util.Random;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.world.*;
+import io.github.mc_umod.api.IInfectedBlock;
+import io.github.mc_umod.world.GenInfectedTree;
 import net.minecraft.block.*;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class BlockInfectedSapling extends BlockBush implements IGrowable, IInfectedBlock {
 	

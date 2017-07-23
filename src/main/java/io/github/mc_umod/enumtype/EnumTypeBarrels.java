@@ -1,6 +1,6 @@
 package io.github.mc_umod.enumtype;
 
-import net.minecraft.util.*;
+import net.minecraft.util.IStringSerializable;
 
 public enum EnumTypeBarrels implements IStringSerializable {
 	

@@ -1,26 +1,18 @@
 package io.github.mc_umod.render;
 
-import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.energy.*;
+import io.github.mc_umod.api.energy.IPowerProvieder;
 import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.resources.*;
-import net.minecraft.tileentity.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.tileentity.TileEntity;
 
 public class InfoFieldRender {
 	
 	public static final InfoFieldRender INSTANCE = new InfoFieldRender();
-	private GLHelper help;
-	
-	private InfoFieldRender() {
-		this.help = UReference.getClientProxy().getGLHelper();
-	}
 	
 	public void render(TileEntity tileEntity, double posX, double posY, double posZ) {
 		if (!(tileEntity instanceof IWorldView))
@@ -54,17 +46,17 @@ public class InfoFieldRender {
 		final int j = stringSi / 2;
 		final int j2 = stringSi + 4;
 		final int stringmu = st.size() - 1;
-		this.help.drawSmThInWorld(oven.getPos(), posX, posY + ((double) stringmu / 10), posZ, new Runnable() {
+		/*drawSmThInWorld(oven.getPos(), posX, posY + ((double) stringmu / 10), posZ, new Runnable() {
 			
 			@Override
 			public void run() {				
 				RGBA rgb = new RGBA(Color.DARK_GRAY);
 				rgb.setAlpha(225);
-				help.drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb);
+				drawFrame((double) (-j - 1), (double) (-1 - 0), (double) (j2 + 1), (double) (10) * stringmu, rgb);
 				
 				RGBA rgb3 = new RGBA(Color.WHITE);
 				rgb3.setAlpha(255);
-				help.drawFrame((double) (-j - 2), (double) (-1 - 1), (double) (j2 + 1), (double) (10) * stringmu, rgb3);
+				drawFrame((double) (-j - 2), (double) (-1 - 1), (double) (j2 + 1), (double) (10) * stringmu, rgb3);
 				
 				Iterator<String> itar = st.iterator();
 				int y = -11;
@@ -77,7 +69,7 @@ public class InfoFieldRender {
 				GlStateManager.enableDepth();
 				GlStateManager.shadeModel(7424);
 			}
-		});
+		});*/
 		GlStateManager.popMatrix();
 	}
 	

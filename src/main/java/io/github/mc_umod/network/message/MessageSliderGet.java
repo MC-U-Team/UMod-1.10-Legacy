@@ -1,9 +1,9 @@
 package io.github.mc_umod.network.message;
 
-import io.github.mc_umod.api.render.*;
-import io.netty.buffer.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
+import io.github.mc_umod.api.render.ISliderTile;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderGet implements IMessage, IMessageHandler<MessageSliderGet, IMessage> {

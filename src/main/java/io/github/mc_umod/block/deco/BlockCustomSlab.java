@@ -1,14 +1,14 @@
 package io.github.mc_umod.block.deco;
 
-import java.util.*;
+import java.util.Random;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UReference;
 import net.minecraft.block.*;
-import net.minecraft.block.material.*;
-import net.minecraft.block.properties.*;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.*;
 import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;

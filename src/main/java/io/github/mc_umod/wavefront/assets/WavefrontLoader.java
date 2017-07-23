@@ -1,13 +1,13 @@
 package io.github.mc_umod.wavefront.assets;
 
-import java.io.*;
-import java.net.*;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.corelib.obj.*;
-import io.github.mc_umod.corelib.renderapi.*;
-import net.minecraft.crash.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.obj.WavefrontInterpretter;
+import io.github.mc_umod.renderapi.*;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.util.ReportedException;
 
 public class WavefrontLoader {
 	

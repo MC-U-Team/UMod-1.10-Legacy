@@ -1,11 +1,11 @@
 package io.github.mc_umod.ext.enderio;
 
 import crazypants.enderio.power.*;
-import io.github.mc_umod.api.energy.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
-import net.minecraftforge.common.capabilities.*;
-import net.minecraftforge.energy.*;
+import io.github.mc_umod.api.energy.IPowerProvieder;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.energy.IEnergyStorage;
 
 public class TileEntityEnderIOTransformer extends TileEntity implements IPowerProvieder, IPowerStorage, IPowerApiAdapter, IPowerInterface, IEnergyStorage {
 	

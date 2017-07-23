@@ -1,11 +1,11 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.gui.container.*;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.gui.container.ContainerCraftFurnace;
+import io.github.mc_umod.utils.ModRegistryUtils;
 import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
-import net.minecraft.item.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 
 public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ITickable {

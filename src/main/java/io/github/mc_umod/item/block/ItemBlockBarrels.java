@@ -1,8 +1,8 @@
 package io.github.mc_umod.item.block;
 
-import io.github.mc_umod.enumtype.*;
-import net.minecraft.block.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.enumtype.EnumTypeBarrels;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 
 public class ItemBlockBarrels extends ItemBlockSubBase {
 	

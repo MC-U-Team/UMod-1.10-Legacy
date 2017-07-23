@@ -1,12 +1,12 @@
 package io.github.mc_umod.command;
 
-import io.github.mc_umod.utils.*;
-import net.minecraft.block.*;
+import io.github.mc_umod.utils.NBTUtils;
+import net.minecraft.block.Block;
 import net.minecraft.command.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraft.server.*;
-import net.minecraft.util.text.*;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentString;
 
 public class CommandConduit extends CommandBase {
 	

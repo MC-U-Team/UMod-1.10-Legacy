@@ -1,14 +1,14 @@
 package io.github.mc_umod.entity.render;
 
-import java.util.*;
+import java.util.HashMap;
 
-import io.github.mc_umod.entity.*;
-import io.github.mc_umod.render.*;
+import io.github.mc_umod.entity.EntityFX;
+import io.github.mc_umod.render.TileRender;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.*;
-import net.minecraftforge.fml.client.registry.*;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderFX extends Render<EntityFX> implements IRenderFactory<EntityFX> {
 	

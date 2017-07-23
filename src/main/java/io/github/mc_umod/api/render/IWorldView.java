@@ -1,7 +1,7 @@
 package io.github.mc_umod.api.render;
 
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public interface IWorldView {
 	

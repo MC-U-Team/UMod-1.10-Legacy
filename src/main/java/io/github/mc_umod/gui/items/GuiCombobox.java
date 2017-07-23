@@ -1,15 +1,14 @@
 package io.github.mc_umod.gui.items;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.util.ArrayList;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.*;
-import io.github.mc_umod.render.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
-import net.minecraft.client.renderer.*;
+import io.github.mc_umod.gui.GuiBase;
+import io.github.mc_umod.renderapi.draw.*;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
@@ -20,7 +19,6 @@ public class GuiCombobox extends ImplGui {
 	private boolean extend = false;
 	private int x, y, width, height;
 	private Runnable runn = null;
-	private GLHelper help;
 	
 	public GuiCombobox(GuiBase base,int x, int y, int width, int height) {
 		super(base);
@@ -28,18 +26,17 @@ public class GuiCombobox extends ImplGui {
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	@Override
 	public void render(int mouseX, int mouseY) {
         Minecraft mc = base_gui.mc;
 		RGBA rgb = new RGBA(Color.WHITE);
-		this.help.drawGradientRect(x, y, x + width, y + height, rgb, rgb, this.zLevel);
+		new Quad(x, y, x + width, y + height, rgb);
 		RGBA rgb2 = new RGBA(Color.GRAY);
-		this.help.drawHLine(x, x + width, y, rgb2, this.zLevel);
-		this.help.drawHLine(x, x + width, y + height, rgb2, this.zLevel);
-		this.help.drawVLine(x, y, y + height, rgb2, this.zLevel);
-		this.help.drawVLine(x + width, y, y + height, rgb2, this.zLevel);
+		new HLine(x, width, y, rgb2);
+		new HLine(x, width, y + height, rgb2);
+		new VLine(x, y, height, rgb2);
+		new VLine(x + width, y, height, rgb2);
 		
 		FontRenderer fontrenderer = mc.fontRendererObj;
 		if (!extend) {
@@ -57,12 +54,12 @@ public class GuiCombobox extends ImplGui {
 			GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 			GlStateManager.blendFunc(770, 771);
 			drawModalRectWithCustomSizedTexture(x + width - 15, y + height / 2 - 4, 0, 0, 15, 9, 15, 9);
-			this.help.drawGradientRect(x + 1, y + height, x + width, y + strs.size() * (fontrenderer.FONT_HEIGHT + 4), rgb, rgb, this.zLevel);
+			new Quad(x + 1, y + height, x + width, y + strs.size() * (fontrenderer.FONT_HEIGHT + 4), rgb);
 			for (int i = 0; i < strs.size(); i++) {
 				ComboboxItem item = strs.get(i);
 				int itm = this.y + this.height + ((fontrenderer.FONT_HEIGHT)*i);
 				if(mouseX >= this.x + 1 && mouseX <= this.x + this.width - 1 && mouseY >= itm && mouseY < itm + fontrenderer.FONT_HEIGHT){
-					this.help.drawGradientRect(this.x + 2, itm, this.x + 2  + (this.width - 3),itm + (fontrenderer.FONT_HEIGHT - 1), rgb2);
+					new Quad(this.x + 2, itm, this.x + 2  + (this.width - 3),itm + (fontrenderer.FONT_HEIGHT - 1), rgb2);
 				}
 				fontrenderer.drawString(item.item, x + 3, y + height + 9 * i, item.color.toAWTColor().getRGB());
 			}

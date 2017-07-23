@@ -1,15 +1,13 @@
 package io.github.mc_umod.gui.items;
 
-import java.awt.*;
+import java.awt.Color;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.*;
-import io.github.mc_umod.render.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
+import io.github.mc_umod.api.render.StringMethod;
+import io.github.mc_umod.gui.GuiBase;
+import io.github.mc_umod.renderapi.draw.Quad;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 
 public class GuiCheckbox extends ImplGui {
 	
@@ -18,7 +16,6 @@ public class GuiCheckbox extends ImplGui {
 	private boolean isSelected;
 	private StringMethod ret;
 	private Runnable run;
-	private GLHelper help;
 	
 	public GuiCheckbox(GuiBase base,double x, double y, double width, double height, RGBA rgb, RGBA hover) {
 		super(base);
@@ -28,7 +25,6 @@ public class GuiCheckbox extends ImplGui {
 		this.height = height;
 		this.rgb = rgb;
 		this.hover = hover;
-		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public boolean isMouseOver(int x, int y) {
@@ -40,15 +36,15 @@ public class GuiCheckbox extends ImplGui {
         Minecraft mc = base_gui.mc;
 		RGBA use = null;
 		FontRenderer fontobj = mc.fontRendererObj;
-		this.help.drawFrame(this.x, this.y, this.width, this.height, new RGBA(Color.black), this.zLevel);
+		//drawFrame(this.x, this.y, this.width, this.height, new RGBA(Color.black), this.zLevel);
 		if (isMouseOver(x, y)) {
 			use = hover;
-			this.help.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
+			new Quad(this.x, this.y, this.x + this.width, this.y + this.height, use);
 			if (isSelected) {
 				fontobj.drawString("X", (int) Math.round((float) this.x + this.width / 2) - 2, (int) Math.round((float) this.y + this.height / 2) - 4, Color.RED.getRGB());
 			}
 			if (hasTooltip()) {
-				this.help.drawGradientRect(x, y, x + getWidth(fontobj), y + getHeight(fontobj), new RGBA(Color.white), this.zLevel);
+				new Quad(x, y, x + getWidth(fontobj), y + getHeight(fontobj), new RGBA(Color.white));
 				if (this.hasMoreLines()) {
 					String[] str = ret.getString().split("\n");
 					for (int i = 0; i < str.length; i++)
@@ -59,7 +55,7 @@ public class GuiCheckbox extends ImplGui {
 			}
 		} else {
 			use = rgb;
-			this.help.drawGradientRect(this.x, this.y, this.x + this.width, this.y + this.height, use, this.zLevel);
+			new Quad(this.x, this.y, this.x + this.width, this.y + this.height, use);
 			if (isSelected) {
 				fontobj.drawString("X", (int) Math.round((float) this.x + this.width / 2) - 2, (int) Math.round((float) this.y + this.height / 2) - 4, Color.RED.getRGB());
 			}

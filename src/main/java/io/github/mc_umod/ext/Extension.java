@@ -1,6 +1,6 @@
 package io.github.mc_umod.ext;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UMod;
 
 public class Extension {
 	

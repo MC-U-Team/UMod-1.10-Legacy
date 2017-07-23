@@ -1,7 +1,7 @@
 package io.github.mc_umod.world;
 
-import net.minecraft.nbt.*;
-import net.minecraft.world.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.WorldSavedData;
 
 public class WorldSavedDataInfectedStructure extends WorldSavedData {
 	

@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
-import net.minecraft.init.*;
-import net.minecraft.item.*;
-import net.minecraft.stats.*;
-import net.minecraftforge.common.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
 
 public class UAchievement {
 	

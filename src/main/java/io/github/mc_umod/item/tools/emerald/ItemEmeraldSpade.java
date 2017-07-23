@@ -1,10 +1,10 @@
 package io.github.mc_umod.item.tools.emerald;
 
-import java.util.*;
+import java.util.List;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.entity.player.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.utils.URegistryUtils;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.relauncher.*;
 

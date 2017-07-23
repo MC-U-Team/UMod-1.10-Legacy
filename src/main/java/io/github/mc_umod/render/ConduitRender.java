@@ -1,19 +1,17 @@
 package io.github.mc_umod.render;
 
 import io.github.mc_umod.api.*;
-import io.github.mc_umod.block.machine.*;
-import net.minecraft.block.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.tileentity.*;
+import io.github.mc_umod.block.machine.BlockCable;
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 
 public class ConduitRender {
 	
-	public final GLHelper help;
 	public final ModelRenderHelper model;
 	
-	public ConduitRender(GLHelper help,ModelRenderHelper model) {
-		this.help = help;
+	public ConduitRender(ModelRenderHelper model) {
         this.model = model;
 	}
 	

@@ -1,6 +1,6 @@
 package io.github.mc_umod.ext.divmod;
 
-import io.github.mc_umod.ext.*;
+import io.github.mc_umod.ext.IUmodExtension;
 import io.github.mc_umod.ext.abs.*;
 import net.minecraftforge.fml.common.event.*;
 

@@ -1,9 +1,9 @@
 package io.github.mc_umod.gui.container;
 
 import io.github.mc_umod.gui.inventory.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
-import net.minecraft.util.math.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.util.math.BlockPos;
 
 public class ContainerCraftFurnace extends ContainerBase {
 	

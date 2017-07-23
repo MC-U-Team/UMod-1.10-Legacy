@@ -1,8 +1,8 @@
 package io.github.mc_umod.gui.items;
 
-import java.awt.*;
+import java.awt.Color;
 
-import io.github.mc_umod.corelib.util.*;
+import io.github.mc_umod.util.RGBA;
 
 public class ComboboxItem {
 	

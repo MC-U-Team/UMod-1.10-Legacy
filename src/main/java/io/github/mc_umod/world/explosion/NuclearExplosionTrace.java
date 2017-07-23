@@ -2,13 +2,13 @@ package io.github.mc_umod.world.explosion;
 
 import java.util.*;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
+import io.github.mc_umod.UDamageSource;
+import io.github.mc_umod.api.IProcess;
 import net.minecraft.block.*;
-import net.minecraft.entity.*;
-import net.minecraft.init.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class NuclearExplosionTrace implements IProcess {
 	

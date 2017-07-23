@@ -1,8 +1,8 @@
 package io.github.mc_umod.utils;
 
-import net.minecraft.block.*;
-import net.minecraft.client.*;
-import net.minecraft.util.math.*;
+import net.minecraft.block.BlockAir;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
 public class WorldUtils {

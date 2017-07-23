@@ -1,23 +1,22 @@
 package io.github.mc_umod.gui;
 
-import java.awt.*;
-import java.io.*;
+import java.awt.Color;
+import java.io.IOException;
 
-import org.lwjgl.input.*;
+import org.lwjgl.input.Keyboard;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UReference;
 import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.gui.container.ContainerPainter;
 import io.github.mc_umod.gui.items.*;
-import io.github.mc_umod.gui.items.GuiSlider;
-import io.github.mc_umod.gui.mode.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
+import io.github.mc_umod.gui.mode.ModeNormal;
+import io.github.mc_umod.renderapi.draw.Quad;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.util.math.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 
 public class GuiPainter extends GuiBase implements ISliderTile {
 	
@@ -74,7 +73,7 @@ public class GuiPainter extends GuiBase implements ISliderTile {
 			green.render(mouseX, mouseY);
 			blue.render(mouseX, mouseY);
 			sat.render(mouseX, mouseY);
-			this.help.drawGradientRect(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
+			new Quad(297, 53 + this.guiTop, 315, 53 + this.guiTop + 19, new RGBA(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100));
 			if (Keyboard.isKeyDown(UReference.getClientProxy().getInfoBinding().getKeyCode())) {
 				red.renderOverlay(mouseX, mouseY);
 				green.renderOverlay(mouseX, mouseY);
@@ -86,7 +85,7 @@ public class GuiPainter extends GuiBase implements ISliderTile {
 					String redd = "Red: " + red.getValue();
 					String greend = "Green: " + green.getValue();
 					int with = Math.max(Math.max(rend.getStringWidth(redd), rend.getStringWidth(greend)), rend.getStringWidth(blued));
-					this.help.drawGradientRect(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
+					new Quad(mouseX, mouseY, mouseX + with + 12, mouseY + 16 * 3 + 4, new RGBA(new Color(red.getValue() * 255 / 100, green.getValue() * 255 / 100, blue.getValue() * 255 / 100, sat.getValue() * 255 / 100).darker()));
 					rend.drawString(redd, mouseX + 6, mouseY + 6, 0xFF0000);
 					rend.drawString(greend, mouseX + 6, mouseY + 22, 0x00FF00);
 					rend.drawString(blued, mouseX + 6, mouseY + 38, 0x0000FF);

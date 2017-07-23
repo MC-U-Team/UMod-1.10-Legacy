@@ -1,19 +1,17 @@
 package io.github.mc_umod.tileentity;
 
-import java.util.*;
-
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.event.apis.*;
-import net.minecraft.item.*;
-import net.minecraft.nbt.*;
-import net.minecraft.network.*;
-import net.minecraft.network.play.server.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
-import net.minecraftforge.common.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IConduitProvider,ITickable{
 	

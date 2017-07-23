@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import net.minecraftforge.fml.common.*;
-import net.minecraftforge.fml.common.registry.*;
+import net.minecraftforge.fml.common.IWorldGenerator;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class UGeneration {
 	

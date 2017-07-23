@@ -1,12 +1,12 @@
 package io.github.mc_umod.gui;
 
-import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.gui.container.*;
-import io.github.mc_umod.gui.inventory.*;
-import io.github.mc_umod.gui.items.*;
-import net.minecraft.client.gui.inventory.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.enumtype.EnumTypeBackPack;
+import io.github.mc_umod.gui.container.ContainerBackPack;
+import io.github.mc_umod.gui.inventory.InventoryBackPack;
+import io.github.mc_umod.gui.items.GuiRescources;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

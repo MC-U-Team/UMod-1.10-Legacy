@@ -1,17 +1,17 @@
 package io.github.mc_umod.block;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.entity.*;
-import net.minecraft.block.material.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.entity.EntityNukePrimed;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
 import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.entity.projectile.*;
-import net.minecraft.init.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
 
 public class BlockNuke extends BlockBase {

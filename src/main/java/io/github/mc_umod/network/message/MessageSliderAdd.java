@@ -1,11 +1,11 @@
 package io.github.mc_umod.network.message;
 
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.utils.*;
-import io.netty.buffer.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import io.github.mc_umod.api.render.ISliderEntry;
+import io.github.mc_umod.utils.NetworkUtil;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageSliderAdd implements IMessage, IMessageHandler<MessageSliderAdd, IMessage> {

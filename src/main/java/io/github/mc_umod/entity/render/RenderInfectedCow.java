@@ -1,11 +1,11 @@
 package io.github.mc_umod.entity.render;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.entity.*;
-import io.github.mc_umod.entity.model.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.entity.EntityInfectedCow;
+import io.github.mc_umod.entity.model.ModelInfectedCow;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.util.*;
-import net.minecraftforge.fml.client.registry.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

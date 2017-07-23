@@ -1,12 +1,12 @@
 package io.github.mc_umod.network.message;
 
-import io.github.mc_umod.gui.*;
+import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.mode.*;
-import io.github.mc_umod.utils.*;
-import io.netty.buffer.*;
-import net.minecraft.client.*;
-import net.minecraft.client.gui.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.utils.DirectionUtils;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.util.EnumFacing;
 import net.minecraftforge.fml.common.network.simpleimpl.*;
 
 public class MessageIOCallback implements IMessage, IMessageHandler<MessageIOCallback, IMessage> {

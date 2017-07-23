@@ -1,6 +1,6 @@
 package io.github.mc_umod.api;
 
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
 
 public interface ISignable {
 	

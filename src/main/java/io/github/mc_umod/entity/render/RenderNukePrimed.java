@@ -1,14 +1,14 @@
 package io.github.mc_umod.entity.render;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.entity.*;
-import net.minecraft.client.*;
+import io.github.mc_umod.UBlocks;
+import io.github.mc_umod.entity.EntityNukePrimed;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraftforge.fml.client.registry.*;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

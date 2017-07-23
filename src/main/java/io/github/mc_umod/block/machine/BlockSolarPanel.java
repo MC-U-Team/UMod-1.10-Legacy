@@ -1,24 +1,23 @@
 package io.github.mc_umod.block.machine;
 
-import java.util.*;
+import java.util.List;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.block.*;
-import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.tileentity.*;
-import net.minecraft.block.*;
-import net.minecraft.block.material.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.api.IBlockInformation;
+import io.github.mc_umod.block.BlockBase;
+import io.github.mc_umod.enumtype.EnumTypeGui;
+import io.github.mc_umod.tileentity.TileEntitySolarPanel;
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
-import net.minecraft.creativetab.*;
-import net.minecraft.entity.player.*;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockBase implements ITileEntityProvider, IBlockInformation {
 	

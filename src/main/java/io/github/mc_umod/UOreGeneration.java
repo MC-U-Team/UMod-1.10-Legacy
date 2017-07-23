@@ -1,18 +1,18 @@
 package io.github.mc_umod;
 
-import java.util.*;
+import java.util.Random;
 
-import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.init.*;
-import net.minecraft.world.*;
+import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
+import io.github.mc_umod.utils.GenerationUtils;
+import net.minecraft.init.Blocks;
+import net.minecraft.world.World;
 import net.minecraft.world.chunk.*;
-import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class UOreGeneration implements IWorldGenerator {
 	
 	private void nether(Random random, int x, int y, World world) {
-		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.ALUMINIUM.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 15);
+		/*GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.ALUMINIUM.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 15);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.COPPER.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 30, 0, 128, 2, 15);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.LEAD.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 10);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.MANGAN.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 15);
@@ -25,9 +25,9 @@ public class UOreGeneration implements IWorldGenerator {
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.TIN.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 30, 0, 128, 2, 15);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.URAN.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 1, 10);
 		GenerationUtils.generateOre(UBlocks.netherores.getStateFromMeta(EnumTypeBaseStuff.ZINC.getMetadata()), Blocks.NETHERRACK, random, x, y, world, 10, 0, 128, 2, 10);
-	}
+	*/}
 	
-	private void overworld(Random random, int x, int y, World world) {
+	private void overworld(Random random, int x, int y, World world) {/*
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.ALUMINIUM.getMetadata()), random, x, y, world, 35, 0, 128, 2, 12);
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.COPPER.getMetadata()), random, x, y, world, 80, 0, 128, 2, 12);
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.LEAD.getMetadata()), random, x, y, world, 30, 0, 30, 2, 8);
@@ -41,7 +41,7 @@ public class UOreGeneration implements IWorldGenerator {
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.TIN.getMetadata()), random, x, y, world, 80, 0, 128, 2, 12);
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.URAN.getMetadata()), random, x, y, world, 10, 4, 22, 1, 6);
 		GenerationUtils.generateOre(UBlocks.ores.getStateFromMeta(EnumTypeBaseStuff.ZINC.getMetadata()), random, x, y, world, 40, 0, 33, 2, 8);
-	}
+	*/}
 	
 	private void end(Random random, int x, int y, World world) {
 		

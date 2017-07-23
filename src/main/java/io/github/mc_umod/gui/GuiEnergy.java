@@ -1,23 +1,22 @@
 package io.github.mc_umod.gui;
 
-import java.io.*;
+import java.io.IOException;
 
-import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.block.machine.*;
-import io.github.mc_umod.block.machine.BlockSolarPanel.*;
-import io.github.mc_umod.gui.items.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.block.state.*;
-import net.minecraft.client.*;
+import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.block.machine.BlockSolarPanel;
+import io.github.mc_umod.block.machine.BlockSolarPanel.EnumTypeSolarPanel;
+import io.github.mc_umod.gui.items.GuiRescources;
+import io.github.mc_umod.utils.EnergyUtils;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.vertex.*;
-import net.minecraft.client.resources.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

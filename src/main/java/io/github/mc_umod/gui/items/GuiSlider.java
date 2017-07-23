@@ -1,16 +1,14 @@
 package io.github.mc_umod.gui.items;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.*;
-import io.github.mc_umod.network.*;
+import io.github.mc_umod.api.render.StringMethod;
+import io.github.mc_umod.gui.GuiBase;
+import io.github.mc_umod.network.PacketHandler;
 import io.github.mc_umod.network.message.*;
-import io.github.mc_umod.render.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.client.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.util.math.*;
+import io.github.mc_umod.renderapi.draw.Quad;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.math.BlockPos;
 
 public class GuiSlider extends ImplGui {
 	
@@ -20,7 +18,6 @@ public class GuiSlider extends ImplGui {
 	private StringMethod ret = null;
 	private BlockPos ps;
 	private int id;
-	private GLHelper help;
 	
 	public GuiSlider(GuiBase base,int x, int y, RGBA color1, RGBA color2, RGBA color3, int id) {
 		super(base);
@@ -31,7 +28,6 @@ public class GuiSlider extends ImplGui {
 		slid2 = color3;
 		this.id = id;
 		this.ps = base.pos;
-		this.help = UReference.getClientProxy().getGLHelper();
 		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, this.ps));
 	}
 	
@@ -56,7 +52,7 @@ public class GuiSlider extends ImplGui {
 		if (ret == null)
 			return;
 		if (mousex > x && mousex < x + 100 && mousey > y && mousey < y + 8) {
-			this.help.drawGradientRect(mousex, mousey, mousex + this.getWidth(), mousey + this.getHeight(), back, back, this.zLevel);
+			new Quad(mousex, mousey, mousex + this.getWidth(), mousey + this.getHeight(), back);
 			if (this.hasMoreLines()) {
 				String[] str = this.getString().split("\n");
 				for (int i = 0; i < str.length; i++)

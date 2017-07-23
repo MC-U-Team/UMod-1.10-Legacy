@@ -1,12 +1,12 @@
 package io.github.mc_umod.biome;
 
-import java.util.*;
+import java.util.Random;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UBlocks;
 import io.github.mc_umod.entity.*;
-import io.github.mc_umod.world.*;
-import net.minecraft.world.biome.*;
-import net.minecraft.world.gen.feature.*;
+import io.github.mc_umod.world.GenInfectedTree;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class BiomeInfected extends Biome {
 	

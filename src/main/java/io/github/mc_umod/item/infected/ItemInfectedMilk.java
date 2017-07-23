@@ -1,13 +1,13 @@
 package io.github.mc_umod.item.infected;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.item.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
+import io.github.mc_umod.item.ItemBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
-import net.minecraft.potion.*;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class ItemInfectedMilk extends ItemBase {
 	

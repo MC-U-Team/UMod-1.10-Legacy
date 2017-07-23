@@ -1,9 +1,9 @@
 package io.github.mc_umod.block.deco;
 
-import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockDoubleCustomSlab extends BlockCustomSlab {
 	

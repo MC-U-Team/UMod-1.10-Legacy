@@ -1,20 +1,20 @@
 package io.github.mc_umod.item;
 
-import java.util.*;
+import java.util.List;
 
-import io.github.mc_umod.*;
+import io.github.mc_umod.UReference;
 import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.gui.container.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.client.renderer.color.*;
-import net.minecraft.creativetab.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
+import io.github.mc_umod.gui.container.ContainerBackPack;
+import io.github.mc_umod.utils.NBTUtils;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.*;
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class ItemBackPack extends ItemBase implements IItemColor{
 	

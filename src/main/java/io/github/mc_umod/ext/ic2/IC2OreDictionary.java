@@ -1,9 +1,9 @@
 package io.github.mc_umod.ext.ic2;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.ext.abs.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
+import io.github.mc_umod.ext.abs.AbstractOreDictionaryRegistry;
+import net.minecraft.item.ItemStack;
 
 public class IC2OreDictionary extends AbstractOreDictionaryRegistry {
 	

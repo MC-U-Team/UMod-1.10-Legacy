@@ -1,14 +1,14 @@
 package io.github.mc_umod.world;
 
-import java.util.*;
+import java.util.Random;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.block.infected.*;
-import net.minecraft.block.*;
-import net.minecraft.block.material.*;
+import io.github.mc_umod.UBlocks;
+import io.github.mc_umod.block.infected.BlockInfectedSapling;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.*;
-import net.minecraft.world.*;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class GenInfectedTree extends WorldGenAbstractTree {
 	

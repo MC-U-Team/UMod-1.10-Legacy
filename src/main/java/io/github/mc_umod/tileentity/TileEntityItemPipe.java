@@ -2,12 +2,12 @@ package io.github.mc_umod.tileentity;
 
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.event.apis.*;
-import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
-import net.minecraftforge.common.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityItemPipe extends TileEntity implements IPlugabel, IConduitProvider, ITickable{
 	

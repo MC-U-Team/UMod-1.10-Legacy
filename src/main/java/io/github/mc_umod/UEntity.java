@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
 import io.github.mc_umod.entity.*;
-import io.github.mc_umod.entity.rail.*;
-import net.minecraft.entity.*;
-import net.minecraftforge.fml.common.registry.*;
+import io.github.mc_umod.entity.rail.EntityRailFX;
+import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class UEntity {
 	

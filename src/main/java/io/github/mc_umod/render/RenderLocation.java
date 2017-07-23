@@ -1,7 +1,7 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.UReference;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderLocation extends ResourceLocation {
 	

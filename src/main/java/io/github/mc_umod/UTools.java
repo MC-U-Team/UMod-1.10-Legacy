@@ -2,10 +2,10 @@ package io.github.mc_umod;
 
 import io.github.mc_umod.item.tools.emerald.*;
 import io.github.mc_umod.item.tools.magic.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.item.*;
-import net.minecraft.item.Item.*;
-import net.minecraftforge.common.util.*;
+import io.github.mc_umod.utils.URegistryUtils;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 
 public class UTools {
 	

@@ -8,6 +8,6 @@ public class ObjRenderRegistry implements IResourceManagerReloadListener{
 	
 	@Override
 	public void onResourceManagerReload(IResourceManager resourceManager) {
-		GENERATOR = new WavefrontLoader("generator");
+		GENERATOR = new WavefrontLoader("linda");
 	}
 }

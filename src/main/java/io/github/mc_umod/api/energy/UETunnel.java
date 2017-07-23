@@ -1,12 +1,12 @@
 package io.github.mc_umod.api.energy;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import io.github.mc_umod.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import io.github.mc_umod.UReference;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.SERVER)

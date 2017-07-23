@@ -1,0 +1,57 @@
+# Blender MTL File: 'linda.qc.blend'
+# Material Count: 5
+
+newmtl spartan_linda_armor
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.230159 0.230159 0.230159
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump spartan_linda_armor_n.png
+map_Kd spartan_linda_armor_d.png
+
+newmtl spartan_linda_armor_shiny
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.603075 0.583737 0.469792
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl spartan_linda_helmet
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.240741 0.240741 0.240741
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump spartan_linda_helmet_n.png
+map_Kd spartan_linda_helmet_d.png
+
+newmtl spartan_linda_visor
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.490464 0.458437 0.678881
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl spartan_techsuit_linda
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.182942 0.182942 0.182942
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd spartan_techsuit_linda_d.png

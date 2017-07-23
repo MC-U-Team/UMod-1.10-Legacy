@@ -1,13 +1,12 @@
 package io.github.mc_umod.gui.inventory;
 
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.block.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.block.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.api.render.StringMethod;
+import io.github.mc_umod.block.BlockOres;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 
 public class BaseOreInputSlot extends BaseSlot {
 	

@@ -1,13 +1,13 @@
 package io.github.mc_umod.gui.container;
 
-import io.github.mc_umod.api.energy.*;
+import io.github.mc_umod.api.energy.IBatteryProvider;
 import io.github.mc_umod.gui.inventory.*;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
-import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class ContainerBase extends Container {
 	

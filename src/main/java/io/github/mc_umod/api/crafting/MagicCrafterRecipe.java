@@ -1,8 +1,8 @@
 package io.github.mc_umod.api.crafting;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
 
 public class MagicCrafterRecipe {
 	

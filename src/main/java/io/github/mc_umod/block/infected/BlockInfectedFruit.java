@@ -3,12 +3,12 @@ package io.github.mc_umod.block.infected;
 import java.util.*;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
-import io.github.mc_umod.block.*;
-import net.minecraft.block.*;
-import net.minecraft.block.material.*;
-import net.minecraft.block.state.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.api.IInfectedBlock;
+import io.github.mc_umod.block.BlockBase;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;

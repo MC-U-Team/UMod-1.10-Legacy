@@ -1,32 +1,24 @@
 package io.github.mc_umod;
 
-import java.util.*;
-
-import org.lwjgl.input.*;
-
-import com.mojang.realmsclient.gui.*;
+import org.lwjgl.input.Keyboard;
 
 import io.github.mc_umod.block.deco.*;
-import io.github.mc_umod.block.machine.BlockSolarPanel.*;
-import io.github.mc_umod.corelib.*;
-import io.github.mc_umod.corelib.core.ClientRegistry;
+import io.github.mc_umod.block.machine.BlockSolarPanel.EnumTypeSolarPanel;
 import io.github.mc_umod.entity.*;
-import io.github.mc_umod.entity.rail.*;
+import io.github.mc_umod.entity.rail.EntityRailFX;
 import io.github.mc_umod.entity.render.*;
-import io.github.mc_umod.entity.render.rail.*;
+import io.github.mc_umod.entity.render.rail.RenderRailFX;
 import io.github.mc_umod.enumtype.*;
-import io.github.mc_umod.ext.*;
+import io.github.mc_umod.ext.ExtensionList;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
-import io.github.mc_umod.wavefront.assets.*;
-import net.minecraft.client.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.block.model.*;
-import net.minecraft.client.resources.*;
-import net.minecraft.client.settings.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraftforge.fml.client.registry.*;
+import io.github.mc_umod.wavefront.assets.ObjRenderRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.IReloadableResourceManager;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -34,22 +26,16 @@ public class ClientProxy extends CommonProxy {
 	private Minecraft mc = Minecraft.getMinecraft();
 	private ObjRenderRegistry regs;
 	private ModelRenderHelper MODEL_HELPER;
-	private GLHelper help;
 	private ClientRegistry reg;
 	
 	@Override
 	public void init() {
-		this.reg = CoreLib.getInstance().getClientRegistry();
+		this.reg = new CoreClientRegistry();
 		this.info = new KeyBinding("Information", Keyboard.KEY_I, "UMod");
 		this.regs = new ObjRenderRegistry();
 		((IReloadableResourceManager)Minecraft.getMinecraft().getResourceManager()).registerReloadListener(this.regs);
-		this.help = new GLHelper(mc.getTextureManager(), Tessellator.getInstance().getBuffer());
 	}
-	
-	public GLHelper getGLHelper() {
-		return this.help;
-	}
-	
+		
 	public ModelRenderHelper getModelRenderHelper() {
 		return this.MODEL_HELPER;
 	}
@@ -225,17 +211,17 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
 
-		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender(this.help));
-		RenderFX.register(TileEntityCable.class, new CabelRender(this.help));
-		RenderFX.register(TileEntityItemPipe.class, new ItemPipeRender(this.help));
+		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender());
+		RenderFX.register(TileEntityCable.class, new CabelRender());
+		RenderFX.register(TileEntityItemPipe.class, new ItemPipeRender());
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, (IRenderFactory) new RenderInfectedZombie(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory) new RenderFX(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory) new RenderRailFX(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory) new RenderInfectedCow(null));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGenerator.class, (IRenderFactory) new RenderGenerator(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCreeper.class, (IRenderFactory) new RenderInfectedCreeper(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityNukePrimed.class, (IRenderFactory) new RenderNukePrimed(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityInfectedZombie.class, (IRenderFactory) new RenderInfectedZombie(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityFX.class, (IRenderFactory) new RenderFX(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityRailFX.class, (IRenderFactory) new RenderRailFX(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityInfectedCow.class, (IRenderFactory) new RenderInfectedCow(null));
+		net.minecraftforge.fml.client.registry.RenderingRegistry.registerEntityRenderingHandler(EntityGenerator.class, (IRenderFactory) new RenderGenerator(null));
 
 		this.reg.registerSpecialTileEntityRenderer(TileEntityPulverizer.class, new TileEntityPulverizerSpecialRender());
 		this.reg.registerSpecialTileEntityRenderer(TileEntityPainter.class, new TileEntityPainterSpecialRender());

@@ -1,17 +1,17 @@
 package io.github.mc_umod.entity;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
-import net.minecraft.block.*;
-import net.minecraft.entity.*;
+import io.github.mc_umod.UItems;
+import io.github.mc_umod.api.IInfectedEntity;
+import net.minecraft.block.Block;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class EntityInfectedCow extends EntityMob implements IInfectedEntity {
 	

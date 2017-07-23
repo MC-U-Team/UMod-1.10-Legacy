@@ -1,8 +1,8 @@
 package io.github.mc_umod.api.crafting;
 
-import io.github.mc_umod.*;
-import net.minecraft.item.*;
-import scala.util.*;
+import io.github.mc_umod.UItems;
+import net.minecraft.item.ItemStack;
+import scala.util.Random;
 
 public class PulverizerRecepie {
 	

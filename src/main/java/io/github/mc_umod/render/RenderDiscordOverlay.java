@@ -1,24 +1,18 @@
 package io.github.mc_umod.render;
 
-import java.awt.*;
+import java.awt.Color;
 
-import org.lwjgl.input.*;
+import org.lwjgl.input.Keyboard;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.items.*;
-import javafx.scene.shape.*;
-import net.minecraft.client.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.gui.items.GuiRescources;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.vertex.*;
-import net.minecraft.client.settings.*;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.common.capabilities.*;
-import net.minecraftforge.energy.*;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.*;
-import net.minecraftforge.fml.common.gameevent.*;
-import net.minecraftforge.fml.common.gameevent.InputEvent.*;
-import net.minecraftforge.fml.common.gameevent.TickEvent.*;
+import net.minecraftforge.fml.common.gameevent.InputEvent.KeyInputEvent;
 import net.minecraftforge.fml.relauncher.*;
 
 public class RenderDiscordOverlay {
@@ -39,17 +33,17 @@ public class RenderDiscordOverlay {
 	}
 	
 	@SideOnly(Side.CLIENT)
-	@SubscribeEvent(priority=EventPriority.HIGHEST)
+	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public void renderEvent(RenderGameOverlayEvent event){
-		String invite = "discord.gg/bWxgZAp";
+		String invite = "discord.gg/QXbWS36";
 		if(xS < 0 && time <= 100)xS += 0.1;else if(time <= 100)time += 0.01; else xS -= 0.1;
-		Tessellator tes = Tessellator.getInstance();
 		RGBA rgb = new RGBA(Color.DARK_GRAY);
 		double d = Minecraft.getMinecraft().displayWidth/2;
-		net.minecraft.client.renderer.VertexBuffer buffer = tes.getBuffer();
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(d, xS, 0);
 		GlStateManager.disableLighting();
+		Tessellator tes = Tessellator.getInstance();
+		VertexBuffer buffer = tes.getBuffer();
 		buffer.begin(6, DefaultVertexFormats.POSITION_COLOR);
 		buffer.pos(200, 75, 0).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();
 		buffer.pos(-200, 75, 0).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), rgb.getAlpha()).endVertex();

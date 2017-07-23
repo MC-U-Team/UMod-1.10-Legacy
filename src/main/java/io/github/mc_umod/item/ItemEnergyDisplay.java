@@ -1,15 +1,15 @@
 package io.github.mc_umod.item;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.block.machine.*;
-import net.minecraft.block.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
-import net.minecraft.nbt.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.block.machine.BlockBaseMachine;
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.util.text.*;
-import net.minecraft.world.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 
 public class ItemEnergyDisplay extends ItemBase {
 	

@@ -1,7 +1,7 @@
 package io.github.mc_umod.gui.inventory;
 
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 
 public class InventoryBackPack extends InventoryBackPackBase {

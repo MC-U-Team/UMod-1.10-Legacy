@@ -3,17 +3,17 @@ package io.github.mc_umod.block.infected;
 import java.util.*;
 
 import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
+import io.github.mc_umod.api.IInfectedBlock;
 import net.minecraft.block.*;
-import net.minecraft.block.properties.*;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 import scala.actors.threadpool.Arrays;
 

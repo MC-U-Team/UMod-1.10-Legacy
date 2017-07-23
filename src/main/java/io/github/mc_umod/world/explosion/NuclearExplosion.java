@@ -1,9 +1,9 @@
 package io.github.mc_umod.world.explosion;
 
-import java.util.*;
+import java.util.Random;
 
 import io.github.mc_umod.api.*;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 
 public class NuclearExplosion implements IProcess {
 	

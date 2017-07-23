@@ -1,19 +1,15 @@
 package io.github.mc_umod.gui.inventory;
 
-import java.awt.*;
+import java.awt.Color;
 
-import akka.io.Udp.*;
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.render.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.client.gui.*;
+import io.github.mc_umod.api.render.StringMethod;
+import io.github.mc_umod.renderapi.draw.Quad;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.vertex.*;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.inventory.*;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.*;
 
 public class BaseSlot extends Slot {
@@ -85,7 +81,7 @@ public class BaseSlot extends Slot {
 		int j1 = this.xDisplayPosition;
 		int k1 = this.yDisplayPosition;
 		GlStateManager.colorMask(true, true, true, false);
-		UReference.getClientProxy().getGLHelper().drawGradientRect(j1, k1, j1 + 16, k1 + 16, start, end, 1);
+		new Quad(j1, k1, j1 + 16, k1 + 16, start,end,start, end);
 		GlStateManager.colorMask(true, true, true, true);
 		GlStateManager.enableLighting();
 		GlStateManager.enableDepth();
@@ -93,18 +89,17 @@ public class BaseSlot extends Slot {
 	
 	@SideOnly(Side.CLIENT)
 	public void renderOverlay(){
-		GLHelper help = UReference.getClientProxy().getGLHelper();
 		int j1 = this.xDisplayPosition;
 		int k1 = this.yDisplayPosition;
 		if (this.hasColor()) {
-			help.drawGradientRect(j1, k1, j1 + 16, k1 + 16, nstart, nend, 2);
+			new Quad(j1, k1, j1 + 16, k1 + 16, nstart, nend, nstart, nend);
 		} 
 		int xc = j1 - 1,yc = k1,widthc = 18,heightc = 18;
 		RGBA rgbc = new RGBA(Color.DARK_GRAY);
-		help.drawGradientRect(xc - 1, yc - 2,xc + widthc + 1, yc, rgbc);
-		help.drawGradientRect(xc - 1, yc + heightc - 2,xc + widthc + 1, yc + heightc, rgbc);
-		help.drawGradientRect(xc - 1, yc,xc + 1, yc + heightc, rgbc);
-		help.drawGradientRect(xc + widthc - 1, yc ,xc + widthc + 1,yc + heightc, rgbc);
+		new Quad(xc - 1, yc - 2,xc + widthc + 1, yc, rgbc);
+		new Quad(xc - 1, yc + heightc - 2,xc + widthc + 1, yc + heightc, rgbc);
+		new Quad(xc - 1, yc,xc + 1, yc + heightc, rgbc);
+		new Quad(xc + widthc - 1, yc ,xc + widthc + 1,yc + heightc, rgbc);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -1,7 +1,7 @@
 package io.github.mc_umod.gui.items;
 
-import io.github.mc_umod.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.UReference;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

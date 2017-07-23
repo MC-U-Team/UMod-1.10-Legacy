@@ -1,11 +1,11 @@
 package io.github.mc_umod.api.energy;
 
-import java.util.*;
+import java.util.ArrayList;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import io.github.mc_umod.UMod;
+import io.github.mc_umod.api.Singelton;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 @Singelton
 public class TunnelHolder {

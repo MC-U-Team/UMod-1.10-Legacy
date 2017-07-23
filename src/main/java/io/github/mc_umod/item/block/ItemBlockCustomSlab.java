@@ -2,12 +2,12 @@ package io.github.mc_umod.item.block;
 
 import io.github.mc_umod.block.deco.*;
 import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.item.*;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 public class ItemBlockCustomSlab extends ItemBlockBase {

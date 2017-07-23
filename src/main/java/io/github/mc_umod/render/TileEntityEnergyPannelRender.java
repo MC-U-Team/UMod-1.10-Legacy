@@ -1,18 +1,11 @@
 package io.github.mc_umod.render;
 
-import java.awt.*;
-
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.tileentity.*;
-import net.minecraft.client.renderer.*;
-import net.minecraft.tileentity.*;
+import io.github.mc_umod.tileentity.TileEntityEnergyPannel;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityEnergyPannelRender extends TileRender {
-	
-	public TileEntityEnergyPannelRender(GLHelper help) {
-		super(help);
-	}
-	
+		
 	@Override
 	public void renderTileEntityAt(TileEntity ent, double posX, double posY, double posZ) {
 		TileEntityEnergyPannel tile = (TileEntityEnergyPannel) ent;
@@ -26,14 +19,14 @@ public class TileEntityEnergyPannelRender extends TileRender {
 			GlStateManager.enableBlend();
 			GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
 			GlStateManager.disableTexture2D();
-			this.help.drawGradientRectWithMultiplier(0, -40, 120, 40, new RGBA(Color.CYAN), new RGBA(Color.CYAN).setAlpha(155), 1D, 0.01D);
+			/*drawGradientRectWithMultiplier(0, -40, 120, 40, new RGBA(Color.CYAN), new RGBA(Color.CYAN).setAlpha(155), 1D, 0.01D);
 			GlStateManager.rotate(180F, 0F, 0F, 1.0F);
-			this.help.drawGradientRectWithMultiplier(37, -40, 120, 40, new RGBA(Color.CYAN), new RGBA(Color.CYAN).setAlpha(155), 1D, 0.01D);
+			drawGradientRectWithMultiplier(37, -40, 120, 40, new RGBA(Color.CYAN), new RGBA(Color.CYAN).setAlpha(155), 1D, 0.01D);
 			GlStateManager.rotate(180F, 0F, 1.0F, 0);
 			GlStateManager.rotate(180F, 0F, 0F, 1.0F);
-			this.help.drawGradientRect(0D, -40D, 37D, 40D, new RGBA(Color.CYAN).setAlpha(155), new RGBA(Color.CYAN).setAlpha(155), -1D);
+			new Quad(0D, -40D, 37D, 40D, new RGBA(Color.CYAN).setAlpha(155));
 			GlStateManager.rotate(180F, 1.0F, 0F, 0F);
-			this.help.drawGradientRect(0D, -40D, 37D, 40D, new RGBA(Color.CYAN).setAlpha(155), new RGBA(Color.CYAN).setAlpha(155), 1D);
+			new Quad(0D, -40D, 37D, 40D, new RGBA(Color.CYAN).setAlpha(155));*/
 			GlStateManager.enableLighting();
 			GlStateManager.disableBlend();
 			GlStateManager.enableTexture2D();

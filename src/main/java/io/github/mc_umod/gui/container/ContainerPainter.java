@@ -1,11 +1,11 @@
 package io.github.mc_umod.gui.container;
 
-import java.awt.*;
+import java.awt.Color;
 
 import io.github.mc_umod.gui.inventory.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
-import net.minecraft.util.math.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.util.math.BlockPos;
 
 public class ContainerPainter extends ContainerBase {
 	

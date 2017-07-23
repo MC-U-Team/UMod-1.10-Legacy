@@ -1,10 +1,10 @@
 package io.github.mc_umod.gui.container;
 
 import io.github.mc_umod.gui.inventory.*;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.*;
-import net.minecraft.item.*;
-import net.minecraft.util.math.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 
 public class ContainerMagicCrafter extends ContainerBase {
 	

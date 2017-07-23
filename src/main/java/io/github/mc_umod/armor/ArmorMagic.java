@@ -1,12 +1,12 @@
 package io.github.mc_umod.armor;
 
-import java.util.*;
+import java.util.List;
 
-import io.github.mc_umod.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.utils.URegistryUtils;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 
 public class ArmorMagic extends ItemArmor {

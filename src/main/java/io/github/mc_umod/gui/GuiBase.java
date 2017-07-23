@@ -1,40 +1,34 @@
 package io.github.mc_umod.gui;
 
-import java.awt.*;
-import java.io.*;
+import java.io.IOException;
 import java.util.*;
-import java.util.function.*;
+import java.util.function.Consumer;
 
-import org.lwjgl.input.*;
+import org.lwjgl.input.Keyboard;
 
-import com.google.common.collect.*;
-import com.mojang.realmsclient.gui.*;
+import com.google.common.collect.Sets;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.gui.container.ContainerBase;
 import io.github.mc_umod.gui.inventory.*;
 import io.github.mc_umod.gui.items.*;
 import io.github.mc_umod.gui.mode.*;
-import io.github.mc_umod.render.*;
-import net.minecraft.client.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.texture.*;
-import net.minecraft.client.renderer.vertex.*;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.*;
-import net.minecraft.inventory.Container;
 import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.*;
-import net.minecraft.util.text.*;
-import net.minecraft.world.*;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 @SuppressWarnings("deprecation")
@@ -50,7 +44,6 @@ public abstract class GuiBase extends GuiScreen {
 	public Slot hoveredSlot;
 	public ContainerBase container;
 	public World worldObj;
-	public GLHelper help;
 	public ModeTabs activeTab;
 	
 	public GuiBase(ResourceLocation loc,EntityPlayer player, BlockPos pos, Container con) {
@@ -62,7 +55,6 @@ public abstract class GuiBase extends GuiScreen {
 		this.tile = this.worldObj.getTileEntity(pos);
 		this.pos = pos;
 		this.container = (ContainerBase) con;
-		this.help = UReference.getClientProxy().getGLHelper();
 	}
 	
 	public int drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color, boolean shadow) {

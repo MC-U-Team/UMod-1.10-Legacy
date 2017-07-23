@@ -1,14 +1,14 @@
 package io.github.mc_umod.utils;
 
-import java.util.*;
+import java.util.Random;
 
-import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.init.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
-import net.minecraft.world.biome.*;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class GenerationUtils {
 	
@@ -56,8 +56,11 @@ public class GenerationUtils {
 		return height;
 	}
 	
+	@Deprecated
 	public static boolean getBiomeGenForCoords(World world, BlockPos pos, Biome biome) {
-		return world.getBiomeGenForCoords(pos).equals(biome);
+		//return world.getBiomeGenForCoords(pos).equals(biome);
+//		TODO EDIT THIS
+		return false;
 	}
 	
 }

@@ -1,17 +1,15 @@
 package io.github.mc_umod.render;
 
-import io.github.mc_umod.*;
-import net.minecraft.client.*;
-import net.minecraft.tileentity.*;
+import io.github.mc_umod.UReference;
+import net.minecraft.client.Minecraft;
+import net.minecraft.tileentity.TileEntity;
 
 public abstract class TileRender {
 	
-	public final GLHelper help;
 	public final ConduitRender crender;
 	
-	public TileRender(GLHelper help) {
-		this.help = help;
-		this.crender = new ConduitRender(this.help,UReference.getClientProxy().getModelRenderHelper());
+	public TileRender() {
+		this.crender = new ConduitRender(UReference.getClientProxy().getModelRenderHelper());
 	}
 	
 	public void render(TileEntity tile,double posX, double posY, double posZ) {

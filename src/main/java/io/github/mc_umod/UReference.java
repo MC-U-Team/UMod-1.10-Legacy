@@ -1,9 +1,9 @@
 package io.github.mc_umod;
 
-import net.minecraft.creativetab.*;
-import net.minecraft.item.*;
-import net.minecraftforge.fml.common.*;
-import net.minecraftforge.fml.common.Mod.*;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
 
 public class UReference {
 	
@@ -30,7 +30,7 @@ public class UReference {
 		if(proxy instanceof ClientProxy){
 		return (ClientProxy) proxy;
 		}
-		throw new NullPointerException("No Server Sided Call of this Methode is allowed");
+		throw new NullPointerException("Server sided invoke of this methode is not allowed");
 	}
 	
 	public static CreativeTabs maschines = new UTab();

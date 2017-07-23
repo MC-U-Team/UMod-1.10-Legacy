@@ -1,12 +1,12 @@
 package io.github.mc_umod.utils;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
 import java.util.*;
 
-import io.github.mc_umod.api.*;
-import net.minecraft.entity.*;
-import net.minecraft.potion.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.api.IInfectedEntity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.Potion;
+import net.minecraft.util.ResourceLocation;
 
 public class EntityUtils {
 	

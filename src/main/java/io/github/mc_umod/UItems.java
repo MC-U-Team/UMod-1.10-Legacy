@@ -5,8 +5,8 @@ import io.github.mc_umod.item.infected.*;
 import io.github.mc_umod.item.materials.*;
 import io.github.mc_umod.item.materials.energy.*;
 import io.github.mc_umod.item.materials.magic.*;
-import io.github.mc_umod.utils.*;
-import net.minecraft.item.*;
+import io.github.mc_umod.utils.URegistryUtils;
+import net.minecraft.item.Item;
 
 public class UItems {
 	

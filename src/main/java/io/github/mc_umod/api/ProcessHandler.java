@@ -2,9 +2,9 @@ package io.github.mc_umod.api;
 
 import java.util.*;
 
-import net.minecraftforge.event.world.*;
-import net.minecraftforge.fml.common.eventhandler.*;
-import net.minecraftforge.fml.common.gameevent.*;
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class ProcessHandler {
 	

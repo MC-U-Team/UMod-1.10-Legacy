@@ -1,9 +1,9 @@
 package io.github.mc_umod.gui;
 
-import io.github.mc_umod.gui.container.*;
+import io.github.mc_umod.gui.container.ContainerCraftFurnace;
 import io.github.mc_umod.gui.items.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.util.math.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)

@@ -1,12 +1,11 @@
 package io.github.mc_umod.gui.mode;
 
-import java.awt.*;
+import java.awt.Color;
 
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.*;
+import io.github.mc_umod.api.render.StringMethod;
+import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.items.*;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.util.RGBA;
 import net.minecraft.client.renderer.*;
 
 public class ModeColor extends ImplGui{

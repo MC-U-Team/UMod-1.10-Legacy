@@ -1,25 +1,24 @@
 package io.github.mc_umod.render;
 
-import java.util.*;
+import java.util.List;
 
-import javax.annotation.*;
+import javax.annotation.Nullable;
 
-import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.client.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.block.model.*;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;
-import net.minecraft.client.renderer.color.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.texture.*;
-import net.minecraft.client.renderer.tileentity.*;
-import net.minecraft.client.renderer.vertex.*;
-import net.minecraft.entity.*;
-import net.minecraft.item.*;
+import net.minecraft.client.renderer.tileentity.TileEntityItemStackRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
 
 public class ModelRenderHelper {
 	

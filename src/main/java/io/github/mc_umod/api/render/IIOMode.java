@@ -1,6 +1,6 @@
 package io.github.mc_umod.api.render;
 
-import net.minecraft.util.*;
+import net.minecraft.util.EnumFacing;
 
 public interface IIOMode {
 	

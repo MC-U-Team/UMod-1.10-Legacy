@@ -1,22 +1,20 @@
 package io.github.mc_umod.gui.mode;
 
-import java.awt.*;
-
-import io.github.mc_umod.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.corelib.util.*;
-import io.github.mc_umod.gui.*;
+import io.github.mc_umod.UReference;
+import io.github.mc_umod.api.render.IIOMode;
+import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.items.*;
-import io.github.mc_umod.network.*;
+import io.github.mc_umod.network.PacketHandler;
 import io.github.mc_umod.network.message.*;
-import io.github.mc_umod.render.*;
-import net.minecraft.block.state.*;
+import io.github.mc_umod.render.ModelRenderHelper;
+import io.github.mc_umod.renderapi.draw.Quad;
+import io.github.mc_umod.util.RGBA;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.*;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.*;
-import net.minecraft.item.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraftforge.client.model.b3d.B3DModel.*;
+import net.minecraft.util.math.BlockPos;
 
 public class IOMode extends ImplGui{
 
@@ -24,7 +22,7 @@ public class IOMode extends ImplGui{
 	private float sclax = 0, sclay = 0;
 	private int posX,posY;
 	private ModelRenderHelper helper;
-	private EnumFacing facing;
+	private EnumFacing facing = EnumFacing.NORTH;
     private int[] args = new int[] {-1,-1,-1,-1,-1,-1};
 	
 	public IOMode(GuiBase base_gui) {
@@ -34,7 +32,7 @@ public class IOMode extends ImplGui{
 		int l = (base_gui.height - base_gui.ySize) / 2;
 		box = new GuiCombobox(base_gui,k + 8, l + 7, 80, 12);
 		base_gui.addToBox(box);
-		box.getItems().add(new ComboboxItem("Choose", new RGBA(Color.DARK_GRAY)));
+		box.getItems().add(ComboboxItem.CHOOSE);
 		box.setSelected(box.getItems().size() - 1);
         box.setOnListClicked(new Runnable() {
 			
@@ -112,16 +110,16 @@ public class IOMode extends ImplGui{
 		if(south >= 0 && south < this.box.getItems().size() - 1){
 		RGBA southR = new RGBA(box.getItems().get(south).color.toAWTColor()).setAlpha(125);
 		southR.setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, southR,southR,-0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, southR,southR,-0.5001);
+		new Quad(-0.5, -0.5, 0.5, 0.5, southR);
+		new Quad(0.5, -0.5, -0.5, 0.5, southR);
 		}
 		
 		//NORTH
 		int north = args[EnumFacing.NORTH.ordinal()];
 		if(north >= 0 && north < this.box.getItems().size() - 1){
 		RGBA northR = new RGBA(box.getItems().get(north).color.toAWTColor()).setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, northR,northR,0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, northR,northR,0.5001);
+		new Quad(-0.5, -0.5, 0.5, 0.5, northR);
+		new Quad(0.5, -0.5, -0.5, 0.5, northR);
 		}
 		
 		GlStateManager.rotate(90, 1, 0, 0);
@@ -130,16 +128,16 @@ public class IOMode extends ImplGui{
 		int up = args[EnumFacing.UP.ordinal()];
 		if(up >= 0 && up < this.box.getItems().size() - 1){
 		RGBA upR = new RGBA(box.getItems().get(up).color.toAWTColor()).setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, upR,upR,-0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, upR,upR,-0.5001);
+		new Quad(-0.5, -0.5, 0.5, 0.5, upR);
+		new Quad(0.5, -0.5, -0.5, 0.5, upR);
 		}
 		
 		//DOWN
 		int down = args[EnumFacing.DOWN.ordinal()];
 		if(down >= 0 && down < this.box.getItems().size() - 1){
 		RGBA downR = new RGBA(box.getItems().get(down).color.toAWTColor()).setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, downR,downR,0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, downR,downR,0.5001);
+		new Quad(-0.5, -0.5, 0.5, 0.5, downR);
+		new Quad(0.5, -0.5, -0.5, 0.5, downR);
 		}
 		
 		GlStateManager.rotate(90, 0, 1, 0);
@@ -148,8 +146,8 @@ public class IOMode extends ImplGui{
 		int east = args[EnumFacing.EAST.ordinal()];
 		if(east >= 0 && east < this.box.getItems().size() - 1){
 		RGBA eastR = new RGBA(box.getItems().get(east).color.toAWTColor()).setAlpha(125);
-		base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, eastR,eastR,-0.5001);
-		base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, eastR,eastR,-0.5001);
+		new Quad(-0.5, -0.5, 0.5, 0.5, eastR);
+		new Quad(0.5, -0.5, -0.5, 0.5, eastR);
 		}
 		//WEST
 		int west = args[EnumFacing.WEST.ordinal()];
@@ -161,8 +159,8 @@ public class IOMode extends ImplGui{
 		int count = face.ordinal();
 		if(count >= 0 && count < this.box.getItems().size() - 1){
 			RGBA westR = new RGBA(box.getItems().get(count).color.toAWTColor()).setAlpha(125);
-			base_gui.help.drawGradientRect(-0.5, -0.5, 0.5, 0.5, westR,westR,0.5001);
-			base_gui.help.drawGradientRect(0.5, -0.5, -0.5, 0.5, westR,westR,0.5001);
+			new Quad(-0.5, -0.5, 0.5, 0.5, westR);
+			new Quad(0.5, -0.5, -0.5, 0.5, westR);
 		}
 	}
 	

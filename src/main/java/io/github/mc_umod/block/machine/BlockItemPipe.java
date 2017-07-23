@@ -1,21 +1,21 @@
 package io.github.mc_umod.block.machine;
 
-import java.util.*;
+import java.util.List;
 
-import org.lwjgl.input.*;
+import org.lwjgl.input.Keyboard;
 
-import com.mojang.realmsclient.gui.*;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import io.github.mc_umod.api.*;
-import io.github.mc_umod.api.render.*;
-import io.github.mc_umod.tileentity.*;
-import net.minecraft.block.state.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
-import net.minecraft.item.*;
-import net.minecraft.tileentity.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.api.render.ISpiritProvider;
+import io.github.mc_umod.tileentity.TileEntityItemPipe;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.*;
 import net.minecraft.world.*;
 import net.minecraftforge.fml.relauncher.*;

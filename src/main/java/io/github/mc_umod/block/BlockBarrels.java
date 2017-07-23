@@ -1,13 +1,13 @@
 package io.github.mc_umod.block;
 
-import java.util.*;
+import java.util.List;
 
-import io.github.mc_umod.enumtype.*;
-import net.minecraft.block.*;
-import net.minecraft.block.material.*;
+import io.github.mc_umod.enumtype.EnumTypeBarrels;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
-import net.minecraft.creativetab.*;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
 
 public class BlockBarrels extends BlockBase {

@@ -1,9 +1,9 @@
 package io.github.mc_umod.block.deco;
 
-import io.github.mc_umod.*;
-import net.minecraft.block.*;
-import net.minecraft.block.state.*;
-import net.minecraft.util.*;
+import io.github.mc_umod.UReference;
+import net.minecraft.block.BlockStairs;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumBlockRenderType;
 
 public class BlockCustomStair extends BlockStairs {
 	

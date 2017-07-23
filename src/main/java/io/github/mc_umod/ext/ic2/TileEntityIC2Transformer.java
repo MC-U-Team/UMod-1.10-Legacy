@@ -2,10 +2,10 @@ package io.github.mc_umod.ext.ic2;
 
 import ic2.api.energy.event.*;
 import ic2.api.energy.tile.*;
-import io.github.mc_umod.api.energy.*;
-import net.minecraft.tileentity.*;
+import io.github.mc_umod.api.energy.IPowerProvieder;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
-import net.minecraftforge.common.*;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityIC2Transformer extends TileEntity implements IPowerProvieder,IEnergySource,IEnergySink,ITickable{
 	
