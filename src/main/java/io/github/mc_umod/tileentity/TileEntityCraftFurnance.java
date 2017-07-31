@@ -1,21 +1,21 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.gui.container.ContainerCraftFurnace;
 import io.github.mc_umod.utils.ModRegistryUtils;
 import net.minecraft.entity.player.*;
-import net.minecraft.inventory.Container;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 
-public class TileEntityCraftFurnance extends TileEntityBase implements IPowerProvieder, ITickable {
+public class TileEntityCraftFurnance extends TileEntityBase implements ITickable, IEnergyProvider {
 	
-	public ItemStack[] stack = new ItemStack[11];
-	public double energy,max_energy;
+	private ItemStack[] stack = new ItemStack[11];
+	private Energy energy = new Energy(800, false, true);
 	
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
-		return null;
+		return new int[] {};
 	}
 	
 	@Override
@@ -40,25 +40,12 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack;
-			
-			if (this.stack[index].stackSize <= count) {
-				itemstack = this.stack[index];
-				this.stack[index] = null;
-				return itemstack;
-			} else {
-				itemstack = this.stack[index].splitStack(count);
-				
-				if (this.stack[index].stackSize == 0) {
-					this.stack[index] = null;
-				}
-				
-				return itemstack;
-			}
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndSplit(stack, index, count);
+	}
+	
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return ItemStackHelper.getAndRemove(stack, index);
 	}
 	
 	@Override
@@ -116,11 +103,11 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 	@Override
 	public void update() {
 		ItemStack stac = ModRegistryUtils.isCraftSmelt(new ItemStack[] { stack[0], stack[1], stack[2] }, new ItemStack[] { stack[3], stack[4], stack[5] }, new ItemStack[] { stack[6], stack[7], stack[8] });
-		if (stac != null && this.energy > 150) {
+		if (stac != null && this.energy.getEnergyStored() > 150) {
 			working = true;
 			time++;
 			if (time == 80) {
-				this.energy -= 150;
+				this.energy.extractEnergy(150, false);
 				time = 0;
 				if (stack[9] == null) {
 					stack[9] = stac.copy();
@@ -139,82 +126,9 @@ public class TileEntityCraftFurnance extends TileEntityBase implements IPowerPro
 			working = false;
 		}
 	}
-	
-	@Override
-	public double getIOPower() {
-		return 10;
-	}
-	
-	@Override
-	public boolean needsPower() {
-		return true;
-	}
-	
-	@Override
-	public boolean productsPower() {
-		return false;
-	}
-	
-	@Override
-	public boolean isInput() {
-		return false;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return true;
-	}
-	
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack = this.stack[index];
-			this.stack[index] = null;
-			return itemstack;
-		} else {
-			return null;
-		}
-	}
 
 	@Override
-	public double getStoredPower() {
-		return energy;
-	}
-
-	@Override
-	public void addPower(double power) {
-		energy += power;
-	}
-
-	@Override
-	public double getPower(double powerneed) {
-		energy -= powerneed;
-		return powerneed;
-	}
-
-	@Override
-	public double getMaximalPower() {
-		return max_energy;
-	}
-
-	@Override
-	public boolean isWorking() {
-		return this.working;
-	}
-
-	@Override
-	public String getErrorMessage() {
-		return null;
-	}
-
-	@Override
-	public boolean hasPower() {
-		return energy > 0;
-	}
-
-	@Override
-	public void setEnergy(double coun) {
-		this.energy = coun;
-	}
-	
+	public Energy getEnergy() {
+		return this.energy;
+	}	
 }

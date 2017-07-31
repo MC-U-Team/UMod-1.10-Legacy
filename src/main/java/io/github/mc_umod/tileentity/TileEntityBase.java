@@ -35,9 +35,7 @@ public abstract class TileEntityBase extends TileEntity implements ISidedInvento
 	public final ITextComponent getDisplayName() {
 		return new TextComponentString(this.getName());
 	}
-	
-	public final String ITEM_NBT = "items_nbt", ENERGY_NBT = "energy_nbt", INT_ENERGY = "Energy", IO_NBT = "io_nbt", OTHER_NBT = "other_nbt";
-	
+		
 	@Override
 	public final void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		NBTTagCompound tagCom = pkt.getNbtCompound();

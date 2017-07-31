@@ -2,14 +2,12 @@ package io.github.mc_umod.api.energy;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.UReference;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.energy.IEnergyStorage;
 
-@SideOnly(Side.SERVER)
 public class UETunnel extends ArrayList<BlockPos> {
 	
 	/**
@@ -22,11 +20,11 @@ public class UETunnel extends ArrayList<BlockPos> {
 	
 	public UETunnel(World w) {
 		this.w = w;
-		this.holder = UReference.proxy.getTunnelHolder();
+		this.holder = TunnelHolder.INSTANCE;
 	}
 	
 	public boolean add(ICabel e) {
-		if (this.holder.contains(e.getPos()))
+		if (e == null || this.holder == null || this.holder.contains(e.getPos()))
 			return false;
 		e.setTunnel(this.id);
 		return this.add(e.getPos());
@@ -42,7 +40,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 			} else {
 				for (EnumFacing face : EnumFacing.values()) {
 					TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
-					if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isOutput()) {
+					if (ent != null && ent instanceof IEnergyProvider && ((IEnergyProvider) ent).getEnergy().canReceive()) {
 						cabs.add(cab);
 					}
 				}
@@ -67,7 +65,7 @@ public class UETunnel extends ArrayList<BlockPos> {
 			ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
 			for (EnumFacing face : EnumFacing.values()) {
 				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
-				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
+				if (ent != null && ent instanceof IEnergyProvider && ((IEnergyProvider) ent).getEnergy().canExtract()) {
 					cabs.add(cab);
 				}
 			}
@@ -104,82 +102,47 @@ public class UETunnel extends ArrayList<BlockPos> {
 			return;
 		ICabel[] outs = this.getOutput();
 		ICabel[] inpts = this.getInput();
-		double max = 0;
+		int max = 0;
+		int acmax = 0;
 		for (ICabel cab : inpts) {
 			ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
 			for (EnumFacing face : EnumFacing.values()) {
-				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
-				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().offset(face));
+				if (ent != null && ent instanceof IEnergyProvider && ((IEnergyProvider) ent).getEnergy().canExtract()) {
 					ins.add(ent.getPos());
 				}
 			}
 			for (BlockPos p : ins) {
-				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-				if (0 <= pro.getStoredPower() - cab.getRate()) {
-					pro.getPower(cab.getRate());
-					max += cab.getRate();
-				} else {
-					double d = pro.getStoredPower();
-					pro.getPower(d);
-					max += d;
-				}
+				IEnergyStorage pro = ((IEnergyProvider) this.w.getTileEntity(p)).getEnergy();
+				max += pro.extractEnergy(cab.getRate(), true);
 			}
 		}
 		for (ICabel cab : outs) {
 			ArrayList<BlockPos> out = new ArrayList<BlockPos>();
 			for (EnumFacing face : EnumFacing.values()) {
-				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
-				if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isOutput()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().offset(face));
+				if (ent != null && ent instanceof IEnergyProvider && ((IEnergyProvider) ent).getEnergy().canReceive()) {
 					out.add(ent.getPos());
 				}
 			}
 			for (BlockPos p : out) {
-				IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-				if (max <= 0)
-					return;
-				if (pro.getMaximalPower() > pro.getStoredPower() + cab.getRate()) {
-					if (max < cab.getRate()) {
-						pro.addPower(max);
-						max = 0;
-						return;
-					}
-					pro.addPower(cab.getRate());
-					max -= cab.getRate();
-				} else {
-					double d = pro.getMaximalPower() - pro.getStoredPower();
-					if (max < d) {
-						pro.addPower(max);
-						max = 0;
-						return;
-					}
-					pro.addPower(d);
-					max -= d;
-				}
+				IEnergyStorage pro = ((IEnergyProvider) this.w.getTileEntity(p)).getEnergy();
+				int enex = pro.receiveEnergy(max, false);
+				acmax += enex;
+				max -= enex;
 			}
 		}
-		if (max > 0) {
-			for (ICabel cab : inpts) {
-				ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
-				for (EnumFacing face : EnumFacing.values()) {
-					TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().add(face.getDirectionVec()));
-					if (ent != null && ent instanceof IPowerProvieder && ((IPowerProvieder) ent).isInput()) {
-						ins.add(ent.getPos());
-					}
+		for (ICabel cab : inpts) {
+			ArrayList<BlockPos> ins = new ArrayList<BlockPos>();
+			for (EnumFacing face : EnumFacing.values()) {
+				TileEntity ent = cab.getWorld().getTileEntity(cab.getPos().offset(face));
+				if (ent != null && ent instanceof IEnergyProvider && ((IEnergyProvider) ent).getEnergy().canExtract()) {
+					ins.add(ent.getPos());
 				}
-				for (BlockPos p : ins) {
-					IPowerProvieder pro = (IPowerProvieder) this.w.getTileEntity(p);
-					if (max <= 0)
-						return;
-					if (pro.getMaximalPower() > pro.getStoredPower() + max) {
-						pro.addPower(max);
-						max = 0;
-						return;
-					} else {
-						double d = pro.getMaximalPower() - pro.getStoredPower();
-						pro.addPower(d);
-						max -= d;
-					}
-				}
+			}
+			for (BlockPos p : ins) {
+				IEnergyStorage pro = ((IEnergyProvider) this.w.getTileEntity(p)).getEnergy();
+				acmax -= pro.extractEnergy(acmax, false);
 			}
 		}
 	}

@@ -16,6 +16,8 @@ public class PacketHandler {
 		INSTANCE.registerMessage(MessageSliderAdd.class, MessageSliderAdd.class, 3, Side.SERVER);
 		INSTANCE.registerMessage(MessageSliderRequest.class, MessageSliderRequest.class, 4, Side.SERVER);
 		INSTANCE.registerMessage(MessageSliderGet.class, MessageSliderGet.class, 5, Side.CLIENT);
+		INSTANCE.registerMessage(MessageUpdateEnergyOnGUI.class, MessageUpdateEnergyOnGUI.class, 6, Side.CLIENT);
+		INSTANCE.registerMessage(MessageRequestEnergyStored.class, MessageRequestEnergyStored.class, 7, Side.SERVER);
 	}
 	
 }

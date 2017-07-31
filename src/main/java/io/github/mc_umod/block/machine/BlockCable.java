@@ -21,11 +21,10 @@ import net.minecraftforge.fml.relauncher.*;
 public class BlockCable extends BlockBaseMachine implements ITileEntityProvider, IBlockInformation, ISpiritProvider, IConduitBlock {
 	
 	public int powertrans;
-	public int lo;
 	public boolean iso;
 	public String asp;
 	
-	public BlockCable(String name, int transf, int loos, boolean iso, String sp) {
+	public BlockCable(String name, int transf, boolean iso, String sp) {
 		super();
 		this.powertrans = transf;
 		this.iso = iso;
@@ -33,7 +32,6 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 		this.setResistance(5F);
 		this.setUnlocalizedName(name);
 		this.setCreativeTab(UReference.maschines);
-		this.lo = loos;
 		this.asp = sp;
 	}
 	
@@ -49,7 +47,7 @@ public class BlockCable extends BlockBaseMachine implements ITileEntityProvider,
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityCable(powertrans, lo);
+		return new TileEntityCable(powertrans);
 	}
 	
 	@Override

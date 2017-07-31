@@ -1,8 +1,6 @@
 package io.github.mc_umod.obj;
 
-import static org.lwjgl.opengl.GL11.GL_POLYGON;
-import static org.lwjgl.opengl.GL11.glBegin;
-import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.*;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -93,6 +91,7 @@ public class WavefrontInterpretter extends DataInputStream {
 				this.buffer.draw();
 				glEnd();
 				this.buffer.clear();
+
 			}
 		} catch (Throwable th) {
 			LOG.error("Model render error", th);

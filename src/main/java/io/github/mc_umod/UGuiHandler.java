@@ -47,7 +47,7 @@ public class UGuiHandler implements IGuiHandler {
 		case PULVERISER:
 			return new GuiPulverizer(player, pos);
 		case SOLARPANEL:
-			return new GuiEnergy(player, pos);
+			return new GuiEnergy(pos, true);
 		case CHARGESTATION:
 			return new GuiChargstation(player, pos);
 		case CRAFTFURNANCE:

@@ -2,13 +2,12 @@ package io.github.mc_umod.api.energy;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.UMod;
-import io.github.mc_umod.api.Singelton;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-@Singelton
 public class TunnelHolder {
+	
+	public static TunnelHolder INSTANCE = new TunnelHolder();
 	
 	private ArrayList<UETunnel> tunnels = new ArrayList<UETunnel>();
 	
@@ -66,7 +65,6 @@ public class TunnelHolder {
 			ICabel cab = (ICabel) w.getTileEntity(pos);
 			this.getUETunnel(id).add(cab);
 		}
-		UMod.log.debug("Merged UETunnel " + i + " and " + i2);
 		return id;
 	}
 	

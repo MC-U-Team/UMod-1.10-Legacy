@@ -1,16 +1,17 @@
 package io.github.mc_umod.gui.mode;
 
+import io.github.mc_umod.api.energy.IEnergyGUI;
 import io.github.mc_umod.gui.*;
 import io.github.mc_umod.gui.items.ImplGui;
 import net.minecraft.client.renderer.GlStateManager;
 
-public class ModeEnergy extends ImplGui{
+public class ModeEnergy extends ImplGui implements IEnergyGUI{
 
 	public GuiEnergy energy;
 	
 	public ModeEnergy(GuiBase base_gui) {
 		super(base_gui);
-		this.energy = new GuiEnergy(base_gui.player, base_gui.pos,false);
+		this.energy = new GuiEnergy(base_gui.pos,false);
 		this.energy.setWorldAndResolution(base_gui.mc, base_gui.width, base_gui.height);
 	}
 
@@ -24,6 +25,11 @@ public class ModeEnergy extends ImplGui{
 		GlStateManager.translate((float) k, (float) l, 0.0F);
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		GlStateManager.enableRescaleNormal();
+	}
+
+	@Override
+	public void update(float time, float energy) {
+		this.energy.update(time, energy);
 	}
 	
 }

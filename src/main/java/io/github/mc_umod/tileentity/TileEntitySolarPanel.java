@@ -1,6 +1,6 @@
 package io.github.mc_umod.tileentity;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.utils.WorldUtils;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -9,120 +9,58 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 
-public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder, ITickable {
+public class TileEntitySolarPanel extends TileEntity implements ITickable, IEnergyProvider {
 	
-	public double storedpower = 0;
-	public double MAXIMUM_POWER = 0;
-	public double producing = 0;
-	public boolean work;
-	public String unlocalizedname;
-	public String er = null;
 	
-	public TileEntitySolarPanel() {
-	}
+	private String error = null;
+	private int pertick;
+	private Energy energy;
 	
-	public TileEntitySolarPanel(int produce, int max, String str) {
-		this.producing = produce;
-		this.MAXIMUM_POWER = max;
-		this.unlocalizedname = str;
-	}
+	public TileEntitySolarPanel() {}
 	
-	@Override
-	public double getStoredPower() {
-		return storedpower;
-	}
-	
-	@Override
-	public void setEnergy(double coun) {
-		storedpower = coun;
-	}
-	
-	@Override
-	public void addPower(double power) {
-		storedpower += power;
-	}
-	
-	@Override
-	public double getPower(double powerneed) {
-		storedpower -= powerneed;
-		return powerneed;
-	}
-	
-	public boolean canAddPower(BlockPos p, double power) {
-		if (power + storedpower <= MAXIMUM_POWER) {
-			return true;
-		}
-		return false;
+	public TileEntitySolarPanel(int pertick, int max, String str) {
+		this.pertick = pertick;
+		this.energy = new Energy(max, true, false);
 	}
 	
 	@Override
 	public void update() {
+		if(this.energy == null)return;  
 		if (!WorldUtils.isBlockover(worldObj, pos)) {
-			er = "Can't see sky";
-			work = false;
+			this.error = "Can't see sky";
 			return;
 		}
 		if (!this.worldObj.provider.isSurfaceWorld()) {
-			er = "Your not in Surface";
-			work = false;
+			this.error = "Your not in surface";
 			return;
 		}
 		if (WorldUtils.isNight(worldObj)) {
-			er = "It's Night";
-			work = false;
+			this.error = "It's night";
 			return;
 		}
 		if (this.worldObj.isRaining()) {
-			er = "It's Rainig";
-			work = false;
+			this.error = "It's rainig";
 			return;
 		}
-		if (canAddPower(this.pos, producing)) {
-			addPower(producing);
-			er = null;
-			work = true;
+		if (this.energy.receiveEnergy(this.pertick, true) >= this.pertick) {
+			this.energy.receiveEnergy(this.pertick, false);
+			this.error = null;
 		} else {
-			er = "Maximum Storage reached";
-			work = false;
+			this.error = "Maximum storage reached";
 		}
 	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
-		compound.setDouble("Stored", storedpower);
+		this.energy.writeToNBT(compound);
 		return compound;
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.storedpower = compound.getDouble("Stored");
-	}
-	
-	@Override
-	public double getMaximalPower() {
-		return MAXIMUM_POWER;
-	}
-	
-	@Override
-	public boolean isWorking() {
-		return work;
-	}
-	
-	@Override
-	public String getErrorMessage() {
-		return er;
-	}
-	
-	@Override
-	public boolean hasPower() {
-		return storedpower > 0;
-	}
-	
-	@Override
-	public double getIOPower() {
-		return producing;
+		this.energy.readFromNBT(compound, this.worldObj);
 	}
 	
 	@Override
@@ -137,24 +75,10 @@ public class TileEntitySolarPanel extends TileEntity implements IPowerProvieder,
 		this.writeToNBT(tagCom);
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tagCom);
 	}
-	
+
 	@Override
-	public boolean needsPower() {
-		return false;
+	public Energy getEnergy() {
+		return this.energy;
 	}
 	
-	@Override
-	public boolean productsPower() {
-		return true;
-	}
-	
-	@Override
-	public boolean isInput() {
-		return true;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return false;
-	}
 }

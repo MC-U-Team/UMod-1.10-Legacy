@@ -17,7 +17,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	
 	public ItemStack conduit = null;
 	public int tun = -1;
-	public double rate;
+	public int rate;
 	
 	public TileEntityCable() {}
 	
@@ -33,7 +33,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 		return new SPacketUpdateTileEntity(pos, getBlockMetadata(), tagCom);
 	}
 	
-	public TileEntityCable(double maxpower, int pipelooseone) {
+	public TileEntityCable(int maxpower) {
 		rate = maxpower;
 	}
 	
@@ -55,7 +55,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	@Override
 	public boolean canConnect(IBlockAccess w, BlockPos p) {
 		TileEntity et = w.getTileEntity(p);
-		if (et instanceof IPowerProvieder || et instanceof ICabel) {
+		if (et instanceof IEnergyProvider || et instanceof ICabel) {
 			return true;
 		}
 		return false;
@@ -65,20 +65,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	public NBTTagCompound getTileData() {
 		return ((SPacketUpdateTileEntity) getUpdatePacket()).getNbtCompound();
 	}
-	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		compound.setDouble("Rate", rate);
-		super.writeToNBT(compound);
-		return compound;
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		this.rate = compound.getDouble("Rate");
-		super.readFromNBT(compound);
-	}
-			
+		
 	@Override
 	public int getTunnel() {
 		return this.tun;
@@ -90,7 +77,7 @@ public class TileEntityCable extends TileEntity implements IPlugabel, ICabel, IC
 	}
 	
 	@Override
-	public double getRate() {
+	public int getRate() {
 		return rate;
 	}
 	

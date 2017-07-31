@@ -2,9 +2,6 @@ package io.github.mc_umod;
 
 import java.util.Random;
 
-import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.utils.GenerationUtils;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.*;
 import net.minecraftforge.fml.common.IWorldGenerator;

@@ -13,5 +13,5 @@ public interface ICabel {
 		
 	public void setTunnel(int i);
 	
-	public double getRate();
+	public int getRate();
 }

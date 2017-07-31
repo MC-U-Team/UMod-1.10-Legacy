@@ -1,8 +1,6 @@
 package io.github.mc_umod.renderapi.draw;
 
-import static org.lwjgl.opengl.GL11.GL_POLYGON;
-import static org.lwjgl.opengl.GL11.glBegin;
-import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.*;
 
 import io.github.mc_umod.renderapi.Vertex;
 import net.minecraft.client.renderer.Tessellator;

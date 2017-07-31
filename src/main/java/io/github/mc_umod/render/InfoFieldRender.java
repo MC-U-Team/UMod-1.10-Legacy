@@ -2,7 +2,6 @@ package io.github.mc_umod.render;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
 import io.github.mc_umod.api.render.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -27,9 +26,10 @@ public class InfoFieldRender {
 		}
 		final ArrayList<String> st = new ArrayList<String>();
 		st.add(I18n.format(oven.getWorld().getBlockState(oven.getPos()).getBlock().getUnlocalizedName() + ".name"));
-		if (oven instanceof IPowerProvieder && oven.showPower()) {
+		/*if (oven instanceof IPowerProvieder && oven.showPower()) {
 			st.add("Energy " + ((IPowerProvieder) oven).getStoredPower() + "/" + ((IPowerProvieder) oven).getMaximalPower());
-		}
+			TODO ADD
+		}*/
 		String[] strs = oven.textToAdd();
 		if (strs != null) {
 			for (int i = 0; i < strs.length; i++) {

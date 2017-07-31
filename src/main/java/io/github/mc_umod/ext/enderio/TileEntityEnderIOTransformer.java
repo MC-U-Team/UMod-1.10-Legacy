@@ -1,91 +1,12 @@
 package io.github.mc_umod.ext.enderio;
 
 import crazypants.enderio.power.*;
-import io.github.mc_umod.api.energy.IPowerProvieder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TileEntityEnderIOTransformer extends TileEntity implements IPowerProvieder, IPowerStorage, IPowerApiAdapter, IPowerInterface, IEnergyStorage {
-	
-	@Override
-	public double getStoredPower() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public void addPower(double power) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public double getPower(double powerneed) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public double getMaximalPower() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public boolean isWorking() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public String getErrorMessage() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public boolean hasPower() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public double getIOPower() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	@Override
-	public void setEnergy(double coun) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public boolean needsPower() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public boolean productsPower() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public boolean isInput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+public class TileEntityEnderIOTransformer extends TileEntity implements IPowerStorage, IPowerApiAdapter, IPowerInterface, IEnergyStorage {
 	
 	@Override
 	public void addEnergy(int arg0) {

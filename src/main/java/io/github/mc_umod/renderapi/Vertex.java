@@ -1,9 +1,6 @@
 package io.github.mc_umod.renderapi;
 
-import static org.lwjgl.opengl.GL11.glColor4d;
-import static org.lwjgl.opengl.GL11.glNormal3d;
-import static org.lwjgl.opengl.GL11.glTexCoord2d;
-import static org.lwjgl.opengl.GL11.glVertex3d;
+import static org.lwjgl.opengl.GL11.*;
 
 import io.github.mc_umod.renderapi.draw.Vec2d;
 import io.github.mc_umod.util.RGBA;

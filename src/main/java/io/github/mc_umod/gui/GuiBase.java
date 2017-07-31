@@ -31,9 +31,8 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
-@SuppressWarnings("deprecation")
 @SideOnly(Side.CLIENT)
-public abstract class GuiBase extends GuiScreen {
+public abstract class GuiBase extends GuiScreen implements IEnergyGUI {
 	
 	public ArrayList<ModeTabs> tabs = new ArrayList<ModeTabs>();
 	public ResourceLocation loc, loc1;
@@ -45,6 +44,7 @@ public abstract class GuiBase extends GuiScreen {
 	public ContainerBase container;
 	public World worldObj;
 	public ModeTabs activeTab;
+	public float time;
 	
 	public GuiBase(ResourceLocation loc,EntityPlayer player, BlockPos pos, Container con) {
 		super();
@@ -97,7 +97,7 @@ public abstract class GuiBase extends GuiScreen {
 		tabs.add(new ModeTabs(new ItemStack(Blocks.HOPPER), "IO Mode",new IOMode(this),new GuiRescources("IOMode.png"),this, 0, false));
 		if(this.tile instanceof IWorldView)
 		tabs.add(new ModeTabs(new ItemStack(Blocks.WOOL, 0, EnumDyeColor.ORANGE.getDyeDamage()), "Panel Mode", new ModeColor(this),CLEAR_GUI,this, 0, false)); 
-		if (this.tile instanceof IPowerProvieder)
+		if (this.tile instanceof IEnergyProvider)
 		tabs.add(new ModeTabs(new ItemStack(UBlocks.solarpanel), "Energy Mode", new ModeEnergy(this),new GuiRescources("solar.png"),this, 0, false));
 		this.player.openContainer = this.container;
 		this.guiLeft = (this.width - this.xSize) / 2;
@@ -133,7 +133,6 @@ public abstract class GuiBase extends GuiScreen {
 	public ItemStack returningStack;
 	public Slot currentDragTargetSlot;
 	public long dragItemDropDelay;
-	@SuppressWarnings("rawtypes")
 	protected final Set<Slot> dragSplittingSlots = Sets.<Slot> newHashSet();
 	protected boolean dragSplitting;
 	public int dragSplittingLimit;
@@ -371,7 +370,6 @@ public abstract class GuiBase extends GuiScreen {
 		this.zLevel = 0.0F;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	public void updateDragSplitting() {
 		ItemStack itemstack = this.mc.thePlayer.inventory.getItemStack();
 		
@@ -745,6 +743,14 @@ public abstract class GuiBase extends GuiScreen {
 	
 	public FontRenderer getFontRender(){
 		return fontRendererObj;
+	}
+	
+	@Override
+	public void update(float time, float energy) {
+		this.time = time;
+		if(this.activeTab.getGui() instanceof IEnergyGUI) {
+			((IEnergyGUI)this.activeTab.getGui()).update(time, energy);
+		}
 	}
 	
 }

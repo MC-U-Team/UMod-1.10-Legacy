@@ -2,7 +2,7 @@ package io.github.mc_umod.gui;
 
 import java.io.IOException;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.api.energy.IEnergyGUI;
 import io.github.mc_umod.block.machine.BlockSolarPanel;
 import io.github.mc_umod.block.machine.BlockSolarPanel.EnumTypeSolarPanel;
 import io.github.mc_umod.gui.items.GuiRescources;
@@ -20,26 +20,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
-public class GuiEnergy extends GuiScreen {
+public class GuiEnergy extends GuiScreen implements IEnergyGUI {
 	
 	private int xSize;
 	private int ySize;
-	private IPowerProvieder tile;
-	private World worldObj;
 	private boolean back;
+	private BlockPos pos;
+	private float energy;
 	
-	public GuiEnergy(EntityPlayer player,BlockPos pos, boolean back) {
+	public GuiEnergy(BlockPos pos,boolean back) {
 		super();
+		this.pos = pos;
 		this.xSize = 176;
 		this.ySize = 166;
-		this.worldObj = player.worldObj;
-		this.tile = (IPowerProvieder) worldObj.getTileEntity(pos);
 		this.back = back;
 		super.initGui();
-	}
-	
-	public GuiEnergy(EntityPlayer player,BlockPos pos) {
-		this(player,pos, true);
 	}
 	
 	@Override
@@ -61,28 +56,24 @@ public class GuiEnergy extends GuiScreen {
 			this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 		}
 		
-		int high = 0;
-		if (tile.hasPower()) {
-			double ps = tile.getStoredPower() * 100 / tile.getMaximalPower();
-			high = (int) (ps * 0.01 * 152);
-		}
+		int high = (int) (this.energy * 0.01 * 152);
 		
 		this.drawStorage(k, l, high);
-		IBlockState ste = worldObj.getBlockState(((TileEntity) tile).getPos());
+		/*IBlockState ste = worldObj.getBlockState(((TileEntity) tile).getPos());
 		EnumTypeSolarPanel type = EnumTypeSolarPanel.byMetadata(ste.getBlock().getMetaFromState(ste));
 		
 		this.drawCenteredString(this.fontRendererObj, I18n.format(ste.getBlock().getUnlocalizedName() + (ste.getBlock() instanceof BlockSolarPanel ? type.getName() : "") + ".name"), k + xSize / 2 - 37 / 2, l + 10, 4210752, false);
-		int maxstringlength = 119;
+		*/int maxstringlength = 119;
 		String s1 = "Generate: ";
 		String s2 = "Stored: ";
 		String s3 = "Status: ";
 		String s4 = "Error: ";
-		this.fontRendererObj.drawSplitString(s1 + (tile.isWorking() ? (EnergyUtils.translate(tile.getIOPower()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
+		/*this.fontRendererObj.drawSplitString(s1 + (tile.isWorking() ? (EnergyUtils.translate(tile.getIOPower()) + " UE/t") : "0 UE/t"), k + 10, l + 50, maxstringlength, 4210752);
 		this.fontRendererObj.drawSplitString(s2 + EnergyUtils.translate(tile.getStoredPower()) + " / " + EnergyUtils.translate(tile.getMaximalPower()), k + 10, l + 80, maxstringlength, 4210752);
 		this.fontRendererObj.drawSplitString(s3 + (tile.isWorking() ? "On" : "Off"), k + 10, l + 110, maxstringlength, 4210752);
 		if (!tile.isWorking() && tile.getErrorMessage() != null && tile.getErrorMessage() != "") {
 			this.fontRendererObj.drawSplitString(s4 + tile.getErrorMessage(), k + 10, l + 140, maxstringlength, 4210752);
-		}
+		}*/
 		
 	}
 	
@@ -110,5 +101,10 @@ public class GuiEnergy extends GuiScreen {
 	@Override
 	public boolean doesGuiPauseGame() {
 		return false;
+	}
+
+	@Override
+	public void update(float time, float energy) {
+		this.energy = energy;
 	}
 }

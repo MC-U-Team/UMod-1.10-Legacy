@@ -36,7 +36,6 @@ public class UItems {
 	
 	// Battery
 	public static Item battery;
-	public static Item tester;
 	public static Item energydisplay;
 	public static Item copper_coil;
 	public static Item copper_wire;
@@ -85,7 +84,6 @@ public class UItems {
 		plastic = new ItemPlastic().setUnlocalizedName("plastic");
 		
 		// Battery
-		tester = new ItemCabletester().setUnlocalizedName("tester");
 		battery = new ItemBattery().setUnlocalizedName("battery");
 		energydisplay = new ItemEnergyDisplay().setUnlocalizedName("energy");
 		copper_wire = new ItemCopperWire().setUnlocalizedName("copper_wire");
@@ -134,7 +132,6 @@ public class UItems {
 		URegistryUtils.registerItem(plastic);
 		
 		// Battery
-		URegistryUtils.registerItem(tester);
 		URegistryUtils.registerItem(battery);
 		URegistryUtils.registerItem(energydisplay);
 		URegistryUtils.registerItem(copper_wire);

@@ -6,8 +6,8 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 public class RegisterEvents extends Event{
 	
-	protected final World worldObj;
-	protected final BlockPos pos;
+	public final World worldObj;
+	public final BlockPos pos;
 	
 	public RegisterEvents(World worldIn,BlockPos pos) {
 		this.worldObj = worldIn;

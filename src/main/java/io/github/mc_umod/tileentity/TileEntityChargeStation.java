@@ -1,14 +1,13 @@
 package io.github.mc_umod.tileentity;
 
 import io.github.mc_umod.UItems;
-import io.github.mc_umod.api.energy.IPowerProvieder;
 import io.github.mc_umod.gui.container.ContainerChargeStation;
 import net.minecraft.entity.player.*;
-import net.minecraft.inventory.Container;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 
-public class TileEntityChargeStation extends TileEntityBase implements IPowerProvieder, ITickable {
+public class TileEntityChargeStation extends TileEntityBase implements ITickable {
 	
 	private ItemStack stack = null;
 	
@@ -37,12 +36,7 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	public int getSizeInventory() {
 		return 1;
 	}
-	
-	@Override
-	public void setEnergy(double coun) {
-		stored = coun;
-	}
-	
+		
 	@Override
 	public ItemStack getStackInSlot(int index) {
 		return stack;
@@ -50,25 +44,12 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (this.stack != null) {
-			ItemStack itemstack;
-			
-			if (this.stack.stackSize <= count) {
-				itemstack = this.stack;
-				this.stack = null;
-				return itemstack;
-			} else {
-				itemstack = this.stack.splitStack(count);
-				
-				if (this.stack.stackSize == 0) {
-					this.stack = null;
-				}
-				
-				return itemstack;
-			}
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndSplit(new ItemStack[] {stack}, index, count);
+	}
+	
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		return ItemStackHelper.getAndRemove(new ItemStack[] {stack}, index);
 	}
 	
 	@Override
@@ -134,85 +115,11 @@ public class TileEntityChargeStation extends TileEntityBase implements IPowerPro
 	
 	@Override
 	public void update() {
-		// if (stack != null && stack.getItemDamage() > 0 && this.canAddPower(pos, 2) && mode) {
-		// stack.setItemDamage(stack.getItemDamage() + 2);
-		// stored += 2;
-		// } else if (!mode && stack != null && stack.getItemDamage() < stack.getMaxDamage() && stored - 2 >= 0) {
-		// stored -= 2;
-		// stack.setItemDamage(stack.getItemDamage() - 2);
-		// }
+		
 	}
 	
 	public void setMode(boolean m) {
 		mode = m;
-	}
-	
-	@Override
-	public double getStoredPower() {
-		return stored;
-	}
-	
-	@Override
-	public void addPower(double power) {
-		stored += power;
-	}
-	
-	@Override
-	public double getPower(double powerneed) {
-		stored -= powerneed;
-		return powerneed;
-	}
-	
-	@Override
-	public double getMaximalPower() {
-		return MAXIMAL_POWER;
-	}
-	
-	@Override
-	public boolean isWorking() {
-		return (stack != null) && stack.getItemDamage() < stack.getMaxDamage();
-	}
-	
-	@Override
-	public String getErrorMessage() {
-		return null;
-	}
-	
-	@Override
-	public boolean hasPower() {
-		return stored > 0;
-	}
-	
-	@Override
-	public double getIOPower() {
-		return 2;
-	}
-	
-	@Override
-	public boolean needsPower() {
-		return false;
-	}
-	
-	@Override
-	public boolean productsPower() {
-		return false;
-	}
-	
-	@Override
-	public boolean isInput() {
-		return false;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return true;
-	}
-	
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		ItemStack s = stack;
-		stack = null;
-		return s;
 	}
 	
 }

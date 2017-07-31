@@ -1,6 +1,5 @@
 package io.github.mc_umod.gui;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
 import io.github.mc_umod.item.ItemEnergyDisplay;
 import io.github.mc_umod.render.ModelRenderHelper;
 import io.github.mc_umod.tileentity.TileEntityPulverizer;
@@ -64,7 +63,7 @@ public class GuiModIngame extends Gui{
 				str = oven.getStackInSlot(3).getDisplayName();
 			}
 			
-			String energy = "Energy " + ((IPowerProvieder) oven).getStoredPower() + "/" + ((IPowerProvieder) oven).getMaximalPower();
+			//String energy = "Energy " + ((IPowerProvieder) oven).getStoredPower() + "/" + ((IPowerProvieder) oven).getMaximalPower();
 			String stat = "Progress " + oven.getField(0) + "/100";
 			String pos = "X=" + p.getX() + " Y=" + p.getY() + " Z=" + p.getZ();
 			String name = I18n.format(oven.getWorld().getBlockState(oven.getPos()).getBlock().getUnlocalizedName() + ".name");
@@ -75,7 +74,7 @@ public class GuiModIngame extends Gui{
 				GlStateManager.scale(tT / 4000, 1, 1);
 				rend.drawStringWithShadow(name, -rend.getStringWidth(name) / 2, -14, 0xFFFFFF);
 				rend.drawStringWithShadow(str, -rend.getStringWidth(str) / 2, -1, 0xFFFFFF);
-				rend.drawStringWithShadow(energy, -rend.getStringWidth(energy) / 2, 9, 0xFFFFFF);
+				//rend.drawStringWithShadow(energy, -rend.getStringWidth(energy) / 2, 9, 0xFFFFFF);
 				rend.drawStringWithShadow(stat, -rend.getStringWidth(stat) / 2, 19, 0xFFFFFF);
 				if (tT < 4000) {
 					rend.drawStringWithShadow(pos, -rend.getStringWidth(pos) / 2, 150, 0xFFFFFF);

@@ -1,37 +1,27 @@
 package io.github.mc_umod.tileentity;
 
 import io.github.mc_umod.UMod;
-import io.github.mc_umod.api.energy.IPowerProvieder;
 import io.github.mc_umod.api.render.*;
 import io.github.mc_umod.item.ItemBackPack;
 import io.github.mc_umod.utils.DirectionUtils;
 import net.minecraft.entity.player.*;
-import net.minecraft.inventory.Container;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraft.util.*;
 
-public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView,IPowerProvieder {
+public class TileEntityPainter extends TileEntityBase implements ITickable, ISliderEntry, IWorldView {
 	
 	private ItemStack[] stack = new ItemStack[6];
 	
+	@SuppressWarnings("incomplete-switch")
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {
 		switch (side) {
 		case DOWN:
 			return new int[] { 2, 4 };
-		case EAST:
-			break;
-		case NORTH:
-			break;
-		case SOUTH:
-			break;
 		case UP:
 			return new int[] { 0, 1, 3 };
-		case WEST:
-			break;
-		default:
-			break;
 		}
 		return new int[] {};
 	}
@@ -64,36 +54,12 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack;
-			
-			if (this.stack[index].stackSize <= count) {
-				itemstack = this.stack[index];
-				this.stack[index] = null;
-				return itemstack;
-			} else {
-				itemstack = this.stack[index].splitStack(count);
-				
-				if (this.stack[index].stackSize == 0) {
-					this.stack[index] = null;
-				}
-				
-				return itemstack;
-			}
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndSplit(stack, index, count);
 	}
 	
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack = this.stack[index];
-			this.stack[index] = null;
-			return itemstack;
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndRemove(stack, index);
 	}
 	
 	@Override
@@ -202,31 +168,6 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 		}
 	}
 	
-	@Override
-	public double getIOPower() {
-		return 10;
-	}
-	
-	@Override
-	public boolean needsPower() {
-		return true;
-	}
-	
-	@Override
-	public boolean productsPower() {
-		return false;
-	}
-	
-	@Override
-	public boolean isInput() {
-		return false;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return true;
-	}
-	
 	public int[] ids = { 0, 0, 0, 100 };
 	
 	@Override
@@ -247,49 +188,6 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	@Override
 	public String[] textToAdd() {
 		return null;
-	}
-
-	private double energy,max_energy;
-	
-	@Override
-	public double getStoredPower() {
-		return energy;
-	}
-
-	@Override
-	public void addPower(double power) {
-		energy += power;
-	}
-
-	@Override
-	public double getPower(double powerneed) {
-		energy -= powerneed;
-		return powerneed;
-	}
-
-	@Override
-	public double getMaximalPower() {
-		return max_energy;
-	}
-
-	@Override
-	public boolean isWorking() {
-		return true;
-	}
-
-	@Override
-	public String getErrorMessage() {
-		return null;
-	}
-
-	@Override
-	public boolean hasPower() {
-		return energy > 0;
-	}
-
-	@Override
-	public void setEnergy(double coun) {
-		this.energy = coun;
 	}
 	
 }

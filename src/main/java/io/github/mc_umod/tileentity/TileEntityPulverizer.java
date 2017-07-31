@@ -2,7 +2,7 @@ package io.github.mc_umod.tileentity;
 
 import java.util.ArrayList;
 
-import io.github.mc_umod.api.energy.IPowerProvieder;
+import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
 import io.github.mc_umod.block.BlockOres;
 import io.github.mc_umod.gui.container.ContainerPulverizer;
@@ -14,10 +14,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import net.minecraft.util.*;
 
-public class TileEntityPulverizer extends TileEntityBase implements IPowerProvieder, ITickable, IIOMode, ISidedInventory, IWorldView {
+public class TileEntityPulverizer extends TileEntityBase implements ITickable, IIOMode, ISidedInventory, IWorldView, IEnergyProvider {
 	
 	private ItemStack[] stack = new ItemStack[5];
-	private double energy;
+	private Energy energy = new Energy(500, false, true);
 	
 	@Override
 	public int getSizeInventory() {
@@ -28,45 +28,15 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	public ItemStack getStackInSlot(int index) {
 		return stack[index];
 	}
-	
-	@Override
-	public void setEnergy(double coun) {
-		energy = coun;
-	}
-	
+		
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack;
-			
-			if (this.stack[index].stackSize <= count) {
-				itemstack = this.stack[index];
-				this.stack[index] = null;
-				return itemstack;
-			} else {
-				itemstack = this.stack[index].splitStack(count);
-				
-				if (this.stack[index].stackSize == 0) {
-					this.stack[index] = null;
-				}
-				
-				return itemstack;
-			}
-		} else {
-			return null;
-		}
-		
+		return ItemStackHelper.getAndSplit(stack, index, count);
 	}
 	
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		if (this.stack[index] != null) {
-			ItemStack itemstack = this.stack[index];
-			this.stack[index] = null;
-			return itemstack;
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndRemove(stack, index);
 	}
 	
 	@Override
@@ -133,7 +103,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	public void update() {
 		if(!worldObj.isRemote)return;
 		ItemStack[] args = ModRegistryUtils.isRecipe(stack[3]);
-		if (args != null && this.energy > 10) {
+		if (args != null && this.energy.getEnergyStored() > 10) {
 			if (isAddebal(0, args[0]) && isAddebal(1, args[1]) && isAddebal(2, args[2])) {
 				work = true;
 				if (time >= 100) {
@@ -156,7 +126,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 							stack[2].stackSize++;
 						}
 					}
-					this.getPower(1000);
+					this.energy.extractEnergy(10, false);
 				}
 				time++;
 			} else {
@@ -217,11 +187,6 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 	}
 	
 	@Override
-	public double getIOPower() {
-		return 10;
-	}
-	
-	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		super.writeToNBT(tag);
 		tag.setInteger(SHORT_TIME, time);
@@ -241,6 +206,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 			}
 		}
 		tag.setTag(LIST_ITEMS, nbttaglist);
+		this.energy.writeToNBT(tag);
 		return tag;
 	}
 	
@@ -263,62 +229,7 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 				stack[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
-	}
-	
-	@Override
-	public boolean needsPower() {
-		return true;
-	}
-	
-	@Override
-	public boolean productsPower() {
-		return false;
-	}
-	
-	@Override
-	public boolean isInput() {
-		return false;
-	}
-	
-	@Override
-	public boolean isOutput() {
-		return true;
-	}
-	
-	@Override
-	public double getStoredPower() {
-		return energy;
-	}
-	
-	@Override
-	public void addPower(double power) {
-		energy += power;
-	}
-	
-	@Override
-	public double getPower(double powerneed) {
-		energy -= powerneed;
-		return powerneed;
-	}
-	
-	@Override
-	public double getMaximalPower() {
-		return 4000;
-	}
-	
-	@Override
-	public boolean isWorking() {
-		return work;
-	}
-	
-	@Override
-	public String getErrorMessage() {
-		return "";
-	}
-	
-	@Override
-	public boolean hasPower() {
-		return false;
+		this.energy.readFromNBT(tag, this.worldObj);
 	}
 	
 	@Override
@@ -379,5 +290,10 @@ public class TileEntityPulverizer extends TileEntityBase implements IPowerProvie
 			i++;
 		}
 		return 0;
+	}
+
+	@Override
+	public Energy getEnergy() {
+		return this.energy;
 	}
 }

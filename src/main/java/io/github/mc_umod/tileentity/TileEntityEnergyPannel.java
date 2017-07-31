@@ -26,7 +26,6 @@ public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBo
 		this.stack = stack;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void update() {
 		List<EntityFX> p = worldObj.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
