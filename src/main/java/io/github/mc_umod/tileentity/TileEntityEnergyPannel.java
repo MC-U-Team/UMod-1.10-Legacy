@@ -4,13 +4,16 @@ import java.util.List;
 
 import io.github.mc_umod.api.render.IBoundsProvider;
 import io.github.mc_umod.entity.EntityFX;
+import io.github.mc_umod.event.apis.RenderEntityRegisterEvent;
 import io.github.mc_umod.item.ItemEnergyDisplay;
+import io.github.mc_umod.renderapi.Vec3;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.*;
+import net.minecraftforge.common.MinecraftForge;
 
 public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBoundsProvider {
 	
@@ -21,20 +24,21 @@ public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBo
 	public void setStack(EntityPlayer pl, ItemStack stack) {
 		if (this.stack != null) {
 			pl.inventory.addItemStackToInventory(this.stack);
-			// pl.worldObj.playSoundAtEntity(pl, "random.pop", 0.2F, ((pl.getRNG().nextFloat() - pl.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
 		}
 		this.stack = stack;
+		NBTTagCompound com = (NBTTagCompound) stack.getTagCompound().getTag(ItemEnergyDisplay.NBT_TAG);
+		if (stack.getItem() instanceof ItemEnergyDisplay && stack.getTagCompound().hasKey(ItemEnergyDisplay.NBT_TAG)) {
+			this.po = new BlockPos(com.getInteger("X"), com.getInteger("Y"), com.getInteger("Z"));
+		}
 	}
+	
+	private boolean firsttick = true;
 	
 	@Override
 	public void update() {
-		List<EntityFX> p = worldObj.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(pos, pos.add(1, 1, 1)));
-		if (p.size() <= 0) {
-			this.worldObj.spawnEntityInWorld(new EntityFX(this.worldObj, this.pos));
-		}
-		if (stack != null && stack.getItem() instanceof ItemEnergyDisplay && stack.getTagCompound().hasKey(ItemEnergyDisplay.NBT_TAG)) {
-			NBTTagCompound com = (NBTTagCompound) stack.getTagCompound().getTag(ItemEnergyDisplay.NBT_TAG);
-			this.po = new BlockPos(com.getInteger("X"), com.getInteger("Y"), com.getInteger("Z"));
+		if(firsttick) {
+			MinecraftForge.EVENT_BUS.post(new RenderEntityRegisterEvent(this.worldObj, this.pos));
+			firsttick = false;
 		}
 	}
 	
@@ -55,7 +59,7 @@ public class TileEntityEnergyPannel extends TileEntity implements ITickable, IBo
 	}
 	
 	@Override
-	public Vec3i getBounds() {
-		return new Vec3i(6F, 4F, 0F);
+	public Vec3 getBounds() {
+		return new Vec3(6F, 4F, 0F);
 	}
 }

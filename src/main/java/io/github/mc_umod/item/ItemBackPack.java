@@ -5,7 +5,7 @@ import java.util.List;
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.enumtype.*;
 import io.github.mc_umod.gui.container.ContainerBackPack;
-import io.github.mc_umod.utils.NBTUtils;
+import io.github.mc_umod.util.NBTUtils;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;

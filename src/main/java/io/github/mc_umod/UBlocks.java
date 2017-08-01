@@ -6,7 +6,7 @@ import io.github.mc_umod.block.infected.*;
 import io.github.mc_umod.block.machine.*;
 import io.github.mc_umod.block.rail.*;
 import io.github.mc_umod.item.block.*;
-import io.github.mc_umod.utils.URegistryUtils;
+import io.github.mc_umod.util.URegistryUtils;
 import net.minecraft.block.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;

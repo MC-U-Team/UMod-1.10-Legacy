@@ -6,7 +6,7 @@ import io.github.mc_umod.*;
 import io.github.mc_umod.api.*;
 import io.github.mc_umod.api.render.ISpiritProvider;
 import io.github.mc_umod.tileentity.TileEntityCable;
-import io.github.mc_umod.utils.NBTUtils;
+import io.github.mc_umod.util.NBTUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

@@ -6,7 +6,7 @@ import io.github.mc_umod.api.energy.IEnergyGUI;
 import io.github.mc_umod.block.machine.BlockSolarPanel;
 import io.github.mc_umod.block.machine.BlockSolarPanel.EnumTypeSolarPanel;
 import io.github.mc_umod.gui.items.GuiRescources;
-import io.github.mc_umod.utils.EnergyUtils;
+import io.github.mc_umod.util.EnergyUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;

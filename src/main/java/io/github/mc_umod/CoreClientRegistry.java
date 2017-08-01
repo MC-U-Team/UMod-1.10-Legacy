@@ -38,12 +38,12 @@ public class CoreClientRegistry implements ClientRegistry {
 	
 	@Override
 	public void registerModel(Item item, int meta) {
-		registerModel(item, meta, new ModelResourceLocation(ItemUtil.getRegistryName(item), "inventory"));
+		registerModel(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 	
 	@Override
 	public void registerModel(Block block, int meta) {
-		registerModel(block, meta, new ModelResourceLocation(BlockUtil.getRegistryName(block), "inventory"));
+		registerModel(block, meta, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
 	
 	@Override

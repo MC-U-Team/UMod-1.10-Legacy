@@ -54,8 +54,6 @@ public class MagicCrafterRecipe {
 	}
 	
 	public static void register(MagicCrafterRecipe mcr) {
-		
 		recipes.add(mcr);
-		
 	}
 }

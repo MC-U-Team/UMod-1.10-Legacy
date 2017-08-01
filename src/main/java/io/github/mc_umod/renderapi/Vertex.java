@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3d;
  *
  */
 
-public class Vertex extends Vec3d {
+public class Vertex extends Vec3 {
 	
 	private RGBA rgba;
 	private Vec3d normal;
@@ -85,11 +85,11 @@ public class Vertex extends Vec3d {
 			glNormal3d(this.normal.xCoord, this.normal.yCoord, this.normal.zCoord);
 		if (this.tex != null)
 			glTexCoord2d(this.tex.xCoord, 1 - this.tex.xCoord);
-		glVertex3d(this.xCoord, this.yCoord, this.zCoord);
+		glVertex3d(this.X(), this.Y(), this.Z());
 	}
 	
 	public void draw(VertexBuffer buffer){
-		buffer.pos(xCoord, yCoord, zCoord);
+		buffer.pos(X(), Y(), Z());
 		if (this.rgba != null)
 			buffer.color((float) rgba.getRed() / 255, (float) rgba.getGreen() / 255, (float) rgba.getBlue() / 255, (float) rgba.getAlpha() / 255);
 		if (this.normal != null)

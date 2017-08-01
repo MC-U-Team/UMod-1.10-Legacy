@@ -2,7 +2,6 @@ package io.github.mc_umod.network.message;
 
 import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.mode.*;
-import io.github.mc_umod.utils.DirectionUtils;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -38,13 +37,13 @@ public class MessageIOCallback implements IMessage, IMessageHandler<MessageIOCal
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		this.face = DirectionUtils.getFacingFromShort(buf.readShort());
+		this.face = EnumFacing.getFront(buf.readInt());
 		this.item = buf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
-		buf.writeShort(DirectionUtils.getShortFromFacing(face));
+		buf.writeInt(face.getIndex());
 		buf.writeInt(item);
 	}
 	

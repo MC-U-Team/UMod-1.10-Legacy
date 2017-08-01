@@ -1,7 +1,7 @@
 package io.github.mc_umod.network.message;
 
 import io.github.mc_umod.api.render.IIOMode;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.util.*;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -39,14 +39,14 @@ public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, I
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		this.pos = NetworkUtil.getPosFromBuffer(buf);
-		this.face = DirectionUtils.getFacingFromShort(buf.readShort());
+		this.face = EnumFacing.getFront(buf.readInt());
 		this.mode = buf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
 		NetworkUtil.addPosToBuffer(buf, pos);
-		buf.writeShort(DirectionUtils.getShortFromFacing(this.face));
+		buf.writeInt(this.face.getIndex());
 		buf.writeInt(mode);
 	}
 	

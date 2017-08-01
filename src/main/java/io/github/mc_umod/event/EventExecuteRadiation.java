@@ -3,8 +3,8 @@ package io.github.mc_umod.event;
 import java.util.HashMap;
 
 import io.github.mc_umod.*;
+import io.github.mc_umod.api.IInfectedEntity;
 import io.github.mc_umod.armor.ArmorRadiation;
-import io.github.mc_umod.utils.EntityUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,7 +21,7 @@ public class EventExecuteRadiation {
 		EntityLivingBase base = event.getEntityLiving();
 		if (base.isPotionActive(UPotion.radiationPotion)) {
 			
-			if (EntityUtils.isInfectedEntity(base))
+			if (base instanceof IInfectedEntity)
 				return;
 			
 			if (base instanceof EntityPlayer) {

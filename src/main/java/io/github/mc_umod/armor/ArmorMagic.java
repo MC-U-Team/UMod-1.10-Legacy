@@ -3,7 +3,7 @@ package io.github.mc_umod.armor;
 import java.util.List;
 
 import io.github.mc_umod.UReference;
-import io.github.mc_umod.utils.URegistryUtils;
+import io.github.mc_umod.util.URegistryUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;

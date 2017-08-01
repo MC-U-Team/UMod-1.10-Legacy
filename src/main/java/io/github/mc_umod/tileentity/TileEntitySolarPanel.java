@@ -1,13 +1,11 @@
 package io.github.mc_umod.tileentity;
 
 import io.github.mc_umod.api.energy.*;
-import io.github.mc_umod.utils.WorldUtils;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.math.BlockPos;
 
 public class TileEntitySolarPanel extends TileEntity implements ITickable, IEnergyProvider {
 	
@@ -26,7 +24,7 @@ public class TileEntitySolarPanel extends TileEntity implements ITickable, IEner
 	@Override
 	public void update() {
 		if(this.energy == null)return;  
-		if (!WorldUtils.isBlockover(worldObj, pos)) {
+		if (worldObj.canSeeSky(pos)) {
 			this.error = "Can't see sky";
 			return;
 		}
@@ -34,7 +32,7 @@ public class TileEntitySolarPanel extends TileEntity implements ITickable, IEner
 			this.error = "Your not in surface";
 			return;
 		}
-		if (WorldUtils.isNight(worldObj)) {
+		if (!worldObj.isDaytime()) {
 			this.error = "It's night";
 			return;
 		}

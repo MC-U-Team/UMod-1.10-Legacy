@@ -1,8 +1,8 @@
-package io.github.mc_umod.utils;
+package io.github.mc_umod.util;
 
 public class EnergyUtils {
 	
-	public static String translate(double d) {
+	public static String translate(int d) {
 		String norm = ("" + d);
 		if (d >= 1000 && d < 1000000) {
 			return norm.replace(".0", "").substring(0, norm.length() - 5) + "K";

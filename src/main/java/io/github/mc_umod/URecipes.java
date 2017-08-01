@@ -2,7 +2,7 @@ package io.github.mc_umod;
 
 import io.github.mc_umod.api.crafting.*;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.utils.ModRegistryUtils;
+import io.github.mc_umod.util.ModRegistryUtils;
 import net.minecraft.init.*;
 import net.minecraft.item.ItemStack;
 
@@ -21,15 +21,15 @@ public class URecipes {
 	private void registerMagicCrafterRecipes() {
 		
 		// magic brew
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.POTIONITEM, 1, 8227), new ItemStack(UItems.acid), new ItemStack(UItems.magic_brew)));
+		MagicCrafterRecipe.register(new MagicCrafterRecipe(0, new ItemStack(Items.POTIONITEM, 1, 8227), new ItemStack(UItems.acid), new ItemStack(UItems.magic_brew)));
 		// magic ingot
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.IRON_INGOT), new ItemStack(UItems.magic_brew), new ItemStack(UItems.magic_ingot)));
+		MagicCrafterRecipe.register(new MagicCrafterRecipe(0, new ItemStack(Items.IRON_INGOT), new ItemStack(UItems.magic_brew), new ItemStack(UItems.magic_ingot)));
 		// magic quartz
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.QUARTZ), new ItemStack(UItems.magic_brew), new ItemStack(UItems.charged_quartz)));
+		MagicCrafterRecipe.register(new MagicCrafterRecipe(0, new ItemStack(Items.QUARTZ), new ItemStack(UItems.magic_brew), new ItemStack(UItems.charged_quartz)));
 		// magic glass
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(UBlocks.oilglass), new ItemStack(UItems.charged_quartz), new ItemStack(UBlocks.magic_glass)));
+		MagicCrafterRecipe.register(new MagicCrafterRecipe(0, new ItemStack(UBlocks.oilglass), new ItemStack(UItems.charged_quartz), new ItemStack(UBlocks.magic_glass)));
 		// magic bottle
-		ModRegistryUtils.addMagicCrafterRecipe(new MagicCrafterRecipe(0, new ItemStack(Items.GLASS_BOTTLE), new ItemStack(UBlocks.magic_glass), new ItemStack(UItems.magic_bottle)));
+		MagicCrafterRecipe.register(new MagicCrafterRecipe(0, new ItemStack(Items.GLASS_BOTTLE), new ItemStack(UBlocks.magic_glass), new ItemStack(UItems.magic_bottle)));
 		
 	}
 	

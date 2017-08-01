@@ -5,7 +5,7 @@ import java.util.*;
 import io.github.mc_umod.*;
 import io.github.mc_umod.api.IInfectedBlock;
 import io.github.mc_umod.armor.ArmorRadiation;
-import io.github.mc_umod.utils.NBTUtils;
+import io.github.mc_umod.util.NBTUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;

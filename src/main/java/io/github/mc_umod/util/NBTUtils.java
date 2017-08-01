@@ -1,4 +1,4 @@
-package io.github.mc_umod.utils;
+package io.github.mc_umod.util;
 
 import io.github.mc_umod.UMod;
 import net.minecraft.item.ItemStack;

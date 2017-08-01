@@ -1,7 +1,7 @@
 package io.github.mc_umod.network.message;
 
 import io.github.mc_umod.api.render.ISliderEntry;
-import io.github.mc_umod.utils.NetworkUtil;
+import io.github.mc_umod.util.NetworkUtil;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

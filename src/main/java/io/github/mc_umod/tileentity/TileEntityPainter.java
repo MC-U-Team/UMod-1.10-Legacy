@@ -3,7 +3,6 @@ package io.github.mc_umod.tileentity;
 import io.github.mc_umod.UMod;
 import io.github.mc_umod.api.render.*;
 import io.github.mc_umod.item.ItemBackPack;
-import io.github.mc_umod.utils.DirectionUtils;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
@@ -116,9 +115,7 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 		return "6";
 	}
 	
-	public static final String
-	
-	ENUMFACING_OUTPUT = "OP", ENUMFACING_INPUT = "IP", INT_ENERGY = "Energy", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items", STRING_PLAYER = "play";
+	public static final String ENUMFACING_OUTPUT = "OP", ENUMFACING_INPUT = "IP", BYTE_SLOTS = "slot", LIST_ITEMS = "items";
 	
 	private EnumFacing enumfI;
 	private EnumFacing enumfO;
@@ -126,8 +123,8 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound tag) {
 		UMod.log.info("Write IO");
-		tag.setByte(ENUMFACING_OUTPUT, (byte) DirectionUtils.getShortFromFacing(enumfO));
-		tag.setByte(ENUMFACING_INPUT, (byte) DirectionUtils.getShortFromFacing(enumfI));
+		tag.setInteger(ENUMFACING_OUTPUT, enumfO.getIndex());
+		tag.setInteger(ENUMFACING_INPUT, enumfI.getIndex());
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < stack.length; ++i) {
 			if (stack[i] != null) {
@@ -143,8 +140,8 @@ public class TileEntityPainter extends TileEntityBase implements ITickable, ISli
 	
 	@Override
 	public void readFromNBT(NBTTagCompound tag) {
-		enumfI = DirectionUtils.getFacingFromShort(tag.getShort(ENUMFACING_INPUT));
-		enumfO = DirectionUtils.getFacingFromShort(tag.getShort(ENUMFACING_OUTPUT));
+		enumfI = EnumFacing.getFront(tag.getInteger(ENUMFACING_INPUT));
+		enumfO = EnumFacing.getFront(tag.getInteger(ENUMFACING_OUTPUT));
 		NBTTagList nbttaglist = tag.getTagList(LIST_ITEMS, 10);
 		stack = new ItemStack[this.getSizeInventory()];
 		

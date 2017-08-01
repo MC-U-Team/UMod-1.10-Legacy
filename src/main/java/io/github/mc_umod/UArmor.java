@@ -2,7 +2,7 @@ package io.github.mc_umod;
 
 import io.github.mc_umod.armor.*;
 import io.github.mc_umod.item.tools.energy.ItemEnergyGlasses;
-import io.github.mc_umod.utils.URegistryUtils;
+import io.github.mc_umod.util.URegistryUtils;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;

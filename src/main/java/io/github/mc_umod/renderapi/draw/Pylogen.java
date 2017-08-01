@@ -2,7 +2,7 @@ package io.github.mc_umod.renderapi.draw;
 
 import static org.lwjgl.opengl.GL11.*;
 
-import io.github.mc_umod.renderapi.Vertex;
+import io.github.mc_umod.renderapi.*;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.vertex.*;
@@ -44,8 +44,12 @@ public class Pylogen {
 		this.draw(6, DefaultVertexFormats.POSITION_COLOR);
 	}
 	
-	public Vec3d[] getVertices() {
+	public Vec3[] getVertices() {
 		return vertices;
+	}
+	
+	public void update(int index, double ... list){
+		this.vertices[index].update(list[0], list[1], list[2]);
 	}
 	
 }

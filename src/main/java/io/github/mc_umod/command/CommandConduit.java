@@ -1,6 +1,6 @@
 package io.github.mc_umod.command;
 
-import io.github.mc_umod.utils.NBTUtils;
+import io.github.mc_umod.util.NBTUtils;
 import net.minecraft.block.Block;
 import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayerMP;

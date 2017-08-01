@@ -6,7 +6,7 @@ import io.github.mc_umod.api.energy.*;
 import io.github.mc_umod.api.render.*;
 import io.github.mc_umod.block.BlockOres;
 import io.github.mc_umod.gui.container.ContainerPulverizer;
-import io.github.mc_umod.utils.*;
+import io.github.mc_umod.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.*;
 import net.minecraft.inventory.*;
@@ -58,9 +58,7 @@ public class TileEntityPulverizer extends TileEntityBase implements ITickable, I
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		switch (index) {
 		case 0:
-			return false;
 		case 1:
-			return false;
 		case 2:
 			return false;
 		case 3:
@@ -147,8 +145,7 @@ public class TileEntityPulverizer extends TileEntityBase implements ITickable, I
 		return (stack[i] == null || (stack[i].stackSize < 64 && stack[i].getItem().equals(st.getItem())));
 	}
 	
-	public static final String
-	FACING_LIST = "face_list", INT_ENERGY = "Energy", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items", STRING_PLAYER = "play";
+	public static final String FACING_LIST = "face_list", SHORT_TIME = "Time", BYTE_SLOTS = "slot", LIST_ITEMS = "items";
 	
 	@Override
 	public int[] getSlotsForFace(EnumFacing side) {

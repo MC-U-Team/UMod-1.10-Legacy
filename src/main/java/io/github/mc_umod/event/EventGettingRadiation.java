@@ -6,7 +6,7 @@ import io.github.mc_umod.*;
 import io.github.mc_umod.api.IInfectedBlock;
 import io.github.mc_umod.armor.ArmorRadiation;
 import io.github.mc_umod.enumtype.EnumTypeBaseStuff;
-import io.github.mc_umod.utils.GenerationUtils;
+import io.github.mc_umod.util.GenerationUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;

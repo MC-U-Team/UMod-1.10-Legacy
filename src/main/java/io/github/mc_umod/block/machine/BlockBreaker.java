@@ -2,7 +2,6 @@ package io.github.mc_umod.block.machine;
 
 import io.github.mc_umod.UReference;
 import io.github.mc_umod.block.BlockBase;
-import io.github.mc_umod.utils.DirectionUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.*;
@@ -34,14 +33,14 @@ public class BlockBreaker extends BlockBase {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		EnumFacing type = DirectionUtils.getFacingFromShort((short) meta);
+		EnumFacing type = EnumFacing.getFront(meta);
 		return this.getDefaultState().withProperty(FACING, type);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		EnumFacing type = (EnumFacing) state.getValue(FACING);
-		return DirectionUtils.getShortFromFacing(type);
+		return type.getIndex();
 	}
 	
 	@Override

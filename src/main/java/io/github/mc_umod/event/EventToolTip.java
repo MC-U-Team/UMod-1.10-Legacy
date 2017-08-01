@@ -6,7 +6,7 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 
 import io.github.mc_umod.block.machine.BlockConduit;
 import io.github.mc_umod.item.ItemEnergyDisplay;
-import io.github.mc_umod.utils.NBTUtils;
+import io.github.mc_umod.util.NBTUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

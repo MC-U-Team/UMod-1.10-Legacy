@@ -1,4 +1,4 @@
-package io.github.mc_umod.utils;
+package io.github.mc_umod.util;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package io.github.mc_umod.utils;
+package io.github.mc_umod.util;
 
 import java.util.Random;
 
@@ -56,11 +56,8 @@ public class GenerationUtils {
 		return height;
 	}
 	
-	@Deprecated
 	public static boolean getBiomeGenForCoords(World world, BlockPos pos, Biome biome) {
-		//return world.getBiomeGenForCoords(pos).equals(biome);
-//		TODO EDIT THIS
-		return false;
+		return world.getBiome(pos).equals(biome);
 	}
 	
 }
