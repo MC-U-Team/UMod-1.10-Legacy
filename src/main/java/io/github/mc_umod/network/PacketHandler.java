@@ -7,9 +7,10 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketHandler {
 	
-	public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("umod");
+	public final SimpleNetworkWrapper INSTANCE;
 	
 	public PacketHandler() {
+		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("umod");
 		INSTANCE.registerMessage(MessageIOMode.class, MessageIOMode.class, 0, Side.SERVER);
 		INSTANCE.registerMessage(MessageIORequest.class, MessageIORequest.class, 1, Side.SERVER);
 		INSTANCE.registerMessage(MessageIOCallback.class, MessageIOCallback.class, 2, Side.CLIENT);

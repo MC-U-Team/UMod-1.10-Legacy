@@ -24,14 +24,20 @@ public class UMod {
 	@Instance
 	public static UMod INSTANCE;
 	
+	private static PacketHandler HANDLER;
+	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
 		log = event.getModLog();
 		UReference.proxy.init();
 		ExtensionList.onStart(event);
 		this.config = new UConfig(event.getSuggestedConfigurationFile());
-		new PacketHandler();
+		HANDLER = new PacketHandler();
 		UReference.proxy.registerRenderer();
+	}
+	
+	public static PacketHandler getHandler() {
+		return HANDLER;
 	}
 	
 	@EventHandler

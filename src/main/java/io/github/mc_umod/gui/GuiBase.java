@@ -16,6 +16,8 @@ import io.github.mc_umod.gui.container.ContainerBase;
 import io.github.mc_umod.gui.inventory.*;
 import io.github.mc_umod.gui.items.*;
 import io.github.mc_umod.gui.mode.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.*;
@@ -75,7 +77,9 @@ public abstract class GuiBase extends GuiScreen implements IEnergyGUI {
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		
-		tabs.add(new ModeTabs(new ItemStack(UBlocks.ores, 0, 5), "Normal Mode", new ModeNormal(this),this.loc1,this,new Consumer<BaseSlot>() {
+		IBlockState state = this.worldObj.getBlockState(this.pos);
+		Block b = state.getBlock();
+		tabs.add(new ModeTabs(new ItemStack(b, 1, b.getMetaFromState(state)), "Normal Mode", new ModeNormal(this),this.loc1,this,new Consumer<BaseSlot>() {
 			@Override
 			public void accept(BaseSlot arg0) {
 				if(!(arg0 instanceof BaseBatteryInputSlot)){

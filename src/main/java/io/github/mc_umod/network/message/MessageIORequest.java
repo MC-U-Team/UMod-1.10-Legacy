@@ -46,7 +46,7 @@ public class MessageIORequest implements IMessage, IMessageHandler<MessageIORequ
 	@Override
 	public void toBytes(ByteBuf buf) {
 		NetworkUtil.addPosToBuffer(buf, this.pos);
-		buf.writeInt(buf.readInt());
+		buf.writeInt(this.face.getIndex());
 	}
 	
 }

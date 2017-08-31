@@ -14,7 +14,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-@SuppressWarnings("deprecation")
 public class GuiModIngame extends Gui{
 	
 	private int ticks = 0;

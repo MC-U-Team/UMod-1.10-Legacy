@@ -3,7 +3,7 @@
   "modid": "umod",
   "name": "Umod",
   "description": "Community MOD.",
-  "version": "alpha 0.3",
+  "version": "0.0.4",
   "mcversion": "${mcversion}",
   "url": "https://mc-umod.github.io/UMod-1.10/",
   "updateUrl": "",

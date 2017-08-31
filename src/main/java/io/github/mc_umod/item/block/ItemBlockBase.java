@@ -14,7 +14,6 @@ public class ItemBlockBase extends ItemBlock {
 		this.setFull3D();
 	}
 	
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
 		if (this.block instanceof IBlockInformation) {

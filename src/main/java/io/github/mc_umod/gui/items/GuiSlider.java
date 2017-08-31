@@ -1,5 +1,6 @@
 package io.github.mc_umod.gui.items;
 
+import io.github.mc_umod.UMod;
 import io.github.mc_umod.api.render.StringMethod;
 import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.network.PacketHandler;
@@ -28,7 +29,7 @@ public class GuiSlider extends ImplGui {
 		slid2 = color3;
 		this.id = id;
 		this.ps = base.pos;
-		PacketHandler.INSTANCE.sendToServer(new MessageSliderRequest(id, this.ps));
+		UMod.getHandler().INSTANCE.sendToServer(new MessageSliderRequest(id, this.ps));
 	}
 	
 	@Override
@@ -105,14 +106,14 @@ public class GuiSlider extends ImplGui {
 	
 	public void setValue(int i) {
 		val = i;
-		PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
+		UMod.getHandler().INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
 	}
 	
 	@Override
 	public void onDrag(int mousex, int mousey) {
 		if (mousex >= x && mousex <= x + 100 && mousey >= y && mousey <= y + 8) {
 			val = mousex - x;
-			PacketHandler.INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
+			UMod.getHandler().INSTANCE.sendToServer(new MessageSliderAdd(id, val, ps));
 		}
 	}
 }

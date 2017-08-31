@@ -27,7 +27,6 @@ public class ItemTransformer extends ItemBase {
 		return damage;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativetab, List list) {
 		for (int i = 0; i < EnumTypeTransformer.values().length; i++) {

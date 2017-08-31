@@ -13,7 +13,6 @@ public class BiomeInfected extends Biome {
 	private final String name = "Infected Biome";
 	private GenInfectedTree tree;
 	
-	@SuppressWarnings("unchecked")
 	public BiomeInfected(BiomeProperties id) {
 		super(id);
 		this.tree = new GenInfectedTree(false);

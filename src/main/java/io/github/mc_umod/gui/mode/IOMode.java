@@ -1,6 +1,6 @@
 package io.github.mc_umod.gui.mode;
 
-import io.github.mc_umod.UReference;
+import io.github.mc_umod.*;
 import io.github.mc_umod.api.render.IIOMode;
 import io.github.mc_umod.gui.GuiBase;
 import io.github.mc_umod.gui.items.*;
@@ -9,6 +9,7 @@ import io.github.mc_umod.network.message.*;
 import io.github.mc_umod.render.ModelRenderHelper;
 import io.github.mc_umod.renderapi.draw.Quad;
 import io.github.mc_umod.util.RGBA;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
@@ -39,16 +40,15 @@ public class IOMode extends ImplGui{
 			@Override
 			public void run() {
 				if(IOMode.this.base_gui.tile instanceof IIOMode){
-					PacketHandler.INSTANCE.sendToServer(new MessageIOMode(IOMode.this.base_gui.pos, IOMode.this.facing, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
+					UMod.getHandler().INSTANCE.sendToServer(new MessageIOMode(IOMode.this.base_gui.pos, IOMode.this.facing, (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1)));
 					args[facing.ordinal()] = (box.getSelceted() < box.getItems().size() - 1 ? box.getSelceted():-1);
 				}
 			}
 		});
         for(EnumFacing face : EnumFacing.values()){
-        	PacketHandler.INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, face));
-        	
+        	UMod.getHandler().INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, face));
         }
-    	PacketHandler.INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, EnumFacing.NORTH));
+        UMod.getHandler().INSTANCE.sendToServer(new MessageIORequest(base_gui.pos, EnumFacing.NORTH));
 	}
 	
 	@Override
@@ -92,13 +92,14 @@ public class IOMode extends ImplGui{
 	
 	private void drawSouround(BlockPos pos,double x,double y,double z){
 		IBlockState state = base_gui.worldObj.getBlockState(pos);
-		if(state.getRenderType().equals(EnumBlockRenderType.INVISIBLE) || state.getBlock().isAir(state,this.base_gui.worldObj, pos))return;
+		Block b = state.getBlock();
+		if(state.getRenderType().equals(EnumBlockRenderType.INVISIBLE) || b.isAir(state,this.base_gui.worldObj, pos))return;
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x, y, z);
 		
 		GlStateManager.rotate(-90, 0, 0, 1);
 		GlStateManager.rotate(90, 0, 1, 0);
-		this.helper.renderItem(new ItemStack(state.getBlock()),TransformType.NONE,0.25F);
+		this.helper.renderItem(new ItemStack(b, 1, b.getMetaFromState(state)),TransformType.NONE,0.25F);
 		
 		GlStateManager.popMatrix();
 	}
@@ -110,16 +111,16 @@ public class IOMode extends ImplGui{
 		if(south >= 0 && south < this.box.getItems().size() - 1){
 		RGBA southR = new RGBA(box.getItems().get(south).color.toAWTColor()).setAlpha(125);
 		southR.setAlpha(125);
-		new Quad(-0.5, -0.5, 0.5, 0.5, southR);
-		new Quad(0.5, -0.5, -0.5, 0.5, southR);
+		new Quad(-0.5, -0.5, 0.5, 0.5, southR).draw();
+		new Quad(0.5, -0.5, -0.5, 0.5, southR).draw();
 		}
 		
 		//NORTH
 		int north = args[EnumFacing.NORTH.ordinal()];
 		if(north >= 0 && north < this.box.getItems().size() - 1){
 		RGBA northR = new RGBA(box.getItems().get(north).color.toAWTColor()).setAlpha(125);
-		new Quad(-0.5, -0.5, 0.5, 0.5, northR);
-		new Quad(0.5, -0.5, -0.5, 0.5, northR);
+		new Quad(-0.5, -0.5, 0.5, 0.5, northR).draw();
+		new Quad(0.5, -0.5, -0.5, 0.5, northR).draw();
 		}
 		
 		GlStateManager.rotate(90, 1, 0, 0);
@@ -128,16 +129,16 @@ public class IOMode extends ImplGui{
 		int up = args[EnumFacing.UP.ordinal()];
 		if(up >= 0 && up < this.box.getItems().size() - 1){
 		RGBA upR = new RGBA(box.getItems().get(up).color.toAWTColor()).setAlpha(125);
-		new Quad(-0.5, -0.5, 0.5, 0.5, upR);
-		new Quad(0.5, -0.5, -0.5, 0.5, upR);
+		new Quad(-0.5, -0.5, 0.5, 0.5, upR).draw();
+		new Quad(0.5, -0.5, -0.5, 0.5, upR).draw();
 		}
 		
 		//DOWN
 		int down = args[EnumFacing.DOWN.ordinal()];
 		if(down >= 0 && down < this.box.getItems().size() - 1){
 		RGBA downR = new RGBA(box.getItems().get(down).color.toAWTColor()).setAlpha(125);
-		new Quad(-0.5, -0.5, 0.5, 0.5, downR);
-		new Quad(0.5, -0.5, -0.5, 0.5, downR);
+		new Quad(-0.5, -0.5, 0.5, 0.5, downR).draw();
+		new Quad(0.5, -0.5, -0.5, 0.5, downR).draw();
 		}
 		
 		GlStateManager.rotate(90, 0, 1, 0);
@@ -146,8 +147,8 @@ public class IOMode extends ImplGui{
 		int east = args[EnumFacing.EAST.ordinal()];
 		if(east >= 0 && east < this.box.getItems().size() - 1){
 		RGBA eastR = new RGBA(box.getItems().get(east).color.toAWTColor()).setAlpha(125);
-		new Quad(-0.5, -0.5, 0.5, 0.5, eastR);
-		new Quad(0.5, -0.5, -0.5, 0.5, eastR);
+		new Quad(-0.5, -0.5, 0.5, 0.5, eastR).draw();
+		new Quad(0.5, -0.5, -0.5, 0.5, eastR).draw();
 		}
 		//WEST
 		int west = args[EnumFacing.WEST.ordinal()];
@@ -228,7 +229,7 @@ public class IOMode extends ImplGui{
 	}
 	
 	private void imp_facingchange() {
-		PacketHandler.INSTANCE.sendToServer(new MessageIORequest(this.base_gui.pos, facing));
+		UMod.getHandler().INSTANCE.sendToServer(new MessageIORequest(this.base_gui.pos, facing));
 	}
 	
 	@Override

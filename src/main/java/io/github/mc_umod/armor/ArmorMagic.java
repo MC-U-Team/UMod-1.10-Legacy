@@ -32,7 +32,6 @@ public class ArmorMagic extends ItemArmor {
 		return null;
 	}
 	
-	@SuppressWarnings("rawtypes")
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {
 		URegistryUtils.addTooltip(stack, tooltip);

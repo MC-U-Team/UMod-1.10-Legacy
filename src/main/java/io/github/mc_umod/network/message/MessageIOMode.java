@@ -29,7 +29,7 @@ public class MessageIOMode implements IMessage, IMessageHandler<MessageIOMode, I
 	public IMessage onMessage(MessageIOMode message, MessageContext ctx) {
 		World w = ctx.getServerHandler().playerEntity.worldObj;
 		TileEntity ent = w.getTileEntity(message.pos);
-		if (ent instanceof IIOMode) {
+		if (ent != null && ent instanceof IIOMode) {
 			IIOMode est = (IIOMode) ent;
 			est.setModeToFace(message.face, message.mode);
 		}

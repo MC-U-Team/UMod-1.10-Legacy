@@ -26,10 +26,8 @@ public class MessageIOCallback implements IMessage, IMessageHandler<MessageIOCal
 		GuiScreen sc = Minecraft.getMinecraft().currentScreen;
 		if (sc != null && sc instanceof GuiBase) {
 			GuiBase bs = (GuiBase) sc;
-			for(ModeTabs tab : bs.tabs){
-				if(tab != null && tab.getGui() instanceof IOMode){
-					((IOMode)tab.getGui()).checkAndAdd(message.face, message.item);
-				}
+			if(bs.activeTab != null && bs.activeTab.getGui() != null && bs.activeTab.getGui() instanceof IOMode) {
+				((IOMode)bs.activeTab.getGui()).checkAndAdd(message.face, message.item);
 			}
 		}
 		return null;

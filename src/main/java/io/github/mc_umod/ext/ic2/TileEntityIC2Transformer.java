@@ -1,19 +1,19 @@
 package io.github.mc_umod.ext.ic2;
 
-import ic2.api.energy.event.*;
-import ic2.api.energy.tile.*;
+//import ic2.api.energy.event.*;
+//import ic2.api.energy.tile.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraftforge.common.MinecraftForge;
 
-public class TileEntityIC2Transformer extends TileEntity implements IEnergySource,IEnergySink,ITickable{
+public class TileEntityIC2Transformer extends TileEntity /*implements IEnergySource,IEnergySink,ITickable*/ {
 	
 	private double power,maxpower = 150000.0;
 	
 	public TileEntityIC2Transformer() {
 	}
 
-	@Override
+	/*@Override
 	public boolean emitsEnergyTo(IEnergyAcceptor receiver, EnumFacing side) {
 		return false;
 	}
@@ -68,6 +68,6 @@ public class TileEntityIC2Transformer extends TileEntity implements IEnergySourc
 		super.invalidate();
 		if(!worldObj.isRemote)
 		MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
-	}
+	}*/
 	
 }

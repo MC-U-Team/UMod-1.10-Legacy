@@ -21,7 +21,7 @@ public class MessageUpdateEnergyOnGUI implements IMessage, IMessageHandler<Messa
 	@Override
 	public IMessage onMessage(MessageUpdateEnergyOnGUI message, MessageContext ctx) {
 		GuiScreen scrn = Minecraft.getMinecraft().currentScreen;
-		if(scrn instanceof IEnergyGUI){
+		if(scrn != null && scrn instanceof IEnergyGUI){
 			((IEnergyGUI) scrn).update(message.time, message.energy);
 		}
 		return null;

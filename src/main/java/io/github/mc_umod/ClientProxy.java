@@ -13,6 +13,7 @@ import io.github.mc_umod.ext.ExtensionList;
 import io.github.mc_umod.render.*;
 import io.github.mc_umod.tileentity.*;
 import io.github.mc_umod.wavefront.assets.ObjRenderRegistry;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.IReloadableResourceManager;
@@ -211,7 +212,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderer() {
 		ExtensionList.onClientProxy();
 
-		RenderFX.register(TileEntityEnergyPannel.class, new TileEntityEnergyPannelRender());
+		RenderFX.register(TileEntityEnergyPannel.class, new EnergyPannelRender());
 		RenderFX.register(TileEntityCable.class, new CabelRender());
 		RenderFX.register(TileEntityItemPipe.class, new ItemPipeRender());
 		

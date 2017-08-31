@@ -15,7 +15,6 @@ public class EventRenderRegistery {
 	
 	@SubscribeEvent
 	public void onUnregisterRender(RenderEntityClearEvent e){
-		@SuppressWarnings("unchecked")
 		List<EntityFX> p = e.worldObj.getEntitiesWithinAABB(EntityFX.class, new AxisAlignedBB(e.pos, e.pos.add(1, 1, 1)));
 		for (EntityFX fx : p) {
 			fx.setDead();

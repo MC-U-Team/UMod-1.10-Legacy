@@ -54,7 +54,6 @@ public class BlockInfectedFruit extends BlockBase implements IInfectedBlock {
 		return BlockRenderLayer.CUTOUT_MIPPED;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		return new ArrayList<ItemStack>(Arrays.asList(new ItemStack[] { new ItemStack(UItems.infectedcrop, MathHelper.getRandomIntegerInRange(new Random(), 1, 4)) }));

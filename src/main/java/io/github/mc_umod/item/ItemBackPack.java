@@ -35,7 +35,6 @@ public class ItemBackPack extends ItemBase implements IItemColor{
 		return damage;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(Item item, CreativeTabs creativetab, List list) {
 		for (int i = 0; i < EnumTypeBackPack.values().length; i++) {

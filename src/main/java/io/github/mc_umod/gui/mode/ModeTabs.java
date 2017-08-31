@@ -13,7 +13,6 @@ import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-@SuppressWarnings("deprecation")
 public class ModeTabs extends Gui {
 	
 	private ItemStack stack;

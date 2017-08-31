@@ -4,7 +4,7 @@ import io.github.mc_umod.tileentity.TileEntityEnergyPannel;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityEnergyPannelRender extends TileRender {
+public class EnergyPannelRender extends TileRender {
 		
 	@Override
 	public void renderTileEntityAt(TileEntity ent, double posX, double posY, double posZ) {

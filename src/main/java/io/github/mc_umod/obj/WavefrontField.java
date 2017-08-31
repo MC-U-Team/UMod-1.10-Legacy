@@ -7,7 +7,7 @@ import io.github.mc_umod.renderapi.draw.Vec2d;
 import net.minecraft.util.math.Vec3d;
 
 /**
- * Storage for all points of an Polygon
+ * Storage for all points of a Polygon
  * 
  * @author MrTroble
  *

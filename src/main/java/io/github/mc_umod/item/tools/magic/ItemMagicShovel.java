@@ -15,7 +15,6 @@ public class ItemMagicShovel extends ItemSpade {
 		setCreativeTab(UReference.magic);
 	}
 	
-	@SuppressWarnings("rawtypes")
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean advanced) {

@@ -29,7 +29,6 @@ public class NuclearExplosionTrace implements IProcess {
 		this.random = random;
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void updateProcess() {
 		

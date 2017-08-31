@@ -50,7 +50,6 @@ public class EventGettingRadiationInv {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	@SubscribeEvent
 	public void onDrop(LivingUpdateEvent event) {
 		if (event.getEntityLiving() instanceof EntityPlayer) {

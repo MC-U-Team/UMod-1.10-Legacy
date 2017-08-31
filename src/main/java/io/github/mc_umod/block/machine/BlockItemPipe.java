@@ -113,7 +113,6 @@ public class BlockItemPipe extends BlockBaseMachine implements ISpiritProvider, 
 		return FULL_BLOCK_AABB;
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer playerIn, List tip, boolean advanced) {
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {

@@ -109,7 +109,6 @@ public class BlockExtendedRail extends Block implements ITileEntityProvider {
 	}
 	
 	private void entityClear(World worldIn, BlockPos pos) {
-		@SuppressWarnings("unchecked")
 		List<EntityRailFX> p = worldIn.getEntitiesWithinAABB(EntityRailFX.class, new AxisAlignedBB(pos, pos.add(2, 1, 1)));
 		for (EntityRailFX fx : p) {
 			fx.setDead();
