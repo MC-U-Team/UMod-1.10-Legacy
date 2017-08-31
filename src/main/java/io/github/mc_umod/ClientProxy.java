@@ -63,24 +63,24 @@ public class ClientProxy extends CommonProxy {
 			this.reg.registerModel(UBlocks.blocks, i, new ModelResourceLocation(UReference.resource + "block" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			this.reg.registerModel(UBlocks.ores, i, new ModelResourceLocation(UReference.resource + "ore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
 			this.reg.registerModel(UBlocks.netherores, i, new ModelResourceLocation(UReference.resource + "netherore" + EnumTypeBaseStuff.byMetadata(i).getName(), "inventory"));
-			rs3[i] = ":dust" + EnumTypeBaseStuff.byMetadata(i).getName();
-			rs5[i] = ":ingot" + EnumTypeBaseStuff.byMetadata(i).getName();
-			rs6[i] = ":block" + EnumTypeBaseStuff.byMetadata(i).getName();
-			rs7[i] = ":netherore" + EnumTypeBaseStuff.byMetadata(i).getName();
-			rs8[i] = ":ore" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs3[i] = "dust" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs5[i] = "ingot" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs6[i] = "block" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs7[i] = "netherore" + EnumTypeBaseStuff.byMetadata(i).getName();
+			rs8[i] = "ore" + EnumTypeBaseStuff.byMetadata(i).getName();
 		}
 		this.reg.registerModelVariants(UItems.dusts, rs3);
 		this.reg.registerModelVariants(UItems.ingots, rs5);
 		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.blocks), rs6);
 		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.netherores), rs7);
 		this.reg.registerModelVariants(Item.getItemFromBlock(UBlocks.ores), rs8);
-		this.reg.registerModelVariants(UItems.cdust);
+		this.reg.registerModel(UItems.cdust);
 		
 		// Transformer
 		String[] rs4 = new String[EnumTypeTransformer.values().length];
 		for (int i = 0; i < EnumTypeTransformer.values().length; i++) {
 			this.reg.registerModel(UItems.transformer, i, new ModelResourceLocation(UReference.resource + "transformer" + EnumTypeTransformer.byMetadata(i).getName(), "inventory"));
-			rs4[i] = ":transformer" + EnumTypeTransformer.byMetadata(i).getName();
+			rs4[i] = "transformer" + EnumTypeTransformer.byMetadata(i).getName();
 		}
 		this.reg.registerModelVariants(UItems.transformer, rs4);
 		
