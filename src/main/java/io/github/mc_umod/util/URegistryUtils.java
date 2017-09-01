@@ -1,5 +1,6 @@
 package io.github.mc_umod.util;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
@@ -32,8 +33,8 @@ public class URegistryUtils {
 		if(reg == null){
 			reg = new CoreCommonRegistry();
 		}
-		reg.registerBlock(block, block.getUnlocalizedName().substring(5));
-		reg.registerOreDictionary(block,block.getUnlocalizedName().substring(5));
+		reg.registerBlock(block, bl, block.getUnlocalizedName().substring(5));
+		reg.registerOreDictionary(block, block.getUnlocalizedName().substring(5));
 	}
 	
 	public static void registerHalfSlabs(BlockSlabCreator creator) {

@@ -14,6 +14,7 @@ public class ItemBlockOres extends ItemBlockSubBase {
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		EnumTypeBaseStuff type = EnumTypeBaseStuff.byMetadata(stack.getMetadata());
+		System.out.println(type.name());
 		if (block instanceof BlockOres) {
 			return "tile.ore" + type.getName();
 		} else if (block instanceof BlockNetherOres) {

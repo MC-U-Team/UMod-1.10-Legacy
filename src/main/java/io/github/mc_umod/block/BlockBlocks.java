@@ -32,6 +32,7 @@ public class BlockBlocks extends BlockBase {
 	public void getSubBlocks(Item item, CreativeTabs creativetab, List list) {
 		for (int i = 0; i < EnumTypeBaseStuff.values().length; i++) {
 			list.add(new ItemStack(item, 1, i));
+			System.out.println(item);
 		}
 	}
 	
